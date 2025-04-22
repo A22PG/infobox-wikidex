@@ -1,0 +1,56 @@
+{
+    "Pikachu": {
+		"normal": {
+			"normal": {
+				"tipo": [
+					"Eléctrico"
+				],
+				"altura": 0.4,
+				"peso": 6,
+				"habilidad": [
+					{
+						"nombre": "Electricidad Estática"
+					},
+					{
+						"nombre": "Pararrayos",
+						"oculta": true
+					}
+				]
+			},
+			"Con gorra": {
+				"pikachu_gorras": {
+					"tipo": [
+						"Eléctrico"
+					],
+					"genero": "m",
+					"altura": 0.4,
+					"peso": 6,
+					"habilidad": [
+						{
+							"nombre": "Electricidad Estática"
+						},
+						{
+							"nombre": "Pararrayos",
+							"oculta": true
+						}
+					]
+				}
+			}
+		},
+		"giga": {
+			"tipo": [
+				"Eléctrico"
+			],
+			"altura": 21,
+			"habilidad": [
+				{
+					"nombre": "Electricidad Estática"
+				},
+				{
+					"nombre": "Pararrayos",
+					"oculta": true
+				}
+			]
+		}
+	}
+}
