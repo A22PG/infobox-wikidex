@@ -37,6 +37,10 @@ body {
 background-color: #E96D23 !important;
 }
 
+.gray {
+background-color: #aaaaaa !important;
+}
+
 /* Círculo medio */
 .middle-circle {
   width: 55px;
@@ -71,4 +75,8 @@ background-color: #E96D23 !important;
 
 .transparent{
   opacity: 0.8; /* Aplica la transparencia */
+}
+
+.disabledButton {
+  opacity: 0.1;
 }

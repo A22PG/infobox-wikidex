@@ -32,7 +32,14 @@ document.querySelector("#app").innerHTML = `
       <div id="btnShiny" class="outer-circle">
         <div class="middle-circle yellow transparent">
           <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/7/72/latest/20220508212633/Variocolor_icon_HOME.png" alt="Símbolo variocolor">
+            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/a/a5/latest/20250111221940/Variocolor_%28WikiDex%29.svg" alt="Símbolo variocolor" style="width:80%">
+          </div>
+        </div>
+      </div>
+      <div id="btnTrasera" class="outer-circle">
+        <div class="middle-circle yellow transparent">
+          <div class="inner-circle">
+            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/6/60/latest/20081026205217/Flecha_sur.png" alt="Símbolo variocolor">
           </div>
         </div>
       </div>
@@ -67,20 +74,6 @@ document.querySelector("#app").innerHTML = `
           </div>
         </div>
       </div>
-      <div id="btnPrimigenio" class="outer-circle">
-        <div class="middle-circle yellow transparent">
-          <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/thumb/4/4b/latest/20141121225218/Prisma_rojo_%28Dream_World%29.png/60px-Prisma_rojo_%28Dream_World%29.png" alt="Símbolo variocolor">
-          </div>
-        </div>
-      </div>
-      <div id="btnOrigen" class="outer-circle">
-        <div class="middle-circle yellow transparent">
-          <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20250203180123/Icono_de_movimiento_sincro.png" alt="Símbolo variocolor">
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Sección 1 -->
@@ -110,9 +103,11 @@ document.querySelector("#app").innerHTML = `
 `;
 
 
-/*const formaPokemon = {
-  "normal": "dialga_normal",
-  "origen": "dialga_origen"
+const formaPokemon = {
+  "normal": {
+    "normal" : "dialga_normal",
+    "origen": "dialga_origen"
+  }
 };
 
 const datosPokemon = {
@@ -140,10 +135,9 @@ const datosPokemon = {
       { "nombre": "Presión" }
     ]
   }
-};*/
+};
 
-
-const formaPokemon = {
+/*const formaPokemon = {
   "macho": {
     "normal": "pikachu_normal",
     "Con gorra": {
@@ -189,14 +183,14 @@ const datosPokemon = {
       { "nombre": "Pararrayos", "oculta": true }
     ]
   }
-};
+};*/
 
 // Variables de estado
 let selector1 = 0, selector2 = 0;
 let secciones1 = [], secciones2 = [];
 let isSeccion1 = "", isSeccion2 = "";
-let pokemon = "Pikachu", isMacho = false, isHembra = false, isShiny = false;
-let formaEspecialActiva = ""; // Nueva variable para formas especiales
+let pokemon = "Dialga", isMacho = false, isHembra = false, isShiny = false, isTrasera = false;
+let formaEspecialActiva = "";
 let imagenFinal = "";
 
 // Referencias DOM
@@ -204,6 +198,7 @@ const imagenPokemonCuadro = document.querySelector("#imagenPokemonCuadro");
 const btnMacho = document.querySelector("#btnMacho");
 const btnHembra = document.querySelector("#btnHembra");
 const btnShiny = document.querySelector("#btnShiny");
+const btnTrasera = document.querySelector("#btnTrasera");
 const separador = document.querySelector("#separador");
 const btnSec1Mas = document.querySelector("#btnSec1Mas");
 const btnSec1Menos = document.querySelector("#btnSec1Menos");
@@ -222,8 +217,7 @@ const btnGiga = document.querySelector("#btnGiga");
 const btnPrimigenio = document.querySelector("#btnPrimigenio");
 const btnOrigen = document.querySelector("#btnOrigen");
 
-// — Funciones auxiliares —
-
+// Funciones auxiliares
 function tieneGeneros() {
   return formaPokemon.hasOwnProperty("macho") || formaPokemon.hasOwnProperty("hembra");
 }
@@ -251,11 +245,9 @@ function obtenerFormasEspecialesDisponibles() {
 function obtenerSeccionesDisponibles() {
   let dataParaSecciones = null;
   
-  // Si hay forma especial activa, usar esa data
   if (formaEspecialActiva && formaPokemon[formaEspecialActiva]) {
     dataParaSecciones = formaPokemon[formaEspecialActiva];
   }
-  // Si tiene géneros y no hay forma especial activa
   else if (tieneGeneros()) {
     const generoActual = isMacho ? "macho" : "hembra";
     const generosDisponibles = obtenerGenerosDisponibles();
@@ -267,25 +259,20 @@ function obtenerSeccionesDisponibles() {
       dataParaSecciones = formaPokemon[generoActual];
     }
   }
-  // Si no tiene géneros y no hay forma especial activa
   else {
     dataParaSecciones = formaPokemon;
   }
   
   if (!dataParaSecciones) return [];
   
-  // Si es string, no hay secciones
   if (typeof dataParaSecciones === "string") return [];
   
-  // Filtrar solo las secciones que tienen subsecciones o son normales
   const secciones = [];
   const formasEspecialesValidas = ["mega", "megaX", "megaY", "giga", "primigenio", "origen"];
   
   Object.keys(dataParaSecciones).forEach(clave => {
-    // Excluir formas especiales de las secciones normales
     if (!formasEspecialesValidas.includes(clave)) {
       const valor = dataParaSecciones[clave];
-      // Incluir si es string (forma directa) o objeto (tiene subsecciones)
       if (typeof valor === "string" || (typeof valor === "object" && valor !== null)) {
         secciones.push(clave);
       }
@@ -298,18 +285,15 @@ function obtenerSeccionesDisponibles() {
 function obtenerSubseccionesDisponibles(seccionPrincipal) {
   let dataParaBuscar = null;
   
-  // Si hay forma especial activa
   if (formaEspecialActiva && formaPokemon[formaEspecialActiva]) {
     dataParaBuscar = formaPokemon[formaEspecialActiva];
   }
-  // Si tiene géneros y no hay forma especial activa
   else if (tieneGeneros()) {
     const generoActual = isMacho ? "macho" : "hembra";
     if (formaPokemon[generoActual]) {
       dataParaBuscar = formaPokemon[generoActual];
     }
   }
-  // Si no tiene géneros y no hay forma especial activa
   else {
     dataParaBuscar = formaPokemon;
   }
@@ -325,16 +309,13 @@ function obtenerSubseccionesDisponibles(seccionPrincipal) {
 function obtenerDatosPokemon() {
   let claveData = "";
   
-  // Si hay forma especial activa
   if (formaEspecialActiva && formaPokemon[formaEspecialActiva]) {
     const formaData = formaPokemon[formaEspecialActiva];
     
     if (typeof formaData === "string") {
       claveData = formaData;
     } else if (formaData) {
-      // Si la forma especial tiene subsecciones
       if (secciones1.length === 0 || !isSeccion1) {
-        // Buscar una clave por defecto o usar la primera disponible
         const claves = Object.keys(formaData);
         claveData = formaData[claves[0]] || "";
       } else {
@@ -347,7 +328,6 @@ function obtenerDatosPokemon() {
       }
     }
   }
-  // Lógica original para cuando no hay forma especial activa
   else if (tieneGeneros()) {
     const generoActual = isMacho ? "macho" : "hembra";
     const generoData = formaPokemon[generoActual];
@@ -363,7 +343,6 @@ function obtenerDatosPokemon() {
       }
     }
   } else {
-    // Para Pokémon sin géneros
     if (secciones1.length === 0) {
       claveData = formaPokemon["normal"] || "";
     } else {
@@ -381,8 +360,17 @@ function obtenerDatosPokemon() {
 
 function configurarBotonesGenero() {
   if (!tieneGeneros()) {
-    btnMacho.style.display = "none";
-    btnHembra.style.display = "none";
+    // Deshabilitar ambos botones
+    btnMacho.className = "outer-circle disabledButton";
+    btnMacho.querySelector(".middle-circle").className = "middle-circle gray";
+    btnMacho.querySelector(".inner-circle").className = "inner-circle";
+    btnMacho.style.pointerEvents = "none";
+    
+    btnHembra.className = "outer-circle disabledButton";
+    btnHembra.querySelector(".middle-circle").className = "middle-circle gray";
+    btnHembra.querySelector(".inner-circle").className = "inner-circle";
+    btnHembra.style.pointerEvents = "none";
+    
     isMacho = false;
     isHembra = false;
     return;
@@ -390,16 +378,22 @@ function configurarBotonesGenero() {
   
   const generosDisponibles = obtenerGenerosDisponibles();
   
-  if (generosDisponibles.includes("macho")) {
-    btnMacho.style.display = "flex";
+  if (!generosDisponibles.includes("macho")) {
+    btnMacho.className = "outer-circle disabledButton";
+    btnMacho.querySelector(".middle-circle").className = "middle-circle gray";
+    btnMacho.querySelector(".inner-circle").className = "inner-circle";
+    btnMacho.style.pointerEvents = "none";
   } else {
-    btnMacho.style.display = "none";
+    btnMacho.style.pointerEvents = "auto";
   }
   
-  if (generosDisponibles.includes("hembra")) {
-    btnHembra.style.display = "flex";
+  if (!generosDisponibles.includes("hembra")) {
+    btnHembra.className = "outer-circle disabledButton";
+    btnHembra.querySelector(".middle-circle").className = "middle-circle gray";
+    btnHembra.querySelector(".inner-circle").className = "inner-circle";
+    btnHembra.style.pointerEvents = "none";
   } else {
-    btnHembra.style.display = "none";
+    btnHembra.style.pointerEvents = "auto";
   }
   
   if (generosDisponibles.length === 1) {
@@ -426,26 +420,34 @@ function configurarBotonesGenero() {
 }
 
 function actualizarEstadoVisualGenero() {
-  btnMacho.className = "outer-circle";
-  btnMacho.querySelector(".middle-circle").className = "middle-circle blue transparent";
-  btnMacho.querySelector(".inner-circle").className = "inner-circle";
-  btnMacho.querySelector(".svg-icon").className = "svg-icon";
+  const generosDisponibles = obtenerGenerosDisponibles();
   
-  btnHembra.className = "outer-circle";
-  btnHembra.querySelector(".middle-circle").className = "middle-circle red transparent";
-  btnHembra.querySelector(".inner-circle").className = "inner-circle";
-  btnHembra.querySelector(".svg-icon").className = "svg-icon";
+  if (generosDisponibles.includes("macho")) {
+    if (isMacho) {
+      btnMacho.className = "outer-circle blue";
+      btnMacho.querySelector(".middle-circle").className = "middle-circle";
+      btnMacho.querySelector(".inner-circle").className = "inner-circle blue";
+      btnMacho.querySelector(".svg-icon").className = "svg-icon white";
+    } else {
+      btnMacho.className = "outer-circle";
+      btnMacho.querySelector(".middle-circle").className = "middle-circle blue transparent";
+      btnMacho.querySelector(".inner-circle").className = "inner-circle";
+      btnMacho.querySelector(".svg-icon").className = "svg-icon";
+    }
+  }
   
-  if (isMacho) {
-    btnMacho.className = "outer-circle blue";
-    btnMacho.querySelector(".middle-circle").className = "middle-circle";
-    btnMacho.querySelector(".inner-circle").className = "inner-circle blue";
-    btnMacho.querySelector(".svg-icon").className = "svg-icon white";
-  } else {
-    btnHembra.className = "outer-circle red";
-    btnHembra.querySelector(".middle-circle").className = "middle-circle";
-    btnHembra.querySelector(".inner-circle").className = "inner-circle red";
-    btnHembra.querySelector(".svg-icon").className = "svg-icon white";
+  if (generosDisponibles.includes("hembra")) {
+    if (isHembra) {
+      btnHembra.className = "outer-circle red";
+      btnHembra.querySelector(".middle-circle").className = "middle-circle";
+      btnHembra.querySelector(".inner-circle").className = "inner-circle red";
+      btnHembra.querySelector(".svg-icon").className = "svg-icon white";
+    } else {
+      btnHembra.className = "outer-circle";
+      btnHembra.querySelector(".middle-circle").className = "middle-circle red transparent";
+      btnHembra.querySelector(".inner-circle").className = "inner-circle";
+      btnHembra.querySelector(".svg-icon").className = "svg-icon";
+    }
   }
 }
 
@@ -456,22 +458,23 @@ function configurarBotonesFormasEspeciales() {
     "megaX": btnMegaX,
     "megaY": btnMegaY,
     "giga": btnGiga,
-    "primigenio": btnPrimigenio,
-    "origen": btnOrigen
   };
   
-  // Mostrar/ocultar botones según disponibilidad
   Object.keys(mapaBotones).forEach(forma => {
     const boton = mapaBotones[forma];
-    if (formasDisponibles.includes(forma)) {
-      boton.style.display = "flex";
+    if (!formasDisponibles.includes(forma)) {
+      boton.className = "outer-circle disabledButton";
+      boton.querySelector(".middle-circle").className = "middle-circle gray";
+      boton.querySelector(".inner-circle").className = "inner-circle";
+      boton.style.pointerEvents = "none";
     } else {
-      boton.style.display = "none";
+      boton.style.pointerEvents = "auto";
     }
   });
 }
 
 function actualizarEstadoVisualFormasEspeciales() {
+  const formasDisponibles = obtenerFormasEspecialesDisponibles();
   const mapaBotones = {
     "mega": { btn: btnMega, color: "yellow" },
     "megaX": { btn: btnMegaX, color: "blue" },
@@ -483,15 +486,13 @@ function actualizarEstadoVisualFormasEspeciales() {
   
   Object.keys(mapaBotones).forEach(forma => {
     const { btn, color } = mapaBotones[forma];
-    if (btn.style.display !== "none") {
+    if (formasDisponibles.includes(forma)) {
       if (formaEspecialActiva === forma) {
-        // Estado activo
         btn.className = `outer-circle ${color}`;
         btn.querySelector(".middle-circle").className = "middle-circle";
         btn.querySelector(".inner-circle").className = `inner-circle ${color}`;
         btn.querySelector(".svg-icon").className = "svg-icon white";
       } else {
-        // Estado inactivo
         btn.className = "outer-circle";
         btn.querySelector(".middle-circle").className = `middle-circle ${color} transparent`;
         btn.querySelector(".inner-circle").className = "inner-circle";
@@ -503,14 +504,11 @@ function actualizarEstadoVisualFormasEspeciales() {
 
 function activarFormaEspecial(forma) {
   if (formaEspecialActiva === forma) {
-    // Si ya está activa, desactivar
     formaEspecialActiva = "";
   } else {
-    // Activar nueva forma
     formaEspecialActiva = forma;
   }
   
-  // Resetear selectores
   selector1 = 0;
   selector2 = 0;
   
@@ -530,7 +528,6 @@ function cambiarGenero() {
   
   actualizarEstadoVisualGenero();
   
-  // Solo resetear selectores si no hay forma especial activa
   if (!formaEspecialActiva) {
     selector1 = 0;
     selector2 = 0;
@@ -539,7 +536,7 @@ function cambiarGenero() {
   actualizarSecciones();
 }
 
-// — Eventos —
+// Eventos
 btnMacho.addEventListener("click", cambiarGenero);
 btnHembra.addEventListener("click", cambiarGenero);
 
@@ -559,13 +556,27 @@ btnShiny.addEventListener("click", () => {
   construirImagenYDatos();
 });
 
+btnTrasera.addEventListener("click", () => {
+  isTrasera = !isTrasera;
+  if (isTrasera) {
+    btnTrasera.className = "outer-circle yellow";
+    btnTrasera.querySelector(".middle-circle").className = "middle-circle";
+    btnTrasera.querySelector(".inner-circle").className = "inner-circle yellow";
+    btnTrasera.querySelector(".svg-icon").className = "svg-icon white";
+  } else {
+    btnTrasera.className = "outer-circle";
+    btnTrasera.querySelector(".middle-circle").className = "middle-circle yellow transparent";
+    btnTrasera.querySelector(".inner-circle").className = "inner-circle";
+    btnTrasera.querySelector(".svg-icon").className = "svg-icon";
+  }
+  construirImagenYDatos();
+});
+
 // Eventos para formas especiales
 btnMega.addEventListener("click", () => activarFormaEspecial("mega"));
 btnMegaX.addEventListener("click", () => activarFormaEspecial("megaX"));
 btnMegaY.addEventListener("click", () => activarFormaEspecial("megaY"));
 btnGiga.addEventListener("click", () => activarFormaEspecial("giga"));
-btnPrimigenio.addEventListener("click", () => activarFormaEspecial("primigenio"));
-btnOrigen.addEventListener("click", () => activarFormaEspecial("origen"));
 
 btnSec1Mas.addEventListener("click", () => {
   selector1 = (selector1 + 1) % secciones1.length;
@@ -585,8 +596,6 @@ btnSec2Menos.addEventListener("click", () => {
   selector2 = (selector2 - 1 + secciones2.length) % secciones2.length;
   actualizarSecciones();
 });
-
-// — Funciones principales —
 
 function actualizarSecciones() {
   secciones1 = obtenerSeccionesDisponibles();
@@ -626,46 +635,86 @@ function construirImagenYDatos() {
   const datos = obtenerDatosPokemon();
   
   const variocolorDisponible = datos.variocolor !== false;
+  const traseraDisponible = datos.espalda !== false;
   
+  // Gestionar variocolor
   if (variocolorDisponible) {
-    btnShiny.style.display = "flex";
-    separador.style.display = "block";
-  } else {
-    btnShiny.style.display = "none";
-    separador.style.display = "none";
+    btnShiny.style.pointerEvents = "auto";
     if (isShiny) {
-      isShiny = false;
+      btnShiny.className = "outer-circle yellow";
+      btnShiny.querySelector(".middle-circle").className = "middle-circle";
+      btnShiny.querySelector(".inner-circle").className = "inner-circle yellow";
+      btnShiny.querySelector(".svg-icon").className = "svg-icon white";
+    } else {
       btnShiny.className = "outer-circle";
       btnShiny.querySelector(".middle-circle").className = "middle-circle yellow transparent";
       btnShiny.querySelector(".inner-circle").className = "inner-circle";
       btnShiny.querySelector(".svg-icon").className = "svg-icon";
     }
+  } else {
+    btnShiny.className = "outer-circle disabledButton";
+    btnShiny.querySelector(".middle-circle").className = "middle-circle gray";
+    btnShiny.querySelector(".inner-circle").className = "inner-circle";
+    btnShiny.style.pointerEvents = "none";
+    if (isShiny) {
+      isShiny = false;
+    }
+  }
+  
+  // Gestionar trasera
+  if (traseraDisponible) {
+    btnTrasera.style.pointerEvents = "auto";
+    if (isTrasera) {
+      btnTrasera.className = "outer-circle yellow";
+      btnTrasera.querySelector(".middle-circle").className = "middle-circle";
+      btnTrasera.querySelector(".inner-circle").className = "inner-circle yellow";
+      btnTrasera.querySelector(".svg-icon").className = "svg-icon white";
+    } else {
+      btnTrasera.className = "outer-circle";
+      btnTrasera.querySelector(".middle-circle").className = "middle-circle yellow transparent";
+      btnTrasera.querySelector(".inner-circle").className = "inner-circle";
+      btnTrasera.querySelector(".svg-icon").className = "svg-icon";
+    }
+  } else {
+    btnTrasera.className = "outer-circle disabledButton";
+    btnTrasera.querySelector(".middle-circle").className = "middle-circle gray";
+    btnTrasera.querySelector(".inner-circle").className = "inner-circle";
+    btnTrasera.style.pointerEvents = "none";
+    if (isTrasera) {
+      isTrasera = false;
+    }
+  }
+  
+  // Gestionar visibilidad del separador
+  if (variocolorDisponible || traseraDisponible) {
+    separador.style.display = "block";
+  } else {
+    separador.style.display = "none";
   }
   
   // Construir nombre de imagen
   imagenFinal = pokemon;
   
-  // Si hay forma especial activa, NO agregar género
   if (formaEspecialActiva) {
     imagenFinal += `_${formaEspecialActiva}`;
   } else {
-    // Solo agregar género si tiene géneros y no hay forma especial
     if (tieneGeneros()) {
       imagenFinal += isMacho ? "_macho" : "_hembra";
     }
     
-    // Agregar sección si no es "normal" y si hay secciones activas
     if (isSeccion1 && isSeccion1 !== "normal" && secciones1.length > 0) {
       imagenFinal += `_${isSeccion1}`;
     }
   }
   
-  // Agregar subsección si existe (tanto para forma especial como normal)
   if (isSeccion2) {
     imagenFinal += `_${isSeccion2}`;
   }
   
-  // Agregar variocolor si está activo y disponible
+  if (isTrasera && traseraDisponible) {
+    imagenFinal += "_trasera";
+  }
+  
   if (isShiny && variocolorDisponible) {
     imagenFinal += "_variocolor";
   }
@@ -692,6 +741,7 @@ function construirImagenYDatos() {
       });
     }
     console.log("• Variocolor disponible:", variocolorDisponible);
+    console.log("• Trasera disponible:", traseraDisponible);
     console.log("• Formas especiales disponibles:", obtenerFormasEspecialesDisponibles());
     console.log("• Forma especial activa:", formaEspecialActiva || "Ninguna");
   }
