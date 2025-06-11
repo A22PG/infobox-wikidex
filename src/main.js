@@ -23,7 +23,7 @@ document.querySelector("#app").innerHTML = `
       <div id="btnHembra" class="outer-circle red">
         <div class="middle-circle">
           <div class="inner-circle red">
-            <img class="svg-icon white" src="https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg" alt="Símbolo femenino">
+            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg" alt="Símbolo femenino">
           </div>
         </div>
       </div>
@@ -102,11 +102,47 @@ document.querySelector("#app").innerHTML = `
 </div>
 `;
 
+/*const formaPokemon = {
+  "hembra": {
+    "Crema de vainilla" : {
+      "Confite fresa": "alcremie_normal",
+      "Confite corazón" : "alcremie_normal"
+    },
+    "Crema rosa": {
+      "Confite fresa": "alcremie_normal",
+      "Confite corazón" : "alcremie_normal"
+    }
+  },
+  "giga":"alcremie_giga",
+  "megaY": "alcremie_normal",
+  "megaX": "alcremie_normal"
+}
+
+const datosPokemon = {
+  "alcremie_normal": {
+    "tipo": ["Acero", "Dragón"],
+    "altura": 5.4,
+    "peso": 683,
+    "habilidad": [
+      { "nombre": "Presión" },
+      { "nombre": "Telepatía", "oculta": true }
+    ]
+  },
+  "alcremie_giga": {
+    "tipo": ["Acero", "Dragón"],
+    "altura": 7.0,
+    "peso": 850,
+    "habilidad": [
+      { "nombre": "Presión" }
+    ]
+  }
+}*/
+
 
 const formaPokemon = {
   "normal": {
-    "normal" : "dialga_normal",
-    "origen": "dialga_origen"
+    "Común" : "dialga_normal",
+    "Forma origen": "dialga_origen"
   }
 };
 
@@ -378,6 +414,19 @@ function configurarBotonesGenero() {
   
   const generosDisponibles = obtenerGenerosDisponibles();
   
+  // Configurar estado inicial por defecto
+  if (generosDisponibles.includes("macho")) {
+    isMacho = true;
+    isHembra = false;
+  } else if (generosDisponibles.includes("hembra")) {
+    isMacho = false;
+    isHembra = true;
+  } else {
+    isMacho = false;
+    isHembra = false;
+  }
+  
+  // Configurar botón macho
   if (!generosDisponibles.includes("macho")) {
     btnMacho.className = "outer-circle disabledButton";
     btnMacho.querySelector(".middle-circle").className = "middle-circle gray";
@@ -387,6 +436,7 @@ function configurarBotonesGenero() {
     btnMacho.style.pointerEvents = "auto";
   }
   
+  // Configurar botón hembra
   if (!generosDisponibles.includes("hembra")) {
     btnHembra.className = "outer-circle disabledButton";
     btnHembra.querySelector(".middle-circle").className = "middle-circle gray";
@@ -394,26 +444,6 @@ function configurarBotonesGenero() {
     btnHembra.style.pointerEvents = "none";
   } else {
     btnHembra.style.pointerEvents = "auto";
-  }
-  
-  if (generosDisponibles.length === 1) {
-    const unicoGenero = generosDisponibles[0];
-    isMacho = unicoGenero === "macho";
-    isHembra = unicoGenero === "hembra";
-    
-    if (isMacho) {
-      btnMacho.className = "outer-circle blue";
-      btnMacho.querySelector(".middle-circle").className = "middle-circle";
-      btnMacho.querySelector(".inner-circle").className = "inner-circle blue";
-      btnMacho.querySelector(".svg-icon").className = "svg-icon white";
-    } else {
-      btnHembra.className = "outer-circle red";
-      btnHembra.querySelector(".middle-circle").className = "middle-circle";
-      btnHembra.querySelector(".inner-circle").className = "inner-circle red";
-      btnHembra.querySelector(".svg-icon").className = "svg-icon white";
-    }
-    
-    return;
   }
   
   actualizarEstadoVisualGenero();
@@ -523,17 +553,20 @@ function cambiarGenero() {
     return;
   }
   
-  isMacho = !isMacho;
-  isHembra = !isHembra;
-  
-  actualizarEstadoVisualGenero();
-  
-  if (!formaEspecialActiva) {
-    selector1 = 0;
-    selector2 = 0;
+  // Solo permitir cambio si ambos géneros están disponibles
+  if (generosDisponibles.includes("macho") && generosDisponibles.includes("hembra")) {
+    isMacho = !isMacho;
+    isHembra = !isHembra;
+    
+    actualizarEstadoVisualGenero();
+    
+    if (!formaEspecialActiva) {
+      selector1 = 0;
+      selector2 = 0;
+    }
+    
+    actualizarSecciones();
   }
-  
-  actualizarSecciones();
 }
 
 // Eventos
@@ -635,7 +668,7 @@ function construirImagenYDatos() {
   const datos = obtenerDatosPokemon();
   
   const variocolorDisponible = datos.variocolor !== false;
-  const traseraDisponible = datos.espalda !== false;
+  const traseraDisponible = datos.trasera === true;
   
   // Gestionar variocolor
   if (variocolorDisponible) {
