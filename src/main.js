@@ -1,179 +1,5 @@
 import "./style.css";
 
-document.querySelector("#app").innerHTML = `
-<div style="min-width: 450px; max-width:450px; border-radius: 25px; background:#FFD700; padding: 1em; float:right">
-  <div style="text-align:center; font-size:2em; padding:.5em;">'''Dialga'''</div>
-  <div style="display: flex; align-items: center;">
-    <div style="flex: 25%; text-align: left; white-space: nowrap;">ディアルガ (Dialga)</div>
-    <div style="flex: 75%; text-align: right;">#0483</div>
-  </div>
-  <div style="min-width:425px; max-width:425px; border-radius:25px; background:#fff; padding:1em; text-align:center">
-    <img id="imagenPokemonCuadro" src="public/Dialga_HOME.png" height="200;">
-    <hr style="border: 1px solid #dddddd; border-radius: 5px;">
-    <div style="display:flex; align-items: center; justify-content: space-around">
-      <!-- Masculino -->
-      <div id="btnMacho" class="outer-circle">
-        <div class="middle-circle blue transparent">
-          <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg" alt="Símbolo masculino">
-          </div>
-        </div>
-      </div>
-      <!-- Femenino -->
-      <div id="btnHembra" class="outer-circle red">
-        <div class="middle-circle">
-          <div class="inner-circle red">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg" alt="Símbolo femenino">
-          </div>
-        </div>
-      </div>
-      <div id="separador" style="border: 1px solid #dddddd; width: 0; height: 70px; background: #dddddd; border-radius: 5px;"></div>
-      <!-- Variocolor -->
-      <div id="btnShiny" class="outer-circle">
-        <div class="middle-circle yellow transparent">
-          <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/a/a5/latest/20250111221940/Variocolor_%28WikiDex%29.svg" alt="Símbolo variocolor" style="width:80%">
-          </div>
-        </div>
-      </div>
-      <div id="btnTrasera" class="outer-circle">
-        <div class="middle-circle yellow transparent">
-          <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/6/60/latest/20081026205217/Flecha_sur.png" alt="Símbolo variocolor">
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr style="border: 1px solid #dddddd; border-radius: 5px;">
-    <div style="display:flex; align-items: center; justify-content: space-around">
-    <div id="btnMega" class="outer-circle">
-        <div class="middle-circle megaColor transparent">
-          <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/b/b5/latest/20250819100853/Megaevoluci%C3%B3n_icono.svg" alt="Símbolo variocolor" style="height:38px">
-          </div>
-        </div>
-      </div>
-      <div id="btnMegaX" class="outer-circle">
-        <div class="middle-circle megaXColor transparent">
-          <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/5/52/latest/20250913220359/Megaevoluci%C3%B3n_X_%28Wikidex%29.svg" alt="Símbolo variocolor" style="height:38px">
-          </div>
-        </div>
-      </div>
-      <div id="btnMegaY" class="outer-circle">
-        <div class="middle-circle megaYColor transparent">
-          <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/4/45/latest/20250913220424/Megaevoluci%C3%B3n_Y_%28Wikidex%29.svg" alt="Símbolo variocolor" style="height:38px">
-          </div>
-        </div>
-      </div>
-      <div id="btnGiga" class="outer-circle">
-        <div class="middle-circle gigamaxColor transparent">
-          <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20250913220520/Gigamax_%28Wikidex%29.svg" alt="Símbolo variocolor" style="height:28px">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sección 1 -->
-    <div id="seccion1" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; font-family: Arial, sans-serif; margin-top:.75em">
-      <div id="btnSec1Menos" style="border: 1px solid #dddddd; width: 15%; height: 25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-        <span>&#8592;</span>
-      </div>
-      <div id="seccion1Texto" style="border: 1px solid #dddddd; width: 65%; min-height: 25px; border-radius: 25px; display: flex; align-items: center; justify-content: center;">Común</div>
-      <div id="btnSec1Mas" style="border: 1px solid #dddddd; width: 15%; height:25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-        <span>&#8594;</span>
-      </div>
-    </div>
-
-    <!-- Sección 2 -->
-    <div id="seccion2" style="display: none; align-items: center; justify-content: space-between; gap: 20px; font-family: Arial, sans-serif; margin-top:.75em">
-      <div id="btnSec2Menos" style="border: 1px solid #dddddd; width: 15%; height: 25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-        <span>&#8592;</span>
-      </div>
-      <div id="seccion2Texto" style="border: 1px solid #dddddd; width: 65%; min-height: 25px; border-radius: 25px; display: flex; align-items: center; justify-content: center;">Común</div>
-      <div id="btnSec2Mas" style="border: 1px solid #dddddd; width: 15%; height:25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-        <span>&#8594;</span>
-      </div>
-    </div>
-
-  </div>
-</div>
-`;
-
-/*const formaPokemon = {
-  "hembra": {
-    "Crema de vainilla" : {
-      "Confite fresa": "alcremie_normal",
-      "Confite corazón" : "alcremie_normal"
-    },
-    "Crema rosa": {
-      "Confite fresa": "alcremie_normal",
-      "Confite corazón" : "alcremie_normal"
-    }
-  },
-  "giga":"alcremie_giga",
-  "megaY": "alcremie_normal",
-  "megaX": "alcremie_normal"
-}
-
-const datosPokemon = {
-  "alcremie_normal": {
-    "tipo": ["Acero", "Dragón"],
-    "altura": 5.4,
-    "peso": 683,
-    "habilidad": [
-      { "nombre": "Presión" },
-      { "nombre": "Telepatía", "oculta": true }
-    ]
-  },
-  "alcremie_giga": {
-    "tipo": ["Acero", "Dragón"],
-    "altura": 7.0,
-    "peso": 850,
-    "habilidad": [
-      { "nombre": "Presión" }
-    ]
-  }
-}*/
-
-
-/*const formaPokemon = {
-  "normal": {
-    "Común" : "dialga_normal",
-    "Forma origen": "dialga_origen"
-  }
-};
-
-const datosPokemon = {
-  "dialga_normal": {
-    "tipo": ["Acero", "Dragón"],
-    "altura": 5.4,
-    "peso": 683,
-    "habilidad": [
-      { "nombre": "Presión" },
-      { "nombre": "Telepatía", "oculta": true }
-    ]
-  },
-  "dialga_origen": {
-    "tipo": ["Acero", "Dragón"],
-    "altura": 7.0,
-    "peso": 850,
-    "habilidad": [
-      { "nombre": "Presión" }
-    ]
-  },
-  "dialga_giga": {
-    "tipo": ["Acero", "Dragón"],
-    "altura": 15.4,
-    "habilidad": [
-      { "nombre": "Presión" }
-    ]
-  }
-};
-*/
-
 // Datos de configuración
 const formaPokemon = {
   "macho": {
@@ -227,26 +53,26 @@ const datosPokemon = {
 // Configuración de botones
 const buttonConfig = {
   gender: [
-    { id: "btnMacho", key: "macho", color: "blue", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg" },
-    { id: "btnHembra", key: "hembra", color: "red", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg" }
+    { id: "btnMacho", key: "macho", color: "blue", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg", size: "50px" },
+    { id: "btnHembra", key: "hembra", color: "red", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg", size: "50px" }
   ],
   special: [
-    { id: "btnMega", key: "mega", color: "megaColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/b/b5/latest/20250819100853/Megaevolución_icono.svg" },
-    { id: "btnMegaX", key: "megaX", color: "megaXColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/5/52/latest/20250913220359/Megaevolución_X_(Wikidex).svg" },
-    { id: "btnMegaY", key: "megaY", color: "megaYColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/4/45/latest/20250913220424/Megaevolución_Y_(Wikidex).svg" },
-    { id: "btnGiga", key: "giga", color: "gigamaxColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20250913220520/Gigamax_(Wikidex).svg" }
+    { id: "btnMega", key: "mega", color: "megaColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/b/b5/latest/20250819100853/Megaevolución_icono.svg", size: "40px" },
+    { id: "btnMegaX", key: "megaX", color: "megaXColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/5/52/latest/20250913220359/Megaevolución_X_(Wikidex).svg", size: "40px" },
+    { id: "btnMegaY", key: "megaY", color: "megaYColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/4/45/latest/20250913220424/Megaevolución_Y_(Wikidex).svg", size: "40px" },
+    { id: "btnGiga", key: "giga", color: "gigamaxColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20250913220520/Gigamax_(Wikidex).svg", size: "28px" }
   ],
   toggle: [
-    { id: "btnShiny", key: "shiny", color: "yellow", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/a/a5/latest/20250111221940/Variocolor_(WikiDex).svg" },
-    { id: "btnTrasera", key: "trasera", color: "yellow", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/6/60/latest/20081026205217/Flecha_sur.png" }
-  ]
+    { id: "btnShiny", key: "shiny", color: "yellow", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/a/a5/latest/20250111221940/Variocolor_(WikiDex).svg", size: "40px"},
+    { id: "btnTrasera", key: "trasera", color: "yellow", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/6/60/latest/20081026205217/Flecha_sur.png", size: "50px" }
+  ],
 };
 
 // Estado de la aplicación
 class PokemonState {
   constructor() {
     this.pokemon = "Pikachu";
-    this.activeGender = "macho";
+    this.activeGender = "";
     this.activeSpecialForm = "";
     this.isShiny = false;
     this.isTrasera = false;
@@ -256,6 +82,12 @@ class PokemonState {
     this.secciones2 = [];
     this.isSeccion1 = "";
     this.isSeccion2 = "";
+    
+    // Establecer género inicial basado en disponibilidad
+    const availableGenders = this.getAvailableGenders();
+    if (availableGenders.length > 0) {
+      this.activeGender = availableGenders[0];
+    }
   }
 
   getAvailableGenders() {
@@ -344,7 +176,7 @@ class PokemonState {
     }
     
     const pokemonData = this.getPokemonData();
-    if (this.isTrasera && pokemonData.trasera !== false) {
+    if (this.isTrasera && pokemonData.trasera === true) {
       imageName += "_trasera";
     }
     
@@ -360,8 +192,8 @@ class PokemonState {
 class PokemonUI {
   constructor(state) {
     this.state = state;
-    this.elements = this.getElements();
     this.initializeHTML();
+    this.elements = this.getElements();
     this.setupEventListeners();
     this.updateAll();
   }
@@ -381,8 +213,15 @@ class PokemonUI {
     });
 
     // Agregar botones de navegación
-    ['btnSec1Mas', 'btnSec1Menos', 'btnSec2Mas', 'btnSec2Menos'].forEach(id => {
-      elements[id.replace('btn', '').toLowerCase()] = document.querySelector(`#${id}`);
+    const navButtons = {
+      'btnSec1Mas': 'sec1mas',
+      'btnSec1Menos': 'sec1menos', 
+      'btnSec2Mas': 'sec2mas',
+      'btnSec2Menos': 'sec2menos'
+    };
+    
+    Object.entries(navButtons).forEach(([id, key]) => {
+      elements[key] = document.querySelector(`#${id}`);
     });
 
     return elements;
@@ -412,8 +251,6 @@ class PokemonUI {
         </div>
       </div>
     `;
-    
-    this.elements = this.getElements(); // Re-obtener elementos después de crear HTML
   }
 
   generateButtons(buttons) {
@@ -421,7 +258,7 @@ class PokemonUI {
       <div id="${btn.id}" class="outer-circle">
         <div class="middle-circle ${btn.color} transparent">
           <div class="inner-circle">
-            <img class="svg-icon" src="${btn.icon}" alt="${btn.key}">
+            <img class="svg-icon" src="${btn.icon}" alt="${btn.key}" style="height:${btn.size}">
           </div>
         </div>
       </div>
@@ -498,6 +335,12 @@ class PokemonUI {
   }
 
   handleToggleClick(toggle) {
+    const pokemonData = this.state.getPokemonData();
+    
+    // Verificar si el botón está disponible antes de hacer toggle
+    if (toggle === 'shiny' && pokemonData.variocolor === false) return;
+    if (toggle === 'trasera' && pokemonData.trasera !== true) return;
+    
     this.state[`is${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`] = 
       !this.state[`is${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`];
     this.updateAll();
@@ -517,12 +360,25 @@ class PokemonUI {
     this.updateImage();
   }
 
-  updateButtonState(buttonType, key, isActive, isAvailable = true) {
+  updateButtonState(buttonType, key, isActive, isAvailable) {
     const element = this.elements[key];
-    if (!element) return;
+    if (!element) {
+      console.log(`Elemento ${key} no encontrado`);
+      return;
+    }
 
     const config = buttonConfig[buttonType]?.find(btn => btn.key === key);
-    if (!config) return;
+    if (!config) {
+      console.log(`Config para ${buttonType}:${key} no encontrada`);
+      return;
+    }
+
+    // Debug específico para trasera
+    if (key === 'trasera') {
+      console.log(`NUEVO updateButtonState para trasera:`);
+      console.log(`  - isAvailable pasado como parámetro: ${isAvailable}`);
+      console.log(`  - isActive: ${isActive}`);
+    }
 
     if (!isAvailable) {
       element.className = "outer-circle disabledButton";
@@ -581,9 +437,21 @@ class PokemonUI {
     const pokemonData = this.state.getPokemonData();
     const imageName = this.state.buildImageName();
     
-    // Actualizar disponibilidad de botones toggle
+    // Calcular disponibilidad de botones toggle
     const isShinyAvailable = pokemonData.variocolor !== false;
-    const isTraseraAvailable = pokemonData.trasera !== false;
+    const isTraseraAvailable = pokemonData.trasera === true;
+    
+    console.log(`NUEVO updateImage - isTraseraAvailable calculado: ${isTraseraAvailable}`);
+    console.log(`NUEVO updateImage - pokemonData.trasera: ${pokemonData.trasera}`);
+    console.log(`NUEVO updateImage - pokemonData.trasera === true: ${pokemonData.trasera === true}`);
+    
+    // Si los botones no están disponibles, resetear su estado
+    if (!isShinyAvailable && this.state.isShiny) {
+      this.state.isShiny = false;
+    }
+    if (!isTraseraAvailable && this.state.isTrasera) {
+      this.state.isTrasera = false;
+    }
     
     this.updateButtonState('toggle', 'shiny', this.state.isShiny, isShinyAvailable);
     this.updateButtonState('toggle', 'trasera', this.state.isTrasera, isTraseraAvailable);
@@ -632,7 +500,7 @@ class PokemonUI {
         });
       }
       console.log("• Variocolor disponible:", datos.variocolor !== false);
-      console.log("• Trasera disponible:", datos.trasera !== false);
+      console.log("• Trasera disponible:", datos.trasera === true);
       console.log("• Formas especiales disponibles:", this.state.getAvailableSpecialForms());
       console.log("• Forma especial activa:", this.state.activeSpecialForm || "Ninguna");
     }
