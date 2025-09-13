@@ -1,7 +1,7 @@
 import "./style.css";
 
 document.querySelector("#app").innerHTML = `
-<div style="min-width: 450px; max-width:450px; border-radius: 25px; background:#FFD700; padding: 1em;">
+<div style="min-width: 450px; max-width:450px; border-radius: 25px; background:#FFD700; padding: 1em; float:right">
   <div style="text-align:center; font-size:2em; padding:.5em;">'''Dialga'''</div>
   <div style="display: flex; align-items: center;">
     <div style="flex: 25%; text-align: left; white-space: nowrap;">ディアルガ (Dialga)</div>
@@ -27,7 +27,7 @@ document.querySelector("#app").innerHTML = `
           </div>
         </div>
       </div>
-      <div id="separador" style="width: 2px; height: 100px; background: #dddddd;"></div>
+      <div id="separador" style="border: 1px solid #dddddd; width: 0; height: 70px; background: #dddddd; border-radius: 5px;"></div>
       <!-- Variocolor -->
       <div id="btnShiny" class="outer-circle">
         <div class="middle-circle yellow transparent">
@@ -47,30 +47,30 @@ document.querySelector("#app").innerHTML = `
     <hr style="border: 1px solid #dddddd; border-radius: 5px;">
     <div style="display:flex; align-items: center; justify-content: space-around">
     <div id="btnMega" class="outer-circle">
-        <div class="middle-circle yellow transparent">
+        <div class="middle-circle megaColor transparent">
           <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/thumb/9/99/latest/20230619164506/Piedra_activadora_%28ilustraci%C3%B3n%29.png/60px-Piedra_activadora_%28ilustraci%C3%B3n%29.png" alt="Símbolo variocolor">
+            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/b/b5/latest/20250819100853/Megaevoluci%C3%B3n_icono.svg" alt="Símbolo variocolor" style="height:38px">
           </div>
         </div>
       </div>
       <div id="btnMegaX" class="outer-circle">
-        <div class="middle-circle blue transparent">
+        <div class="middle-circle megaXColor transparent">
           <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/thumb/9/99/latest/20230619164506/Piedra_activadora_%28ilustraci%C3%B3n%29.png/60px-Piedra_activadora_%28ilustraci%C3%B3n%29.png" alt="Símbolo variocolor">
+            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/5/52/latest/20250913220359/Megaevoluci%C3%B3n_X_%28Wikidex%29.svg" alt="Símbolo variocolor" style="height:38px">
           </div>
         </div>
       </div>
       <div id="btnMegaY" class="outer-circle">
-        <div class="middle-circle red transparent">
+        <div class="middle-circle megaYColor transparent">
           <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/thumb/9/99/latest/20230619164506/Piedra_activadora_%28ilustraci%C3%B3n%29.png/60px-Piedra_activadora_%28ilustraci%C3%B3n%29.png" alt="Símbolo variocolor">
+            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/4/45/latest/20250913220424/Megaevoluci%C3%B3n_Y_%28Wikidex%29.svg" alt="Símbolo variocolor" style="height:38px">
           </div>
         </div>
       </div>
       <div id="btnGiga" class="outer-circle">
-        <div class="middle-circle yellow transparent">
+        <div class="middle-circle gigamaxColor transparent">
           <div class="inner-circle">
-            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/thumb/1/12/latest/20200615214018/Icono_factor_Gigamax.png/82px-Icono_factor_Gigamax.png" alt="Símbolo variocolor">
+            <img class="svg-icon" src="https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20250913220520/Gigamax_%28Wikidex%29.svg" alt="Símbolo variocolor" style="height:28px">
           </div>
         </div>
       </div>
@@ -139,7 +139,7 @@ const datosPokemon = {
 }*/
 
 
-const formaPokemon = {
+/*const formaPokemon = {
   "normal": {
     "Común" : "dialga_normal",
     "Forma origen": "dialga_origen"
@@ -172,8 +172,10 @@ const datosPokemon = {
     ]
   }
 };
+*/
 
-/*const formaPokemon = {
+// Datos de configuración
+const formaPokemon = {
   "macho": {
     "normal": "pikachu_normal",
     "Con gorra": {
@@ -189,6 +191,7 @@ const datosPokemon = {
   },
   "hembra": "pikachu_normal",
   "giga": "pikachu_giga",
+  "mega": "",
 };
 
 const datosPokemon = {
@@ -219,569 +222,423 @@ const datosPokemon = {
       { "nombre": "Pararrayos", "oculta": true }
     ]
   }
-};*/
+};
 
-// Variables de estado
-let selector1 = 0, selector2 = 0;
-let secciones1 = [], secciones2 = [];
-let isSeccion1 = "", isSeccion2 = "";
-let pokemon = "Dialga", isMacho = false, isHembra = false, isShiny = false, isTrasera = false;
-let formaEspecialActiva = "";
-let imagenFinal = "";
+// Configuración de botones
+const buttonConfig = {
+  gender: [
+    { id: "btnMacho", key: "macho", color: "blue", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg" },
+    { id: "btnHembra", key: "hembra", color: "red", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg" }
+  ],
+  special: [
+    { id: "btnMega", key: "mega", color: "megaColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/b/b5/latest/20250819100853/Megaevolución_icono.svg" },
+    { id: "btnMegaX", key: "megaX", color: "megaXColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/5/52/latest/20250913220359/Megaevolución_X_(Wikidex).svg" },
+    { id: "btnMegaY", key: "megaY", color: "megaYColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/4/45/latest/20250913220424/Megaevolución_Y_(Wikidex).svg" },
+    { id: "btnGiga", key: "giga", color: "gigamaxColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20250913220520/Gigamax_(Wikidex).svg" }
+  ],
+  toggle: [
+    { id: "btnShiny", key: "shiny", color: "yellow", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/a/a5/latest/20250111221940/Variocolor_(WikiDex).svg" },
+    { id: "btnTrasera", key: "trasera", color: "yellow", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/6/60/latest/20081026205217/Flecha_sur.png" }
+  ]
+};
 
-// Referencias DOM
-const imagenPokemonCuadro = document.querySelector("#imagenPokemonCuadro");
-const btnMacho = document.querySelector("#btnMacho");
-const btnHembra = document.querySelector("#btnHembra");
-const btnShiny = document.querySelector("#btnShiny");
-const btnTrasera = document.querySelector("#btnTrasera");
-const separador = document.querySelector("#separador");
-const btnSec1Mas = document.querySelector("#btnSec1Mas");
-const btnSec1Menos = document.querySelector("#btnSec1Menos");
-const btnSec2Mas = document.querySelector("#btnSec2Mas");
-const btnSec2Menos = document.querySelector("#btnSec2Menos");
-const seccion1Texto = document.querySelector("#seccion1Texto");
-const seccion2Texto = document.querySelector("#seccion2Texto");
-const seccion1 = document.querySelector("#seccion1");
-const seccion2 = document.querySelector("#seccion2");
-
-// Referencias DOM para botones de formas especiales
-const btnMega = document.querySelector("#btnMega");
-const btnMegaX = document.querySelector("#btnMegaX");
-const btnMegaY = document.querySelector("#btnMegaY");
-const btnGiga = document.querySelector("#btnGiga");
-const btnPrimigenio = document.querySelector("#btnPrimigenio");
-const btnOrigen = document.querySelector("#btnOrigen");
-
-// Funciones auxiliares
-function tieneGeneros() {
-  return formaPokemon.hasOwnProperty("macho") || formaPokemon.hasOwnProperty("hembra");
-}
-
-function obtenerGenerosDisponibles() {
-  const generos = [];
-  if (formaPokemon.hasOwnProperty("macho")) generos.push("macho");
-  if (formaPokemon.hasOwnProperty("hembra")) generos.push("hembra");
-  return generos;
-}
-
-function obtenerFormasEspecialesDisponibles() {
-  const formasEspeciales = [];
-  const formasValidas = ["mega", "megaX", "megaY", "giga", "primigenio", "origen"];
-  
-  formasValidas.forEach(forma => {
-    if (formaPokemon.hasOwnProperty(forma)) {
-      formasEspeciales.push(forma);
-    }
-  });
-  
-  return formasEspeciales;
-}
-
-function obtenerSeccionesDisponibles() {
-  let dataParaSecciones = null;
-  
-  if (formaEspecialActiva && formaPokemon[formaEspecialActiva]) {
-    dataParaSecciones = formaPokemon[formaEspecialActiva];
+// Estado de la aplicación
+class PokemonState {
+  constructor() {
+    this.pokemon = "Pikachu";
+    this.activeGender = "macho";
+    this.activeSpecialForm = "";
+    this.isShiny = false;
+    this.isTrasera = false;
+    this.selector1 = 0;
+    this.selector2 = 0;
+    this.secciones1 = [];
+    this.secciones2 = [];
+    this.isSeccion1 = "";
+    this.isSeccion2 = "";
   }
-  else if (tieneGeneros()) {
-    const generoActual = isMacho ? "macho" : "hembra";
-    const generosDisponibles = obtenerGenerosDisponibles();
+
+  getAvailableGenders() {
+    return ["macho", "hembra"].filter(gender => formaPokemon.hasOwnProperty(gender));
+  }
+
+  getAvailableSpecialForms() {
+    return ["mega", "megaX", "megaY", "giga", "primigenio", "origen"]
+      .filter(form => formaPokemon.hasOwnProperty(form));
+  }
+
+  getCurrentData() {
+    let dataSource = null;
     
-    if (!formaPokemon[generoActual] && generosDisponibles.length > 0) {
-      const primerGenero = generosDisponibles[0];
-      dataParaSecciones = formaPokemon[primerGenero];
-    } else if (formaPokemon[generoActual]) {
-      dataParaSecciones = formaPokemon[generoActual];
-    }
-  }
-  else {
-    dataParaSecciones = formaPokemon;
-  }
-  
-  if (!dataParaSecciones) return [];
-  
-  if (typeof dataParaSecciones === "string") return [];
-  
-  const secciones = [];
-  const formasEspecialesValidas = ["mega", "megaX", "megaY", "giga", "primigenio", "origen"];
-  
-  Object.keys(dataParaSecciones).forEach(clave => {
-    if (!formasEspecialesValidas.includes(clave)) {
-      const valor = dataParaSecciones[clave];
-      if (typeof valor === "string" || (typeof valor === "object" && valor !== null)) {
-        secciones.push(clave);
-      }
-    }
-  });
-  
-  return secciones;
-}
-
-function obtenerSubseccionesDisponibles(seccionPrincipal) {
-  let dataParaBuscar = null;
-  
-  if (formaEspecialActiva && formaPokemon[formaEspecialActiva]) {
-    dataParaBuscar = formaPokemon[formaEspecialActiva];
-  }
-  else if (tieneGeneros()) {
-    const generoActual = isMacho ? "macho" : "hembra";
-    if (formaPokemon[generoActual]) {
-      dataParaBuscar = formaPokemon[generoActual];
-    }
-  }
-  else {
-    dataParaBuscar = formaPokemon;
-  }
-  
-  if (!dataParaBuscar || typeof dataParaBuscar === "string") return [];
-  
-  const seccionData = dataParaBuscar[seccionPrincipal];
-  if (!seccionData || typeof seccionData === "string") return [];
-  
-  return Object.keys(seccionData);
-}
-
-function obtenerDatosPokemon() {
-  let claveData = "";
-  
-  if (formaEspecialActiva && formaPokemon[formaEspecialActiva]) {
-    const formaData = formaPokemon[formaEspecialActiva];
-    
-    if (typeof formaData === "string") {
-      claveData = formaData;
-    } else if (formaData) {
-      if (secciones1.length === 0 || !isSeccion1) {
-        const claves = Object.keys(formaData);
-        claveData = formaData[claves[0]] || "";
+    if (this.activeSpecialForm && formaPokemon[this.activeSpecialForm]) {
+      dataSource = formaPokemon[this.activeSpecialForm];
+    } else {
+      const availableGenders = this.getAvailableGenders();
+      if (availableGenders.length > 0) {
+        dataSource = formaPokemon[this.activeGender] || formaPokemon[availableGenders[0]];
       } else {
-        const seccionData = formaData[isSeccion1];
-        if (typeof seccionData === "string") {
-          claveData = seccionData;
-        } else if (seccionData && isSeccion2) {
-          claveData = seccionData[isSeccion2];
-        }
+        dataSource = formaPokemon;
       }
     }
-  }
-  else if (tieneGeneros()) {
-    const generoActual = isMacho ? "macho" : "hembra";
-    const generoData = formaPokemon[generoActual];
     
-    if (typeof generoData === "string") {
-      claveData = generoData;
-    } else if (generoData) {
-      const seccionData = generoData[isSeccion1];
-      if (typeof seccionData === "string") {
-        claveData = seccionData;
-      } else if (seccionData && isSeccion2) {
-        claveData = seccionData[isSeccion2];
+    return dataSource;
+  }
+
+  getAvailableSections() {
+    const dataSource = this.getCurrentData();
+    if (!dataSource || typeof dataSource === "string") return [];
+    
+    const excludeKeys = ["mega", "megaX", "megaY", "giga", "primigenio", "origen"];
+    return Object.keys(dataSource).filter(key => 
+      !excludeKeys.includes(key) && 
+      (typeof dataSource[key] === "string" || typeof dataSource[key] === "object")
+    );
+  }
+
+  getAvailableSubsections(mainSection) {
+    const dataSource = this.getCurrentData();
+    if (!dataSource || typeof dataSource === "string") return [];
+    
+    const sectionData = dataSource[mainSection];
+    if (!sectionData || typeof sectionData === "string") return [];
+    
+    return Object.keys(sectionData);
+  }
+
+  getPokemonData() {
+    const dataSource = this.getCurrentData();
+    let dataKey = "";
+
+    if (typeof dataSource === "string") {
+      dataKey = dataSource;
+    } else if (dataSource) {
+      const sectionData = dataSource[this.isSeccion1];
+      if (typeof sectionData === "string") {
+        dataKey = sectionData;
+      } else if (sectionData && this.isSeccion2) {
+        dataKey = sectionData[this.isSeccion2];
       }
     }
-  } else {
-    if (secciones1.length === 0) {
-      claveData = formaPokemon["normal"] || "";
+
+    return datosPokemon[dataKey] || {};
+  }
+
+  buildImageName() {
+    let imageName = this.pokemon;
+    
+    if (this.activeSpecialForm) {
+      imageName += `_${this.activeSpecialForm}`;
     } else {
-      const seccionData = formaPokemon[isSeccion1];
-      if (typeof seccionData === "string") {
-        claveData = seccionData;
-      } else if (seccionData && isSeccion2) {
-        claveData = seccionData[isSeccion2];
+      const availableGenders = this.getAvailableGenders();
+      if (availableGenders.length > 0) {
+        imageName += `_${this.activeGender}`;
+      }
+      
+      if (this.isSeccion1 && this.isSeccion1 !== "normal") {
+        imageName += `_${this.isSeccion1}`;
       }
     }
-  }
-  
-  return datosPokemon[claveData] || {};
-}
-
-function configurarBotonesGenero() {
-  if (!tieneGeneros()) {
-    // Deshabilitar ambos botones
-    btnMacho.className = "outer-circle disabledButton";
-    btnMacho.querySelector(".middle-circle").className = "middle-circle gray";
-    btnMacho.querySelector(".inner-circle").className = "inner-circle";
-    btnMacho.style.pointerEvents = "none";
     
-    btnHembra.className = "outer-circle disabledButton";
-    btnHembra.querySelector(".middle-circle").className = "middle-circle gray";
-    btnHembra.querySelector(".inner-circle").className = "inner-circle";
-    btnHembra.style.pointerEvents = "none";
-    
-    isMacho = false;
-    isHembra = false;
-    return;
-  }
-  
-  const generosDisponibles = obtenerGenerosDisponibles();
-  
-  // Configurar estado inicial por defecto
-  if (generosDisponibles.includes("macho")) {
-    isMacho = true;
-    isHembra = false;
-  } else if (generosDisponibles.includes("hembra")) {
-    isMacho = false;
-    isHembra = true;
-  } else {
-    isMacho = false;
-    isHembra = false;
-  }
-  
-  // Configurar botón macho
-  if (!generosDisponibles.includes("macho")) {
-    btnMacho.className = "outer-circle disabledButton";
-    btnMacho.querySelector(".middle-circle").className = "middle-circle gray";
-    btnMacho.querySelector(".inner-circle").className = "inner-circle";
-    btnMacho.style.pointerEvents = "none";
-  } else {
-    btnMacho.style.pointerEvents = "auto";
-  }
-  
-  // Configurar botón hembra
-  if (!generosDisponibles.includes("hembra")) {
-    btnHembra.className = "outer-circle disabledButton";
-    btnHembra.querySelector(".middle-circle").className = "middle-circle gray";
-    btnHembra.querySelector(".inner-circle").className = "inner-circle";
-    btnHembra.style.pointerEvents = "none";
-  } else {
-    btnHembra.style.pointerEvents = "auto";
-  }
-  
-  actualizarEstadoVisualGenero();
-}
-
-function actualizarEstadoVisualGenero() {
-  const generosDisponibles = obtenerGenerosDisponibles();
-  
-  if (generosDisponibles.includes("macho")) {
-    if (isMacho) {
-      btnMacho.className = "outer-circle blue";
-      btnMacho.querySelector(".middle-circle").className = "middle-circle";
-      btnMacho.querySelector(".inner-circle").className = "inner-circle blue";
-      btnMacho.querySelector(".svg-icon").className = "svg-icon white";
-    } else {
-      btnMacho.className = "outer-circle";
-      btnMacho.querySelector(".middle-circle").className = "middle-circle blue transparent";
-      btnMacho.querySelector(".inner-circle").className = "inner-circle";
-      btnMacho.querySelector(".svg-icon").className = "svg-icon";
-    }
-  }
-  
-  if (generosDisponibles.includes("hembra")) {
-    if (isHembra) {
-      btnHembra.className = "outer-circle red";
-      btnHembra.querySelector(".middle-circle").className = "middle-circle";
-      btnHembra.querySelector(".inner-circle").className = "inner-circle red";
-      btnHembra.querySelector(".svg-icon").className = "svg-icon white";
-    } else {
-      btnHembra.className = "outer-circle";
-      btnHembra.querySelector(".middle-circle").className = "middle-circle red transparent";
-      btnHembra.querySelector(".inner-circle").className = "inner-circle";
-      btnHembra.querySelector(".svg-icon").className = "svg-icon";
-    }
-  }
-}
-
-function configurarBotonesFormasEspeciales() {
-  const formasDisponibles = obtenerFormasEspecialesDisponibles();
-  const mapaBotones = {
-    "mega": btnMega,
-    "megaX": btnMegaX,
-    "megaY": btnMegaY,
-    "giga": btnGiga,
-  };
-  
-  Object.keys(mapaBotones).forEach(forma => {
-    const boton = mapaBotones[forma];
-    if (!formasDisponibles.includes(forma)) {
-      boton.className = "outer-circle disabledButton";
-      boton.querySelector(".middle-circle").className = "middle-circle gray";
-      boton.querySelector(".inner-circle").className = "inner-circle";
-      boton.style.pointerEvents = "none";
-    } else {
-      boton.style.pointerEvents = "auto";
-    }
-  });
-}
-
-function actualizarEstadoVisualFormasEspeciales() {
-  const formasDisponibles = obtenerFormasEspecialesDisponibles();
-  const mapaBotones = {
-    "mega": { btn: btnMega, color: "yellow" },
-    "megaX": { btn: btnMegaX, color: "blue" },
-    "megaY": { btn: btnMegaY, color: "red" },
-    "giga": { btn: btnGiga, color: "yellow" },
-    "primigenio": { btn: btnPrimigenio, color: "yellow" },
-    "origen": { btn: btnOrigen, color: "yellow" }
-  };
-  
-  Object.keys(mapaBotones).forEach(forma => {
-    const { btn, color } = mapaBotones[forma];
-    if (formasDisponibles.includes(forma)) {
-      if (formaEspecialActiva === forma) {
-        btn.className = `outer-circle ${color}`;
-        btn.querySelector(".middle-circle").className = "middle-circle";
-        btn.querySelector(".inner-circle").className = `inner-circle ${color}`;
-        btn.querySelector(".svg-icon").className = "svg-icon white";
-      } else {
-        btn.className = "outer-circle";
-        btn.querySelector(".middle-circle").className = `middle-circle ${color} transparent`;
-        btn.querySelector(".inner-circle").className = "inner-circle";
-        btn.querySelector(".svg-icon").className = "svg-icon";
-      }
-    }
-  });
-}
-
-function activarFormaEspecial(forma) {
-  if (formaEspecialActiva === forma) {
-    formaEspecialActiva = "";
-  } else {
-    formaEspecialActiva = forma;
-  }
-  
-  selector1 = 0;
-  selector2 = 0;
-  
-  actualizarEstadoVisualFormasEspeciales();
-  actualizarSecciones();
-}
-
-function cambiarGenero() {
-  const generosDisponibles = obtenerGenerosDisponibles();
-  
-  if (generosDisponibles.length <= 1) {
-    return;
-  }
-  
-  // Solo permitir cambio si ambos géneros están disponibles
-  if (generosDisponibles.includes("macho") && generosDisponibles.includes("hembra")) {
-    isMacho = !isMacho;
-    isHembra = !isHembra;
-    
-    actualizarEstadoVisualGenero();
-    
-    if (!formaEspecialActiva) {
-      selector1 = 0;
-      selector2 = 0;
+    if (this.isSeccion2) {
+      imageName += `_${this.isSeccion2}`;
     }
     
-    actualizarSecciones();
-  }
-}
-
-// Eventos
-btnMacho.addEventListener("click", cambiarGenero);
-btnHembra.addEventListener("click", cambiarGenero);
-
-btnShiny.addEventListener("click", () => {
-  isShiny = !isShiny;
-  if (isShiny) {
-    btnShiny.className = "outer-circle yellow";
-    btnShiny.querySelector(".middle-circle").className = "middle-circle";
-    btnShiny.querySelector(".inner-circle").className = "inner-circle yellow";
-    btnShiny.querySelector(".svg-icon").className = "svg-icon white";
-  } else {
-    btnShiny.className = "outer-circle";
-    btnShiny.querySelector(".middle-circle").className = "middle-circle yellow transparent";
-    btnShiny.querySelector(".inner-circle").className = "inner-circle";
-    btnShiny.querySelector(".svg-icon").className = "svg-icon";
-  }
-  construirImagenYDatos();
-});
-
-btnTrasera.addEventListener("click", () => {
-  isTrasera = !isTrasera;
-  if (isTrasera) {
-    btnTrasera.className = "outer-circle yellow";
-    btnTrasera.querySelector(".middle-circle").className = "middle-circle";
-    btnTrasera.querySelector(".inner-circle").className = "inner-circle yellow";
-    btnTrasera.querySelector(".svg-icon").className = "svg-icon white";
-  } else {
-    btnTrasera.className = "outer-circle";
-    btnTrasera.querySelector(".middle-circle").className = "middle-circle yellow transparent";
-    btnTrasera.querySelector(".inner-circle").className = "inner-circle";
-    btnTrasera.querySelector(".svg-icon").className = "svg-icon";
-  }
-  construirImagenYDatos();
-});
-
-// Eventos para formas especiales
-btnMega.addEventListener("click", () => activarFormaEspecial("mega"));
-btnMegaX.addEventListener("click", () => activarFormaEspecial("megaX"));
-btnMegaY.addEventListener("click", () => activarFormaEspecial("megaY"));
-btnGiga.addEventListener("click", () => activarFormaEspecial("giga"));
-
-btnSec1Mas.addEventListener("click", () => {
-  selector1 = (selector1 + 1) % secciones1.length;
-  selector2 = 0;
-  actualizarSecciones();
-});
-btnSec1Menos.addEventListener("click", () => {
-  selector1 = (selector1 - 1 + secciones1.length) % secciones1.length;
-  selector2 = 0;
-  actualizarSecciones();
-});
-btnSec2Mas.addEventListener("click", () => {
-  selector2 = (selector2 + 1) % secciones2.length;
-  actualizarSecciones();
-});
-btnSec2Menos.addEventListener("click", () => {
-  selector2 = (selector2 - 1 + secciones2.length) % secciones2.length;
-  actualizarSecciones();
-});
-
-function actualizarSecciones() {
-  secciones1 = obtenerSeccionesDisponibles();
-  
-  if (selector1 >= secciones1.length) {
-    selector1 = 0;
-  }
-  
-  if (secciones1.length <= 1) {
-    seccion1.style.display = "none";
-    isSeccion1 = secciones1.length > 0 ? secciones1[0] : "normal";
-  } else {
-    seccion1.style.display = "flex";
-    isSeccion1 = secciones1[selector1];
-    seccion1Texto.textContent = isSeccion1 === "normal" ? "Común" : isSeccion1;
-  }
-  
-  secciones2 = obtenerSubseccionesDisponibles(isSeccion1);
-  
-  if (selector2 >= secciones2.length) {
-    selector2 = 0;
-  }
-  
-  if (secciones2.length <= 1) {
-    seccion2.style.display = "none";
-    isSeccion2 = secciones2.length > 0 ? secciones2[0] : "";
-  } else {
-    seccion2.style.display = "flex";
-    isSeccion2 = secciones2[selector2];
-    seccion2Texto.textContent = isSeccion2;
-  }
-  
-  construirImagenYDatos();
-}
-
-function construirImagenYDatos() {
-  const datos = obtenerDatosPokemon();
-  
-  const variocolorDisponible = datos.variocolor !== false;
-  const traseraDisponible = datos.trasera === true;
-  
-  // Gestionar variocolor
-  if (variocolorDisponible) {
-    btnShiny.style.pointerEvents = "auto";
-    if (isShiny) {
-      btnShiny.className = "outer-circle yellow";
-      btnShiny.querySelector(".middle-circle").className = "middle-circle";
-      btnShiny.querySelector(".inner-circle").className = "inner-circle yellow";
-      btnShiny.querySelector(".svg-icon").className = "svg-icon white";
-    } else {
-      btnShiny.className = "outer-circle";
-      btnShiny.querySelector(".middle-circle").className = "middle-circle yellow transparent";
-      btnShiny.querySelector(".inner-circle").className = "inner-circle";
-      btnShiny.querySelector(".svg-icon").className = "svg-icon";
-    }
-  } else {
-    btnShiny.className = "outer-circle disabledButton";
-    btnShiny.querySelector(".middle-circle").className = "middle-circle gray";
-    btnShiny.querySelector(".inner-circle").className = "inner-circle";
-    btnShiny.style.pointerEvents = "none";
-    if (isShiny) {
-      isShiny = false;
-    }
-  }
-  
-  // Gestionar trasera
-  if (traseraDisponible) {
-    btnTrasera.style.pointerEvents = "auto";
-    if (isTrasera) {
-      btnTrasera.className = "outer-circle yellow";
-      btnTrasera.querySelector(".middle-circle").className = "middle-circle";
-      btnTrasera.querySelector(".inner-circle").className = "inner-circle yellow";
-      btnTrasera.querySelector(".svg-icon").className = "svg-icon white";
-    } else {
-      btnTrasera.className = "outer-circle";
-      btnTrasera.querySelector(".middle-circle").className = "middle-circle yellow transparent";
-      btnTrasera.querySelector(".inner-circle").className = "inner-circle";
-      btnTrasera.querySelector(".svg-icon").className = "svg-icon";
-    }
-  } else {
-    btnTrasera.className = "outer-circle disabledButton";
-    btnTrasera.querySelector(".middle-circle").className = "middle-circle gray";
-    btnTrasera.querySelector(".inner-circle").className = "inner-circle";
-    btnTrasera.style.pointerEvents = "none";
-    if (isTrasera) {
-      isTrasera = false;
-    }
-  }
-  
-  // Gestionar visibilidad del separador
-  if (variocolorDisponible || traseraDisponible) {
-    separador.style.display = "block";
-  } else {
-    separador.style.display = "none";
-  }
-  
-  // Construir nombre de imagen
-  imagenFinal = pokemon;
-  
-  if (formaEspecialActiva) {
-    imagenFinal += `_${formaEspecialActiva}`;
-  } else {
-    if (tieneGeneros()) {
-      imagenFinal += isMacho ? "_macho" : "_hembra";
+    const pokemonData = this.getPokemonData();
+    if (this.isTrasera && pokemonData.trasera !== false) {
+      imageName += "_trasera";
     }
     
-    if (isSeccion1 && isSeccion1 !== "normal" && secciones1.length > 0) {
-      imagenFinal += `_${isSeccion1}`;
+    if (this.isShiny && pokemonData.variocolor !== false) {
+      imageName += "_variocolor";
     }
+    
+    return imageName + "_HOME.png";
   }
-  
-  if (isSeccion2) {
-    imagenFinal += `_${isSeccion2}`;
+}
+
+// Clase para manejar la UI
+class PokemonUI {
+  constructor(state) {
+    this.state = state;
+    this.elements = this.getElements();
+    this.initializeHTML();
+    this.setupEventListeners();
+    this.updateAll();
   }
-  
-  if (isTrasera && traseraDisponible) {
-    imagenFinal += "_trasera";
+
+  getElements() {
+    const elements = {
+      imagenPokemonCuadro: document.querySelector("#imagenPokemonCuadro"),
+      seccion1: document.querySelector("#seccion1"),
+      seccion2: document.querySelector("#seccion2"),
+      seccion1Texto: document.querySelector("#seccion1Texto"),
+      seccion2Texto: document.querySelector("#seccion2Texto")
+    };
+
+    // Agregar botones dinámicamente
+    [...buttonConfig.gender, ...buttonConfig.special, ...buttonConfig.toggle].forEach(btn => {
+      elements[btn.key] = document.querySelector(`#${btn.id}`);
+    });
+
+    // Agregar botones de navegación
+    ['btnSec1Mas', 'btnSec1Menos', 'btnSec2Mas', 'btnSec2Menos'].forEach(id => {
+      elements[id.replace('btn', '').toLowerCase()] = document.querySelector(`#${id}`);
+    });
+
+    return elements;
   }
-  
-  if (isShiny && variocolorDisponible) {
-    imagenFinal += "_variocolor";
+
+  initializeHTML() {
+    document.querySelector("#app").innerHTML = `
+      <div style="min-width: 450px; max-width:450px; border-radius: 25px; background:#FFD700; padding: 1em; float:right">
+        <div style="text-align:center; font-size:2em; padding:.5em;">'''Dialga'''</div>
+        <div style="display: flex; align-items: center;">
+          <div style="flex: 25%; text-align: left; white-space: nowrap;">ディアルガ (Dialga)</div>
+          <div style="flex: 75%; text-align: right;">#0483</div>
+        </div>
+        <div style="min-width:425px; max-width:425px; border-radius:25px; background:#fff; padding:1em; text-align:center">
+          <img id="imagenPokemonCuadro" src="public/Dialga_HOME.png" height="200;">
+          <hr style="border: 1px solid #dddddd; border-radius: 5px;">
+          <div style="display:flex; align-items: center; justify-content: space-around">
+            ${this.generateButtons(buttonConfig.gender)}
+            <div id="separador" style="border: 1px solid #dddddd; width: 0; height: 70px; background: #dddddd; border-radius: 5px;"></div>
+            ${this.generateButtons(buttonConfig.toggle)}
+          </div>
+          <hr style="border: 1px solid #dddddd; border-radius: 5px;">
+          <div style="display:flex; align-items: center; justify-content: space-around">
+            ${this.generateButtons(buttonConfig.special)}
+          </div>
+          ${this.generateSectionControls()}
+        </div>
+      </div>
+    `;
+    
+    this.elements = this.getElements(); // Re-obtener elementos después de crear HTML
   }
-  
-  imagenFinal += "_HOME.png";
-  
-  // Actualizar imagen
-  imagenPokemonCuadro.onerror = () => {
-    imagenPokemonCuadro.src = "public/not_found.png";
-  };
-  imagenPokemonCuadro.src = "public/" + imagenFinal;
-  console.log("Imagen:", imagenFinal);
-  
-  // Mostrar datos en consola
-  if (Object.keys(datos).length > 0) {
-    console.log("🧾 Datos del Pokémon:");
-    console.log("• Tipo:", datos.tipo ? datos.tipo.join(", ") : "No definido");
-    console.log(`• Altura: ${datos.altura || "No definida"} m`);
-    console.log(`• Peso: ${datos.peso || "No definido"} kg`);
-    console.log("• Habilidades:");
-    if (datos.habilidad) {
-      datos.habilidad.forEach(h => {
-        console.log(`  - ${h.nombre}${h.oculta ? " (Oculta)" : ""}`);
+
+  generateButtons(buttons) {
+    return buttons.map(btn => `
+      <div id="${btn.id}" class="outer-circle">
+        <div class="middle-circle ${btn.color} transparent">
+          <div class="inner-circle">
+            <img class="svg-icon" src="${btn.icon}" alt="${btn.key}">
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  generateSectionControls() {
+    return `
+      <div id="seccion1" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; font-family: Arial, sans-serif; margin-top:.75em">
+        <div id="btnSec1Menos" style="border: 1px solid #dddddd; width: 15%; height: 25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <span>←</span>
+        </div>
+        <div id="seccion1Texto" style="border: 1px solid #dddddd; width: 65%; min-height: 25px; border-radius: 25px; display: flex; align-items: center; justify-content: center;">Común</div>
+        <div id="btnSec1Mas" style="border: 1px solid #dddddd; width: 15%; height:25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <span>→</span>
+        </div>
+      </div>
+      <div id="seccion2" style="display: none; align-items: center; justify-content: space-between; gap: 20px; font-family: Arial, sans-serif; margin-top:.75em">
+        <div id="btnSec2Menos" style="border: 1px solid #dddddd; width: 15%; height: 25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <span>←</span>
+        </div>
+        <div id="seccion2Texto" style="border: 1px solid #dddddd; width: 65%; min-height: 25px; border-radius: 25px; display: flex; align-items: center; justify-content: center;">Común</div>
+        <div id="btnSec2Mas" style="border: 1px solid #dddddd; width: 15%; height:25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <span>→</span>
+        </div>
+      </div>
+    `;
+  }
+
+  setupEventListeners() {
+    // Botones de género
+    buttonConfig.gender.forEach(btn => {
+      this.elements[btn.key]?.addEventListener("click", () => {
+        this.handleGenderClick(btn.key);
       });
+    });
+
+    // Botones de forma especial
+    buttonConfig.special.forEach(btn => {
+      this.elements[btn.key]?.addEventListener("click", () => {
+        this.handleSpecialFormClick(btn.key);
+      });
+    });
+
+    // Botones de toggle
+    buttonConfig.toggle.forEach(btn => {
+      this.elements[btn.key]?.addEventListener("click", () => {
+        this.handleToggleClick(btn.key);
+      });
+    });
+
+    // Navegación de secciones
+    this.elements.sec1mas?.addEventListener("click", () => this.navigateSection(1, 1));
+    this.elements.sec1menos?.addEventListener("click", () => this.navigateSection(1, -1));
+    this.elements.sec2mas?.addEventListener("click", () => this.navigateSection(2, 1));
+    this.elements.sec2menos?.addEventListener("click", () => this.navigateSection(2, -1));
+  }
+
+  handleGenderClick(gender) {
+    const availableGenders = this.state.getAvailableGenders();
+    if (availableGenders.includes(gender)) {
+      this.state.activeGender = gender;
+      this.state.selector1 = 0;
+      this.state.selector2 = 0;
+      this.updateAll();
     }
-    console.log("• Variocolor disponible:", variocolorDisponible);
-    console.log("• Trasera disponible:", traseraDisponible);
-    console.log("• Formas especiales disponibles:", obtenerFormasEspecialesDisponibles());
-    console.log("• Forma especial activa:", formaEspecialActiva || "Ninguna");
+  }
+
+  handleSpecialFormClick(form) {
+    this.state.activeSpecialForm = this.state.activeSpecialForm === form ? "" : form;
+    this.state.selector1 = 0;
+    this.state.selector2 = 0;
+    this.updateAll();
+  }
+
+  handleToggleClick(toggle) {
+    this.state[`is${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`] = 
+      !this.state[`is${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`];
+    this.updateAll();
+  }
+
+  navigateSection(section, direction) {
+    const selectorKey = `selector${section}`;
+    const sectionsKey = `secciones${section}`;
+    
+    this.state[selectorKey] = (this.state[selectorKey] + direction + this.state[sectionsKey].length) % this.state[sectionsKey].length;
+    
+    if (section === 1) {
+      this.state.selector2 = 0;
+    }
+    
+    this.updateSections();
+    this.updateImage();
+  }
+
+  updateButtonState(buttonType, key, isActive, isAvailable = true) {
+    const element = this.elements[key];
+    if (!element) return;
+
+    const config = buttonConfig[buttonType]?.find(btn => btn.key === key);
+    if (!config) return;
+
+    if (!isAvailable) {
+      element.className = "outer-circle disabledButton";
+      element.querySelector(".middle-circle").className = "middle-circle gray";
+      element.querySelector(".inner-circle").className = "inner-circle";
+      element.style.pointerEvents = "none";
+    } else {
+      element.style.pointerEvents = "auto";
+      if (isActive) {
+        element.className = `outer-circle ${config.color}`;
+        element.querySelector(".middle-circle").className = "middle-circle";
+        element.querySelector(".inner-circle").className = `inner-circle ${config.color}`;
+        element.querySelector(".svg-icon").className = "svg-icon white";
+      } else {
+        element.className = "outer-circle";
+        element.querySelector(".middle-circle").className = `middle-circle ${config.color} transparent`;
+        element.querySelector(".inner-circle").className = "inner-circle";
+        element.querySelector(".svg-icon").className = "svg-icon";
+      }
+    }
+  }
+
+  updateSections() {
+    this.state.secciones1 = this.state.getAvailableSections();
+    
+    if (this.state.selector1 >= this.state.secciones1.length) {
+      this.state.selector1 = 0;
+    }
+    
+    if (this.state.secciones1.length <= 1) {
+      this.elements.seccion1.style.display = "none";
+      this.state.isSeccion1 = this.state.secciones1[0] || "normal";
+    } else {
+      this.elements.seccion1.style.display = "flex";
+      this.state.isSeccion1 = this.state.secciones1[this.state.selector1];
+      this.elements.seccion1Texto.textContent = this.state.isSeccion1 === "normal" ? "Común" : this.state.isSeccion1;
+    }
+    
+    this.state.secciones2 = this.state.getAvailableSubsections(this.state.isSeccion1);
+    
+    if (this.state.selector2 >= this.state.secciones2.length) {
+      this.state.selector2 = 0;
+    }
+    
+    if (this.state.secciones2.length <= 1) {
+      this.elements.seccion2.style.display = "none";
+      this.state.isSeccion2 = this.state.secciones2[0] || "";
+    } else {
+      this.elements.seccion2.style.display = "flex";
+      this.state.isSeccion2 = this.state.secciones2[this.state.selector2];
+      this.elements.seccion2Texto.textContent = this.state.isSeccion2;
+    }
+  }
+
+  updateImage() {
+    const pokemonData = this.state.getPokemonData();
+    const imageName = this.state.buildImageName();
+    
+    // Actualizar disponibilidad de botones toggle
+    const isShinyAvailable = pokemonData.variocolor !== false;
+    const isTraseraAvailable = pokemonData.trasera !== false;
+    
+    this.updateButtonState('toggle', 'shiny', this.state.isShiny, isShinyAvailable);
+    this.updateButtonState('toggle', 'trasera', this.state.isTrasera, isTraseraAvailable);
+    
+    // Actualizar imagen
+    this.elements.imagenPokemonCuadro.onerror = () => {
+      this.elements.imagenPokemonCuadro.src = "public/not_found.png";
+    };
+    this.elements.imagenPokemonCuadro.src = "public/" + imageName;
+    
+    this.logPokemonData(pokemonData, imageName);
+  }
+
+  updateAll() {
+    // Actualizar estados de todos los botones
+    const availableGenders = this.state.getAvailableGenders();
+    const availableSpecialForms = this.state.getAvailableSpecialForms();
+    
+    buttonConfig.gender.forEach(btn => {
+      const isAvailable = availableGenders.includes(btn.key);
+      const isActive = this.state.activeGender === btn.key;
+      this.updateButtonState('gender', btn.key, isActive, isAvailable);
+    });
+    
+    buttonConfig.special.forEach(btn => {
+      const isAvailable = availableSpecialForms.includes(btn.key);
+      const isActive = this.state.activeSpecialForm === btn.key;
+      this.updateButtonState('special', btn.key, isActive, isAvailable);
+    });
+    
+    this.updateSections();
+    this.updateImage();
+  }
+
+  logPokemonData(datos, imageName) {
+    console.log("Imagen:", imageName);
+    if (Object.keys(datos).length > 0) {
+      console.log("🧾 Datos del Pokémon:");
+      console.log("• Tipo:", datos.tipo ? datos.tipo.join(", ") : "No definido");
+      console.log(`• Altura: ${datos.altura || "No definida"} m`);
+      console.log(`• Peso: ${datos.peso || "No definido"} kg`);
+      console.log("• Habilidades:");
+      if (datos.habilidad) {
+        datos.habilidad.forEach(h => {
+          console.log(`  - ${h.nombre}${h.oculta ? " (Oculta)" : ""}`);
+        });
+      }
+      console.log("• Variocolor disponible:", datos.variocolor !== false);
+      console.log("• Trasera disponible:", datos.trasera !== false);
+      console.log("• Formas especiales disponibles:", this.state.getAvailableSpecialForms());
+      console.log("• Forma especial activa:", this.state.activeSpecialForm || "Ninguna");
+    }
   }
 }
 
 // Inicialización
-configurarBotonesGenero();
-configurarBotonesFormasEspeciales();
-actualizarEstadoVisualFormasEspeciales();
-actualizarSecciones();
+const pokemonState = new PokemonState();
+const pokemonUI = new PokemonUI(pokemonState);

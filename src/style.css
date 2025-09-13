@@ -41,6 +41,23 @@ background-color: #E96D23 !important;
 background-color: #aaaaaa !important;
 }
 
+.megaColor{
+  background: #F08300;
+background: linear-gradient(156deg, rgba(240, 131, 0, 1) 5%, rgba(170, 207, 82, 1) 35%, rgba(0, 185, 239, 1) 60%, rgba(231, 66, 145, 1) 97%);
+}
+.megaXColor{
+  background: linear-gradient(0deg, #002235, #007ec9) !important;
+}
+
+.megaYColor{
+  background: linear-gradient(0deg, #320102, #ef1a23) !important;
+}
+
+.gigamaxColor {
+  background: #e8336d !important;
+}
+
+
 /* Círculo medio */
 .middle-circle {
   width: 55px;
