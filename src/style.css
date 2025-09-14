@@ -97,3 +97,13 @@ background: linear-gradient(156deg, rgba(240, 131, 0, 1) 5%, rgba(170, 207, 82, 
 .disabledButton {
   opacity: 0.1;
 }
+
+/* Estilos para íconos deshabilitados - semitransparente negro */
+.svg-icon.disabled {
+  filter: brightness(0) opacity(0.3);
+}
+
+/* Opcional: si quieres que el ícono blanco cuando está activo sea más visible */
+.svg-icon.white {
+  filter: brightness(0) invert(1);
+}

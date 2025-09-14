@@ -1,6 +1,79 @@
 import "./style.css";
 
 // Datos de configuración
+
+/*const formaPokemon = {
+  "hembra": {
+    "Crema de vainilla" : {
+      "Confite fresa": "alcremie_normal",
+      "Confite corazón" : "alcremie_normal"
+    },
+    "Crema rosa": {
+      "Confite fresa": "alcremie_normal",
+      "Confite corazón" : "alcremie_normal"
+    }
+  },
+  "giga":"alcremie_giga",
+  "megaY": "alcremie_normal",
+  "megaX": "alcremie_normal"
+}
+
+const datosPokemon = {
+  "alcremie_normal": {
+    "tipo": ["Acero", "Dragón"],
+    "altura": 5.4,
+    "peso": 683,
+    "habilidad": [
+      { "nombre": "Presión" },
+      { "nombre": "Telepatía", "oculta": true }
+    ]
+  },
+  "alcremie_giga": {
+    "tipo": ["Acero", "Dragón"],
+    "altura": 7.0,
+    "peso": 850,
+    "habilidad": [
+      { "nombre": "Presión" }
+    ]
+  }
+}*/
+
+
+/*const formaPokemon = {
+  "normal": {
+    "Común" : "dialga_normal",
+    "Forma origen": "dialga_origen"
+  }
+};
+
+const datosPokemon = {
+  "dialga_normal": {
+    "tipo": ["Acero", "Dragón"],
+    "altura": 5.4,
+    "peso": 683,
+    "habilidad": [
+      { "nombre": "Presión" },
+      { "nombre": "Telepatía", "oculta": true }
+    ]
+  },
+  "dialga_origen": {
+    "tipo": ["Acero", "Dragón"],
+    "altura": 7.0,
+    "peso": 850,
+    "habilidad": [
+      { "nombre": "Presión" }
+    ]
+  },
+  "dialga_giga": {
+    "tipo": ["Acero", "Dragón"],
+    "altura": 15.4,
+    "habilidad": [
+      { "nombre": "Presión" }
+    ]
+  }
+};
+*/
+
 const formaPokemon = {
   "macho": {
     "normal": "pikachu_normal",
@@ -28,7 +101,7 @@ const datosPokemon = {
     "habilidad": [
       { "nombre": "Electricidad Estática" },
       { "nombre": "Pararrayos", "oculta": true }
-    ]
+    ],
   },
   "pikachu_gorra": {
     "tipo": ["Eléctrico"],
@@ -97,6 +170,11 @@ class PokemonState {
   getAvailableSpecialForms() {
     return ["mega", "megaX", "megaY", "giga", "primigenio", "origen"]
       .filter(form => formaPokemon.hasOwnProperty(form));
+  }
+
+  // Función para determinar si una forma especial debe ocultar las secciones
+  shouldHideSections() {
+    return ["mega", "megaX", "megaY", "giga"].includes(this.activeSpecialForm);
   }
 
   getCurrentData() {
@@ -384,6 +462,8 @@ class PokemonUI {
       element.className = "outer-circle disabledButton";
       element.querySelector(".middle-circle").className = "middle-circle gray";
       element.querySelector(".inner-circle").className = "inner-circle";
+      // Cambio aquí: agregar clase para el ícono deshabilitado
+      element.querySelector(".svg-icon").className = "svg-icon disabled";
       element.style.pointerEvents = "none";
     } else {
       element.style.pointerEvents = "auto";
@@ -402,6 +482,15 @@ class PokemonUI {
   }
 
   updateSections() {
+    // Si una forma especial que debe ocultar las secciones está activa, ocultarlas
+    if (this.state.shouldHideSections()) {
+      this.elements.seccion1.style.display = "none";
+      this.elements.seccion2.style.display = "none";
+      this.state.isSeccion1 = "";
+      this.state.isSeccion2 = "";
+      return;
+    }
+
     this.state.secciones1 = this.state.getAvailableSections();
     
     if (this.state.selector1 >= this.state.secciones1.length) {
