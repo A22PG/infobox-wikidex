@@ -2,78 +2,6 @@ import "./style.css";
 
 // Datos de configuración
 
-/*const formaPokemon = {
-  "hembra": {
-    "Crema de vainilla" : {
-      "Confite fresa": "alcremie_normal",
-      "Confite corazón" : "alcremie_normal"
-    },
-    "Crema rosa": {
-      "Confite fresa": "alcremie_normal",
-      "Confite corazón" : "alcremie_normal"
-    }
-  },
-  "giga":"alcremie_giga",
-  "megaY": "alcremie_normal",
-  "megaX": "alcremie_normal"
-}
-
-const datosPokemon = {
-  "alcremie_normal": {
-    "tipo": ["Acero", "Dragón"],
-    "altura": 5.4,
-    "peso": 683,
-    "habilidad": [
-      { "nombre": "Presión" },
-      { "nombre": "Telepatía", "oculta": true }
-    ]
-  },
-  "alcremie_giga": {
-    "tipo": ["Acero", "Dragón"],
-    "altura": 7.0,
-    "peso": 850,
-    "habilidad": [
-      { "nombre": "Presión" }
-    ]
-  }
-}*/
-
-
-/*const formaPokemon = {
-  "normal": {
-    "Común" : "dialga_normal",
-    "Forma origen": "dialga_origen"
-  }
-};
-
-const datosPokemon = {
-  "dialga_normal": {
-    "tipo": ["Acero", "Dragón"],
-    "altura": 5.4,
-    "peso": 683,
-    "habilidad": [
-      { "nombre": "Presión" },
-      { "nombre": "Telepatía", "oculta": true }
-    ]
-  },
-  "dialga_origen": {
-    "tipo": ["Acero", "Dragón"],
-    "altura": 7.0,
-    "peso": 850,
-    "habilidad": [
-      { "nombre": "Presión" }
-    ]
-  },
-  "dialga_giga": {
-    "tipo": ["Acero", "Dragón"],
-    "altura": 15.4,
-    "habilidad": [
-      { "nombre": "Presión" }
-    ]
-  }
-};
-*/
-
 const formaPokemon = {
   "macho": {
     "normal": "pikachu_normal",
@@ -90,18 +18,33 @@ const formaPokemon = {
   },
   "hembra": "pikachu_normal",
   "giga": "pikachu_giga",
-  "mega": "",
+  "mega": ""
 };
 
 const datosPokemon = {
   "pikachu_normal": {
-    "tipo": ["Eléctrico"],
+    "tipo": ["Eléctrico", "Eléctrico"],
     "altura": 0.4,
     "peso": 6,
     "habilidad": [
       { "nombre": "Electricidad Estática" },
-      { "nombre": "Pararrayos", "oculta": true }
+      { "nombre": "Otro" },
+      { "nombre": "Pararrayos", "oculta": true },
+
     ],
+    "generacion": "1",
+    "categoria": "Ratón",
+    "figura": "8",
+    "huevo": ["Campo", "Hada"],
+    "grito": "Grito_de_Pikachu_en_la_sexta_generación.mp3",
+    "genero": {
+      "macho": "80",
+      "hembra": "49"
+    },
+    "color": "Amarillo",
+    "pronunciacion": [
+      { "fonetica": "pi.ˈka.chu", "zona": "España" },
+      { "fonetica": "ˈpi.ka.chu", "zona": "Hispanoamérica", "nota": ["Nota 1", "Nota 2"] },]
   },
   "pikachu_gorra": {
     "tipo": ["Eléctrico"],
@@ -111,7 +54,11 @@ const datosPokemon = {
     "habilidad": [
       { "nombre": "Electricidad Estática" },
       { "nombre": "Pararrayos", "oculta": true }
-    ]
+    ],
+    "generacion": "7",
+    "categoria": "Ratón",
+    "figura": "8",
+    "grito": "Grito_de_Hitmonlee.mp3"
   },
   "pikachu_giga": {
     "tipo": ["Eléctrico"],
@@ -119,15 +66,17 @@ const datosPokemon = {
     "habilidad": [
       { "nombre": "Electricidad Estática" },
       { "nombre": "Pararrayos", "oculta": true }
-    ]
+    ],
+    "generacion": "8",
+    "categoria": "Ratón",
   }
 };
 
 // Configuración de botones
 const buttonConfig = {
   gender: [
-    { id: "btnMacho", key: "macho", color: "blue", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg", size: "50px" },
-    { id: "btnHembra", key: "hembra", color: "red", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg", size: "50px" }
+    { id: "btnMacho", key: "macho", color: "azulColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg", size: "50px" },
+    { id: "btnHembra", key: "hembra", color: "rojoColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg", size: "50px" }
   ],
   special: [
     { id: "btnMega", key: "mega", color: "megaColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/b/b5/latest/20250819100853/Megaevolución_icono.svg", size: "40px" },
@@ -136,8 +85,8 @@ const buttonConfig = {
     { id: "btnGiga", key: "giga", color: "gigamaxColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20250913220520/Gigamax_(Wikidex).svg", size: "28px" }
   ],
   toggle: [
-    { id: "btnShiny", key: "shiny", color: "yellow", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/a/a5/latest/20250111221940/Variocolor_(WikiDex).svg", size: "40px"},
-    { id: "btnTrasera", key: "trasera", color: "yellow", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/6/60/latest/20081026205217/Flecha_sur.png", size: "50px" }
+    { id: "btnShiny", key: "shiny", color: "amarilloColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/a/a5/latest/20250111221940/Variocolor_(WikiDex).svg", size: "40px" },
+    { id: "btnTrasera", key: "trasera", color: "verdeColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/9/9f/latest/20250914123215/Rotación_%28Wikidex%29.svg", size: "25px" }
   ],
 };
 
@@ -155,11 +104,24 @@ class PokemonState {
     this.secciones2 = [];
     this.isSeccion1 = "";
     this.isSeccion2 = "";
-    
-    // Establecer género inicial basado en disponibilidad
+    this.currentAudio = null;
+
     const availableGenders = this.getAvailableGenders();
     if (availableGenders.length > 0) {
       this.activeGender = availableGenders[0];
+    }
+
+    this.initializeSections();
+  }
+
+  initializeSections() {
+    this.secciones1 = this.getAvailableSections();
+    if (this.secciones1.length > 0) {
+      this.isSeccion1 = this.secciones1[0];
+      this.secciones2 = this.getAvailableSubsections(this.isSeccion1);
+      if (this.secciones2.length > 0) {
+        this.isSeccion2 = this.secciones2[0];
+      }
     }
   }
 
@@ -172,35 +134,37 @@ class PokemonState {
       .filter(form => formaPokemon.hasOwnProperty(form));
   }
 
-  // Función para determinar si una forma especial debe ocultar las secciones
   shouldHideSections() {
     return ["mega", "megaX", "megaY", "giga"].includes(this.activeSpecialForm);
   }
 
   getCurrentData() {
     let dataSource = null;
-    
+
     if (this.activeSpecialForm && formaPokemon[this.activeSpecialForm]) {
       dataSource = formaPokemon[this.activeSpecialForm];
     } else {
       const availableGenders = this.getAvailableGenders();
-      if (availableGenders.length > 0) {
-        dataSource = formaPokemon[this.activeGender] || formaPokemon[availableGenders[0]];
+      if (availableGenders.length > 0 && this.activeGender) {
+        dataSource = formaPokemon[this.activeGender];
+      } else if (availableGenders.length > 0) {
+        this.activeGender = availableGenders[0];
+        dataSource = formaPokemon[this.activeGender];
       } else {
         dataSource = formaPokemon;
       }
     }
-    
+
     return dataSource;
   }
 
   getAvailableSections() {
     const dataSource = this.getCurrentData();
     if (!dataSource || typeof dataSource === "string") return [];
-    
+
     const excludeKeys = ["mega", "megaX", "megaY", "giga", "primigenio", "origen"];
-    return Object.keys(dataSource).filter(key => 
-      !excludeKeys.includes(key) && 
+    return Object.keys(dataSource).filter(key =>
+      !excludeKeys.includes(key) &&
       (typeof dataSource[key] === "string" || typeof dataSource[key] === "object")
     );
   }
@@ -208,14 +172,21 @@ class PokemonState {
   getAvailableSubsections(mainSection) {
     const dataSource = this.getCurrentData();
     if (!dataSource || typeof dataSource === "string") return [];
-    
+
     const sectionData = dataSource[mainSection];
     if (!sectionData || typeof sectionData === "string") return [];
-    
+
     return Object.keys(sectionData);
   }
 
   getPokemonData() {
+    if (this.activeSpecialForm && formaPokemon[this.activeSpecialForm]) {
+      const specialFormKey = formaPokemon[this.activeSpecialForm];
+      if (typeof specialFormKey === "string") {
+        return datosPokemon[specialFormKey] || {};
+      }
+    }
+
     const dataSource = this.getCurrentData();
     let dataKey = "";
 
@@ -235,7 +206,7 @@ class PokemonState {
 
   buildImageName() {
     let imageName = this.pokemon;
-    
+
     if (this.activeSpecialForm) {
       imageName += `_${this.activeSpecialForm}`;
     } else {
@@ -243,26 +214,36 @@ class PokemonState {
       if (availableGenders.length > 0) {
         imageName += `_${this.activeGender}`;
       }
-      
+
       if (this.isSeccion1 && this.isSeccion1 !== "normal") {
         imageName += `_${this.isSeccion1}`;
       }
     }
-    
+
     if (this.isSeccion2) {
       imageName += `_${this.isSeccion2}`;
     }
-    
+
     const pokemonData = this.getPokemonData();
     if (this.isTrasera && pokemonData.trasera === true) {
       imageName += "_trasera";
     }
-    
+
     if (this.isShiny && pokemonData.variocolor !== false) {
       imageName += "_variocolor";
     }
-    
+
     return imageName + "_HOME.png";
+  }
+
+  playAudio(audioFile) {
+    try {
+      const audio = new Audio(`public/audio/${audioFile}`);
+      audio.play().catch(error => {
+      });
+      this.currentAudio = audio;
+    } catch (error) {
+    }
   }
 }
 
@@ -274,6 +255,8 @@ class PokemonUI {
     this.elements = this.getElements();
     this.setupEventListeners();
     this.updateAll();
+
+    window.addEventListener('resize', () => this.handleResize());
   }
 
   getElements() {
@@ -282,22 +265,22 @@ class PokemonUI {
       seccion1: document.querySelector("#seccion1"),
       seccion2: document.querySelector("#seccion2"),
       seccion1Texto: document.querySelector("#seccion1Texto"),
-      seccion2Texto: document.querySelector("#seccion2Texto")
+      seccion2Texto: document.querySelector("#seccion2Texto"),
+      contenedorInfo: document.querySelector("#contenedorInfo"),
+      botonVolumen: document.querySelector("#botonVolumen")
     };
 
-    // Agregar botones dinámicamente
     [...buttonConfig.gender, ...buttonConfig.special, ...buttonConfig.toggle].forEach(btn => {
       elements[btn.key] = document.querySelector(`#${btn.id}`);
     });
 
-    // Agregar botones de navegación
     const navButtons = {
       'btnSec1Mas': 'sec1mas',
-      'btnSec1Menos': 'sec1menos', 
+      'btnSec1Menos': 'sec1menos',
       'btnSec2Mas': 'sec2mas',
       'btnSec2Menos': 'sec2menos'
     };
-    
+
     Object.entries(navButtons).forEach(([id, key]) => {
       elements[key] = document.querySelector(`#${id}`);
     });
@@ -307,36 +290,52 @@ class PokemonUI {
 
   initializeHTML() {
     document.querySelector("#app").innerHTML = `
-      <div style="min-width: 450px; max-width:450px; border-radius: 25px; background:#FFD700; padding: 1em; float:right">
-        <div style="text-align:center; font-size:2em; padding:.5em;">'''Dialga'''</div>
-        <div style="display: flex; align-items: center;">
-          <div style="flex: 25%; text-align: left; white-space: nowrap;">ディアルガ (Dialga)</div>
-          <div style="flex: 75%; text-align: right;">#0483</div>
+      <div class="contenedorPokemon">
+        <div class="tituloPokemon">'''Pikachu'''</div>
+        <div class="subtituloPokemon">
+          <div class="nombrePokemon">ピカチュウ (Pikachu)</div>
+          <div class="numeroPokemon">#0025</div>
         </div>
-        <div style="min-width:425px; max-width:425px; border-radius:25px; background:#fff; padding:1em; text-align:center">
-          <img id="imagenPokemonCuadro" src="public/Dialga_HOME.png" height="200;">
-          <hr style="border: 1px solid #dddddd; border-radius: 5px;">
-          <div style="display:flex; align-items: center; justify-content: space-around">
-            ${this.generateButtons(buttonConfig.gender)}
-            <div id="separador" style="border: 1px solid #dddddd; width: 0; height: 70px; background: #dddddd; border-radius: 5px;"></div>
-            ${this.generateButtons(buttonConfig.toggle)}
+        <div class="contenedorImagen">
+          <img id="imagenPokemonCuadro" class="imagenPokemon" src="public/Dialga_HOME.png" height="200;">
+          
+          <div id="botonVolumen" class="botonVolumen gritoColor" 
+               onmouseover="this.style.background='rgba(255, 255, 255, 1)'; this.style.transform='scale(1.1)'" 
+               onmouseout="this.style.background='rgba(255, 255, 255, 0.9)'; this.style.transform='scale(1)'">
+            <img src="volume.svg" alt="Volumen"/>
           </div>
-          <hr style="border: 1px solid #dddddd; border-radius: 5px;">
-          <div style="display:flex; align-items: center; justify-content: space-around">
-            ${this.generateButtons(buttonConfig.special)}
+
+          <hr class="lineaSeparadora">
+          
+          <div class="contenedorBotones">
+            <div class="filaBoton">
+              ${this.generateButtons(buttonConfig.gender)}
+              <div class="separadorBoton"></div>
+              ${this.generateButtons(buttonConfig.toggle)}
+            </div>
           </div>
+          
+          <hr class="lineaSeparadora">
+          
+          <div class="contenedorBotones">
+            <div class="filaBoton">
+              ${this.generateButtons(buttonConfig.special)}
+            </div>
+          </div>
+          
           ${this.generateSectionControls()}
         </div>
+        <div id="contenedorInfo" class="contenedorInfo"></div>
       </div>
     `;
   }
 
   generateButtons(buttons) {
     return buttons.map(btn => `
-      <div id="${btn.id}" class="outer-circle">
-        <div class="middle-circle ${btn.color} transparent">
-          <div class="inner-circle">
-            <img class="svg-icon" src="${btn.icon}" alt="${btn.key}" style="height:${btn.size}">
+      <div id="${btn.id}" class="circuloExterno">
+        <div class="circuloMedio ${btn.color} transparente">
+          <div class="circuloInterno">
+            <img class="iconoSVG" src="${btn.icon}" alt="${btn.key}" style="height:${btn.size}">
           </div>
         </div>
       </div>
@@ -345,54 +344,58 @@ class PokemonUI {
 
   generateSectionControls() {
     return `
-      <div id="seccion1" style="display: flex; align-items: center; justify-content: space-between; gap: 20px; font-family: Arial, sans-serif; margin-top:.75em">
-        <div id="btnSec1Menos" style="border: 1px solid #dddddd; width: 15%; height: 25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-          <span>←</span>
+      <div id="seccion1" class="seccionControles">
+        <div id="btnSec1Menos" class="seccionSelector">
+          <span>↑</span>
         </div>
-        <div id="seccion1Texto" style="border: 1px solid #dddddd; width: 65%; min-height: 25px; border-radius: 25px; display: flex; align-items: center; justify-content: center;">Común</div>
-        <div id="btnSec1Mas" style="border: 1px solid #dddddd; width: 15%; height:25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-          <span>→</span>
+        <div id="seccion1Texto" class="textoSeccion">Común</div>
+        <div id="btnSec1Mas" class="seccionSelector">
+          <span>↓</span>
         </div>
       </div>
-      <div id="seccion2" style="display: none; align-items: center; justify-content: space-between; gap: 20px; font-family: Arial, sans-serif; margin-top:.75em">
-        <div id="btnSec2Menos" style="border: 1px solid #dddddd; width: 15%; height: 25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-          <span>←</span>
+      <div id="seccion2" class="seccionControles" style="display: none;">
+        <div id="btnSec2Menos" class="seccionSelector">
+          <span>↑</span>
         </div>
-        <div id="seccion2Texto" style="border: 1px solid #dddddd; width: 65%; min-height: 25px; border-radius: 25px; display: flex; align-items: center; justify-content: center;">Común</div>
-        <div id="btnSec2Mas" style="border: 1px solid #dddddd; width: 15%; height:25px; border-radius: 25px; background:#fcfcfc; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-          <span>→</span>
+        <div id="seccion2Texto" class="textoSeccion">Común</div>
+        <div id="btnSec2Mas" class="seccionSelector">
+          <span>↓</span>
         </div>
       </div>
     `;
   }
 
   setupEventListeners() {
-    // Botones de género
     buttonConfig.gender.forEach(btn => {
       this.elements[btn.key]?.addEventListener("click", () => {
         this.handleGenderClick(btn.key);
       });
     });
 
-    // Botones de forma especial
     buttonConfig.special.forEach(btn => {
       this.elements[btn.key]?.addEventListener("click", () => {
         this.handleSpecialFormClick(btn.key);
       });
     });
 
-    // Botones de toggle
     buttonConfig.toggle.forEach(btn => {
       this.elements[btn.key]?.addEventListener("click", () => {
         this.handleToggleClick(btn.key);
       });
     });
 
-    // Navegación de secciones
     this.elements.sec1mas?.addEventListener("click", () => this.navigateSection(1, 1));
     this.elements.sec1menos?.addEventListener("click", () => this.navigateSection(1, -1));
     this.elements.sec2mas?.addEventListener("click", () => this.navigateSection(2, 1));
     this.elements.sec2menos?.addEventListener("click", () => this.navigateSection(2, -1));
+
+    this.elements.botonVolumen?.addEventListener("click", () => {
+      this.handleVolumeClick();
+    });
+  }
+
+  handleResize() {
+    this.updateTipos();
   }
 
   handleGenderClick(gender) {
@@ -401,6 +404,7 @@ class PokemonUI {
       this.state.activeGender = gender;
       this.state.selector1 = 0;
       this.state.selector2 = 0;
+      this.state.initializeSections();
       this.updateAll();
     }
   }
@@ -409,80 +413,77 @@ class PokemonUI {
     this.state.activeSpecialForm = this.state.activeSpecialForm === form ? "" : form;
     this.state.selector1 = 0;
     this.state.selector2 = 0;
+    this.state.initializeSections();
     this.updateAll();
   }
 
   handleToggleClick(toggle) {
     const pokemonData = this.state.getPokemonData();
-    
-    // Verificar si el botón está disponible antes de hacer toggle
+
     if (toggle === 'shiny' && pokemonData.variocolor === false) return;
     if (toggle === 'trasera' && pokemonData.trasera !== true) return;
-    
-    this.state[`is${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`] = 
+
+    this.state[`is${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`] =
       !this.state[`is${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`];
     this.updateAll();
+  }
+
+  handleVolumeClick() {
+    const pokemonData = this.state.getPokemonData();
+    if (pokemonData.grito) {
+      this.state.playAudio(pokemonData.grito);
+    }
   }
 
   navigateSection(section, direction) {
     const selectorKey = `selector${section}`;
     const sectionsKey = `secciones${section}`;
-    
+
     this.state[selectorKey] = (this.state[selectorKey] + direction + this.state[sectionsKey].length) % this.state[sectionsKey].length;
-    
+
     if (section === 1) {
       this.state.selector2 = 0;
     }
-    
+
     this.updateSections();
     this.updateImage();
+    this.updateTipos();
   }
 
   updateButtonState(buttonType, key, isActive, isAvailable) {
     const element = this.elements[key];
     if (!element) {
-      console.log(`Elemento ${key} no encontrado`);
       return;
     }
 
     const config = buttonConfig[buttonType]?.find(btn => btn.key === key);
     if (!config) {
-      console.log(`Config para ${buttonType}:${key} no encontrada`);
       return;
     }
 
-    // Debug específico para trasera
-    if (key === 'trasera') {
-      console.log(`NUEVO updateButtonState para trasera:`);
-      console.log(`  - isAvailable pasado como parámetro: ${isAvailable}`);
-      console.log(`  - isActive: ${isActive}`);
-    }
-
     if (!isAvailable) {
-      element.className = "outer-circle disabledButton";
-      element.querySelector(".middle-circle").className = "middle-circle gray";
-      element.querySelector(".inner-circle").className = "inner-circle";
-      // Cambio aquí: agregar clase para el ícono deshabilitado
-      element.querySelector(".svg-icon").className = "svg-icon disabled";
+      element.className = "circuloExterno botonDeshabilitado";
+      element.querySelector(".circuloMedio").className = "circuloMedio grisColor";
+      element.querySelector(".circuloInterno").className = "circuloInterno";
+      element.querySelector(".iconoSVG").className = "iconoSVG deshabilitado";
       element.style.pointerEvents = "none";
     } else {
       element.style.pointerEvents = "auto";
       if (isActive) {
-        element.className = `outer-circle ${config.color}`;
-        element.querySelector(".middle-circle").className = "middle-circle";
-        element.querySelector(".inner-circle").className = `inner-circle ${config.color}`;
-        element.querySelector(".svg-icon").className = "svg-icon white";
+        element.className = `circuloExterno ${config.color}`;
+        element.querySelector(".circuloMedio").className = "circuloMedio";
+        element.querySelector(".circuloInterno").className = `circuloInterno ${config.color}`;
+        element.querySelector(".iconoSVG").className = "iconoSVG blanco";
       } else {
-        element.className = "outer-circle";
-        element.querySelector(".middle-circle").className = `middle-circle ${config.color} transparent`;
-        element.querySelector(".inner-circle").className = "inner-circle";
-        element.querySelector(".svg-icon").className = "svg-icon";
+        element.className = "circuloExterno";
+        element.querySelector(".circuloMedio").className = `circuloMedio ${config.color} transparente`;
+        element.querySelector(".circuloInterno").className = "circuloInterno";
+        element.querySelector(".iconoSVG").className = "iconoSVG";
       }
     }
   }
 
   updateSections() {
-    // Si una forma especial que debe ocultar las secciones está activa, ocultarlas
     if (this.state.shouldHideSections()) {
       this.elements.seccion1.style.display = "none";
       this.elements.seccion2.style.display = "none";
@@ -492,11 +493,11 @@ class PokemonUI {
     }
 
     this.state.secciones1 = this.state.getAvailableSections();
-    
+
     if (this.state.selector1 >= this.state.secciones1.length) {
       this.state.selector1 = 0;
     }
-    
+
     if (this.state.secciones1.length <= 1) {
       this.elements.seccion1.style.display = "none";
       this.state.isSeccion1 = this.state.secciones1[0] || "normal";
@@ -505,13 +506,13 @@ class PokemonUI {
       this.state.isSeccion1 = this.state.secciones1[this.state.selector1];
       this.elements.seccion1Texto.textContent = this.state.isSeccion1 === "normal" ? "Común" : this.state.isSeccion1;
     }
-    
+
     this.state.secciones2 = this.state.getAvailableSubsections(this.state.isSeccion1);
-    
+
     if (this.state.selector2 >= this.state.secciones2.length) {
       this.state.selector2 = 0;
     }
-    
+
     if (this.state.secciones2.length <= 1) {
       this.elements.seccion2.style.display = "none";
       this.state.isSeccion2 = this.state.secciones2[0] || "";
@@ -522,77 +523,367 @@ class PokemonUI {
     }
   }
 
+  updateVolumeButton() {
+    const pokemonData = this.state.getPokemonData();
+    const botonVolumen = this.elements.botonVolumen;
+
+    if (pokemonData.grito) {
+      botonVolumen.style.display = "flex";
+    } else {
+      botonVolumen.style.display = "none";
+    }
+  }
+
+  updateTipos() {
+    const pokemonData = this.state.getPokemonData();
+    const contenedorInfo = this.elements.contenedorInfo;
+
+    contenedorInfo.innerHTML = '';
+
+    if (!pokemonData || Object.keys(pokemonData).length === 0) {
+      return;
+    }
+
+    if ((pokemonData.tipo && pokemonData.tipo.length > 0) || pokemonData.generacion !== undefined) {
+      const tiposHTML = (pokemonData.tipo && pokemonData.tipo.length > 0)
+        ? pokemonData.tipo.map(tipo =>
+          `<img src="public/Tipo_${tipo}_WikiDex.svg" height="25" alt="${tipo}">`
+        ).join('')
+        : '';
+
+      let generacionHTML = '';
+      if (pokemonData.generacion !== undefined) {
+        const generaciones = ['Primera', 'Segunda', 'Tercera', 'Cuarta', 'Quinta', 'Sexta', 'Séptima', 'Octava', 'Novena', 'Décima', 'Undécima', 'Duodécima'];
+        const generacionTexto = generaciones[pokemonData.generacion - 1] || pokemonData.generacion;
+        generacionHTML = `
+          <div class="tarjeta">
+            <div class="tituloTarjeta">Generación</div>
+            <div class="contenidoTarjeta">
+              <div class="tipoGeneracionContainer">
+                <img src="public/${generacionTexto}_generación.svg" height="20" alt="${generacionTexto} generación"><div class="generacionSpacing"></div>${generacionTexto}
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      const tipoCard = tiposHTML ? `
+        <div class="tarjeta">
+          <div class="tituloTarjeta">Tipo</div>
+          <div class="contenidoTarjeta">
+            <div class="tiposContainer">${tiposHTML}</div>
+          </div>
+        </div>
+      ` : `<div class="tarjeta"><div class="tituloTarjeta">Tipo</div><div class="contenidoTarjeta">–</div></div>`;
+
+      contenedorInfo.innerHTML += `
+        <div class="contenedorMedidas">
+          ${tipoCard}
+          ${generacionHTML || `<div class="tarjeta"><div class="tituloTarjeta">Generación</div><div class="contenidoTarjeta">–</div></div>`}
+        </div>
+      `;
+    }
+
+    if (pokemonData.genero) {
+      let barras = '';
+
+      if (pokemonData.genero.macho > 0) {
+        barras += `
+          <div class="generoContainer">
+            <img src="https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg">
+            <div class="generoBarra">
+              <div class="generoBarraMacho" style="flex-basis: ${pokemonData.genero.macho}%;">
+              </div>
+              <div class="generoBarraVacia" style="flex-basis: ${100 - pokemonData.genero.macho}%;">
+              </div>
+              <div class="generoPorcentaje">
+                <span>${pokemonData.genero.macho}%</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      if (pokemonData.genero.hembra > 0) {
+        barras += `
+          <div class="generoContainer">
+            <img src="https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg">
+            <div class="generoBarra">
+              <div class="generoBarraHembra" style="flex-basis: ${pokemonData.genero.hembra}%;">
+              </div>
+              <div class="generoBarraVacia" style="flex-basis: ${100 - pokemonData.genero.hembra}%;">
+              </div>
+              <div class="generoPorcentaje">
+                <span>${pokemonData.genero.hembra}%</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      contenedorInfo.innerHTML += `
+        <div class="tituloTarjeta">Género</div>
+        <div class="contenidoTarjeta">
+          <div style="width: 100%;">
+          ${barras}
+          </div>
+        </div>
+      `;
+    } else {
+      contenedorInfo.innerHTML += `
+        <div class="tituloTarjeta">Género</div>
+        <div class="contenidoTarjeta">
+          Sin género
+        </div>
+      `;
+    }
+
+    if (pokemonData.altura !== undefined || pokemonData.peso !== undefined) {
+      let medidasHTML = '<div class="contenedorMedidas">';
+
+      if (pokemonData.altura !== undefined) {
+        medidasHTML += `
+          <div class="tarjeta">
+            <div class="tituloTarjeta">Altura</div>
+            <div class="contenidoTarjeta">
+              <span>${pokemonData.altura} m.</span>
+            </div>
+          </div>
+        `;
+      }
+
+      if (pokemonData.peso !== undefined) {
+        medidasHTML += `
+          <div class="tarjeta">
+            <div class="tituloTarjeta">Peso</div>
+            <div class="contenidoTarjeta">
+              <span>${pokemonData.peso} kg.</span>
+            </div>
+          </div>
+        `;
+      } else {
+        medidasHTML += `
+          <div class="tarjeta">
+            <div class="tituloTarjeta">Peso</div>
+            <div class="contenidoTarjeta">
+              <span>??? kg</span>
+            </div>
+          </div>
+        `;
+      }
+
+      medidasHTML += '</div>';
+      contenedorInfo.innerHTML += medidasHTML;
+    }
+
+    if (pokemonData.habilidad && pokemonData.habilidad.length > 0) {
+      const habilidadesNormales = pokemonData.habilidad.filter(hab => !hab.oculta);
+      const habilidadesOcultas = pokemonData.habilidad.filter(hab => hab.oculta);
+
+      let habilidadesHTML = '<div class="contenedorMedidas">';
+
+      if (habilidadesNormales.length > 0) {
+        const habilidadesNormalesHTML = habilidadesNormales.map(hab =>
+          `<span>${hab.nombre}</span><br>`
+        ).join('');
+
+        const tituloNormal = habilidadesNormales.length === 1 ? 'Habilidad' : 'Habilidades';
+
+        habilidadesHTML += `
+          <div class="tarjeta">
+            <div class="tituloTarjeta">${tituloNormal}</div>
+            <div class="contenidoTarjeta">
+              <div>${habilidadesNormalesHTML}</div>
+            </div>
+          </div>
+        `;
+      }
+
+      if (habilidadesOcultas.length > 0) {
+        const habilidadesOcultasHTML = habilidadesOcultas.map(hab =>
+          `<span>${hab.nombre}</span><br>`
+        ).join('');
+
+        const tituloOculta = habilidadesOcultas.length === 1 ? 'Habilidad oculta' : 'Habilidades ocultas';
+
+        habilidadesHTML += `
+          <div class="tarjeta">
+            <div class="tituloTarjeta">${tituloOculta}</div>
+            <div class="contenidoTarjeta">
+              <div>${habilidadesOcultasHTML}</div>
+            </div>
+          </div>
+        `;
+      }
+
+      habilidadesHTML += '</div>';
+      contenedorInfo.innerHTML += habilidadesHTML;
+    }
+
+    if (pokemonData.figura !== undefined || pokemonData.color) {
+      let figuraHTML = '';
+      if (pokemonData.figura !== undefined) {
+        figuraHTML = `
+          <div class="tarjeta">
+            <div class="tituloTarjeta">Figura</div>
+            <div class="contenidoTarjeta">
+              <img src="public/Figura_${pokemonData.figura}.png" height="30" alt="Figura ${pokemonData.figura}">
+            </div>
+          </div>
+        `;
+      } else {
+        figuraHTML = `<div class="tarjeta"><div class="tituloTarjeta">Figura</div><div class="contenidoTarjeta">–</div></div>`;
+      }
+
+      const colores = {
+        Azul: "#3D8BFF",
+        Amarillo: "#FFD700",
+        Blanco: "#EEEEEE",
+        Gris: "#696969",
+        Marrón: "#B8860B",
+        Morado: "#6A5ACD",
+        Negro: "#000000",
+        Rojo: "#FF6347",
+        Rosa: "#DB7093",
+        Verde: "#228B22"
+      };
+      const colorHex = colores[pokemonData.color] || "#FFFFFF";
+
+      let colorCard = '';
+      if (pokemonData.color) {
+        colorCard = `
+          <div class="tarjeta">
+            <div class="tituloTarjeta">Color</div>
+            <div class="contenidoTarjeta">
+              <div class="figuraColorContainer">
+                <span class="colorMuestra" style="background-color:${colorHex};"></span>
+                ${pokemonData.color}
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        colorCard = `<div class="tarjeta"><div class="tituloTarjeta">Color</div><div class="contenidoTarjeta">–</div></div>`;
+      }
+
+      contenedorInfo.innerHTML += `
+        <div class="contenedorMedidas">
+          ${figuraHTML}
+          ${colorCard}
+        </div>
+      `;
+    }
+
+    if (pokemonData.categoria || (pokemonData.huevo && pokemonData.huevo.length > 0)) {
+      const categoriaCard = pokemonData.categoria ? `
+        <div class="tarjeta">
+          <div class="tituloTarjeta">Categoría</div>
+          <div class="contenidoTarjeta">
+            <span>Pokémon ${pokemonData.categoria}</span>
+          </div>
+        </div>
+      ` : `<div class="tarjeta"><div class="tituloTarjeta">Categoría</div><div class="contenidoTarjeta">–</div></div>`;
+
+      let huevoHTML = '';
+      if (pokemonData.huevo && pokemonData.huevo.length > 0) {
+        huevoHTML = pokemonData.huevo.map(grupo =>
+          `<span>${typeof grupo === 'string' ? grupo : grupo.nombre}</span>`
+        ).join('<br>');
+      } else {
+        huevoHTML = '–';
+      }
+
+      const huevoCard = `
+        <div class="tarjeta">
+          <div class="tituloTarjeta">Grupo huevo</div>
+          <div class="contenidoTarjeta">
+            <div>${huevoHTML}</div>
+          </div>
+        </div>
+      `;
+
+      contenedorInfo.innerHTML += `
+        <div class="contenedorMedidas">
+          ${categoriaCard}
+          ${huevoCard}
+        </div>
+      `;
+    }
+
+    if (pokemonData.pronunciacion && pokemonData.pronunciacion.length > 0) {
+      let pronunciacionesHTML = '';
+
+      const pronunciaciones = pokemonData.pronunciacion.map(p => {
+        let zonaHTML = '';
+        if (p.zona === 'España') {
+          zonaHTML = ' <abbr title="España">(ES)</abbr>';
+        } else if (p.zona === 'Hispanoamérica') {
+          zonaHTML = ' <abbr title="Hispanoamérica">(HA)</abbr>';
+        }
+
+        let notasHTML = '';
+        if (p.nota && p.nota.length > 0) {
+          notasHTML = p.nota.map(nota => `<ref>${nota}</ref>`).join('');
+        }
+
+        return `/ ${p.fonetica} /${zonaHTML}${notasHTML}`;
+      }).join('<br>');
+
+      pronunciacionesHTML += `
+        <div class="tituloTarjeta">${pokemonData.pronunciacion.length === 1 ? 'Pronunciación' : 'Pronunciaciones'}</div>
+        <div class="contenidoTarjeta">
+          <div>${pronunciaciones}</div>
+        </div>
+      `;
+
+      contenedorInfo.innerHTML += pronunciacionesHTML;
+    }
+  }
+
   updateImage() {
     const pokemonData = this.state.getPokemonData();
     const imageName = this.state.buildImageName();
-    
-    // Calcular disponibilidad de botones toggle
+
     const isShinyAvailable = pokemonData.variocolor !== false;
     const isTraseraAvailable = pokemonData.trasera === true;
-    
-    console.log(`NUEVO updateImage - isTraseraAvailable calculado: ${isTraseraAvailable}`);
-    console.log(`NUEVO updateImage - pokemonData.trasera: ${pokemonData.trasera}`);
-    console.log(`NUEVO updateImage - pokemonData.trasera === true: ${pokemonData.trasera === true}`);
-    
-    // Si los botones no están disponibles, resetear su estado
+
     if (!isShinyAvailable && this.state.isShiny) {
       this.state.isShiny = false;
     }
     if (!isTraseraAvailable && this.state.isTrasera) {
       this.state.isTrasera = false;
     }
-    
+
     this.updateButtonState('toggle', 'shiny', this.state.isShiny, isShinyAvailable);
     this.updateButtonState('toggle', 'trasera', this.state.isTrasera, isTraseraAvailable);
-    
-    // Actualizar imagen
+
+    this.updateVolumeButton();
+
     this.elements.imagenPokemonCuadro.onerror = () => {
-      this.elements.imagenPokemonCuadro.src = "public/not_found.png";
+      this.elements.imagenPokemonCuadro.src = "public/Imagen_no_disponible.svg";
     };
     this.elements.imagenPokemonCuadro.src = "public/" + imageName;
-    
-    this.logPokemonData(pokemonData, imageName);
   }
 
   updateAll() {
-    // Actualizar estados de todos los botones
     const availableGenders = this.state.getAvailableGenders();
     const availableSpecialForms = this.state.getAvailableSpecialForms();
-    
+
     buttonConfig.gender.forEach(btn => {
       const isAvailable = availableGenders.includes(btn.key);
       const isActive = this.state.activeGender === btn.key;
       this.updateButtonState('gender', btn.key, isActive, isAvailable);
     });
-    
+
     buttonConfig.special.forEach(btn => {
       const isAvailable = availableSpecialForms.includes(btn.key);
       const isActive = this.state.activeSpecialForm === btn.key;
       this.updateButtonState('special', btn.key, isActive, isAvailable);
     });
-    
+
     this.updateSections();
     this.updateImage();
-  }
-
-  logPokemonData(datos, imageName) {
-    console.log("Imagen:", imageName);
-    if (Object.keys(datos).length > 0) {
-      console.log("🧾 Datos del Pokémon:");
-      console.log("• Tipo:", datos.tipo ? datos.tipo.join(", ") : "No definido");
-      console.log(`• Altura: ${datos.altura || "No definida"} m`);
-      console.log(`• Peso: ${datos.peso || "No definido"} kg`);
-      console.log("• Habilidades:");
-      if (datos.habilidad) {
-        datos.habilidad.forEach(h => {
-          console.log(`  - ${h.nombre}${h.oculta ? " (Oculta)" : ""}`);
-        });
-      }
-      console.log("• Variocolor disponible:", datos.variocolor !== false);
-      console.log("• Trasera disponible:", datos.trasera === true);
-      console.log("• Formas especiales disponibles:", this.state.getAvailableSpecialForms());
-      console.log("• Forma especial activa:", this.state.activeSpecialForm || "Ninguna");
-    }
+    this.updateTipos();
   }
 }
 

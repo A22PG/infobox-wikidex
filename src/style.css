@@ -1,20 +1,37 @@
 body {
   background-color: #0e0e0e;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
-*{
+* {
   user-select: none;
+  box-sizing: border-box;
+  font-family: sans-serif !important;
 }
 
-.container {
+/* Contenedor principal */
+.contenedorPokemon {
+  min-width: 280px;
+  max-width: 450px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 25px;
+  background: #FFD700;
+  padding: 1em;
+}
+
+/* Contenedor de cuadrícula */
+.contenedorCuadricula {
   display: grid;
   grid-template-columns: repeat(2, 150px);
   gap: 20px;
   justify-content: center;
 }
 
-/* Círculo externo */
-.outer-circle {
+/* Círculos de botones */
+.circuloExterno {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -22,44 +39,12 @@ body {
   justify-content: center;
   background-color: white;
   align-items: center;
-  cursor:pointer;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-.blue {
-  background-color: #0070f8 !important;
-}
-
-.red {
-  background-color: #e82010 !important;
-}
-
-.yellow {
-background-color: #E96D23 !important;
-}
-
-.gray {
-background-color: #aaaaaa !important;
-}
-
-.megaColor{
-  background: #F08300;
-background: linear-gradient(156deg, rgba(240, 131, 0, 1) 5%, rgba(170, 207, 82, 1) 35%, rgba(0, 185, 239, 1) 60%, rgba(231, 66, 145, 1) 97%);
-}
-.megaXColor{
-  background: linear-gradient(0deg, #002235, #007ec9) !important;
-}
-
-.megaYColor{
-  background: linear-gradient(0deg, #320102, #ef1a23) !important;
-}
-
-.gigamaxColor {
-  background: #e8336d !important;
-}
-
-
-/* Círculo medio */
-.middle-circle {
+.circuloMedio {
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -69,8 +54,7 @@ background: linear-gradient(156deg, rgba(240, 131, 0, 1) 5%, rgba(170, 207, 82, 
   align-items: center;
 }
 
-/* Círculo interno */
-.inner-circle {
+.circuloInterno {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -80,30 +64,467 @@ background: linear-gradient(156deg, rgba(240, 131, 0, 1) 5%, rgba(170, 207, 82, 
   align-items: center;
 }
 
+/* Colores de botones */
+.azulColor {
+  background-color: #0070f8 !important;
+}
+
+.rojoColor {
+  background-color: #e82010 !important;
+}
+
+.amarilloColor {
+  background-color: #E96D23 !important;
+}
+
+.verdeColor {
+  background-color: #66cbc3 !important;
+}
+
+.grisColor {
+  background-color: #aaaaaa !important;
+}
+
+.megaColor {
+  background: #F08300;
+  background: linear-gradient(156deg, rgba(240, 131, 0, 1) 5%, rgba(170, 207, 82, 1) 35%, rgba(0, 185, 239, 1) 60%, rgba(231, 66, 145, 1) 97%);
+}
+
+.megaXColor {
+  background: linear-gradient(0deg, #002235, #007ec9) !important;
+}
+
+.megaYColor {
+  background: linear-gradient(0deg, #320102, #ef1a23) !important;
+}
+
+.gigamaxColor {
+  background: #e8336d !important;
+}
+
+.gritoColor {
+  background: #57575788 !important;
+}
+
 /* Iconos SVG */
-.svg-icon {
+.iconoSVG {
   width: 100%;
   height: 100%;
-  fill: currentColor; /* Hereda el color del contexto */
-}
-.svg-icon.white {
-  filter: brightness(0) invert(1); /* Alternativa para SVGs que no permiten CSS `fill` */
+  fill: currentColor;
 }
 
-.transparent{
-  opacity: 0.8; /* Aplica la transparencia */
+.iconoSVG.blanco {
+  filter: brightness(0) invert(1);
 }
 
-.disabledButton {
-  opacity: 0.1;
-}
-
-/* Estilos para íconos deshabilitados - semitransparente negro */
-.svg-icon.disabled {
+.iconoSVG.deshabilitado {
   filter: brightness(0) opacity(0.3);
 }
 
-/* Opcional: si quieres que el ícono blanco cuando está activo sea más visible */
-.svg-icon.white {
-  filter: brightness(0) invert(1);
+/* Estados de transparencia y deshabilitado */
+.transparenteBoton {
+  opacity: 0.8;
+}
+
+.botonDeshabilitado {
+  opacity: 0.1;
+}
+
+/* Contenedor de botones */
+.contenedorBotones {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 70px;
+}
+
+.filaBoton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.separadorBoton {
+  border: 1px solid #dddddd;
+  width: 0;
+  height: 70px;
+  background: #dddddd;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+/* Imagen del Pokémon */
+.imagenPokemon {
+  max-width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+/* Botón de volumen */
+.botonVolumen {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 75%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.botonVolumen img {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+/* Sección de controles */
+.seccionControles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-family: Arial, sans-serif;
+  margin-top: 0.75em;
+}
+
+.seccionSelector {
+  border: 1px solid #dddddd;
+  min-width: 15%;
+  height: 25px;
+  border-radius: 25px;
+  background: #fcfcfc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.textoSeccion {
+  border: 1px solid #dddddd;
+  flex: 1;
+  min-height: 25px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Contenedor de información */
+.contenedorInfo {
+  margin-top: 15px;
+}
+
+.tarjetaInfo {
+  border-radius: 25px;
+  background: #fff;
+  padding: 0 0 1em 0;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.tituloTarjeta {
+  font-size: 1em;
+  font-weight: bold;
+  color: #000000ff;
+  background-color: #ffffff77;
+  border-radius: 25px 25px 0 0;
+  padding: 0.4em;
+  text-align: center;
+}
+
+.contenidoTarjeta {
+  flex: 1;
+  border-radius: 0 0 25px 25px;
+  background: #fff;
+  padding: .5em;
+  text-align: center;
+  margin: 0 0 .5em 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenidoTarjeta > div {
+  width: 100%;
+}
+
+.contenedorMedidas {
+  display: flex;
+  gap: .5em;
+}
+
+.tarjeta {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos inline refactorizados */
+.tituloPokemon {
+  text-align: center;
+  font-size: 2em;
+  padding: 0.5em;
+}
+
+.subtituloPokemon {
+  display: flex;
+  align-items: center;
+}
+
+.nombrePokemon {
+  flex: 25%;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+.numeroPokemon {
+  flex: 75%;
+  text-align: right;
+  font-size: 0.9em;
+}
+
+.contenedorImagen {
+  border-radius: 25px;
+  background: #fff;
+  padding: 1em;
+  text-align: center;
+  position: relative;
+}
+
+.lineaSeparadora {
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+
+.generoContainer {
+  display: flex;
+  padding-left: 6px;
+  padding-right: 15px;
+  margin-bottom: 5px;
+}
+
+.generoBarra {
+  display: flex;
+  margin-top: 3px;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  flex: 1;
+}
+
+.generoBarraMacho {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  background: #0070f8bb;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 5px 0 0 5px;
+  color: #fff;
+}
+
+.generoBarraHembra {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  background: #e82010bb;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 5px 0 0 5px;
+  color: #fff;
+}
+
+.generoBarraVacia {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  background: #cdcdcd75;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 0 5px 5px 0;
+  color: #fff;
+}
+
+.generoPorcentaje {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 13px;
+  font-weight: bold;
+  z-index: 5;
+  white-space: nowrap;
+  text-shadow: 0 0 8px white, 0 0 2px white, 0 0 2px white;
+  color: black;
+}
+
+.colorMuestra {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-right: 0.5em;
+  border: 1px solid #eee;
+  vertical-align: middle;
+  border-radius: 0.25em;
+}
+
+.figuraColorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+}
+
+.tipoGeneracionContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tiposContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+}
+
+.generacionContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.generacionSpacing {
+  width: 0.2em;
+}
+
+/* Media queries para diferentes tamaños de pantalla */
+@media screen and (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+  
+  .contenedorPokemon {
+    min-width: 260px;
+    padding: 0.8em;
+  }
+  
+  .circuloExterno {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .circuloMedio {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .circuloInterno {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .separadorBoton {
+    height: 50px;
+    margin: 0 5px;
+  }
+  
+  .contenedorBotones {
+    min-height: 50px;
+  }
+  
+  .botonVolumen {
+    width: 45px;
+    height: 45px;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .botonVolumen img {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .tituloTarjeta {
+    font-size: 16px;
+    padding: 0.3em;
+  }
+  
+  .barraGenero {
+    font-size: 11px;
+    padding: 3px 4px;
+  }
+  
+  .seccionControles {
+    gap: 5px;
+  }
+  
+  .textoSeccion {
+    font-size: 14px;
+    padding: 0 5px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .contenedorPokemon {
+    min-width: 240px;
+    padding: 0.6em;
+  }
+  
+  .circuloExterno {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .circuloMedio {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .circuloInterno {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .filaBoton {
+    gap: 8px;
+  }
+  
+  .barraGenero {
+    font-size: 10px;
+    padding: 2px 3px;
+  }
+  
+  .tituloTarjeta {
+    font-size: 14px;
+  }
+  
+  .textoSeccion {
+    font-size: 12px;
+  }
 }
