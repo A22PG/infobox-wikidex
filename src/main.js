@@ -1,78 +1,89 @@
 import "./style.css";
 
-// Datos de configuración
-
-const formaPokemon = {
-  "macho": {
-    "normal": "pikachu_normal",
-    "Con gorra": {
-      "Original": "pikachu_gorra",
-      "Hoenn": "pikachu_gorra",
-      "Sinnoh": "pikachu_gorra",
-      "Teselia": "pikachu_gorra",
-      "Kalos": "pikachu_gorra",
-      "Alola": "pikachu_gorra",
-      "Compañero": "pikachu_gorra",
-      "Trotamundos": "pikachu_gorra"
-    }
-  },
-  "hembra": "pikachu_normal",
-  "giga": "pikachu_giga",
-  "mega": ""
-};
-
-const datosPokemon = {
-  "pikachu_normal": {
-    "tipo": ["Eléctrico", "Eléctrico"],
-    "altura": 0.4,
-    "peso": 6,
-    "habilidad": [
-      { "nombre": "Electricidad Estática" },
-      { "nombre": "Otro" },
-      { "nombre": "Pararrayos", "oculta": true },
-
-    ],
-    "generacion": "1",
-    "categoria": "Ratón",
-    "figura": "8",
-    "huevo": ["Campo", "Hada"],
-    "grito": "Grito_de_Pikachu_en_la_sexta_generación.mp3",
-    "genero": {
-      "macho": "80",
-      "hembra": "49"
+const pokemonJSON = {
+  "forma": {
+    "macho": {
+      "normal": {
+        "datos": "pikachu_normal",
+        "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/e/e0/latest/20200214192043/Pikachu_HOME.png",
+        "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/a/af/latest/20170907162616/Pikachu_Kalos.png",
+      },
+      "Con gorra": {
+        "Original": {
+          "datos": "pikachu_gorra",
+          "imagen": "public/pikachu_gorra_HOME.png",
+          "variocolor": false
+        },
+        "Hoenn": {
+          "datos": "pikachu_gorra",
+          "imagen": "public/pikachu_gorra_HOME.png",
+          "variocolor": false
+        }
+      }
     },
-    "color": "Amarillo",
-    "pronunciacion": [
-      { "fonetica": "pi.ˈka.chu", "zona": "España" },
-      { "fonetica": "ˈpi.ka.chu", "zona": "Hispanoamérica", "nota": ["Nota 1", "Nota 2"] },]
+    "hembra": {
+      "datos": "pikachu_normal",
+      "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/4/40/latest/20200214185804/Pikachu_HOME_hembra.png",
+      "variocolor": "public/pikachu_normal_variocolor_HOME.png"
+    },
+    "giga": {
+      "datos": "pikachu_giga",
+      "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/d/d8/latest/20191016155951/Pikachu_Gigamax.png"
+    },
+    "mega": ""
   },
-  "pikachu_gorra": {
-    "tipo": ["Eléctrico"],
-    "variocolor": false,
-    "altura": 0.4,
-    "peso": 6,
-    "habilidad": [
-      { "nombre": "Electricidad Estática" },
-      { "nombre": "Pararrayos", "oculta": true }
-    ],
-    "generacion": "7",
-    "categoria": "Ratón",
-    "figura": "8",
-    "grito": "Grito_de_Hitmonlee.mp3"
-  },
-  "pikachu_giga": {
-    "tipo": ["Eléctrico"],
-    "altura": 21,
-    "habilidad": [
-      { "nombre": "Electricidad Estática" },
-      { "nombre": "Pararrayos", "oculta": true }
-    ],
-    "generacion": "8",
-    "categoria": "Ratón",
+  "info": {
+    "pikachu_normal": {
+      "tipo": ["Eléctrico", "Eléctrico"],
+      "altura": 0.4,
+      "peso": 6,
+      "habilidad": [
+        { "nombre": "Electricidad Estática" },
+        { "nombre": "Otro" },
+        { "nombre": "Pararrayos", "oculta": true }
+      ],
+      "generacion": "1",
+      "categoria": "Ratón",
+      "figura": "8",
+      "huevo": ["Campo", "Hada"],
+      "grito": "Grito_de_Pikachu_en_la_sexta_generación.mp3",
+      "genero": {
+        "macho": "80",
+        "hembra": "49"
+      },
+      "color": "Amarillo",
+      "pronunciacion": [
+        { "fonetica": "pi.ˈka.chu", "zona": "España" },
+        { "fonetica": "ˈpi.ka.chu", "zona": "Hispanoamérica", "nota": ["Nota 1", "Nota 2"] }
+      ]
+    },
+    "pikachu_gorra": {
+      "tipo": ["Eléctrico"],
+      "variocolor": false,
+      "altura": 0.4,
+      "peso": 6,
+      "habilidad": [
+        { "nombre": "Electricidad Estática" },
+        { "nombre": "Pararrayos", "oculta": true }
+      ],
+      "generacion": "7",
+      "categoria": "Ratón",
+      "figura": "8",
+      "grito": "Grito_de_Hitmonlee.mp3"
+    },
+    "pikachu_giga": {
+      "tipo": ["Eléctrico"],
+      "altura": 21,
+      "habilidad": [
+        { "nombre": "Electricidad Estática" },
+        { "nombre": "Pararrayos", "oculta": true }
+      ],
+      "generacion": "8",
+      "categoria": "Ratón"
+    }
   }
 };
 
-// Configuración de botones
 const buttonConfig = {
   gender: [
     { id: "btnMacho", key: "macho", color: "azulColor", icon: "https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg", size: "50px" },
@@ -90,9 +101,11 @@ const buttonConfig = {
   ],
 };
 
-// Estado de la aplicación
 class PokemonState {
   constructor() {
+    this.forma = pokemonJSON.forma;
+    this.info = pokemonJSON.info;
+
     this.pokemon = "Pikachu";
     this.activeGender = "";
     this.activeSpecialForm = "";
@@ -126,114 +139,130 @@ class PokemonState {
   }
 
   getAvailableGenders() {
-    return ["macho", "hembra"].filter(gender => formaPokemon.hasOwnProperty(gender));
+    return Object.keys(this.forma).filter(k => k === "macho" || k === "hembra")
+      .filter(gender => this.forma.hasOwnProperty(gender) && this.forma[gender] !== "");
   }
 
   getAvailableSpecialForms() {
-    return ["mega", "megaX", "megaY", "giga", "primigenio", "origen"]
-      .filter(form => formaPokemon.hasOwnProperty(form));
+    const possible = ["mega", "megaX", "megaY", "giga", "primigenio", "origen"];
+    return possible.filter(form => this.forma.hasOwnProperty(form) && this.forma[form] !== "");
   }
 
   shouldHideSections() {
     return ["mega", "megaX", "megaY", "giga"].includes(this.activeSpecialForm);
   }
 
-  getCurrentData() {
-    let dataSource = null;
-
-    if (this.activeSpecialForm && formaPokemon[this.activeSpecialForm]) {
-      dataSource = formaPokemon[this.activeSpecialForm];
+  getCurrentFormaNode() {
+    if (this.activeSpecialForm && this.forma[this.activeSpecialForm]) {
+      return this.forma[this.activeSpecialForm];
     } else {
       const availableGenders = this.getAvailableGenders();
       if (availableGenders.length > 0 && this.activeGender) {
-        dataSource = formaPokemon[this.activeGender];
+        return this.forma[this.activeGender];
       } else if (availableGenders.length > 0) {
         this.activeGender = availableGenders[0];
-        dataSource = formaPokemon[this.activeGender];
+        return this.forma[this.activeGender];
       } else {
-        dataSource = formaPokemon;
+        return this.forma;
       }
     }
-
-    return dataSource;
   }
 
   getAvailableSections() {
-    const dataSource = this.getCurrentData();
-    if (!dataSource || typeof dataSource === "string") return [];
-
+    const node = this.getCurrentFormaNode();
+    if (!node || typeof node === "string") return [];
     const excludeKeys = ["mega", "megaX", "megaY", "giga", "primigenio", "origen"];
-    return Object.keys(dataSource).filter(key =>
-      !excludeKeys.includes(key) &&
-      (typeof dataSource[key] === "string" || typeof dataSource[key] === "object")
-    );
+    if (node.datos !== undefined) return [];
+    return Object.keys(node).filter(key => !excludeKeys.includes(key));
   }
 
   getAvailableSubsections(mainSection) {
-    const dataSource = this.getCurrentData();
-    if (!dataSource || typeof dataSource === "string") return [];
-
-    const sectionData = dataSource[mainSection];
+    const node = this.getCurrentFormaNode();
+    if (!node || typeof node === "string") return [];
+    const sectionData = node[mainSection];
     if (!sectionData || typeof sectionData === "string") return [];
-
+    if (sectionData.datos !== undefined) return [];
     return Object.keys(sectionData);
   }
 
   getPokemonData() {
-    if (this.activeSpecialForm && formaPokemon[this.activeSpecialForm]) {
-      const specialFormKey = formaPokemon[this.activeSpecialForm];
-      if (typeof specialFormKey === "string") {
-        return datosPokemon[specialFormKey] || {};
-      }
+    if (this.activeSpecialForm && this.forma[this.activeSpecialForm]) {
+      const specialNode = this.forma[this.activeSpecialForm];
+      const datosKey = (typeof specialNode === "string") ? specialNode : specialNode.datos;
+      return this.info[datosKey] || {};
     }
 
-    const dataSource = this.getCurrentData();
-    let dataKey = "";
+    const node = this.getCurrentFormaNode();
+    if (!node) return {};
 
-    if (typeof dataSource === "string") {
-      dataKey = dataSource;
-    } else if (dataSource) {
-      const sectionData = dataSource[this.isSeccion1];
-      if (typeof sectionData === "string") {
-        dataKey = sectionData;
-      } else if (sectionData && this.isSeccion2) {
-        dataKey = sectionData[this.isSeccion2];
-      }
+    if (node.datos !== undefined && typeof node.datos === "string") {
+      return this.info[node.datos] || {};
     }
 
-    return datosPokemon[dataKey] || {};
+    const sectionData = node[this.isSeccion1];
+    if (!sectionData) return {};
+    if (typeof sectionData === "string") {
+      return this.info[sectionData] || {};
+    }
+    if (sectionData.datos !== undefined) {
+      return this.info[sectionData.datos] || {};
+    }
+    const sub = sectionData[this.isSeccion2];
+    if (sub) {
+      if (typeof sub === "string") return this.info[sub] || {};
+      if (sub.datos !== undefined) return this.info[sub.datos] || {};
+    }
+
+    return {};
   }
 
-  buildImageName() {
-    let imageName = this.pokemon;
-
-    if (this.activeSpecialForm) {
-      imageName += `_${this.activeSpecialForm}`;
-    } else {
-      const availableGenders = this.getAvailableGenders();
-      if (availableGenders.length > 0) {
-        imageName += `_${this.activeGender}`;
-      }
-
-      if (this.isSeccion1 && this.isSeccion1 !== "normal") {
-        imageName += `_${this.isSeccion1}`;
-      }
+  getCurrentImageUrls() {
+    if (this.activeSpecialForm && this.forma[this.activeSpecialForm]) {
+      const node = this.forma[this.activeSpecialForm];
+      return (typeof node === "string") ? {} : node;
     }
 
-    if (this.isSeccion2) {
-      imageName += `_${this.isSeccion2}`;
+    const node = this.getCurrentFormaNode();
+    if (!node) return {};
+
+    if (node.datos !== undefined) {
+      return node;
     }
 
-    const pokemonData = this.getPokemonData();
-    if (this.isTrasera && pokemonData.trasera === true) {
-      imageName += "_trasera";
+    const sectionData = node[this.isSeccion1];
+    if (!sectionData) return {};
+
+    if (typeof sectionData === "string") {
+      return {};
     }
 
-    if (this.isShiny && pokemonData.variocolor !== false) {
-      imageName += "_variocolor";
+    if (sectionData.datos !== undefined) {
+      return sectionData;
     }
 
-    return imageName + "_HOME.png";
+    const sub = sectionData[this.isSeccion2];
+    if (!sub) return {};
+    if (typeof sub === "string") return {};
+    return sub;
+  }
+
+  buildImageSrc() {
+    const urls = this.getCurrentImageUrls();
+
+    if (this.isTrasera && this.isShiny && urls.variocolorTrasera) {
+      return urls.variocolorTrasera;
+    }
+    if (this.isTrasera && urls.trasera) {
+      return urls.trasera;
+    }
+    if (this.isShiny && urls.variocolor) {
+      return urls.variocolor;
+    }
+    if (urls.imagen) {
+      return urls.imagen;
+    }
+
+    return "";
   }
 
   playAudio(audioFile) {
@@ -247,7 +276,6 @@ class PokemonState {
   }
 }
 
-// Clase para manejar la UI
 class PokemonUI {
   constructor(state) {
     this.state = state;
@@ -297,7 +325,7 @@ class PokemonUI {
           <div class="numeroPokemon">#0025</div>
         </div>
         <div class="contenedorImagen">
-          <img id="imagenPokemonCuadro" class="imagenPokemon" src="public/Dialga_HOME.png" height="200;">
+          <img id="imagenPokemonCuadro" class="imagenPokemon" src="public/Imagen_no_disponible.svg" height="200;">
           
           <div id="botonVolumen" class="botonVolumen gritoColor" 
                onmouseover="this.style.background='rgba(255, 255, 255, 1)'; this.style.transform='scale(1.1)'" 
@@ -418,10 +446,13 @@ class PokemonUI {
   }
 
   handleToggleClick(toggle) {
-    const pokemonData = this.state.getPokemonData();
+    const urls = this.state.getCurrentImageUrls();
 
-    if (toggle === 'shiny' && pokemonData.variocolor === false) return;
-    if (toggle === 'trasera' && pokemonData.trasera !== true) return;
+    const shinyAvailable = !!urls.variocolor;
+    const traseraAvailable = !!urls.trasera || !!urls.variocolorTrasera;
+
+    if (toggle === 'shiny' && !shinyAvailable) return;
+    if (toggle === 'trasera' && !traseraAvailable) return;
 
     this.state[`is${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`] =
       !this.state[`is${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`];
@@ -592,13 +623,9 @@ class PokemonUI {
           <div class="generoContainer">
             <img src="https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg">
             <div class="generoBarra">
-              <div class="generoBarraMacho" style="flex-basis: ${pokemonData.genero.macho}%;">
-              </div>
-              <div class="generoBarraVacia" style="flex-basis: ${100 - pokemonData.genero.macho}%;">
-              </div>
-              <div class="generoPorcentaje">
-                <span>${pokemonData.genero.macho}%</span>
-              </div>
+              <div class="generoBarraMacho" style="flex-basis: ${pokemonData.genero.macho}%;"></div>
+              <div class="generoBarraVacia" style="flex-basis: ${100 - pokemonData.genero.macho}%;"></div>
+              <div class="generoPorcentaje"><span>${pokemonData.genero.macho}%</span></div>
             </div>
           </div>
         `;
@@ -609,13 +636,9 @@ class PokemonUI {
           <div class="generoContainer">
             <img src="https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg">
             <div class="generoBarra">
-              <div class="generoBarraHembra" style="flex-basis: ${pokemonData.genero.hembra}%;">
-              </div>
-              <div class="generoBarraVacia" style="flex-basis: ${100 - pokemonData.genero.hembra}%;">
-              </div>
-              <div class="generoPorcentaje">
-                <span>${pokemonData.genero.hembra}%</span>
-              </div>
+              <div class="generoBarraHembra" style="flex-basis: ${pokemonData.genero.hembra}%;"></div>
+              <div class="generoBarraVacia" style="flex-basis: ${100 - pokemonData.genero.hembra}%;"></div>
+              <div class="generoPorcentaje"><span>${pokemonData.genero.hembra}%</span></div>
             </div>
           </div>
         `;
@@ -624,9 +647,7 @@ class PokemonUI {
       contenedorInfo.innerHTML += `
         <div class="tituloTarjeta">Género</div>
         <div class="contenidoTarjeta">
-          <div style="width: 100%;">
-          ${barras}
-          </div>
+          <div style="width: 100%;">${barras}</div>
         </div>
       `;
     } else {
@@ -842,10 +863,11 @@ class PokemonUI {
 
   updateImage() {
     const pokemonData = this.state.getPokemonData();
-    const imageName = this.state.buildImageName();
+    const imageSrc = this.state.buildImageSrc();
+    const urls = this.state.getCurrentImageUrls();
 
-    const isShinyAvailable = pokemonData.variocolor !== false;
-    const isTraseraAvailable = pokemonData.trasera === true;
+    const isShinyAvailable = !!urls.variocolor;
+    const isTraseraAvailable = !!urls.trasera || !!urls.variocolorTrasera;
 
     if (!isShinyAvailable && this.state.isShiny) {
       this.state.isShiny = false;
@@ -862,7 +884,8 @@ class PokemonUI {
     this.elements.imagenPokemonCuadro.onerror = () => {
       this.elements.imagenPokemonCuadro.src = "public/Imagen_no_disponible.svg";
     };
-    this.elements.imagenPokemonCuadro.src = "public/" + imageName;
+
+    this.elements.imagenPokemonCuadro.src = imageSrc || "public/Imagen_no_disponible.svg";
   }
 
   updateAll() {
@@ -887,6 +910,5 @@ class PokemonUI {
   }
 }
 
-// Inicialización
 const pokemonState = new PokemonState();
 const pokemonUI = new PokemonUI(pokemonState);
