@@ -12,31 +12,57 @@ const pokemonJSON = {
       "normal": {
         "datos": "pikachu_normal",
         "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/e/e0/latest/20200214192043/Pikachu_HOME.png",
-        "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/a/af/latest/20170907162616/Pikachu_Kalos.png",
+        "variocolor": "https://img.pokemondb.net/sprites/home/shiny/1x/pikachu.png",
       },
       "Con gorra": {
         "Original": {
           "datos": "pikachu_gorra",
-          "imagen": "public/pikachu_gorra_HOME.png",
-          "variocolor": false
+          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-original-cap.png",
         },
         "Hoenn": {
           "datos": "pikachu_gorra",
-          "imagen": "public/pikachu_gorra_HOME.png",
-          "variocolor": false
-        }
+          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-hoenn-cap.png",
+        },
+        "Sinnoh": {
+          "datos": "pikachu_gorra",
+          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-sinnoh-cap.png",
+        },
+        "Teselia": {
+          "datos": "pikachu_gorra",
+          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-unova-cap.png",
+        },
+        "Kalos": {
+          "datos": "pikachu_gorra",
+          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-kalos-cap.png",
+        },
+        "Alola": {
+          "datos": "pikachu_gorra",
+          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-alola-cap.png",
+        },
+        "Compañero": {
+          "datos": "pikachu_gorra",
+          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-partner-cap.png",
+        },
+        "Trotamundos": {
+          "datos": "pikachu_gorra",
+          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-world-cap.png",
+        },
       }
     },
     "hembra": {
       "datos": "pikachu_normal",
       "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/4/40/latest/20200214185804/Pikachu_HOME_hembra.png",
-      "variocolor": "public/pikachu_normal_variocolor_HOME.png"
+      "variocolor": "https://img.pokemondb.net/sprites/home/shiny/pikachu-f.png"
     },
     "giga": {
       "datos": "pikachu_giga",
-      "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/d/d8/latest/20191016155951/Pikachu_Gigamax.png"
+      "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/thumb/d/d8/latest/20191016155951/Pikachu_Gigamax.png/270px-Pikachu_Gigamax.png",
+      "variocolor": "https://img.pokemondb.net/sprites/home/shiny/1x/pikachu-gigantamax.png"
     },
-    "mega": ""
+    "mega": {
+      "datos": "pikachu_giga",
+      "imagen": "",
+    }
   },
   "info": {
     "pikachu_normal": {
@@ -46,7 +72,7 @@ const pokemonJSON = {
       "habilidad": [
         { "nombre": "Electricidad Estática" },
         { "nombre": "Otro" },
-        { "nombre": "Pararrayos", "oculta": true }
+
       ],
       "generacion": "1",
       "categoria": "Ratón",
@@ -330,6 +356,8 @@ class PokemonUI {
           <div class="nombrePokemon">${japones} (${japonesTraduccion})</div>
           <div class="numeroPokemon">${numeroPokemon}</div>
         </div>
+        <div>
+        <div class="contenidoPokemon">
         <div class="contenedorImagen">
           <img id="imagenPokemonCuadro" class="imagenPokemon" src="public/Imagen_no_disponible.svg" height="200;">
           
@@ -360,6 +388,7 @@ class PokemonUI {
           ${this.generateSectionControls()}
         </div>
         <div id="contenedorInfo" class="contenedorInfo"></div>
+        </div>
       </div>
     `;
   }
@@ -668,16 +697,22 @@ class PokemonUI {
       }
 
       contenedorInfo.innerHTML += `
+      <div class="tarjetaIndividual">
         <div class="tituloTarjeta">Género</div>
         <div class="contenidoTarjeta">
           <div style="width: 100%;">${barras}</div>
         </div>
+        </div>
+        </div>
       `;
     } else {
       contenedorInfo.innerHTML += `
+      <div class="tarjetaIndividual">
         <div class="tituloTarjeta">Género</div>
         <div class="contenidoTarjeta">
           Sin género
+        </div>
+        </div>
         </div>
       `;
     }
@@ -874,9 +909,13 @@ class PokemonUI {
       }).join('<br>');
 
       pronunciacionesHTML += `
+      <div class="contenedorMedidas">
+      <div class="tarjeta">
         <div class="tituloTarjeta">${pokemonData.pronunciacion.length === 1 ? 'Pronunciación' : 'Pronunciaciones'}</div>
         <div class="contenidoTarjeta">
           <div>${pronunciaciones}</div>
+        </div>
+        </div>
         </div>
       `;
 

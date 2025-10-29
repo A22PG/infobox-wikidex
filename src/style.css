@@ -229,15 +229,16 @@ body {
 
 /* Contenedor de información */
 .contenedorInfo {
-  margin-top: 15px;
+  display:flex;
+  flex-direction: column;
+  margin-top: .8em;
+  gap:.8em;
 }
 
 .tarjetaInfo {
-  border-radius: 25px;
   background: #fff;
   padding: 0 0 1em 0;
   text-align: center;
-  margin-bottom: 10px;
 }
 
 .tituloTarjeta {
@@ -256,7 +257,6 @@ body {
   background: #fff;
   padding: .5em;
   text-align: center;
-  margin: 0 0 .5em 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -269,6 +269,10 @@ body {
 .contenedorMedidas {
   display: flex;
   gap: .5em;
+}
+
+.contenedorMedidas > .tarjeta:only-child {
+  width: 100%;
 }
 
 .tarjeta {
@@ -431,7 +435,10 @@ body {
   
   .contenedorPokemon {
     min-width: 260px;
-    padding: 0.8em;
+  }
+
+  .contenidoPokemon{
+    gap:.5em;
   }
   
   .circuloExterno {
@@ -493,7 +500,6 @@ body {
 @media screen and (max-width: 360px) {
   .contenedorPokemon {
     min-width: 240px;
-    padding: 0.6em;
   }
   
   .circuloExterno {
