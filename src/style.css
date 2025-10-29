@@ -18,7 +18,6 @@ body {
   width: 100%;
   margin: 0 auto;
   border-radius: 25px;
-  background: #FFD700;
   padding: 1em;
 }
 
@@ -281,6 +280,7 @@ body {
 /* Estilos inline refactorizados */
 .tituloPokemon {
   text-align: center;
+  font-weight: bold;
   font-size: 2em;
   padding: 0.5em;
 }

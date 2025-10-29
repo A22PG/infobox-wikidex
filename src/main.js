@@ -1,5 +1,11 @@
 import "./style.css";
 
+const pokemon = "Pikachu";
+const colorBg = "#FFD700";
+const japones = "ピカチュウ";
+const japonesTraduccion = "Pikachu";
+const numeroPokemon = "#0025"
+
 const pokemonJSON = {
   "forma": {
     "macho": {
@@ -46,7 +52,7 @@ const pokemonJSON = {
       "categoria": "Ratón",
       "figura": "8",
       "huevo": ["Campo", "Hada"],
-      "grito": "Grito_de_Pikachu_en_la_sexta_generación.mp3",
+      "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5a/latest/20200302181628/Grito_de_Pikachu_en_la_s%C3%A9ptima_generaci%C3%B3n.ogg",
       "genero": {
         "macho": "80",
         "hembra": "49"
@@ -69,7 +75,7 @@ const pokemonJSON = {
       "generacion": "7",
       "categoria": "Ratón",
       "figura": "8",
-      "grito": "Grito_de_Hitmonlee.mp3"
+      "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5a/latest/20200302181628/Grito_de_Pikachu_en_la_s%C3%A9ptima_generaci%C3%B3n.ogg"
     },
     "pikachu_giga": {
       "tipo": ["Eléctrico"],
@@ -144,7 +150,7 @@ class PokemonState {
   }
 
   getAvailableSpecialForms() {
-    const possible = ["mega", "megaX", "megaY", "giga", "primigenio", "origen"];
+    const possible = ["mega", "megaX", "megaY", "giga"];
     return possible.filter(form => this.forma.hasOwnProperty(form) && this.forma[form] !== "");
   }
 
@@ -318,11 +324,11 @@ class PokemonUI {
 
   initializeHTML() {
     document.querySelector("#app").innerHTML = `
-      <div class="contenedorPokemon">
-        <div class="tituloPokemon">'''Pikachu'''</div>
+      <div class="contenedorPokemon" style="background:${colorBg}">
+        <div class="tituloPokemon">${pokemon}</div>
         <div class="subtituloPokemon">
-          <div class="nombrePokemon">ピカチュウ (Pikachu)</div>
-          <div class="numeroPokemon">#0025</div>
+          <div class="nombrePokemon">${japones} (${japonesTraduccion})</div>
+          <div class="numeroPokemon">${numeroPokemon}</div>
         </div>
         <div class="contenedorImagen">
           <img id="imagenPokemonCuadro" class="imagenPokemon" src="public/Imagen_no_disponible.svg" height="200;">
@@ -374,20 +380,20 @@ class PokemonUI {
     return `
       <div id="seccion1" class="seccionControles">
         <div id="btnSec1Menos" class="seccionSelector">
-          <span>↑</span>
+          <span>←</span>
         </div>
         <div id="seccion1Texto" class="textoSeccion">Común</div>
         <div id="btnSec1Mas" class="seccionSelector">
-          <span>↓</span>
+          <span>→</span>
         </div>
       </div>
       <div id="seccion2" class="seccionControles" style="display: none;">
         <div id="btnSec2Menos" class="seccionSelector">
-          <span>↑</span>
+          <span>←</span>
         </div>
         <div id="seccion2Texto" class="textoSeccion">Común</div>
         <div id="btnSec2Mas" class="seccionSelector">
-          <span>↓</span>
+          <span>→</span>
         </div>
       </div>
     `;
@@ -418,8 +424,21 @@ class PokemonUI {
     this.elements.sec2menos?.addEventListener("click", () => this.navigateSection(2, -1));
 
     this.elements.botonVolumen?.addEventListener("click", () => {
-      this.handleVolumeClick();
+      const pokemonData = this.state.getPokemonData();
+      if (pokemonData.grito && pokemonData.grito.startsWith("https://")) {
+        const audio = new Audio(pokemonData.grito);
+        audio.play().catch(() => { });
+        this.state.currentAudio = audio;
+      }
     });
+
+  }
+
+  handleVolumeClick() {
+    const pokemonData = this.state.getPokemonData();
+    if (pokemonData.grito) {
+      this.state.playAudio(pokemonData.grito);
+    }
   }
 
   handleResize() {
@@ -459,10 +478,14 @@ class PokemonUI {
     this.updateAll();
   }
 
-  handleVolumeClick() {
-    const pokemonData = this.state.getPokemonData();
-    if (pokemonData.grito) {
-      this.state.playAudio(pokemonData.grito);
+  playAudio(audioUrl) {
+    try {
+      const audio = new Audio(audioUrl);
+      audio.play().catch();
+
+      this.currentAudio = audio;
+    } catch (error) {
+      console.log(error)
     }
   }
 
