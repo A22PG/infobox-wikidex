@@ -60,8 +60,20 @@ const pokemonJSON = {
       "variocolor": "https://img.pokemondb.net/sprites/home/shiny/1x/pikachu-gigantamax.png"
     },
     "mega": {
-      "datos": "pikachu_giga",
+      "datos": "pikachu_mega",
       "imagen": "",
+    },
+    "megaX":{
+      "datos":"pikachu_megaX",
+      "imagen":"https://images.wikidexcdn.net/mwuploads/wikidex/7/7d/latest/20251016084320/Mega-Raichu_X.png",
+      "trasera":"https://images.wikidexcdn.net/mwuploads/wikidex/9/96/latest/20241104015348/Pikachu_%28Halloween%29_morado_Sleep.png"
+    },
+    "megaY":{
+      "datos":"pikachu_megaY",
+      "imagen":"https://images.wikidexcdn.net/mwuploads/wikidex/f/f1/latest/20251016084336/Mega-Raichu_Y.png",
+      "trasera":"https://images.wikidexcdn.net/mwuploads/wikidex/4/4c/latest/20180418223326/Evento_Pikachu_con_vuelo.png",
+      "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b0/latest/20150615185638/Pikachu_Pok%C3%A9mon_Mundo_Megamisterioso.png",
+      "variocolorTrasera":"https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250127090512/Raichu.png",
     }
   },
   "info": {
@@ -80,7 +92,7 @@ const pokemonJSON = {
       "huevo": ["Campo", "Hada"],
       "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5a/latest/20200302181628/Grito_de_Pikachu_en_la_s%C3%A9ptima_generaci%C3%B3n.ogg",
       "genero": {
-        "macho": "80",
+        "macho": "49",
         "hembra": "49"
       },
       "color": "Amarillo",
@@ -101,7 +113,12 @@ const pokemonJSON = {
       "generacion": "7",
       "categoria": "Ratón",
       "figura": "8",
-      "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5a/latest/20200302181628/Grito_de_Pikachu_en_la_s%C3%A9ptima_generaci%C3%B3n.ogg"
+      "color": "Verde",
+      "genero":{
+        "macho":"100",
+        "hembra":"0",
+      },
+      "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/1/1e/latest/20180510202106/Grito_de_Pikachu_con_gorra.ogg"
     },
     "pikachu_giga": {
       "tipo": ["Eléctrico"],
@@ -111,10 +128,106 @@ const pokemonJSON = {
         { "nombre": "Pararrayos", "oculta": true }
       ],
       "generacion": "8",
+      "categoria": "Ratón",
+    },
+    "pikachu_mega": {
+      "tipo": ["Agua","Bicho"],
+      "peso":"34",
+      "altura": 21,
+      "habilidad": [
+        { "nombre": "Electricidad Estática" },
+        { "nombre": "Pararrayos", "oculta": true }
+      ],
+      "generacion": "9",
+      "figura":"12",
+      "color":"Blanco",
+      "categoria": "Ratón"
+    },
+    "pikachu_megaX": {
+      "tipo": ["Hielo","Astral"],
+      "peso":"34",
+      "altura": 21,
+      "habilidad": [
+        { "nombre": "Electricidad Estática" },
+        { "nombre": "Pararrayos", "oculta": true }
+      ],
+      "genero":{
+        "hembra":"100"
+      },
+      "generacion": "9",
+      "figura":"12",
+      "categoria": "Ratón"
+    },
+    "pikachu_megaY": {
+      "tipo": ["Fantasma","Dragón"],
+      "peso":"34",
+      "altura": 21,
+      "genero":{
+        "macho":"20",
+        "hembra":"80"
+      },
+      "habilidad": [
+        { "nombre": "Electricidad Estática" },
+        { "nombre": "Pararrayos", "oculta": true }
+      ],
+      "generacion": "9",
+      "color":"Rojo",
       "categoria": "Ratón"
     }
   }
 };
+
+const datosWikidex = {
+  "tipo":{
+    "Acero":"https://images.wikidexcdn.net/mwuploads/wikidex/5/52/latest/20221208180543/Tipo_acero_EP.png",
+    "Agua":"https://images.wikidexcdn.net/mwuploads/wikidex/5/59/latest/20221208180426/Tipo_agua_EP.png",
+    "Bicho":"https://images.wikidexcdn.net/mwuploads/wikidex/5/5d/latest/20221208180434/Tipo_bicho_EP.png",
+    "Dragón":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b8/latest/20221208180443/Tipo_drag%C3%B3n_EP.png",
+    "Eléctrico":"https://images.wikidexcdn.net/mwuploads/wikidex/3/38/latest/20221208180452/Tipo_el%C3%A9ctrico_EP.png",
+    "Fantasma":"https://images.wikidexcdn.net/mwuploads/wikidex/0/03/latest/20221208180503/Tipo_fantasma_EP.png",
+    "Fuego":"https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20221208180625/Tipo_fuego_EP.png",
+    "Hada":"https://images.wikidexcdn.net/mwuploads/wikidex/9/97/latest/20221208180633/Tipo_hada_EP.png",
+    "Hielo":"https://images.wikidexcdn.net/mwuploads/wikidex/1/17/latest/20221208180641/Tipo_hielo_EP.png",
+    "Lucha":"https://images.wikidexcdn.net/mwuploads/wikidex/5/5f/latest/20221208180651/Tipo_lucha_EP.png",
+    "Normal":"https://images.wikidexcdn.net/mwuploads/wikidex/9/99/latest/20221208180705/Tipo_normal_EP.png",
+    "Planta":"https://images.wikidexcdn.net/mwuploads/wikidex/a/a7/latest/20221208180710/Tipo_planta_EP.png",
+    "Psíquico":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9b/latest/20221208180717/Tipo_ps%C3%ADquico_EP.png",
+    "Roca":"https://images.wikidexcdn.net/mwuploads/wikidex/8/88/latest/20221208180726/Tipo_roca_EP.png",
+    "Siniestro":"https://images.wikidexcdn.net/mwuploads/wikidex/d/de/latest/20221208180734/Tipo_siniestro_EP.png",
+    "Tierra":"https://images.wikidexcdn.net/mwuploads/wikidex/c/c9/latest/20221208180742/Tipo_tierra_EP.png",
+    "Veneno":"https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20221208180751/Tipo_veneno_EP.png",
+    "Volador":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9a/latest/20221208180800/Tipo_volador_EP.png",
+    "Astral":"https://images.wikidexcdn.net/mwuploads/wikidex/8/82/latest/20231216092909/Tipo_astral_EP.png",
+  },
+  "figura":{
+    "1":"https://images.wikidexcdn.net/mwuploads/wikidex/a/a0/latest/20200214140440/Figura_1.png",
+    "2":"https://images.wikidexcdn.net/mwuploads/wikidex/1/18/latest/20200214140740/Figura_2.png",
+    "3":"https://images.wikidexcdn.net/mwuploads/wikidex/0/01/latest/20200214140905/Figura_3.png",
+    "4":"https://images.wikidexcdn.net/mwuploads/wikidex/1/15/latest/20200214141009/Figura_4.png",
+    "5":"https://images.wikidexcdn.net/mwuploads/wikidex/2/21/latest/20200214141122/Figura_5.png",
+    "6":"https://images.wikidexcdn.net/mwuploads/wikidex/f/ff/latest/20200214141238/Figura_6.png",
+    "7":"https://images.wikidexcdn.net/mwuploads/wikidex/c/c7/latest/20200214141337/Figura_7.png",
+    "8":"https://images.wikidexcdn.net/mwuploads/wikidex/6/67/latest/20200214141425/Figura_8.png",
+    "9":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20200214141545/Figura_9.png",
+    "10":"https://images.wikidexcdn.net/mwuploads/wikidex/c/c5/latest/20200214141655/Figura_10.png",
+    "11":"https://images.wikidexcdn.net/mwuploads/wikidex/9/93/latest/20200214141809/Figura_11.png",
+    "12":"https://images.wikidexcdn.net/mwuploads/wikidex/3/38/latest/20200214141912/Figura_12.png",
+    "13":"https://images.wikidexcdn.net/mwuploads/wikidex/5/5b/latest/20200214142011/Figura_13.png",
+    "14":"https://images.wikidexcdn.net/mwuploads/wikidex/c/cb/latest/20200214142056/Figura_14.png",
+  },
+  "generación":{
+    "1":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b0/latest/20241019145047/Primera_generaci%C3%B3n.svg",
+    "2":"https://images.wikidexcdn.net/mwuploads/wikidex/3/38/latest/20241019145155/Segunda_generaci%C3%B3n.svg",
+    "3":"https://images.wikidexcdn.net/mwuploads/wikidex/4/4a/latest/20241019145242/Tercera_generaci%C3%B3n.svg",
+    "4":"https://images.wikidexcdn.net/mwuploads/wikidex/5/5a/latest/20241019145319/Cuarta_generaci%C3%B3n.svg",
+    "5":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9f/latest/20241019145355/Quinta_generaci%C3%B3n.svg",
+    "6":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9e/latest/20241019145423/Sexta_generaci%C3%B3n.svg",
+    "7":"https://images.wikidexcdn.net/mwuploads/wikidex/a/a6/latest/20241019145454/S%C3%A9ptima_generaci%C3%B3n.svg",
+    "8":"https://images.wikidexcdn.net/mwuploads/wikidex/4/4b/latest/20241019145522/Octava_generaci%C3%B3n.svg",
+    "9":"https://images.wikidexcdn.net/mwuploads/wikidex/8/8c/latest/20241019145549/Novena_generaci%C3%B3n.svg",
+  },
+  "default":"https://www.wikidex.net/wiki/Archivo:Imagen_no_disponible.svg"
+}
 
 const buttonConfig = {
   gender: [
@@ -628,12 +741,15 @@ class PokemonUI {
     }
 
     if ((pokemonData.tipo && pokemonData.tipo.length > 0) || pokemonData.generacion !== undefined) {
-      const tiposHTML = (pokemonData.tipo && pokemonData.tipo.length > 0)
-        ? pokemonData.tipo.map(tipo =>
-          `<img src="public/Tipo_${tipo}_WikiDex.svg" height="25" alt="${tipo}">`
-        ).join('')
-        : '';
+  const tiposHTML = (pokemonData.tipo && pokemonData.tipo.length > 0)
+    ? pokemonData.tipo.map(tipo => {
+        const imagenTipo = datosWikidex.tipo[tipo] || 'ruta/por_defecto.png';
+        return `<img src="${imagenTipo}" height="22" alt="${tipo}">`;
+      }).join('')
+    : '';
 
+      
+      const imgGeneracion = datosWikidex.generación[pokemonData.generacion] || datosWikidex.default;
       let generacionHTML = '';
       if (pokemonData.generacion !== undefined) {
         const generaciones = ['Primera', 'Segunda', 'Tercera', 'Cuarta', 'Quinta', 'Sexta', 'Séptima', 'Octava', 'Novena', 'Décima', 'Undécima', 'Duodécima'];
@@ -643,7 +759,7 @@ class PokemonUI {
             <div class="tituloTarjeta">Generación</div>
             <div class="contenidoTarjeta">
               <div class="tipoGeneracionContainer">
-                <img src="public/${generacionTexto}_generación.svg" height="20" alt="${generacionTexto} generación"><div class="generacionSpacing"></div>${generacionTexto}
+                <img src="${imgGeneracion}" height="20" alt="${generacionTexto} generación"><div class="generacionSpacing"></div>${generacionTexto}
               </div>
             </div>
           </div>
@@ -668,54 +784,68 @@ class PokemonUI {
     }
 
     if (pokemonData.genero) {
-      let barras = '';
+  let barras = '';
 
-      if (pokemonData.genero.macho > 0) {
-        barras += `
-          <div class="generoContainer">
-            <img src="https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg">
-            <div class="generoBarra">
-              <div class="generoBarraMacho" style="flex-basis: ${pokemonData.genero.macho}%;"></div>
-              <div class="generoBarraVacia" style="flex-basis: ${100 - pokemonData.genero.macho}%;"></div>
-              <div class="generoPorcentaje"><span>${pokemonData.genero.macho}%</span></div>
-            </div>
-          </div>
-        `;
-      }
+  if (pokemonData.genero.macho > 0) {
+    const porcentajeMacho = Math.round(pokemonData.genero.macho);
+    const bordeMacho = porcentajeMacho === 100
+      ? 'border-radius: 5px;'
+      : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
 
-      if (pokemonData.genero.hembra > 0) {
-        barras += `
-          <div class="generoContainer">
-            <img src="https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg">
-            <div class="generoBarra">
-              <div class="generoBarraHembra" style="flex-basis: ${pokemonData.genero.hembra}%;"></div>
-              <div class="generoBarraVacia" style="flex-basis: ${100 - pokemonData.genero.hembra}%;"></div>
-              <div class="generoPorcentaje"><span>${pokemonData.genero.hembra}%</span></div>
-            </div>
-          </div>
-        `;
-      }
+    barras += `
+      <div class="generoContainer">
+        <img src="https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg" alt="Macho">
+        <div class="generoBarra">
+          <div class="generoBarraMacho" style="flex-basis: ${porcentajeMacho}%; ${bordeMacho}"></div>
+          ${porcentajeMacho < 100
+            ? `<div class="generoBarraVacia" style="flex-basis: ${100 - porcentajeMacho}%;"></div>`
+            : ''}
+          <div class="generoPorcentaje"><span>${porcentajeMacho}%</span></div>
+        </div>
+      </div>
+    `;
+  }
 
-      contenedorInfo.innerHTML += `
-      <div class="tarjetaIndividual">
-        <div class="tituloTarjeta">Género</div>
-        <div class="contenidoTarjeta">
-          <div style="width: 100%;">${barras}</div>
+  if (pokemonData.genero.hembra > 0) {
+    const porcentajeHembra = Math.round(pokemonData.genero.hembra);
+    const bordeHembra = porcentajeHembra === 100
+      ? 'border-radius: 5px;'
+      : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
+
+    barras += `
+      <div class="generoContainer">
+        <img src="https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg" alt="Hembra">
+        <div class="generoBarra">
+          <div class="generoBarraHembra" style="flex-basis: ${porcentajeHembra}%; ${bordeHembra}"></div>
+          ${porcentajeHembra < 100
+            ? `<div class="generoBarraVacia" style="flex-basis: ${100 - porcentajeHembra}%;"></div>`
+            : ''}
+          <div class="generoPorcentaje"><span>${porcentajeHembra}%</span></div>
         </div>
-        </div>
-        </div>
-      `;
-    } else {
-      contenedorInfo.innerHTML += `
-      <div class="tarjetaIndividual">
-        <div class="tituloTarjeta">Género</div>
-        <div class="contenidoTarjeta">
-          Sin género
-        </div>
-        </div>
-        </div>
-      `;
-    }
+      </div>
+    `;
+  }
+
+  // --- Tarjeta completa ---
+  contenedorInfo.innerHTML += `
+    <div class="tarjetaIndividual">
+      <div class="tituloTarjeta">Género</div>
+      <div class="contenidoTarjeta">
+        <div style="width: 100%;">${barras}</div>
+      </div>
+    </div>
+  `;
+} else {
+  contenedorInfo.innerHTML += `
+    <div class="tarjetaIndividual">
+      <div class="tituloTarjeta">Género</div>
+      <div class="contenidoTarjeta">
+        Sin género
+      </div>
+    </div>
+  `;
+}
+
 
     if (pokemonData.altura !== undefined || pokemonData.peso !== undefined) {
       let medidasHTML = '<div class="contenedorMedidas">';
@@ -799,14 +929,16 @@ class PokemonUI {
       contenedorInfo.innerHTML += habilidadesHTML;
     }
 
+    
     if (pokemonData.figura !== undefined || pokemonData.color) {
+      const imgFigura = datosWikidex.figura[pokemonData.figura] || datosWikidex.default;
       let figuraHTML = '';
       if (pokemonData.figura !== undefined) {
         figuraHTML = `
           <div class="tarjeta">
             <div class="tituloTarjeta">Figura</div>
             <div class="contenidoTarjeta">
-              <img src="public/Figura_${pokemonData.figura}.png" height="30" alt="Figura ${pokemonData.figura}">
+              <img src="${imgFigura}" height="30" alt="Figura ${pokemonData.figura}">
             </div>
           </div>
         `;
