@@ -1,12 +1,12 @@
 import "./style.css";
 
-const pokemon = "Pikachu";
-const colorBg = "#FFD700";
-const japones = "ピカチュウ";
-const japonesTraduccion = "Pikachu";
-const numeroPokemon = "#0025"
+const pokemon = "Alcremie";
+const colorBg = "#ffb0ff";
+const japones = "マホイップ";
+const japonesTraduccion = "Mawhip";
+const numeroPokemon = "#0869"
 
-const pokemonJSON = {
+/* const pokemonJSON = {
   "forma": {
     "macho": {
       "normal": {
@@ -176,57 +176,611 @@ const pokemonJSON = {
     }
   }
 };
+*/
+
+const pokemonJSON = {
+  "forma": {
+    "hembra": {
+      "Crema de vainilla": {
+        "Confite fresa": {
+          "datos": "alcremie_crema_vainilla",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/7/76/latest/20200214191504/Alcremie_HOME.png",
+          "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b8/latest/20220604125538/Alcremie_HOME_variocolor.png",
+        },
+        "Confite corazón":{
+          "datos": "alcremie_crema_vainilla",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20210524164800/Alcremie_crema_de_vainilla_coraz%C3%B3n_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/bd/latest/20220604130851/Alcremie_coraz%C3%B3n_HOME_variocolor.png"
+        },
+        "Confite flor":{
+          "datos": "alcremie_crema_vainilla",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/8/8e/latest/20200321170116/Alcremie_crema_de_vainilla_flor_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/d/d3/latest/20220604125720/Alcremie_flor_HOME_variocolor.png"
+        },
+        "Confite estrella":{
+          "datos": "alcremie_crema_vainilla",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5f/latest/20210524164911/Alcremie_crema_de_vainilla_estrella_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b3/latest/20220604130810/Alcremie_estrella_HOME_variocolor.png"
+        },
+        "Confite trébol":{
+          "datos": "alcremie_crema_vainilla",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/6/67/latest/20200321170120/Alcremie_crema_de_vainilla_tr%C3%A9bol_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/3/36/latest/20220604125643/Alcremie_tr%C3%A9bol_HOME_variocolor.png"
+        },
+        "Confite fruto":{
+          "datos": "alcremie_crema_vainilla",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/7/7d/latest/20210524165032/Alcremie_crema_de_vainilla_fruto_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20220604125611/Alcremie_fruto_HOME_variocolor.png"
+        },
+        "Confite lazo":{
+          "datos": "alcremie_crema_vainilla",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/e/e0/latest/20210524165022/Alcremie_crema_de_vainilla_lazo_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20220604125741/Alcremie_lazo_HOME_variocolor.png"
+        },
+      },
+      "Crema rosa": {
+        "Confite fresa": {
+          "datos": "alcremie_crema_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/1/16/latest/20200321170242/Alcremie_crema_rosa_HOME.png",
+          "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b8/latest/20220604125538/Alcremie_HOME_variocolor.png",
+        },
+        "Confite corazón":{
+          "datos": "alcremie_crema_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/3/30/latest/20210524164955/Alcremie_crema_rosa_coraz%C3%B3n_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/bd/latest/20220604130851/Alcremie_coraz%C3%B3n_HOME_variocolor.png"
+        },
+        "Confite flor":{
+          "datos": "alcremie_crema_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/e/e9/latest/20200321170223/Alcremie_crema_rosa_flor_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/d/d3/latest/20220604125720/Alcremie_flor_HOME_variocolor.png"
+        },
+        "Confite estrella":{
+          "datos": "alcremie_crema_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/f/f6/latest/20210524164944/Alcremie_crema_rosa_estrella_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b3/latest/20220604130810/Alcremie_estrella_HOME_variocolor.png"
+        },
+        "Confite trébol":{
+          "datos": "alcremie_crema_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/3/3d/latest/20200321170119/Alcremie_crema_rosa_tr%C3%A9bol_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/3/36/latest/20220604125643/Alcremie_tr%C3%A9bol_HOME_variocolor.png"
+        },
+        "Confite fruto":{
+          "datos": "alcremie_crema_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/9/97/latest/20210524164725/Alcremie_crema_rosa_fruto_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20220604125611/Alcremie_fruto_HOME_variocolor.png"
+        },
+        "Confite lazo":{
+          "datos": "alcremie_crema_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/f/f7/latest/20210524164846/Alcremie_crema_rosa_lazo_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20220604125741/Alcremie_lazo_HOME_variocolor.png"
+        },
+      },
+      "Crema de té": {
+        "Confite fresa": {
+          "datos": "alcremie_crema_te",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/2/22/latest/20200321170403/Alcremie_crema_de_t%C3%A9_HOME.png",
+          "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b8/latest/20220604125538/Alcremie_HOME_variocolor.png",
+        },
+        "Confite corazón":{
+          "datos": "alcremie_crema_te",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/1/12/latest/20210524164626/Alcremie_crema_de_t%C3%A9_coraz%C3%B3n_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/bd/latest/20220604130851/Alcremie_coraz%C3%B3n_HOME_variocolor.png"
+        },
+        "Confite flor":{
+          "datos": "alcremie_crema_te",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/d/dc/latest/20200321170337/Alcremie_crema_de_t%C3%A9_flor_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/d/d3/latest/20220604125720/Alcremie_flor_HOME_variocolor.png"
+        },
+        "Confite estrella":{
+          "datos": "alcremie_crema_te",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/3/3e/latest/20210524164655/Alcremie_crema_de_t%C3%A9_estrella_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b3/latest/20220604130810/Alcremie_estrella_HOME_variocolor.png"
+        },
+        "Confite trébol":{
+          "datos": "alcremie_crema_te",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/8/8d/latest/20200321170308/Alcremie_crema_de_t%C3%A9_tr%C3%A9bol_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/3/36/latest/20220604125643/Alcremie_tr%C3%A9bol_HOME_variocolor.png"
+        },
+        "Confite fruto":{
+          "datos": "alcremie_crema_te",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/b/bd/latest/20210524165025/Alcremie_crema_de_t%C3%A9_fruto_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20220604125611/Alcremie_fruto_HOME_variocolor.png"
+        },
+        "Confite lazo":{
+          "datos": "alcremie_crema_te",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/7/7a/latest/20210524165037/Alcremie_crema_de_t%C3%A9_lazo_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20220604125741/Alcremie_lazo_HOME_variocolor.png"
+        },
+      },
+      "Crema de menta": {
+        "Confite fresa": {
+          "datos": "alcremie_crema_menta",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20220604130048/Alcremie_crema_de_menta_HOME.png",
+          "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b8/latest/20220604125538/Alcremie_HOME_variocolor.png",
+        },
+        "Confite corazón":{
+          "datos": "alcremie_crema_menta",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c8/latest/20220604130151/Alcremie_crema_de_menta_coraz%C3%B3n_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/bd/latest/20220604130851/Alcremie_coraz%C3%B3n_HOME_variocolor.png"
+        },
+        "Confite flor":{
+          "datos": "alcremie_crema_menta",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/a/a0/latest/20220604125549/Alcremie_crema_de_menta_flor_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/d/d3/latest/20220604125720/Alcremie_flor_HOME_variocolor.png"
+        },
+        "Confite estrella":{
+          "datos": "alcremie_crema_menta",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/3/35/latest/20220604130140/Alcremie_crema_de_menta_estrella_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b3/latest/20220604130810/Alcremie_estrella_HOME_variocolor.png"
+        },
+        "Confite trébol":{
+          "datos": "alcremie_crema_menta",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b4/latest/20220604130615/Alcremie_crema_de_menta_tr%C3%A9bol_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/3/36/latest/20220604125643/Alcremie_tr%C3%A9bol_HOME_variocolor.png"
+        },
+        "Confite fruto":{
+          "datos": "alcremie_crema_menta",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/7/7c/latest/20220604130228/Alcremie_crema_de_menta_fruto_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20220604125611/Alcremie_fruto_HOME_variocolor.png"
+        },
+        "Confite lazo":{
+          "datos": "alcremie_crema_menta",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/b/bc/latest/20220604125902/Alcremie_crema_de_menta_lazo_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20220604125741/Alcremie_lazo_HOME_variocolor.png"
+        },
+      },
+      "Crema de limón": {
+        "Confite fresa": {
+          "datos": "alcremie_crema_limon",
+          "imagen": "http://images.wikidexcdn.net/mwuploads/wikidex/e/e7/latest/20220604130943/Alcremie_crema_de_lim%C3%B3n_HOME.png",
+          "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b8/latest/20220604125538/Alcremie_HOME_variocolor.png",
+        },
+        "Confite corazón":{
+          "datos": "alcremie_crema_limon",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/5/56/latest/20220604131019/Alcremie_crema_de_lim%C3%B3n_coraz%C3%B3n_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/bd/latest/20220604130851/Alcremie_coraz%C3%B3n_HOME_variocolor.png"
+        },
+        "Confite flor":{
+          "datos": "alcremie_crema_limon",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/a/ae/latest/20220604130738/Alcremie_crema_de_lim%C3%B3n_flor_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/d/d3/latest/20220604125720/Alcremie_flor_HOME_variocolor.png"
+        },
+        "Confite estrella":{
+          "datos": "alcremie_crema_limon",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/6/6e/latest/20220604130630/Alcremie_crema_de_lim%C3%B3n_estrella_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b3/latest/20220604130810/Alcremie_estrella_HOME_variocolor.png"
+        },
+        "Confite trébol":{
+          "datos": "alcremie_crema_limon",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/2/20/latest/20220604130933/Alcremie_crema_de_lim%C3%B3n_tr%C3%A9bol_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/3/36/latest/20220604125643/Alcremie_tr%C3%A9bol_HOME_variocolor.png"
+        },
+        "Confite fruto":{
+          "datos": "alcremie_crema_limon",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/7/7a/latest/20220604130554/Alcremie_crema_de_lim%C3%B3n_fruto_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20220604125611/Alcremie_fruto_HOME_variocolor.png"
+        },
+        "Confite lazo":{
+          "datos": "alcremie_crema_limon",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20220604130856/Alcremie_crema_de_lim%C3%B3n_lazo_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20220604125741/Alcremie_lazo_HOME_variocolor.png"
+        },
+      },
+      "Crema salada": {
+        "Confite fresa": {
+          "datos": "alcremie_crema_salada",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c1/latest/20220604130641/Alcremie_crema_salada_HOME.png",
+          "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b8/latest/20220604125538/Alcremie_HOME_variocolor.png",
+        },
+        "Confite corazón":{
+          "datos": "alcremie_crema_salada",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/4/4c/latest/20220604130759/Alcremie_crema_salada_coraz%C3%B3n_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/bd/latest/20220604130851/Alcremie_coraz%C3%B3n_HOME_variocolor.png"
+        },
+        "Confite flor":{
+          "datos": "alcremie_crema_salada",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/1/1b/latest/20220604130830/Alcremie_crema_salada_flor_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/d/d3/latest/20220604125720/Alcremie_flor_HOME_variocolor.png"
+        },
+        "Confite estrella":{
+          "datos": "alcremie_crema_salada",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c6/latest/20220604125617/Alcremie_crema_salada_estrella_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b3/latest/20220604130810/Alcremie_estrella_HOME_variocolor.png"
+        },
+        "Confite trébol":{
+          "datos": "alcremie_crema_salada",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/2/2c/latest/20220604130723/Alcremie_crema_salada_tr%C3%A9bol_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/3/36/latest/20220604125643/Alcremie_tr%C3%A9bol_HOME_variocolor.png"
+        },
+        "Confite fruto":{
+          "datos": "alcremie_crema_salada",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/9/90/latest/20220604125715/Alcremie_crema_salada_fruto_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20220604125611/Alcremie_fruto_HOME_variocolor.png"
+        },
+        "Confite lazo":{
+          "datos": "alcremie_crema_salada",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/9/9e/latest/20220604125725/Alcremie_crema_salada_lazo_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20220604125741/Alcremie_lazo_HOME_variocolor.png"
+        },
+      },
+      "Mezcla rosa": {
+        "Confite fresa": {
+          "datos": "alcremie_mezcla_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c1/latest/20200321170124/Alcremie_mezcla_rosa_HOME.png",
+          "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b8/latest/20220604125538/Alcremie_HOME_variocolor.png",
+        },
+        "Confite corazón":{
+          "datos": "alcremie_mezcla_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/d/da/latest/20210524164947/Alcremie_mezcla_rosa_coraz%C3%B3n_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/bd/latest/20220604130851/Alcremie_coraz%C3%B3n_HOME_variocolor.png"
+        },
+        "Confite flor":{
+          "datos": "alcremie_mezcla_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/b/bc/latest/20200321170102/Alcremie_mezcla_rosa_flor_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/d/d3/latest/20220604125720/Alcremie_flor_HOME_variocolor.png"
+        },
+        "Confite estrella":{
+          "datos": "alcremie_mezcla_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/6/6b/latest/20210524164624/Alcremie_mezcla_rosa_estrella_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b3/latest/20220604130810/Alcremie_estrella_HOME_variocolor.png"
+        },
+        "Confite trébol":{
+          "datos": "alcremie_mezcla_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20200321170233/Alcremie_mezcla_rosa_tr%C3%A9bol_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/3/36/latest/20220604125643/Alcremie_tr%C3%A9bol_HOME_variocolor.png"
+        },
+        "Confite fruto":{
+          "datos": "alcremie_mezcla_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/9/96/latest/20210524165027/Alcremie_mezcla_rosa_fruto_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20220604125611/Alcremie_fruto_HOME_variocolor.png"
+        },
+        "Confite lazo":{
+          "datos": "alcremie_mezcla_rosa",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/5/59/latest/20210524164703/Alcremie_mezcla_rosa_lazo_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20220604125741/Alcremie_lazo_HOME_variocolor.png"
+        },
+      },
+      "Mezcla caramelo": {
+        "Confite fresa": {
+          "datos": "alcremie_mezcla_caramelo",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/8/80/latest/20220604130311/Alcremie_mezcla_caramelo_HOME.png",
+          "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b8/latest/20220604125538/Alcremie_HOME_variocolor.png",
+        },
+        "Confite corazón":{
+          "datos": "alcremie_mezcla_caramelo",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/8/84/latest/20220604130907/Alcremie_mezcla_caramelo_coraz%C3%B3n_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/bd/latest/20220604130851/Alcremie_coraz%C3%B3n_HOME_variocolor.png"
+        },
+        "Confite flor":{
+          "datos": "alcremie_mezcla_caramelo",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/6/63/latest/20220604130233/Alcremie_mezcla_caramelo_flor_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/d/d3/latest/20220604125720/Alcremie_flor_HOME_variocolor.png"
+        },
+        "Confite estrella":{
+          "datos": "alcremie_mezcla_caramelo",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/2/21/latest/20220604130006/Alcremie_mezcla_caramelo_estrella_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b3/latest/20220604130810/Alcremie_estrella_HOME_variocolor.png"
+        },
+        "Confite trébol":{
+          "datos": "alcremie_mezcla_caramelo",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20220604130620/Alcremie_mezcla_caramelo_tr%C3%A9bol_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/3/36/latest/20220604125643/Alcremie_tr%C3%A9bol_HOME_variocolor.png"
+        },
+        "Confite fruto":{
+          "datos": "alcremie_mezcla_caramelo",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/d/dc/latest/20220604130507/Alcremie_mezcla_caramelo_fruto_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20220604125611/Alcremie_fruto_HOME_variocolor.png"
+        },
+        "Confite lazo":{
+          "datos": "alcremie_mezcla_caramelo",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/5/52/latest/20220604125851/Alcremie_mezcla_caramelo_lazo_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20220604125741/Alcremie_lazo_HOME_variocolor.png"
+        },
+      },
+      "Tres sabores": {
+        "Confite fresa": {
+          "datos": "alcremie_tres_sabores",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/8/86/latest/20200321170358/Alcremie_tres_sabores_HOME.png",
+          "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b8/latest/20220604125538/Alcremie_HOME_variocolor.png",
+        },
+        "Confite corazón":{
+          "datos": "alcremie_tres_sabores",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/0/02/latest/20210524164638/Alcremie_tres_sabores_coraz%C3%B3n_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/bd/latest/20220604130851/Alcremie_coraz%C3%B3n_HOME_variocolor.png"
+        },
+        "Confite flor":{
+          "datos": "alcremie_tres_sabores",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/a/a2/latest/20200321170046/Alcremie_tres_sabores_flor_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/d/d3/latest/20220604125720/Alcremie_flor_HOME_variocolor.png"
+        },
+        "Confite estrella":{
+          "datos": "alcremie_tres_sabores",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/0/08/latest/20210524165024/Alcremie_tres_sabores_estrella_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b3/latest/20220604130810/Alcremie_estrella_HOME_variocolor.png"
+        },
+        "Confite trébol":{
+          "datos": "alcremie_tres_sabores",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/b/bd/latest/20210524164941/Alcremie_tres_sabores_tr%C3%A9bol_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/3/36/latest/20220604125643/Alcremie_tr%C3%A9bol_HOME_variocolor.png"
+        },
+        "Confite fruto":{
+          "datos": "alcremie_tres_sabores",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/9/95/latest/20210524165024/Alcremie_tres_sabores_fruto_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20220604125611/Alcremie_fruto_HOME_variocolor.png"
+        },
+        "Confite lazo":{
+          "datos": "alcremie_tres_sabores",
+          "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b8/latest/20210524164620/Alcremie_tres_sabores_lazo_HOME.png",
+          "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20220604125741/Alcremie_lazo_HOME_variocolor.png"
+        }
+      }
+      },
+      "giga":{
+        "datos":"alcremie_giga",
+        "imagen":"https://images.wikidexcdn.net/mwuploads/wikidex/b/bc/latest/20200214190057/Alcremie_Gigamax_HOME.png",
+        "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/f/f2/latest/20200214190934/Alcremie_Gigamax_HOME_variocolor.png"
+    }
+  },
+  "info": {
+    "alcremie_crema_vainilla": {
+      "tipo":["Hada"],
+      "altura":"0'3",
+      "peso":"0'5",
+      "habilidad": [
+        { "nombre": "Velo dulce" },
+        { "nombre": "Velo aroma", "oculta": true }
+      ],
+      "genero":{
+        "hembra":"100",
+      },
+      "generacion": "8",
+      "categoria": "Nata",
+      "figura": "8",
+      "huevo": ["Hada", "Amorfo"],
+      "grito":"https://images.wikidexcdn.net/mwuploads/wikidex/e/ec/latest/20240213152437/Grito_de_Alcremie.ogg",
+      "color": "Blanco",
+      "pronunciacion": [
+        { "fonetica": "'al.kre.mi"}
+      ]
+    },
+    "alcremie_crema_rosa": {
+      "tipo":["Hada"],
+      "altura":"0'3",
+      "peso":"0'5",
+      "habilidad": [
+        { "nombre": "Velo dulce" },
+        { "nombre": "Velo aroma", "oculta": true }
+      ],
+      "genero":{
+        "hembra":"100",
+      },
+      "generacion": "8",
+      "categoria": "Nata",
+      "figura": "8",
+      "huevo": ["Hada", "Amorfo"],
+      "grito":"https://images.wikidexcdn.net/mwuploads/wikidex/e/ec/latest/20240213152437/Grito_de_Alcremie.ogg",
+      "color": "Rosa",
+      "pronunciacion": [
+        { "fonetica": "'al.kre.mi"}
+      ]
+    },
+    "alcremie_crema_te": {
+      "tipo":["Hada"],
+      "altura":"0'3",
+      "peso":"0'5",
+      "habilidad": [
+        { "nombre": "Velo dulce" },
+        { "nombre": "Velo aroma", "oculta": true }
+      ],
+      "genero":{
+        "hembra":"100",
+      },
+      "generacion": "8",
+      "categoria": "Nata",
+      "figura": "8",
+      "huevo": ["Hada", "Amorfo"],
+      "grito":"https://images.wikidexcdn.net/mwuploads/wikidex/e/ec/latest/20240213152437/Grito_de_Alcremie.ogg",
+      "color": "Verde",
+      "pronunciacion": [
+        { "fonetica": "'al.kre.mi"}
+      ]
+    },
+    "alcremie_crema_menta": {
+      "tipo":["Hada"],
+      "altura":"0'3",
+      "peso":"0'5",
+      "habilidad": [
+        { "nombre": "Velo dulce" },
+        { "nombre": "Velo aroma", "oculta": true }
+      ],
+      "genero":{
+        "hembra":"100",
+      },
+      "generacion": "8",
+      "categoria": "Nata",
+      "figura": "8",
+      "huevo": ["Hada", "Amorfo"],
+      "grito":"https://images.wikidexcdn.net/mwuploads/wikidex/e/ec/latest/20240213152437/Grito_de_Alcremie.ogg",
+      "color": "Azul",
+      "pronunciacion": [
+        { "fonetica": "'al.kre.mi"}
+      ]
+    },
+    "alcremie_crema_limon": {
+      "tipo":["Hada"],
+      "altura":"0'3",
+      "peso":"0'5",
+      "habilidad": [
+        { "nombre": "Velo dulce" },
+        { "nombre": "Velo aroma", "oculta": true }
+      ],
+      "genero":{
+        "hembra":"100",
+      },
+      "generacion": "8",
+      "categoria": "Nata",
+      "figura": "8",
+      "huevo": ["Hada", "Amorfo"],
+      "grito":"https://images.wikidexcdn.net/mwuploads/wikidex/e/ec/latest/20240213152437/Grito_de_Alcremie.ogg",
+      "color": "Amarillo",
+      "pronunciacion": [
+        { "fonetica": "'al.kre.mi"}
+      ]
+    },
+    "alcremie_crema_salada": {
+      "tipo":["Hada"],
+      "altura":"0'3",
+      "peso":"0'5",
+      "habilidad": [
+        { "nombre": "Velo dulce" },
+        { "nombre": "Velo aroma", "oculta": true }
+      ],
+      "genero":{
+        "hembra":"100",
+      },
+      "generacion": "8",
+      "categoria": "Nata",
+      "figura": "8",
+      "huevo": ["Hada", "Amorfo"],
+      "grito":"https://images.wikidexcdn.net/mwuploads/wikidex/e/ec/latest/20240213152437/Grito_de_Alcremie.ogg",
+      "color": "Blacno",
+      "pronunciacion": [
+        { "fonetica": "'al.kre.mi"}
+      ]
+    },
+    "alcremie_mezcla_rosa": {
+      "tipo":["Hada"],
+      "altura":"0'3",
+      "peso":"0'5",
+      "habilidad": [
+        { "nombre": "Velo dulce" },
+        { "nombre": "Velo aroma", "oculta": true }
+      ],
+      "genero":{
+        "hembra":"100",
+      },
+      "generacion": "8",
+      "categoria": "Nata",
+      "figura": "8",
+      "huevo": ["Hada", "Amorfo"],
+      "grito":"https://images.wikidexcdn.net/mwuploads/wikidex/e/ec/latest/20240213152437/Grito_de_Alcremie.ogg",
+      "color": "Amarillo",
+      "pronunciacion": [
+        { "fonetica": "'al.kre.mi"}
+      ]
+    },
+    "alcremie_mezcla_caramelo": {
+      "tipo":["Hada"],
+      "altura":"0'3",
+      "peso":"0'5",
+      "habilidad": [
+        { "nombre": "Velo dulce" },
+        { "nombre": "Velo aroma", "oculta": true }
+      ],
+      "genero":{
+        "hembra":"100",
+      },
+      "generacion": "8",
+      "categoria": "Nata",
+      "figura": "8",
+      "huevo": ["Hada", "Amorfo"],
+      "grito":"https://images.wikidexcdn.net/mwuploads/wikidex/e/ec/latest/20240213152437/Grito_de_Alcremie.ogg",
+      "color": "Marrón",
+      "pronunciacion": [
+        { "fonetica": "'al.kre.mi"}
+      ]
+    },
+    "alcremie_tres_sabores": {
+      "tipo":["Hada"],
+      "altura":"0'3",
+      "peso":"0'5",
+      "habilidad": [
+        { "nombre": "Velo dulce" },
+        { "nombre": "Velo aroma", "oculta": true }
+      ],
+      "genero":{
+        "hembra":"100",
+      },
+      "generacion": "8",
+      "categoria": "Nata",
+      "figura": "8",
+      "huevo": ["Hada", "Amorfo"],
+      "grito":"https://images.wikidexcdn.net/mwuploads/wikidex/e/ec/latest/20240213152437/Grito_de_Alcremie.ogg",
+      "color": "Amarillo",
+      "pronunciacion": [
+        { "fonetica": "'al.kre.mi"}
+      ]
+    },
+    "alcremie_giga": {
+      "tipo":["Hada"],
+      "altura":">30",
+      "habilidad": [
+        { "nombre": "Velo dulce" },
+        { "nombre": "Velo aroma", "oculta": true }
+      ],
+      "genero":{
+        "hembra":"100",
+      },
+      "generacion": "8",
+      "grito":"" /*Añadir grito*/,
+      "pronunciacion": [
+        { "fonetica": "'al.kre.mi"}
+      ]
+    },
+  }
+}
 
 const datosWikidex = {
-  "tipo":{
-    "Acero":"https://images.wikidexcdn.net/mwuploads/wikidex/5/52/latest/20221208180543/Tipo_acero_EP.png",
-    "Agua":"https://images.wikidexcdn.net/mwuploads/wikidex/5/59/latest/20221208180426/Tipo_agua_EP.png",
-    "Bicho":"https://images.wikidexcdn.net/mwuploads/wikidex/5/5d/latest/20221208180434/Tipo_bicho_EP.png",
-    "Dragón":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b8/latest/20221208180443/Tipo_drag%C3%B3n_EP.png",
-    "Eléctrico":"https://images.wikidexcdn.net/mwuploads/wikidex/3/38/latest/20221208180452/Tipo_el%C3%A9ctrico_EP.png",
-    "Fantasma":"https://images.wikidexcdn.net/mwuploads/wikidex/0/03/latest/20221208180503/Tipo_fantasma_EP.png",
-    "Fuego":"https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20221208180625/Tipo_fuego_EP.png",
-    "Hada":"https://images.wikidexcdn.net/mwuploads/wikidex/9/97/latest/20221208180633/Tipo_hada_EP.png",
-    "Hielo":"https://images.wikidexcdn.net/mwuploads/wikidex/1/17/latest/20221208180641/Tipo_hielo_EP.png",
-    "Lucha":"https://images.wikidexcdn.net/mwuploads/wikidex/5/5f/latest/20221208180651/Tipo_lucha_EP.png",
-    "Normal":"https://images.wikidexcdn.net/mwuploads/wikidex/9/99/latest/20221208180705/Tipo_normal_EP.png",
-    "Planta":"https://images.wikidexcdn.net/mwuploads/wikidex/a/a7/latest/20221208180710/Tipo_planta_EP.png",
-    "Psíquico":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9b/latest/20221208180717/Tipo_ps%C3%ADquico_EP.png",
-    "Roca":"https://images.wikidexcdn.net/mwuploads/wikidex/8/88/latest/20221208180726/Tipo_roca_EP.png",
-    "Siniestro":"https://images.wikidexcdn.net/mwuploads/wikidex/d/de/latest/20221208180734/Tipo_siniestro_EP.png",
-    "Tierra":"https://images.wikidexcdn.net/mwuploads/wikidex/c/c9/latest/20221208180742/Tipo_tierra_EP.png",
-    "Veneno":"https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20221208180751/Tipo_veneno_EP.png",
-    "Volador":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9a/latest/20221208180800/Tipo_volador_EP.png",
-    "Astral":"https://images.wikidexcdn.net/mwuploads/wikidex/8/82/latest/20231216092909/Tipo_astral_EP.png",
+  "tipo": {
+    "Acero": "https://images.wikidexcdn.net/mwuploads/wikidex/5/52/latest/20221208180543/Tipo_acero_EP.png",
+    "Agua": "https://images.wikidexcdn.net/mwuploads/wikidex/5/59/latest/20221208180426/Tipo_agua_EP.png",
+    "Bicho": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5d/latest/20221208180434/Tipo_bicho_EP.png",
+    "Dragón": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b8/latest/20221208180443/Tipo_drag%C3%B3n_EP.png",
+    "Eléctrico": "https://images.wikidexcdn.net/mwuploads/wikidex/3/38/latest/20221208180452/Tipo_el%C3%A9ctrico_EP.png",
+    "Fantasma": "https://images.wikidexcdn.net/mwuploads/wikidex/0/03/latest/20221208180503/Tipo_fantasma_EP.png",
+    "Fuego": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20221208180625/Tipo_fuego_EP.png",
+    "Hada": "https://images.wikidexcdn.net/mwuploads/wikidex/9/97/latest/20221208180633/Tipo_hada_EP.png",
+    "Hielo": "https://images.wikidexcdn.net/mwuploads/wikidex/1/17/latest/20221208180641/Tipo_hielo_EP.png",
+    "Lucha": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5f/latest/20221208180651/Tipo_lucha_EP.png",
+    "Normal": "https://images.wikidexcdn.net/mwuploads/wikidex/9/99/latest/20221208180705/Tipo_normal_EP.png",
+    "Planta": "https://images.wikidexcdn.net/mwuploads/wikidex/a/a7/latest/20221208180710/Tipo_planta_EP.png",
+    "Psíquico": "https://images.wikidexcdn.net/mwuploads/wikidex/9/9b/latest/20221208180717/Tipo_ps%C3%ADquico_EP.png",
+    "Roca": "https://images.wikidexcdn.net/mwuploads/wikidex/8/88/latest/20221208180726/Tipo_roca_EP.png",
+    "Siniestro": "https://images.wikidexcdn.net/mwuploads/wikidex/d/de/latest/20221208180734/Tipo_siniestro_EP.png",
+    "Tierra": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c9/latest/20221208180742/Tipo_tierra_EP.png",
+    "Veneno": "https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20221208180751/Tipo_veneno_EP.png",
+    "Volador": "https://images.wikidexcdn.net/mwuploads/wikidex/9/9a/latest/20221208180800/Tipo_volador_EP.png",
+    "Astral": "https://images.wikidexcdn.net/mwuploads/wikidex/8/82/latest/20231216092909/Tipo_astral_EP.png",
   },
-  "figura":{
-    "1":"https://images.wikidexcdn.net/mwuploads/wikidex/a/a0/latest/20200214140440/Figura_1.png",
-    "2":"https://images.wikidexcdn.net/mwuploads/wikidex/1/18/latest/20200214140740/Figura_2.png",
-    "3":"https://images.wikidexcdn.net/mwuploads/wikidex/0/01/latest/20200214140905/Figura_3.png",
-    "4":"https://images.wikidexcdn.net/mwuploads/wikidex/1/15/latest/20200214141009/Figura_4.png",
-    "5":"https://images.wikidexcdn.net/mwuploads/wikidex/2/21/latest/20200214141122/Figura_5.png",
-    "6":"https://images.wikidexcdn.net/mwuploads/wikidex/f/ff/latest/20200214141238/Figura_6.png",
-    "7":"https://images.wikidexcdn.net/mwuploads/wikidex/c/c7/latest/20200214141337/Figura_7.png",
-    "8":"https://images.wikidexcdn.net/mwuploads/wikidex/6/67/latest/20200214141425/Figura_8.png",
-    "9":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20200214141545/Figura_9.png",
-    "10":"https://images.wikidexcdn.net/mwuploads/wikidex/c/c5/latest/20200214141655/Figura_10.png",
-    "11":"https://images.wikidexcdn.net/mwuploads/wikidex/9/93/latest/20200214141809/Figura_11.png",
-    "12":"https://images.wikidexcdn.net/mwuploads/wikidex/3/38/latest/20200214141912/Figura_12.png",
-    "13":"https://images.wikidexcdn.net/mwuploads/wikidex/5/5b/latest/20200214142011/Figura_13.png",
-    "14":"https://images.wikidexcdn.net/mwuploads/wikidex/c/cb/latest/20200214142056/Figura_14.png",
+  "figura": {
+    "1": "https://images.wikidexcdn.net/mwuploads/wikidex/a/a0/latest/20200214140440/Figura_1.png",
+    "2": "https://images.wikidexcdn.net/mwuploads/wikidex/1/18/latest/20200214140740/Figura_2.png",
+    "3": "https://images.wikidexcdn.net/mwuploads/wikidex/0/01/latest/20200214140905/Figura_3.png",
+    "4": "https://images.wikidexcdn.net/mwuploads/wikidex/1/15/latest/20200214141009/Figura_4.png",
+    "5": "https://images.wikidexcdn.net/mwuploads/wikidex/2/21/latest/20200214141122/Figura_5.png",
+    "6": "https://images.wikidexcdn.net/mwuploads/wikidex/f/ff/latest/20200214141238/Figura_6.png",
+    "7": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c7/latest/20200214141337/Figura_7.png",
+    "8": "https://images.wikidexcdn.net/mwuploads/wikidex/6/67/latest/20200214141425/Figura_8.png",
+    "9": "https://images.wikidexcdn.net/mwuploads/wikidex/9/9c/latest/20200214141545/Figura_9.png",
+    "10": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c5/latest/20200214141655/Figura_10.png",
+    "11": "https://images.wikidexcdn.net/mwuploads/wikidex/9/93/latest/20200214141809/Figura_11.png",
+    "12": "https://images.wikidexcdn.net/mwuploads/wikidex/3/38/latest/20200214141912/Figura_12.png",
+    "13": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5b/latest/20200214142011/Figura_13.png",
+    "14": "https://images.wikidexcdn.net/mwuploads/wikidex/c/cb/latest/20200214142056/Figura_14.png",
   },
-  "generación":{
-    "1":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b0/latest/20241019145047/Primera_generaci%C3%B3n.svg",
-    "2":"https://images.wikidexcdn.net/mwuploads/wikidex/3/38/latest/20241019145155/Segunda_generaci%C3%B3n.svg",
-    "3":"https://images.wikidexcdn.net/mwuploads/wikidex/4/4a/latest/20241019145242/Tercera_generaci%C3%B3n.svg",
-    "4":"https://images.wikidexcdn.net/mwuploads/wikidex/5/5a/latest/20241019145319/Cuarta_generaci%C3%B3n.svg",
-    "5":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9f/latest/20241019145355/Quinta_generaci%C3%B3n.svg",
-    "6":"https://images.wikidexcdn.net/mwuploads/wikidex/9/9e/latest/20241019145423/Sexta_generaci%C3%B3n.svg",
-    "7":"https://images.wikidexcdn.net/mwuploads/wikidex/a/a6/latest/20241019145454/S%C3%A9ptima_generaci%C3%B3n.svg",
-    "8":"https://images.wikidexcdn.net/mwuploads/wikidex/4/4b/latest/20241019145522/Octava_generaci%C3%B3n.svg",
-    "9":"https://images.wikidexcdn.net/mwuploads/wikidex/8/8c/latest/20241019145549/Novena_generaci%C3%B3n.svg",
+  "generación": {
+    "1": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b0/latest/20241019145047/Primera_generaci%C3%B3n.svg",
+    "2": "https://images.wikidexcdn.net/mwuploads/wikidex/3/38/latest/20241019145155/Segunda_generaci%C3%B3n.svg",
+    "3": "https://images.wikidexcdn.net/mwuploads/wikidex/4/4a/latest/20241019145242/Tercera_generaci%C3%B3n.svg",
+    "4": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5a/latest/20241019145319/Cuarta_generaci%C3%B3n.svg",
+    "5": "https://images.wikidexcdn.net/mwuploads/wikidex/9/9f/latest/20241019145355/Quinta_generaci%C3%B3n.svg",
+    "6": "https://images.wikidexcdn.net/mwuploads/wikidex/9/9e/latest/20241019145423/Sexta_generaci%C3%B3n.svg",
+    "7": "https://images.wikidexcdn.net/mwuploads/wikidex/a/a6/latest/20241019145454/S%C3%A9ptima_generaci%C3%B3n.svg",
+    "8": "https://images.wikidexcdn.net/mwuploads/wikidex/4/4b/latest/20241019145522/Octava_generaci%C3%B3n.svg",
+    "9": "https://images.wikidexcdn.net/mwuploads/wikidex/8/8c/latest/20241019145549/Novena_generaci%C3%B3n.svg",
   },
-  "default":"https://www.wikidex.net/wiki/Archivo:Imagen_no_disponible.svg"
+  "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/2/2f/latest/20251104170803/Grito_Pok%C3%A9mon_%28Wikidex%29.svg",
+  "default": "https://images.wikidexcdn.net/mwuploads/wikidex/d/da/latest/20081011120239/Imagen_no_disponible.svg"
 }
 
 const buttonConfig = {
@@ -284,9 +838,29 @@ class PokemonState {
   }
 
   getAvailableGenders() {
-    return Object.keys(this.forma).filter(k => k === "macho" || k === "hembra")
-      .filter(gender => this.forma.hasOwnProperty(gender) && this.forma[gender] !== "");
+    if (!this._cachedGenders) {
+      const keys = Object.keys(this.forma);
+      if (keys.includes("nogen")) {
+        this._cachedGenders = [];
+        return this._cachedGenders;
+      }
+      if (keys.includes("normal")) {
+        this._cachedGenders = ["macho", "hembra"];
+        if (!this.forma._duplicatedNormal) {
+          const normalData = this.forma.normal;
+          if (!this.forma.macho) this.forma.macho = normalData;
+          if (!this.forma.hembra) this.forma.hembra = normalData;
+          this.forma._duplicatedNormal = true;
+        }
+        return this._cachedGenders;
+      }
+      this._cachedGenders = keys.filter(
+        k => k === "macho" || k === "hembra"
+      ).filter(g => this.forma[g] && this.forma[g] !== "");
+    }
+    return this._cachedGenders;
   }
+
 
   getAvailableSpecialForms() {
     const possible = ["mega", "megaX", "megaY", "giga"];
@@ -472,12 +1046,12 @@ class PokemonUI {
         <div>
         <div class="contenidoPokemon">
         <div class="contenedorImagen">
-          <img id="imagenPokemonCuadro" class="imagenPokemon" src="public/Imagen_no_disponible.svg" height="200;">
+          <img id="imagenPokemonCuadro" class="imagenPokemon" src="${datosWikidex.default}" height="200;">
           
           <div id="botonVolumen" class="botonVolumen gritoColor" 
                onmouseover="this.style.background='rgba(255, 255, 255, 1)'; this.style.transform='scale(1.1)'" 
                onmouseout="this.style.background='rgba(255, 255, 255, 0.9)'; this.style.transform='scale(1)'">
-            <img src="volume.svg" alt="Volumen"/>
+            <img src="${datosWikidex.grito}" alt="Volumen"/>
           </div>
 
           <hr class="lineaSeparadora">
@@ -741,14 +1315,14 @@ class PokemonUI {
     }
 
     if ((pokemonData.tipo && pokemonData.tipo.length > 0) || pokemonData.generacion !== undefined) {
-  const tiposHTML = (pokemonData.tipo && pokemonData.tipo.length > 0)
-    ? pokemonData.tipo.map(tipo => {
-        const imagenTipo = datosWikidex.tipo[tipo] || 'ruta/por_defecto.png';
-        return `<img src="${imagenTipo}" height="22" alt="${tipo}">`;
-      }).join('')
-    : '';
+      const tiposHTML = (pokemonData.tipo && pokemonData.tipo.length > 0)
+        ? pokemonData.tipo.map(tipo => {
+          const imagenTipo = datosWikidex.tipo[tipo] || 'ruta/por_defecto.png';
+          return `<img src="${imagenTipo}" height="22" alt="${tipo}">`;
+        }).join('')
+        : '';
 
-      
+
       const imgGeneracion = datosWikidex.generación[pokemonData.generacion] || datosWikidex.default;
       let generacionHTML = '';
       if (pokemonData.generacion !== undefined) {
@@ -784,15 +1358,15 @@ class PokemonUI {
     }
 
     if (pokemonData.genero) {
-  let barras = '';
+      let barras = '';
 
-  if (pokemonData.genero.macho > 0) {
-    const porcentajeMacho = Math.round(pokemonData.genero.macho);
-    const bordeMacho = porcentajeMacho === 100
-      ? 'border-radius: 5px;'
-      : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
+      if (pokemonData.genero.macho > 0) {
+        const porcentajeMacho = Math.round(pokemonData.genero.macho);
+        const bordeMacho = porcentajeMacho === 100
+          ? 'border-radius: 5px;'
+          : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
 
-    barras += `
+        barras += `
       <div class="generoContainer">
         <img src="https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg" alt="Macho">
         <div class="generoBarra">
@@ -804,15 +1378,15 @@ class PokemonUI {
         </div>
       </div>
     `;
-  }
+      }
 
-  if (pokemonData.genero.hembra > 0) {
-    const porcentajeHembra = Math.round(pokemonData.genero.hembra);
-    const bordeHembra = porcentajeHembra === 100
-      ? 'border-radius: 5px;'
-      : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
+      if (pokemonData.genero.hembra > 0) {
+        const porcentajeHembra = Math.round(pokemonData.genero.hembra);
+        const bordeHembra = porcentajeHembra === 100
+          ? 'border-radius: 5px;'
+          : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
 
-    barras += `
+        barras += `
       <div class="generoContainer">
         <img src="https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg" alt="Hembra">
         <div class="generoBarra">
@@ -824,10 +1398,10 @@ class PokemonUI {
         </div>
       </div>
     `;
-  }
+      }
 
-  // --- Tarjeta completa ---
-  contenedorInfo.innerHTML += `
+      // --- Tarjeta completa ---
+      contenedorInfo.innerHTML += `
     <div class="tarjetaIndividual">
       <div class="tituloTarjeta">Género</div>
       <div class="contenidoTarjeta">
@@ -835,8 +1409,8 @@ class PokemonUI {
       </div>
     </div>
   `;
-} else {
-  contenedorInfo.innerHTML += `
+    } else {
+      contenedorInfo.innerHTML += `
     <div class="tarjetaIndividual">
       <div class="tituloTarjeta">Género</div>
       <div class="contenidoTarjeta">
@@ -844,7 +1418,7 @@ class PokemonUI {
       </div>
     </div>
   `;
-}
+    }
 
 
     if (pokemonData.altura !== undefined || pokemonData.peso !== undefined) {
@@ -929,7 +1503,7 @@ class PokemonUI {
       contenedorInfo.innerHTML += habilidadesHTML;
     }
 
-    
+
     if (pokemonData.figura !== undefined || pokemonData.color) {
       const imgFigura = datosWikidex.figura[pokemonData.figura] || datosWikidex.default;
       let figuraHTML = '';
@@ -1063,12 +1637,8 @@ class PokemonUI {
     const isShinyAvailable = !!urls.variocolor;
     const isTraseraAvailable = !!urls.trasera || !!urls.variocolorTrasera;
 
-    if (!isShinyAvailable && this.state.isShiny) {
-      this.state.isShiny = false;
-    }
-    if (!isTraseraAvailable && this.state.isTrasera) {
-      this.state.isTrasera = false;
-    }
+    if (!isShinyAvailable && this.state.isShiny) this.state.isShiny = false;
+    if (!isTraseraAvailable && this.state.isTrasera) this.state.isTrasera = false;
 
     this.updateButtonState('toggle', 'shiny', this.state.isShiny, isShinyAvailable);
     this.updateButtonState('toggle', 'trasera', this.state.isTrasera, isTraseraAvailable);
@@ -1076,11 +1646,13 @@ class PokemonUI {
     this.updateVolumeButton();
 
     this.elements.imagenPokemonCuadro.onerror = () => {
-      this.elements.imagenPokemonCuadro.src = "public/Imagen_no_disponible.svg";
+      this.elements.imagenPokemonCuadro.onerror = null;
+      this.elements.imagenPokemonCuadro.src = datosWikidex.default;
     };
 
-    this.elements.imagenPokemonCuadro.src = imageSrc || "public/Imagen_no_disponible.svg";
+    this.elements.imagenPokemonCuadro.src = imageSrc || datosWikidex.default;
   }
+
 
   updateAll() {
     const availableGenders = this.state.getAvailableGenders();
