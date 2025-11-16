@@ -3,191 +3,19 @@ import "./style.css";
 const pokemon = "Charizard";
 const japones = "リザードン";
 const japonesTraduccion = "Lizardon";
-const numeroPokemon = "0006"
-const enlaceWikidex = "https://www.wikidex.net/wiki/Alcremie"
+const numeroPokemon = "0006";
+const enlaceWikidex = "https://www.wikidex.net/wiki/Alcremie";
 const loadingImageDelay = 150;
-
-/* const pokemonJSON = {
-  "forma": {
-    "macho": {
-      "normal": {
-        "datos": "pikachu_normal",
-        "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/e/e0/latest/20200214192043/Pikachu_HOME.png",
-        "variocolor": "https://img.pokemondb.net/sprites/home/shiny/1x/pikachu.png",
-      },
-      "Con gorra": {
-        "Original": {
-          "datos": "pikachu_gorra",
-          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-original-cap.png",
-        },
-        "Hoenn": {
-          "datos": "pikachu_gorra",
-          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-hoenn-cap.png",
-        },
-        "Sinnoh": {
-          "datos": "pikachu_gorra",
-          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-sinnoh-cap.png",
-        },
-        "Teselia": {
-          "datos": "pikachu_gorra",
-          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-unova-cap.png",
-        },
-        "Kalos": {
-          "datos": "pikachu_gorra",
-          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-kalos-cap.png",
-        },
-        "Alola": {
-          "datos": "pikachu_gorra",
-          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-alola-cap.png",
-        },
-        "Compañero": {
-          "datos": "pikachu_gorra",
-          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-partner-cap.png",
-        },
-        "Trotamundos": {
-          "datos": "pikachu_gorra",
-          "imagen": "https://img.pokemondb.net/sprites/home/normal/1x/pikachu-world-cap.png",
-        },
-      }
-    },
-    "hembra": {
-      "datos": "pikachu_normal",
-      "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/4/40/latest/20200214185804/Pikachu_HOME_hembra.png",
-      "variocolor": "https://img.pokemondb.net/sprites/home/shiny/pikachu-f.png"
-    },
-    "giga": {
-      "datos": "pikachu_giga",
-      "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/thumb/d/d8/latest/20191016155951/Pikachu_Gigamax.png/270px-Pikachu_Gigamax.png",
-      "variocolor": "https://img.pokemondb.net/sprites/home/shiny/1x/pikachu-gigantamax.png"
-    },
-    "mega": {
-      "datos": "pikachu_mega",
-      "imagen": "",
-    },
-    "megaX":{
-      "datos":"pikachu_megaX",
-      "imagen":"https://images.wikidexcdn.net/mwuploads/wikidex/7/7d/latest/20251016084320/Mega-Raichu_X.png",
-      "trasera":"https://images.wikidexcdn.net/mwuploads/wikidex/9/96/latest/20241104015348/Pikachu_%28Halloween%29_morado_Sleep.png"
-    },
-    "megaY":{
-      "datos":"pikachu_megaY",
-      "imagen":"https://images.wikidexcdn.net/mwuploads/wikidex/f/f1/latest/20251016084336/Mega-Raichu_Y.png",
-      "trasera":"https://images.wikidexcdn.net/mwuploads/wikidex/4/4c/latest/20180418223326/Evento_Pikachu_con_vuelo.png",
-      "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b0/latest/20150615185638/Pikachu_Pok%C3%A9mon_Mundo_Megamisterioso.png",
-      "variocolorTrasera":"https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250127090512/Raichu.png",
-    }
-  },
-  "info": {
-    "pikachu_normal": {
-      "tipo": ["Eléctrico", "Eléctrico"],
-      "altura": 0.4,
-      "peso": 6,
-      "habilidad": [
-        { "nombre": "Electricidad Estática" },
-        { "nombre": "Otro" },
-
-      ],
-      "generacion": "1",
-      "categoria": "Ratón",
-      "figura": "8",
-      "huevo": ["Campo", "Hada"],
-      "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5a/latest/20200302181628/Grito_de_Pikachu_en_la_s%C3%A9ptima_generaci%C3%B3n.ogg",
-      "genero": {
-        "macho": "49",
-        "hembra": "49"
-      },
-      "color": "Amarillo",
-      "pronunciacion": [
-        { "fonetica": "pi.ˈka.chu", "zona": "España" },
-        { "fonetica": "ˈpi.ka.chu", "zona": "Hispanoamérica", "nota": ["Nota 1", "Nota 2"] }
-      ]
-    },
-    "pikachu_gorra": {
-      "tipo": ["Eléctrico"],
-      "variocolor": false,
-      "altura": 0.4,
-      "peso": 6,
-      "habilidad": [
-        { "nombre": "Electricidad Estática" },
-        { "nombre": "Pararrayos", "oculta": true }
-      ],
-      "generacion": "7",
-      "categoria": "Ratón",
-      "figura": "8",
-      "color": "Verde",
-      "genero":{
-        "macho":"100",
-        "hembra":"0",
-      },
-      "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/1/1e/latest/20180510202106/Grito_de_Pikachu_con_gorra.ogg"
-    },
-    "pikachu_giga": {
-      "tipo": ["Eléctrico"],
-      "altura": 21,
-      "habilidad": [
-        { "nombre": "Electricidad Estática" },
-        { "nombre": "Pararrayos", "oculta": true }
-      ],
-      "generacion": "8",
-      "categoria": "Ratón",
-    },
-    "pikachu_mega": {
-      "tipo": ["Agua","Bicho"],
-      "peso":"34",
-      "altura": 21,
-      "habilidad": [
-        { "nombre": "Electricidad Estática" },
-        { "nombre": "Pararrayos", "oculta": true }
-      ],
-      "generacion": "9",
-      "figura":"12",
-      "color":"Blanco",
-      "categoria": "Ratón"
-    },
-    "pikachu_megaX": {
-      "tipo": ["Hielo","Astral"],
-      "peso":"34",
-      "altura": 21,
-      "habilidad": [
-        { "nombre": "Electricidad Estática" },
-        { "nombre": "Pararrayos", "oculta": true }
-      ],
-      "genero":{
-        "hembra":"100"
-      },
-      "generacion": "9",
-      "figura":"12",
-      "categoria": "Ratón"
-    },
-    "pikachu_megaY": {
-      "tipo": ["Fantasma","Dragón"],
-      "peso":"34",
-      "altura": 21,
-      "genero":{
-        "macho":"20",
-        "hembra":"80"
-      },
-      "habilidad": [
-        { "nombre": "Electricidad Estática" },
-        { "nombre": "Pararrayos", "oculta": true }
-      ],
-      "generacion": "9",
-      "color":"Rojo",
-      "categoria": "Ratón"
-    }
-  }
-};
-*/
 
 const pokemonJSON = {
   "forma": {
     "normal": {
       "datos": "charizard_normal",
-          "imagen": [
-            "https://images.wikidexcdn.net/mwuploads/wikidex/f/fc/latest/20210524165035/Charizard_HOME.png",
-            "https://images.wikidexcdn.net/mwuploads/wikidex/9/95/latest/20160817212623/Charizard.png",
-          ],
-          "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/8/88/latest/20210524164951/Charizard_HOME_variocolor.png"
+      "imagen": [
+        "https://images.wikidexcdn.net/mwuploads/wikidex/f/fc/latest/20210524165035/Charizard_HOME.png",
+        "https://images.wikidexcdn.net/mwuploads/wikidex/9/95/latest/20160817212623/Charizard.png"
+      ],
+      "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/8/88/latest/20210524164951/Charizard_HOME_variocolor.png"
     },
     "megaX": {
       "datos":"charizard_megaX",
@@ -207,25 +35,27 @@ const pokemonJSON = {
   },
   "info": {
     "charizard_normal": {
-      "tipo": ["Fuego", "Volador"],
-      "altura": "1'7",
-      "peso": "90'5",
+      "tipo": ["Fuego", {"valor":"Volador", "nota": "A",}],
+      "altura": ["1'7", {"valor":"4'8", "nota": "B"}],
+      "peso": ["90'5", {"valor":"87'2", "nota": "A"}],
       "habilidad": [
         { "nombre": "Mar llamas" },
-        { "nombre": "Poder solar", "oculta": true }
+        { "nombre": "Poder solar", "oculta": true },
+        { "nombre": {"valor":"Llamas ocultas", "nota": "B"}, "oculta": true}
       ],
       "genero": {
-        "macho": "87.5",
-        "hembra": "12.5"
+        "macho": {"valor":"87'5", "nota": "B"},
+        "hembra": {"valor":"87'2", "nota": "A"}
       },
-      "generacion": "1",
-      "categoria": ["Llama"],
-      "figura": "6",
-      "huevo": ["Monstruo", "Dragón"],
+      "generacion": {"valor":"1", "nota": "D"},
+      "categoria": ["Llama", {"valor":"Fogonazo", "nota": "A"}],
+      "figura": ["3", {"valor":"1", "nota": "D"}],
+      "huevo": [{"valor":"Monstruo", "nota": "C"}, "Dragón"],
       "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5e/latest/20240213073305/Grito_de_Charizard.ogg",
-      "color": ["Rojo", "Negro"],
+      "color": ["Rojo", {"valor":"Negro", "nota": "B"}],
       "pronunciacion": [
-        { "fonetica": "'cha.ri.zard" }
+        { "fonetica": {"valor":"'cha.ri.zard", "nota": "E"}, "zona": ["España", {"valor":"Hispanoamérica", "nota": ["A", "B", "C"]}]},
+        { "fonetica": "'char.i.zard", "zona": "Hispanoamérica" }
       ]
     },
     "charizard_megaX": {
@@ -233,7 +63,8 @@ const pokemonJSON = {
       "altura": "1'7",
       "peso": "110'5",
       "habilidad": [
-        { "nombre": "Garra dura" },
+        { "nombre": {"valor":"Garra dura", "nota": "F"}, "zona":"España" },
+        { "nombre": "Garras durs", "zona":"Hispanoamérica" }
       ],
       "genero": {
         "macho": "87.5",
@@ -254,7 +85,7 @@ const pokemonJSON = {
       "altura": "1'7",
       "peso": "100'5",
       "habilidad": [
-        { "nombre": "Sequía" },
+        { "nombre": "Sequía" }
       ],
       "genero": {
         "macho": "87.5",
@@ -274,7 +105,7 @@ const pokemonJSON = {
       "tipo": ["Fuego", "Volador"],
       "altura": "1'7",
       "habilidad": [
-        { "nombre": "Sequía" },
+        { "nombre": "Sequía" }
       ],
       "genero": {
         "macho": "87.5",
@@ -289,9 +120,17 @@ const pokemonJSON = {
       "pronunciacion": [
         { "fonetica": "'cha.ri.zard" }
       ]
-    },
+    }
+  },
+  "nota":{
+    "A": "A partir de X generación",
+    "B": "Solo en X versión",
+    "C": "Antes era <a href='https://www.google.com/es'>Monstruoso</a>",
+    "D": "Aunque oficialmente sea la primera, no salió hasta la <a href='https://www.google.com/es'>segunda</a>",
+    "E": "Pronunciación alternativa",
+    "F": "Prueba de notas"
   }
-}
+};
 
 const datosWikidex = {
   "tipo": {
@@ -313,7 +152,7 @@ const datosWikidex = {
     "Tierra": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c9/latest/20221208180742/Tipo_tierra_EP.png",
     "Veneno": "https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20221208180751/Tipo_veneno_EP.png",
     "Volador": "https://images.wikidexcdn.net/mwuploads/wikidex/9/9a/latest/20221208180800/Tipo_volador_EP.png",
-    "Astral": "https://images.wikidexcdn.net/mwuploads/wikidex/8/82/latest/20231216092909/Tipo_astral_EP.png",
+    "Astral": "https://images.wikidexcdn.net/mwuploads/wikidex/8/82/latest/20231216092909/Tipo_astral_EP.png"
   },
   "color": {
     "Acero": "#cccccc",
@@ -334,7 +173,7 @@ const datosWikidex = {
     "Tierra": "#deb887",
     "Veneno": "#cc88bb",
     "Volador": "#baaaff",
-    "Astral": "#f1f7fb",
+    "Astral": "#f1f7fb"
   },
   "figura": {
     "1": "https://images.wikidexcdn.net/mwuploads/wikidex/a/a0/latest/20200214140440/Figura_1.png",
@@ -350,7 +189,7 @@ const datosWikidex = {
     "11": "https://images.wikidexcdn.net/mwuploads/wikidex/9/93/latest/20200214141809/Figura_11.png",
     "12": "https://images.wikidexcdn.net/mwuploads/wikidex/3/38/latest/20200214141912/Figura_12.png",
     "13": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5b/latest/20200214142011/Figura_13.png",
-    "14": "https://images.wikidexcdn.net/mwuploads/wikidex/c/cb/latest/20200214142056/Figura_14.png",
+    "14": "https://images.wikidexcdn.net/mwuploads/wikidex/c/cb/latest/20200214142056/Figura_14.png"
   },
   "generación": {
     "1": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b0/latest/20241019145047/Primera_generaci%C3%B3n.svg",
@@ -361,7 +200,7 @@ const datosWikidex = {
     "6": "https://images.wikidexcdn.net/mwuploads/wikidex/9/9e/latest/20241019145423/Sexta_generaci%C3%B3n.svg",
     "7": "https://images.wikidexcdn.net/mwuploads/wikidex/a/a6/latest/20241019145454/S%C3%A9ptima_generaci%C3%B3n.svg",
     "8": "https://images.wikidexcdn.net/mwuploads/wikidex/4/4b/latest/20241019145522/Octava_generaci%C3%B3n.svg",
-    "9": "https://images.wikidexcdn.net/mwuploads/wikidex/8/8c/latest/20241019145549/Novena_generaci%C3%B3n.svg",
+    "9": "https://images.wikidexcdn.net/mwuploads/wikidex/8/8c/latest/20241019145549/Novena_generaci%C3%B3n.svg"
   },
   "icono": {
     "macho": "https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg",
@@ -377,9 +216,9 @@ const datosWikidex = {
     "galeria": "./photo.svg"
   },
   "default": "https://images.wikidexcdn.net/mwuploads/wikidex/d/da/latest/20081011120239/Imagen_no_disponible.svg"
-}
+};
 
-const buttonConfig = {
+const configBotones = {
   gender: [
     { id: "btnMacho", key: "macho", color: "azulColor", icon: datosWikidex.icono.macho, size: "50px" },
     { id: "btnHembra", key: "hembra", color: "rojoColor", icon: datosWikidex.icono.hembra, size: "50px" }
@@ -393,35 +232,310 @@ const buttonConfig = {
   toggle: [
     { id: "btnShiny", key: "shiny", color: "amarilloColor", icon: datosWikidex.icono.variocolor, size: "40px" },
     { id: "btnTrasera", key: "trasera", color: "verdeColor", icon: datosWikidex.icono.trasera, size: "25px" }
-  ],
+  ]
 };
 
-class PokemonState {
+class GestorReferencias {
+  constructor() {
+    this.referenciasActivas = new Map();
+    this.contadorReferencias = new Map();
+  }
+
+  limpiarReferenciasPokemon() {
+  console.log('=== LIMPIANDO REFERENCIAS ===');
+  
+  // Buscar el h2 con múltiples estrategias
+  const h2Anotaciones = document.querySelector('h2.destroyable.cuadroPokemon');
+  console.log('h2 encontrado con clases:', h2Anotaciones);
+  
+  if (h2Anotaciones) {
+    console.log('Eliminando h2:', h2Anotaciones.outerHTML);
+    h2Anotaciones.remove();
+  } else {
+    // Intentar buscar por el id del span
+    const spanAnotaciones = document.querySelector('span#Anotaciones');
+    console.log('span#Anotaciones encontrado:', spanAnotaciones);
+    if (spanAnotaciones) {
+      const h2Padre = spanAnotaciones.closest('h2');
+      console.log('h2 padre del span:', h2Padre);
+      if (h2Padre && h2Padre.classList.contains('destroyable') && h2Padre.classList.contains('cuadroPokemon')) {
+        console.log('Eliminando h2 padre:', h2Padre.outerHTML);
+        h2Padre.remove();
+      }
+    }
+  }
+  
+  // Eliminar li con las clases
+  const existentes = document.querySelectorAll('li.destroyable.cuadroPokemon');
+  console.log('li encontrados:', existentes.length);
+  existentes.forEach(e => e.remove());
+  
+  const lista = document.querySelector('ol.references');
+  if (lista && lista.children.length === 0) {
+    console.log('Lista vacía, eliminando sección');
+    this.eliminarSeccionAnotaciones();
+  }
+  
+  this.referenciasActivas.clear();
+  this.contadorReferencias.clear();
+  
+  console.log('=== FIN LIMPIEZA ===');
+}
+
+  eliminarSeccionAnotaciones() {
+  // Eliminar el wrapper
+  const wrapper = document.querySelector('.mw-references-wrap') || 
+                  document.querySelector('#mw-references-wrap');
+  if (wrapper) {
+    wrapper.remove();
+  }
+  
+  // Eliminar el h2 de Anotaciones si tiene las clases
+  const h2Anotaciones = document.querySelector('h2.destroyable.cuadroPokemon');
+  if (h2Anotaciones) {
+    h2Anotaciones.remove();
+  }
+}
+
+  asegurarSeccionAnotaciones() {
+  let wrapper = document.querySelector('.mw-references-wrap');
+  if (!wrapper) {
+    let h2Anotaciones = null;
+    const todosH2 = document.querySelectorAll('h2');
+    for (const h2 of todosH2) {
+      const span = h2.querySelector('span.mw-headline');
+      if (span && span.textContent.includes('Anotaciones')) {
+        h2Anotaciones = h2;
+        break;
+      }
+    }
+    if (!h2Anotaciones) {
+      const cuerpo = document.querySelector('.mw-content-text');
+      if (!cuerpo) {
+        console.error('ERROR: No se encontró .mw-content-text.');
+        return null;
+      }
+      let veaseH2 = null;
+      const h2EnCuerpo = cuerpo.querySelectorAll('h2');
+      for (const h2 of h2EnCuerpo) {
+        const span = h2.querySelector('span.mw-headline, span#Véase_también');
+        if (span && (span.textContent.includes('Véase también') || span.id === 'Véase_también')) {
+          veaseH2 = h2;
+          break;
+        }
+      }
+      h2Anotaciones = document.createElement('h2');
+      h2Anotaciones.className = 'destroyable cuadroPokemon'; // Añadir clases
+      const titular = document.createElement('span');
+      titular.className = 'mw-headline';
+      titular.id = 'Anotaciones';
+      titular.textContent = 'Anotaciones';
+      h2Anotaciones.appendChild(titular);
+      if (veaseH2) cuerpo.insertBefore(h2Anotaciones, veaseH2);
+      else cuerpo.appendChild(h2Anotaciones);
+    }
+    wrapper = document.createElement('div');
+    wrapper.className = 'mw-references-wrap';  // clase, no ID
+    wrapper.id = 'mw-references-wrap';  // también ID para compatibilidad
+    wrapper.style.color = 'white';
+    const ol = document.createElement('ol');
+    ol.className = 'references';
+    wrapper.appendChild(ol);
+    h2Anotaciones.insertAdjacentElement('afterend', wrapper);
+  }
+  return wrapper.querySelector('ol.references');
+}
+
+  // MÉTODO CORREGIDO: Procesar referencia
+  procesarReferencia(letra, contexto) {
+  let claves = [];
+  
+  // Determinar las claves (puede ser una o varias)
+  if (typeof letra === 'string' && letra.trim() !== '') {
+    claves = [letra];
+  } else if (Array.isArray(letra)) {
+    claves = letra.filter(l => typeof l === 'string' && l.trim() !== '');
+  } else if (contexto && typeof contexto === 'object') {
+    if (typeof contexto.nota === 'string') {
+      claves = [contexto.nota];
+    } else if (Array.isArray(contexto.nota)) {
+      claves = contexto.nota.filter(n => typeof n === 'string' && n.trim() !== '');
+    }
+  }
+  
+  if (claves.length === 0) {
+    return '';
+  }
+
+  // Procesar cada clave y generar sus referencias
+  const referencias = claves.map(clave => {
+    let textoNota = null;
+    if (pokemonJSON && pokemonJSON.nota && pokemonJSON.nota[clave]) {
+      textoNota = pokemonJSON.nota[clave];
+    }
+    
+    if (!textoNota) {
+      return '';
+    }
+
+    if (!this.referenciasActivas.has(clave)) {
+      this.referenciasActivas.set(clave, { cuenta: 0, texto: textoNota });
+    }
+    
+    const refData = this.referenciasActivas.get(clave);
+    const indiceUso = refData.cuenta;
+    refData.cuenta++;
+
+    const refId = `cite_ref-${clave}_${indiceUso}`;
+    const noteId = `cite_note-${clave}`;
+
+    return `<sup id="${refId}" class="reference"><a href="#${noteId}" data-ref-key="${clave}">?</a></sup>`;
+  }).filter(Boolean);
+
+  return referencias.join('');
+}
+
+actualizarNumerosCitas() {
+  // Buscar el ol con CUALQUIER variante
+  const ol = document.querySelector('.mw-references-wrap ol.references') || 
+             document.querySelector('#mw-references-wrap ol.references') ||
+             document.querySelector('ol.references');
+  
+  if (!ol) {
+    return;
+  }
+  
+  const mapaNumeros = new Map();
+  const todosLi = Array.from(ol.querySelectorAll('li'));
+  
+  todosLi.forEach((li, idx) => {
+    const match = li.id.match(/^cite_note-(.+)$/);
+    if (match) {
+      mapaNumeros.set(match[1], idx + 1);
+    }
+  });
+  
+  const enlaces = document.querySelectorAll('a[data-ref-key]');
+  
+  enlaces.forEach(link => {
+    const key = link.getAttribute('data-ref-key');
+    const numero = mapaNumeros.get(key);
+    if (numero) {
+      link.textContent = numero;
+    }
+  });
+}
+
+  calcularNumeroReferencia(clave) {
+  // Contar TODOS los <li> en ol.references, no solo los de referenciasActivas
+  const ol = document.querySelector('#mw-references-wrap ol.references');
+  if (!ol) return 1;
+  
+  // Obtener todos los li existentes
+  const todosLi = ol.querySelectorAll('li');
+  const existingIds = Array.from(todosLi).map(li => {
+    const match = li.id.match(/^cite_note-(.+)$/);
+    return match ? match[1] : null;
+  }).filter(Boolean);
+  
+  // Combinar con las nuevas referencias
+  const todasLasClaves = new Set([...existingIds, ...Array.from(this.referenciasActivas.keys())]);
+  const ordenadas = Array.from(todasLasClaves).sort();
+  
+  return ordenadas.indexOf(clave) + 1;
+}
+
+renderizarReferencias() {
+  // Si no hay referencias activas, no hacer nada
+  if (this.referenciasActivas.size === 0) {
+    console.log('No hay referencias para renderizar');
+    return;
+  }
+  
+  const ol = this.asegurarSeccionAnotaciones();
+  if (!ol) return;
+  
+  const existentes = ol.querySelectorAll('li.destroyable.cuadroPokemon');
+  existentes.forEach(e => e.remove());
+  
+  const ordenadas = Array.from(this.referenciasActivas.entries()).sort((a,b) => a[0].localeCompare(b[0]));
+  
+  ordenadas.forEach(([letra, datosRef]) => {
+    const li = document.createElement('li');
+    li.id = `cite_note-${letra}`;
+    li.className = 'destroyable cuadroPokemon';
+    
+    ol.appendChild(li);
+    
+    const todosLi = Array.from(ol.querySelectorAll('li'));
+    const posicionReal = todosLi.indexOf(li) + 1;
+    
+    let backlinksHTML = '';
+    
+    if (datosRef.cuenta === 1) {
+      const refId = `cite_ref-${letra}_0`;
+      backlinksHTML = `<span class="mw-cite-backlink"><a href="#${refId}" aria-label="Volver arriba" title="Volver arriba">↑</a></span>`;
+    } else {
+      const backlinks = [];
+      
+      for (let i = 0; i < datosRef.cuenta; i++) {
+        const refId = `cite_ref-${letra}_${i}`;
+        backlinks.push(`<sup><a href="#${refId}">${posicionReal},${i}</a></sup>`);
+      }
+      backlinksHTML = `<span class="mw-cite-backlink">↑ ${backlinks.join(' ')}</span>`;
+    }
+    
+    li.innerHTML = `${backlinksHTML} <span class="reference-text">${datosRef.texto}</span>`;
+  });
+  
+  this.actualizarNumerosCitas();
+}
+
+  // MÉTODO CORREGIDO: Extraer valor y procesar referencia
+  extraerValorConReferencia(dato) {
+  if (typeof dato === 'string') return dato;
+  if (typeof dato === 'object' && dato !== null) {
+    let valor = dato.valor || '';
+    let referencia = '';
+    
+    if (dato.nota) {
+      // Puede ser string o array
+      referencia = this.procesarReferencia(dato.nota, dato);
+    }
+    
+    return valor + referencia;
+  }
+  return '';
+}
+
+  procesarArray(arr) {
+    if (!Array.isArray(arr)) return arr;
+    
+    return arr.map(item => this.extraerValorConReferencia(item));
+  }
+}
+
+class EstadoPokemon {
   constructor() {
     this.forma = pokemonJSON.forma;
     this.info = pokemonJSON.info;
-
     this.pokemon = "Pikachu";
-    this.activeGender = "";
-    this.activeSpecialForm = "";
-    this.isShiny = false;
-    this.isTrasera = false;
-    this.isArtwork = localStorage.getItem('preferArtwork') === 'true';
+    this.generoActivo = "";
+    this.formaEspecialActiva = "";
+    this.esShiny = false;
+    this.esTrasera = false;
+    this.esArtwork = localStorage.getItem('preferArtwork') === 'true';
     this.selector1 = 0;
     this.selector2 = 0;
     this.secciones1 = [];
     this.secciones2 = [];
     this.isSeccion1 = "";
     this.isSeccion2 = "";
-    this.lastSeccion2Name = "";
-    this.currentAudio = null;
-    this.isLoadingAudio = false;
-
-    const availableGenders = this.getAvailableGenders();
-    if (availableGenders.length > 0) {
-      this.activeGender = availableGenders[0];
-    }
-
+    this.ultimaSeccion2Nombre = "";
+    this.audioActual = null;
+    this.cargandoAudio = false;
+    const generosDisponibles = this.getAvailableGenders();
+    if (generosDisponibles.length > 0) this.generoActivo = generosDisponibles[0];
     this.initializeSections();
   }
 
@@ -432,7 +546,7 @@ class PokemonState {
       this.secciones2 = this.getAvailableSubsections(this.isSeccion1);
       if (this.secciones2.length > 0) {
         this.isSeccion2 = this.secciones2[0];
-        this.lastSeccion2Name = this.isSeccion2;
+        this.ultimaSeccion2Nombre = this.isSeccion2;
       }
     }
   }
@@ -454,36 +568,29 @@ class PokemonState {
         }
         return this._cachedGenders;
       }
-      this._cachedGenders = keys.filter(
-        k => k === "macho" || k === "hembra"
-      ).filter(g => this.forma[g] && this.forma[g] !== "");
+      this._cachedGenders = keys.filter(k => k === "macho" || k === "hembra").filter(g => this.forma[g] && this.forma[g] !== "");
     }
     return this._cachedGenders;
   }
 
-
   getAvailableSpecialForms() {
-    const possible = ["mega", "megaX", "megaY", "giga"];
-    return possible.filter(form => this.forma.hasOwnProperty(form) && this.forma[form] !== "");
+    const posibles = ["mega", "megaX", "megaY", "giga"];
+    return posibles.filter(f => this.forma.hasOwnProperty(f) && this.forma[f] !== "");
   }
 
   shouldHideSections() {
-    return ["mega", "megaX", "megaY", "giga"].includes(this.activeSpecialForm);
+    return ["mega", "megaX", "megaY", "giga"].includes(this.formaEspecialActiva);
   }
 
   getCurrentFormaNode() {
-    if (this.activeSpecialForm && this.forma[this.activeSpecialForm]) {
-      return this.forma[this.activeSpecialForm];
+    if (this.formaEspecialActiva && this.forma[this.formaEspecialActiva]) return this.forma[this.formaEspecialActiva];
+    const availableGenders = this.getAvailableGenders();
+    if (availableGenders.length > 0 && this.generoActivo) return this.forma[this.generoActivo];
+    else if (availableGenders.length > 0) {
+      this.generoActivo = availableGenders[0];
+      return this.forma[this.generoActivo];
     } else {
-      const availableGenders = this.getAvailableGenders();
-      if (availableGenders.length > 0 && this.activeGender) {
-        return this.forma[this.activeGender];
-      } else if (availableGenders.length > 0) {
-        this.activeGender = availableGenders[0];
-        return this.forma[this.activeGender];
-      } else {
-        return this.forma;
-      }
+      return this.forma;
     }
   }
 
@@ -505,60 +612,38 @@ class PokemonState {
   }
 
   getPokemonData() {
-    if (this.activeSpecialForm && this.forma[this.activeSpecialForm]) {
-      const specialNode = this.forma[this.activeSpecialForm];
+    if (this.formaEspecialActiva && this.forma[this.formaEspecialActiva]) {
+      const specialNode = this.forma[this.formaEspecialActiva];
       const datosKey = (typeof specialNode === "string") ? specialNode : specialNode.datos;
       return this.info[datosKey] || {};
     }
-
     const node = this.getCurrentFormaNode();
     if (!node) return {};
-
-    if (node.datos !== undefined && typeof node.datos === "string") {
-      return this.info[node.datos] || {};
-    }
-
+    if (node.datos !== undefined && typeof node.datos === "string") return this.info[node.datos] || {};
     const sectionData = node[this.isSeccion1];
     if (!sectionData) return {};
-    if (typeof sectionData === "string") {
-      return this.info[sectionData] || {};
-    }
-    if (sectionData.datos !== undefined) {
-      return this.info[sectionData.datos] || {};
-    }
+    if (typeof sectionData === "string") return this.info[sectionData] || {};
+    if (sectionData.datos !== undefined) return this.info[sectionData.datos] || {};
     const sub = sectionData[this.isSeccion2];
     if (sub) {
       if (typeof sub === "string") return this.info[sub] || {};
       if (sub.datos !== undefined) return this.info[sub.datos] || {};
     }
-
     return {};
   }
 
   getCurrentImageUrls() {
-    if (this.activeSpecialForm && this.forma[this.activeSpecialForm]) {
-      const node = this.forma[this.activeSpecialForm];
+    if (this.formaEspecialActiva && this.forma[this.formaEspecialActiva]) {
+      const node = this.forma[this.formaEspecialActiva];
       return (typeof node === "string") ? {} : node;
     }
-
     const node = this.getCurrentFormaNode();
     if (!node) return {};
-
-    if (node.datos !== undefined) {
-      return node;
-    }
-
+    if (node.datos !== undefined) return node;
     const sectionData = node[this.isSeccion1];
     if (!sectionData) return {};
-
-    if (typeof sectionData === "string") {
-      return {};
-    }
-
-    if (sectionData.datos !== undefined) {
-      return sectionData;
-    }
-
+    if (typeof sectionData === "string") return {};
+    if (sectionData.datos !== undefined) return sectionData;
     const sub = sectionData[this.isSeccion2];
     if (!sub) return {};
     if (typeof sub === "string") return {};
@@ -567,59 +652,51 @@ class PokemonState {
 
   buildImageSrc() {
     const urls = this.getCurrentImageUrls();
-
     const getImageFromField = (field) => {
       if (!field) return null;
       if (typeof field === 'string') return field;
       if (Array.isArray(field)) {
         if (field.length === 0) return null;
         if (field.length === 1) return field[0];
-        return this.isArtwork ? field[1] : field[0];
+        return this.esArtwork ? field[1] : field[0];
       }
       return null;
     };
-
-    if (this.isTrasera && this.isShiny) {
+    if (this.esTrasera && this.esShiny) {
       const img = getImageFromField(urls.variocolorTrasera);
       if (img) return img;
     }
-
-    if (this.isTrasera) {
+    if (this.esTrasera) {
       const img = getImageFromField(urls.trasera);
       if (img) return img;
     }
-
-    if (this.isShiny) {
+    if (this.esShiny) {
       const img = getImageFromField(urls.variocolor);
       if (img) return img;
     }
-
     const img = getImageFromField(urls.imagen);
     if (img) return img;
-
     return "";
   }
 
   playAudio(audioFile) {
     try {
       const audio = new Audio(`public/audio/${audioFile}`);
-      audio.play().catch(error => {
-      });
-      this.currentAudio = audio;
-    } catch (error) {
-    }
+      audio.play().catch(error => {});
+      this.audioActual = audio;
+    } catch (error) {}
   }
 }
 
-class PokemonUI {
-  constructor(state) {
-    this.state = state;
+class InterfazPokemon {
+  constructor(estado) {
+    this.estado = estado;
+    this.gestorReferencias = new GestorReferencias();
     this.initializeHTML();
     this.elements = this.getElements();
     this.setupEventListeners();
     this.updateAll();
     this.imageLoading = false;
-
     window.addEventListener('resize', () => this.handleResize());
   }
 
@@ -637,22 +714,18 @@ class PokemonUI {
       botonEnlace: document.querySelector("#botonEnlace"),
       loadingIndicator: document.querySelector("#loadingIndicator")
     };
-
-    [...buttonConfig.gender, ...buttonConfig.special, ...buttonConfig.toggle].forEach(btn => {
+    [...configBotones.gender, ...configBotones.special, ...configBotones.toggle].forEach(btn => {
       elements[btn.key] = document.querySelector(`#${btn.id}`);
     });
-
     const navButtons = {
       'btnSec1Mas': 'sec1mas',
       'btnSec1Menos': 'sec1menos',
       'btnSec2Mas': 'sec2mas',
       'btnSec2Menos': 'sec2menos'
     };
-
     Object.entries(navButtons).forEach(([id, key]) => {
       elements[key] = document.querySelector(`#${id}`);
     });
-
     return elements;
   }
 
@@ -704,9 +777,9 @@ class PokemonUI {
           
           <div class="contenedorBotones">
             <div class="filaBoton">
-              ${this.generateButtons(buttonConfig.gender)}
+              ${this.generateButtons(configBotones.gender)}
               <div class="separadorBoton"></div>
-              ${this.generateButtons(buttonConfig.toggle)}
+              ${this.generateButtons(configBotones.toggle)}
             </div>
           </div>
           
@@ -714,7 +787,7 @@ class PokemonUI {
           
           <div class="contenedorBotones">
             <div class="filaBoton">
-              ${this.generateButtons(buttonConfig.special)}
+              ${this.generateButtons(configBotones.special)}
             </div>
           </div>
           
@@ -723,6 +796,10 @@ class PokemonUI {
         <div id="contenedorInfo" class="contenedorInfo"></div>
         </div>
       </div>
+      </div>
+      
+
+<div class="mw-content-text" style="color:white;">
     `;
   }
 
@@ -762,19 +839,19 @@ class PokemonUI {
   }
 
   setupEventListeners() {
-    buttonConfig.gender.forEach(btn => {
+    configBotones.gender.forEach(btn => {
       this.elements[btn.key]?.addEventListener("click", () => {
         this.handleGenderClick(btn.key);
       });
     });
 
-    buttonConfig.special.forEach(btn => {
+    configBotones.special.forEach(btn => {
       this.elements[btn.key]?.addEventListener("click", () => {
         this.handleSpecialFormClick(btn.key);
       });
     });
 
-    buttonConfig.toggle.forEach(btn => {
+    configBotones.toggle.forEach(btn => {
       this.elements[btn.key]?.addEventListener("click", () => {
         this.handleToggleClick(btn.key);
       });
@@ -786,70 +863,50 @@ class PokemonUI {
     this.elements.sec2menos?.addEventListener("click", () => this.navigateSection(2, -1));
 
     this.elements.botonVolumen?.addEventListener("click", () => {
-      const pokemonData = this.state.getPokemonData();
-
-      if (this.state.currentAudio && !this.state.currentAudio.paused) {
-        this.state.currentAudio.pause();
-        this.state.currentAudio.currentTime = 0;
-        this.state.currentAudio = null;
-        this.state.isLoadingAudio = false;
+      const pokemonData = this.estado.getPokemonData();
+      if (this.estado.audioActual && !this.estado.audioActual.paused) {
+        this.estado.audioActual.pause();
+        this.estado.audioActual.currentTime = 0;
+        this.estado.audioActual = null;
+        this.estado.cargandoAudio = false;
         this.updateVolumeButton();
         return;
       }
-
-      if (this.state.isLoadingAudio) {
-        return;
-      }
-
+      if (this.estado.cargandoAudio) return;
       if (pokemonData.grito && pokemonData.grito.startsWith("https://")) {
-        this.state.isLoadingAudio = true;
+        this.estado.cargandoAudio = true;
         this.updateVolumeButton();
-
         const audio = new Audio();
-
         audio.addEventListener('canplaythrough', () => {
-          this.state.isLoadingAudio = false;
+          this.estado.cargandoAudio = false;
           audio.play().then(() => {
             this.updateVolumeButton();
           }).catch(() => {
-            this.state.isLoadingAudio = false;
-            this.state.currentAudio = null;
+            this.estado.cargandoAudio = false;
+            this.estado.audioActual = null;
             this.updateVolumeButton();
           });
         }, { once: true });
-
         audio.addEventListener('error', () => {
-          this.state.isLoadingAudio = false;
-          this.state.currentAudio = null;
+          this.estado.cargandoAudio = false;
+          this.estado.audioActual = null;
           this.updateVolumeButton();
         });
-
-        audio.addEventListener('play', () => {
-          this.updateVolumeButton();
-        });
-
-        audio.addEventListener('pause', () => {
-          this.updateVolumeButton();
-        });
-
+        audio.addEventListener('play', () => this.updateVolumeButton());
+        audio.addEventListener('pause', () => this.updateVolumeButton());
         audio.addEventListener('ended', () => {
-          this.state.currentAudio = null;
+          this.estado.audioActual = null;
           this.updateVolumeButton();
         });
-
         audio.src = pokemonData.grito;
-        this.state.currentAudio = audio;
+        this.estado.audioActual = audio;
       }
     });
 
     this.elements.botonArtwork?.addEventListener("click", () => {
-      this.state.isArtwork = !this.state.isArtwork;
-      localStorage.setItem('preferArtwork', this.state.isArtwork);
+      this.estado.esArtwork = !this.estado.esArtwork;
+      localStorage.setItem('preferArtwork', this.estado.esArtwork);
       this.updateAll();
-    });
-
-    this.elements.botonEnlace?.addEventListener("click", () => {
-      window.location.href = enlaceWikidex;
     });
 
     this.elements.botonEnlace?.addEventListener("click", () => {
@@ -857,114 +914,70 @@ class PokemonUI {
     });
   }
 
-  handleVolumeClick() {
-    const pokemonData = this.state.getPokemonData();
-    if (pokemonData.grito) {
-      this.state.playAudio(pokemonData.grito);
-    }
-  }
-
   handleResize() {
     this.updateTipos();
   }
 
   getBackgroundColor() {
-  const pokemonData = this.state.getPokemonData();
-  
-  if (!pokemonData.tipo || pokemonData.tipo.length === 0) {
-    return "#f4f4f4ff";
+    const pokemonData = this.estado.getPokemonData();
+    if (!pokemonData.tipo || pokemonData.tipo.length === 0) return "#f4f4f4ff";
+    if (pokemonData.tipo.length === 1) {
+      const tipoColor = datosWikidex.color[pokemonData.tipo[0]];
+      return tipoColor || "#FFFFFF";
+    }
+    const colores = pokemonData.tipo.map(tipo => datosWikidex.color[tipo] || "#FFFFFF");
+    return `linear-gradient(to right, ${colores.join(", ")})`;
   }
-  
-  if (pokemonData.tipo.length === 1) {
-    const tipoColor = datosWikidex.color[pokemonData.tipo[0]];
-    return tipoColor || "#FFFFFF";
-  }
-  
-  const colores = pokemonData.tipo.map(tipo => datosWikidex.color[tipo] || "#FFFFFF");
-  return `linear-gradient(to right, ${colores.join(", ")})`;
-}
 
-updateBackgroundColor() {
-  const colorBg = this.getBackgroundColor();
-  if (this.elements.contenedorPokemon) {
-    this.elements.contenedorPokemon.style.background = colorBg;
+  updateBackgroundColor() {
+    const colorBg = this.getBackgroundColor();
+    if (this.elements.contenedorPokemon) this.elements.contenedorPokemon.style.background = colorBg;
   }
-}
 
   handleGenderClick(gender) {
-    const availableGenders = this.state.getAvailableGenders();
+    const availableGenders = this.estado.getAvailableGenders();
     if (availableGenders.includes(gender)) {
-      this.state.activeGender = gender;
-      this.state.selector1 = 0;
-      this.state.selector2 = 0;
-      this.state.initializeSections();
+      this.estado.generoActivo = gender;
+      this.estado.selector1 = 0;
+      this.estado.selector2 = 0;
+      this.estado.initializeSections();
       this.updateAll();
     }
   }
 
   handleSpecialFormClick(form) {
-    this.state.activeSpecialForm = this.state.activeSpecialForm === form ? "" : form;
-    this.state.selector1 = 0;
-    this.state.selector2 = 0;
-    this.state.initializeSections();
+    this.estado.formaEspecialActiva = this.estado.formaEspecialActiva === form ? "" : form;
+    this.estado.selector1 = 0;
+    this.estado.selector2 = 0;
+    this.estado.initializeSections();
     this.updateAll();
   }
 
   handleToggleClick(toggle) {
-    const urls = this.state.getCurrentImageUrls();
-
+    const urls = this.estado.getCurrentImageUrls();
     const shinyAvailable = !!urls.variocolor;
     const traseraAvailable = !!urls.trasera || !!urls.variocolorTrasera;
-
     if (toggle === 'shiny' && !shinyAvailable) return;
     if (toggle === 'trasera' && !traseraAvailable) return;
-
-    this.state[`is${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`] =
-      !this.state[`is${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`];
+    this.estado[`es${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`] =
+      !this.estado[`es${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`];
     this.updateAll();
-  }
-
-  handleArtworkClick() {
-    this.state.isArtwork = !this.state.isArtwork;
-    this.updateAll();
-  }
-
-  playAudio(audioUrl) {
-    try {
-      const audio = new Audio(audioUrl);
-      audio.play().catch();
-
-      this.currentAudio = audio;
-    } catch (error) {
-      console.log(error)
-    }
   }
 
   navigateSection(section, direction) {
     const selectorKey = `selector${section}`;
     const sectionsKey = `secciones${section}`;
-
-    this.state[selectorKey] = (this.state[selectorKey] + direction + this.state[sectionsKey].length) % this.state[sectionsKey].length;
-
+    this.estado[selectorKey] = (this.estado[selectorKey] + direction + this.estado[sectionsKey].length) % this.estado[sectionsKey].length;
     if (section === 1) {
-      const previousSeccion2Name = this.state.lastSeccion2Name;
-      this.state.secciones2 = this.state.getAvailableSubsections(this.state.secciones1[this.state.selector1]);
-      const matchingIndex = this.state.secciones2.findIndex(sec => sec === previousSeccion2Name);
-
-      if (matchingIndex !== -1) {
-        this.state.selector2 = matchingIndex;
-      } else {
-        this.state.selector2 = 0;
-      }
-      if (this.state.secciones2.length > 0) {
-        this.state.lastSeccion2Name = this.state.secciones2[this.state.selector2];
-      }
+      const previousSeccion2Name = this.estado.ultimaSeccion2Nombre;
+      this.estado.secciones2 = this.estado.getAvailableSubsections(this.estado.secciones1[this.estado.selector1]);
+      const matchingIndex = this.estado.secciones2.findIndex(sec => sec === previousSeccion2Name);
+      if (matchingIndex !== -1) this.estado.selector2 = matchingIndex;
+      else this.estado.selector2 = 0;
+      if (this.estado.secciones2.length > 0) this.estado.ultimaSeccion2Nombre = this.estado.secciones2[this.estado.selector2];
     } else {
-      if (this.state.secciones2.length > 0) {
-        this.state.lastSeccion2Name = this.state.secciones2[this.state.selector2];
-      }
+      if (this.estado.secciones2.length > 0) this.estado.ultimaSeccion2Nombre = this.estado.secciones2[this.estado.selector2];
     }
-
     this.updateSections();
     this.updateImage();
     this.updateTipos();
@@ -973,15 +986,9 @@ updateBackgroundColor() {
 
   updateButtonState(buttonType, key, isActive, isAvailable) {
     const element = this.elements[key];
-    if (!element) {
-      return;
-    }
-
-    const config = buttonConfig[buttonType]?.find(btn => btn.key === key);
-    if (!config) {
-      return;
-    }
-
+    if (!element) return;
+    const config = configBotones[buttonType]?.find(btn => btn.key === key);
+    if (!config) return;
     if (!isAvailable) {
       element.className = "circuloExterno botonDeshabilitado";
       element.querySelector(".circuloMedio").className = "circuloMedio grisColor";
@@ -1005,66 +1012,51 @@ updateBackgroundColor() {
   }
 
   updateSections() {
-    if (this.state.shouldHideSections()) {
+    if (this.estado.shouldHideSections()) {
       this.elements.seccion1.style.display = "none";
       this.elements.seccion2.style.display = "none";
-      this.state.isSeccion1 = "";
-      this.state.isSeccion2 = "";
+      this.estado.isSeccion1 = "";
+      this.estado.isSeccion2 = "";
       return;
     }
-
-    this.state.secciones1 = this.state.getAvailableSections();
-
-    if (this.state.selector1 >= this.state.secciones1.length) {
-      this.state.selector1 = 0;
-    }
-
-    if (this.state.secciones1.length <= 1) {
+    this.estado.secciones1 = this.estado.getAvailableSections();
+    if (this.estado.selector1 >= this.estado.secciones1.length) this.estado.selector1 = 0;
+    if (this.estado.secciones1.length <= 1) {
       this.elements.seccion1.style.display = "none";
-      this.state.isSeccion1 = this.state.secciones1[0] || "normal";
+      this.estado.isSeccion1 = this.estado.secciones1[0] || "normal";
     } else {
       this.elements.seccion1.style.display = "flex";
-      this.state.isSeccion1 = this.state.secciones1[this.state.selector1];
-      this.elements.seccion1Texto.textContent = this.state.isSeccion1 === "normal" ? "Común" : this.state.isSeccion1;
+      this.estado.isSeccion1 = this.estado.secciones1[this.estado.selector1];
+      this.elements.seccion1Texto.textContent = this.estado.isSeccion1 === "normal" ? "Común" : this.estado.isSeccion1;
     }
-
-    this.state.secciones2 = this.state.getAvailableSubsections(this.state.isSeccion1);
-
-    if (this.state.selector2 >= this.state.secciones2.length) {
-      this.state.selector2 = 0;
-    }
-
-    if (this.state.secciones2.length <= 1) {
+    this.estado.secciones2 = this.estado.getAvailableSubsections(this.estado.isSeccion1);
+    if (this.estado.selector2 >= this.estado.secciones2.length) this.estado.selector2 = 0;
+    if (this.estado.secciones2.length <= 1) {
       this.elements.seccion2.style.display = "none";
-      this.state.isSeccion2 = this.state.secciones2[0] || "";
+      this.estado.isSeccion2 = this.estado.secciones2[0] || "";
     } else {
       this.elements.seccion2.style.display = "flex";
-      this.state.isSeccion2 = this.state.secciones2[this.state.selector2];
-      this.elements.seccion2Texto.textContent = this.state.isSeccion2;
+      this.estado.isSeccion2 = this.estado.secciones2[this.estado.selector2];
+      this.elements.seccion2Texto.textContent = this.estado.isSeccion2;
     }
   }
 
   updateVolumeButton() {
-    const pokemonData = this.state.getPokemonData();
+    const pokemonData = this.estado.getPokemonData();
     const botonVolumen = this.elements.botonVolumen;
-
     if (!pokemonData.grito) {
       botonVolumen.style.display = "none";
       return;
     }
-
     botonVolumen.style.display = "flex";
-
     const circuloMedio = botonVolumen.querySelector('.circuloMedio');
     const circuloInterno = botonVolumen.querySelector('.circuloInterno');
     const img = botonVolumen.querySelector('img');
-
-    if (this.state.isLoadingAudio) {
+    if (this.estado.cargandoAudio) {
       botonVolumen.className = 'circuloExterno botonEsquinaSupDer';
       circuloMedio.className = 'circuloMedio gritoColor transparenteBoton';
       circuloInterno.className = 'circuloInterno';
       img.style.display = 'none';
-
       let spinner = botonVolumen.querySelector('.audio-spinner');
       if (!spinner) {
         spinner = document.createElement('div');
@@ -1074,13 +1066,10 @@ updateBackgroundColor() {
       spinner.style.display = 'block';
       return;
     }
-
     const spinner = botonVolumen.querySelector('.audio-spinner');
     if (spinner) spinner.style.display = 'none';
     img.style.display = 'block';
-
-    const isPlaying = this.state.currentAudio && !this.state.currentAudio.paused;
-
+    const isPlaying = this.estado.audioActual && !this.estado.audioActual.paused;
     if (isPlaying) {
       botonVolumen.className = 'circuloExterno botonEsquinaSupDer gritoColor';
       circuloMedio.className = 'circuloMedio';
@@ -1097,14 +1086,11 @@ updateBackgroundColor() {
 
   updateArtworkButton() {
     const botonArtwork = this.elements.botonArtwork;
-
     botonArtwork.style.display = "flex";
-
     const circuloMedio = botonArtwork.querySelector('.circuloMedio');
     const circuloInterno = botonArtwork.querySelector('.circuloInterno');
     const img = botonArtwork.querySelector('img');
-
-    if (this.state.isArtwork) {
+    if (this.estado.esArtwork) {
       botonArtwork.className = 'circuloExterno botonEsquinaSupIzq artworkColor';
       circuloMedio.className = 'circuloMedio';
       circuloInterno.className = 'circuloInterno artworkColor';
@@ -1118,406 +1104,468 @@ updateBackgroundColor() {
   }
 
   updateTipos() {
-    const pokemonData = this.state.getPokemonData();
-    const contenedorInfo = this.elements.contenedorInfo;
+  // Limpiar referencias anteriores
+  this.gestorReferencias.limpiarReferenciasPokemon();
+  
+  const pokemonData = this.estado.getPokemonData();
+  const contenedorInfo = this.elements.contenedorInfo;
+  contenedorInfo.innerHTML = '';
+  
+  if (!pokemonData || Object.keys(pokemonData).length === 0) return;
 
-    contenedorInfo.innerHTML = '';
-
-    if (!pokemonData || Object.keys(pokemonData).length === 0) {
-      return;
-    }
-
-    if ((pokemonData.tipo && pokemonData.tipo.length > 0) || pokemonData.generacion !== undefined) {
-      const tiposHTML = (pokemonData.tipo && pokemonData.tipo.length > 0)
-        ? pokemonData.tipo.map(tipo => {
-          const imagenTipo = datosWikidex.tipo[tipo] || 'ruta/por_defecto.png';
-          return `<img src="${imagenTipo}" height="22" alt="${tipo}">`;
-        }).join('')
-        : '';
-
-
-      const imgGeneracion = datosWikidex.generación[pokemonData.generacion] || datosWikidex.default;
-      let generacionHTML = '';
-      if (pokemonData.generacion !== undefined) {
-        const generaciones = ['Primera', 'Segunda', 'Tercera', 'Cuarta', 'Quinta', 'Sexta', 'Séptima', 'Octava', 'Novena', 'Décima', 'Undécima', 'Duodécima'];
-        const generacionTexto = generaciones[pokemonData.generacion - 1] || pokemonData.generacion;
-        generacionHTML = `
-          <div class="tarjeta">
-            <div class="tituloTarjeta">Generación</div>
-            <div class="contenidoTarjeta">
-              <div class="tipoGeneracionContainer">
-                <img src="${imgGeneracion}" height="20" alt="${generacionTexto} generación"><div class="generacionSpacing"></div>${generacionTexto}
-              </div>
-            </div>
-          </div>
-        `;
-      }
-
-      const tipoCard = tiposHTML ? `
-        <div class="tarjeta">
-          <div class="tituloTarjeta">Tipo</div>
-          <div class="contenidoTarjeta">
-            <div class="tiposContainer">${tiposHTML}</div>
-          </div>
-        </div>
-      ` : `<div class="tarjeta"><div class="tituloTarjeta">Tipo</div><div class="contenidoTarjeta">–</div></div>`;
-
-      contenedorInfo.innerHTML += `
-        <div class="contenedorMedidas">
-          ${tipoCard}
-          ${generacionHTML || `<div class="tarjeta"><div class="tituloTarjeta">Generación</div><div class="contenidoTarjeta">–</div></div>`}
-        </div>
-      `;
-    }
-
-    if (pokemonData.genero) {
-      let barras = '';
-
-      if (pokemonData.genero.macho > 0) {
-        const porcentajeMacho = parseFloat(pokemonData.genero.macho);
-        const bordeMacho = porcentajeMacho === 100
-          ? 'border-radius: 5px;'
-          : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
-
-        barras += `
-      <div class="generoContainer">
-        <img src="https://images.wikidexcdn.net/mwuploads/wikidex/c/cc/latest/20250104233921/Macho.svg" alt="Macho">
-        <div class="generoBarra">
-          <div class="generoBarraMacho" style="flex-basis: ${porcentajeMacho}%; ${bordeMacho}"></div>
-          ${porcentajeMacho < 100
-            ? `<div class="generoBarraVacia" style="flex-basis: ${100 - porcentajeMacho}%;"></div>`
-            : ''}
-          <div class="generoPorcentaje"><span>${porcentajeMacho.toString().replace('.', "'")}%</span></div>
-        </div>
-      </div>
-    `;
-      }
-
-      if (pokemonData.genero.hembra > 0) {
-        const porcentajeHembra = parseFloat(pokemonData.genero.hembra);
-        const bordeHembra = porcentajeHembra === 100
-          ? 'border-radius: 5px;'
-          : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
-
-        barras += `
-      <div class="generoContainer">
-        <img src="https://images.wikidexcdn.net/mwuploads/wikidex/3/34/latest/20250104234028/Hembra.svg" alt="Hembra">
-        <div class="generoBarra">
-          <div class="generoBarraHembra" style="flex-basis: ${porcentajeHembra}%; ${bordeHembra}"></div>
-          ${porcentajeHembra < 100
-            ? `<div class="generoBarraVacia" style="flex-basis: ${100 - porcentajeHembra}%;"></div>`
-            : ''}
-          <div class="generoPorcentaje"><span>${porcentajeHembra.toString().replace('.', "'")}%</span></div>
-        </div>
-      </div>
-    `;
-      }
-
-      contenedorInfo.innerHTML += `
-    <div class="tarjetaIndividual">
-      <div class="tituloTarjeta">Género</div>
-      <div class="contenidoTarjeta">
-        <div style="width: 100%;">${barras}</div>
-      </div>
-    </div>
-  `;
-    } else {
-      contenedorInfo.innerHTML += `
-    <div class="tarjetaIndividual">
-      <div class="tituloTarjeta">Género</div>
-      <div class="contenidoTarjeta">
-        Sin género
-      </div>
-    </div>
-  `;
-    }
-
-
-    if (pokemonData.altura !== undefined || pokemonData.peso !== undefined) {
-      let medidasHTML = '<div class="contenedorMedidas">';
-
-      if (pokemonData.altura !== undefined) {
-        medidasHTML += `
-          <div class="tarjeta">
-            <div class="tituloTarjeta">Altura</div>
-            <div class="contenidoTarjeta">
-              <span>${pokemonData.altura} m</span>
-            </div>
-          </div>
-        `;
-      }
-
-      if (pokemonData.peso !== undefined) {
-        medidasHTML += `
-          <div class="tarjeta">
-            <div class="tituloTarjeta">Peso</div>
-            <div class="contenidoTarjeta">
-              <span>${pokemonData.peso} kg</span>
-            </div>
-          </div>
-        `;
-      } else {
-        medidasHTML += `
-          <div class="tarjeta">
-            <div class="tituloTarjeta">Peso</div>
-            <div class="contenidoTarjeta">
-              <span>??? kg</span>
-            </div>
-          </div>
-        `;
-      }
-
-      medidasHTML += '</div>';
-      contenedorInfo.innerHTML += medidasHTML;
-    }
-
-    if (pokemonData.habilidad && pokemonData.habilidad.length > 0) {
-      const habilidadesNormales = pokemonData.habilidad.filter(hab => !hab.oculta);
-      const habilidadesOcultas = pokemonData.habilidad.filter(hab => hab.oculta);
-
-      let habilidadesHTML = '<div class="contenedorMedidas">';
-
-      if (habilidadesNormales.length > 0) {
-        const habilidadesNormalesHTML = habilidadesNormales.map(hab =>
-          `<span>${hab.nombre}</span><br>`
-        ).join('');
-
-        const tituloNormal = habilidadesNormales.length === 1 ? 'Habilidad' : 'Habilidades';
-
-        habilidadesHTML += `
-          <div class="tarjeta">
-            <div class="tituloTarjeta">${tituloNormal}</div>
-            <div class="contenidoTarjeta">
-              <div>${habilidadesNormalesHTML}</div>
-            </div>
-          </div>
-        `;
-      }
-
-      if (habilidadesOcultas.length > 0) {
-        const habilidadesOcultasHTML = habilidadesOcultas.map(hab =>
-          `<span>${hab.nombre}</span><br>`
-        ).join('');
-
-        const tituloOculta = habilidadesOcultas.length === 1 ? 'Habilidad oculta' : 'Habilidades ocultas';
-
-        habilidadesHTML += `
-          <div class="tarjeta">
-            <div class="tituloTarjeta">${tituloOculta}</div>
-            <div class="contenidoTarjeta">
-              <div>${habilidadesOcultasHTML}</div>
-            </div>
-          </div>
-        `;
-      }
-
-      habilidadesHTML += '</div>';
-      contenedorInfo.innerHTML += habilidadesHTML;
-    }
-
-
-    if (pokemonData.figura !== undefined || pokemonData.color) {
-      const imgFigura = datosWikidex.figura[pokemonData.figura] || datosWikidex.default;
-      let figuraHTML = '';
-      if (pokemonData.figura !== undefined) {
-        figuraHTML = `
-          <div class="tarjeta">
-            <div class="tituloTarjeta">Figura</div>
-            <div class="contenidoTarjeta">
-              <img src="${imgFigura}" height="30" alt="Figura ${pokemonData.figura}">
-            </div>
-          </div>
-        `;
-      } else {
-        figuraHTML = `<div class="tarjeta"><div class="tituloTarjeta">Figura</div><div class="contenidoTarjeta">–</div></div>`;
-      }
-
-      const colores = {
-        Azul: "#3D8BFF",
-        Amarillo: "#FFD700",
-        Blanco: "#EEEEEE",
-        Gris: "#696969",
-        Marrón: "#B8860B",
-        Morado: "#6A5ACD",
-        Negro: "#000000",
-        Rojo: "#FF6347",
-        Rosa: "#DB7093",
-        Verde: "#228B22"
-      };
-      const colorHex = colores[pokemonData.color] || "#FFFFFF";
-
-      let colorCard = '';
-      if (pokemonData.color) {
-        const coloresArray = Array.isArray(pokemonData.color) ? pokemonData.color : [pokemonData.color];
-        const coloresHTML = coloresArray.map(colorNombre => {
-          const colorHex = colores[colorNombre] || "#FFFFFF";
-          return `<span class="colorMuestra" style="background-color:${colorHex};"></span><span>${colorNombre}</span>`;
-        }).join('');
+  // ========== TIPOS Y GENERACIÓN ==========
+  // En la sección de TIPOS Y GENERACIÓN, reemplaza por:
+if ((pokemonData.tipo && pokemonData.tipo.length > 0) || pokemonData.generacion !== undefined) {
+  const tiposHTML = (pokemonData.tipo && pokemonData.tipo.length > 0)
+    ? pokemonData.tipo.map(tipo => {
+        let tipoNombre = tipo;
+        let notaHTML = '';
         
-        const tituloColor = coloresArray.length === 1 ? 'Color' : 'Colores';
+        if (typeof tipo === 'object' && tipo.valor) {
+          tipoNombre = tipo.valor;
+          if (tipo.nota) {
+            notaHTML = this.gestorReferencias.procesarReferencia(tipo.nota, tipo);
+          }
+        }
         
-        colorCard = `
-          <div class="tarjeta">
-            <div class="tituloTarjeta">${tituloColor}</div>
-            <div class="contenidoTarjeta">
-              <div class="colorContenedor">${coloresHTML}</div>
-            </div>
-          </div>
-        `;
-      } else {
-        colorCard = `<div class="tarjeta"><div class="tituloTarjeta">Color</div><div class="contenidoTarjeta">—</div></div>`;
-      }
+        const imagenTipo = datosWikidex.tipo[tipoNombre] || 'ruta/por_defecto.png';
+        return `<span style="white-space: nowrap;"><img src="${imagenTipo}" height="22" alt="${tipoNombre}">${notaHTML}</span>`;
+      }).join(' ')
+    : '';
 
-      contenedorInfo.innerHTML += `
-        <div class="contenedorMedidas">
-          ${figuraHTML}
-          ${colorCard}
-        </div>
-      `;
-    }
-
-    if (pokemonData.categoria || (pokemonData.huevo && pokemonData.huevo.length > 0)) {
-  let categoriaCard = '';
-  if (pokemonData.categoria) {
-    const categorias = Array.isArray(pokemonData.categoria) ? pokemonData.categoria : [pokemonData.categoria];
-    const categoriasHTML = categorias.map(cat => {
-      if (typeof cat === 'string') {
-        return `<span>Pokémon ${cat}</span>`;
-      } else {
-        const notasHTML = cat.nota ? cat.nota.map(nota => `<ref>${nota}</ref>`).join('') : '';
-        return `<span>Pokémon ${cat.nombre || cat.valor || cat}${notasHTML}</span>`;
-      }
-    }).join('<br>');
-    
-    categoriaCard = `
+    const tipoCard = tiposHTML ? `
       <div class="tarjeta">
-        <div class="tituloTarjeta">Categoría</div>
+        <div class="tituloTarjeta">Tipo</div>
         <div class="contenidoTarjeta">
-          <div>${categoriasHTML}</div>
+          <div class="tiposContainer">${tiposHTML}</div>
         </div>
       </div>
-    `;
-  } else {
-    categoriaCard = `<div class="tarjeta"><div class="tituloTarjeta">Categoría</div><div class="contenidoTarjeta">—</div></div>`;
-  }
+    ` : `<div class="tarjeta"><div class="tituloTarjeta">Tipo</div><div class="contenidoTarjeta">—</div></div>`;
 
-  let huevoHTML = '';
-  if (pokemonData.huevo && pokemonData.huevo.length > 0) {
-    huevoHTML = pokemonData.huevo.map(grupo => {
-      if (typeof grupo === 'string') {
-        return `<span>${grupo}</span>`;
-      } else {
-        const notasHTML = grupo.nota ? grupo.nota.map(nota => `<ref>${nota}</ref>`).join('') : '';
-        return `<span>${grupo.nombre || grupo}${notasHTML}</span>`;
+    let generacionHTML = '';
+    if (pokemonData.generacion !== undefined) {
+      let genValue = pokemonData.generacion;
+      let genNotaHTML = '';
+      
+      if (typeof pokemonData.generacion === 'object' && pokemonData.generacion.valor) {
+        genValue = pokemonData.generacion.valor;
+        if (pokemonData.generacion.nota) {
+          genNotaHTML = this.gestorReferencias.procesarReferencia(pokemonData.generacion.nota, pokemonData.generacion);
+        }
       }
-    }).join('<br>');
-  } else {
-    huevoHTML = '—';
+      
+      const imgGeneracion = datosWikidex.generación[genValue] || datosWikidex.default;
+      const generaciones = ['Primera', 'Segunda', 'Tercera', 'Cuarta', 'Quinta', 'Sexta', 'Séptima', 'Octava', 'Novena'];
+      const generacionTexto = generaciones[genValue - 1] || genValue;
+      
+      generacionHTML = `
+        <div class="tarjeta">
+          <div class="tituloTarjeta">Generación</div>
+          <div class="contenidoTarjeta">
+            <div class="tipoGeneracionContainer">
+              <img src="${imgGeneracion}" height="20" alt="${generacionTexto} generación">
+              <div class="generacionSpacing"></div>${generacionTexto}${genNotaHTML}
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      generacionHTML = `<div class="tarjeta"><div class="tituloTarjeta">Generación</div><div class="contenidoTarjeta">—</div></div>`;
+    }
+
+    contenedorInfo.innerHTML += `
+      <div class="contenedorMedidas">
+        ${tipoCard}
+        ${generacionHTML}
+      </div>
+    `;
   }
 
-  const huevoCard = `
-    <div class="tarjeta">
-      <div class="tituloTarjeta">Grupo huevo</div>
-      <div class="contenidoTarjeta">
-        <div>${huevoHTML}</div>
+  // ========== GÉNERO ==========
+  if (pokemonData.genero) {
+    let barras = '';
+    
+    // En la sección de GÉNERO, reemplaza las barras por:
+if (pokemonData.genero.macho) {
+  let valorMacho = pokemonData.genero.macho;
+  let notaMacho = '';
+  if (typeof valorMacho === 'object' && valorMacho.valor) {
+    if (valorMacho.nota) {
+      notaMacho = this.gestorReferencias.procesarReferencia(valorMacho.nota, valorMacho);
+    }
+    valorMacho = valorMacho.valor;
+  }
+  const porcentajeMacho = parseFloat(valorMacho);
+  
+  const bordeMacho = porcentajeMacho === 100 ? 'border-radius: 5px;' : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
+  barras += `
+    <div class="generoContainer">
+      <img src="${datosWikidex.icono.macho}" alt="Macho">
+      <div class="generoBarra">
+        <div class="generoBarraMacho" style="flex-basis: ${porcentajeMacho}%; ${bordeMacho}"></div>
+        ${porcentajeMacho < 100 ? `<div class="generoBarraVacia" style="flex-basis: ${100 - porcentajeMacho}%;"></div>` : ''}
+        <div class="generoPorcentaje"><span>${porcentajeMacho.toString().replace('.', "'")}%${notaMacho}</span></div>
       </div>
-    </div>
-  `;
-
-  contenedorInfo.innerHTML += `
-    <div class="contenedorMedidas">
-      ${categoriaCard}
-      ${huevoCard}
     </div>
   `;
 }
 
-    if (pokemonData.pronunciacion && pokemonData.pronunciacion.length > 0) {
-      let pronunciacionesHTML = '';
-
-      const pronunciaciones = pokemonData.pronunciacion.map(p => {
-        let zonaHTML = '';
-        if (p.zona === 'España') {
-          zonaHTML = ' <abbr title="España">(ES)</abbr>';
-        } else if (p.zona === 'Hispanoamérica') {
-          zonaHTML = ' <abbr title="Hispanoamérica">(HA)</abbr>';
-        }
-
-        let notasHTML = '';
-        if (p.nota && p.nota.length > 0) {
-          notasHTML = p.nota.map(nota => `<ref>${nota}</ref>`).join('');
-        }
-
-        return `/ ${p.fonetica} /${zonaHTML}${notasHTML}`;
-      }).join('<br>');
-
-      pronunciacionesHTML += `
-      <div class="contenedorMedidas">
-      <div class="tarjeta">
-        <div class="tituloTarjeta">${pokemonData.pronunciacion.length === 1 ? 'Pronunciación' : 'Pronunciaciones'}</div>
-        <div class="contenidoTarjeta">
-          <div>${pronunciaciones}</div>
-        </div>
-        </div>
-        </div>
-      `;
-
-      contenedorInfo.innerHTML += pronunciacionesHTML;
+if (pokemonData.genero.hembra) {
+  let valorHembra = pokemonData.genero.hembra;
+  let notaHembra = '';
+  if (typeof valorHembra === 'object' && valorHembra.valor) {
+    if (valorHembra.nota) {
+      notaHembra = this.gestorReferencias.procesarReferencia(valorHembra.nota, valorHembra);
     }
+    valorHembra = valorHembra.valor;
+  }
+  const porcentajeHembra = parseFloat(valorHembra);
+  
+  const bordeHembra = porcentajeHembra === 100 ? 'border-radius: 5px;' : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
+  barras += `
+    <div class="generoContainer">
+      <img src="${datosWikidex.icono.hembra}" alt="Hembra">
+      <div class="generoBarra">
+        <div class="generoBarraHembra" style="flex-basis: ${porcentajeHembra}%; ${bordeHembra}"></div>
+        ${porcentajeHembra < 100 ? `<div class="generoBarraVacia" style="flex-basis: ${100 - porcentajeHembra}%;"></div>` : ''}
+        <div class="generoPorcentaje"><span>${porcentajeHembra.toString().replace('.', "'")}%${notaHembra}</span></div>
+      </div>
+    </div>
+  `;
+}
+    
+    contenedorInfo.innerHTML += `
+      <div class="tarjetaIndividual">
+        <div class="tituloTarjeta">Sexo</div>
+        <div class="contenidoTarjeta">
+          <div style="width: 100%;">${barras}</div>
+        </div>
+      </div>
+    `;
+  } else {
+    contenedorInfo.innerHTML += `
+      <div class="tarjetaIndividual">
+        <div class="tituloTarjeta">Sexo</div>
+        <div class="contenidoTarjeta">Sin sexo</div>
+      </div>
+    `;
   }
 
-  updateImage() {
-    const pokemonData = this.state.getPokemonData();
-    const imageSrc = this.state.buildImageSrc();
-    const urls = this.state.getCurrentImageUrls();
+  // ========== ALTURA Y PESO ==========
+  if (pokemonData.altura !== undefined || pokemonData.peso !== undefined) {
+    let medidasHTML = '<div class="contenedorMedidas">';
+    
+    if (pokemonData.altura !== undefined) {
+  let alturasArray = Array.isArray(pokemonData.altura) ? pokemonData.altura : [pokemonData.altura];
+  
+  const alturaHTML = alturasArray.map(alt => {
+    const valorConReferencia = this.gestorReferencias.extraerValorConReferencia(alt);
+    return `${valorConReferencia} m`;
+  }).join('<br>');
+  
+  medidasHTML += `
+    <div class="tarjeta">
+      <div class="tituloTarjeta">Altura</div>
+      <div class="contenidoTarjeta">
+        <span>${alturaHTML}</span>
+      </div>
+    </div>
+  `;
+}
 
+    if (pokemonData.peso !== undefined) {
+  let pesosArray = Array.isArray(pokemonData.peso) ? pokemonData.peso : [pokemonData.peso];
+  
+  const pesoHTML = pesosArray.map(p => {
+    const valorConReferencia = this.gestorReferencias.extraerValorConReferencia(p);
+    return `${valorConReferencia} kg`;
+  }).join('<br>');
+  
+  medidasHTML += `
+    <div class="tarjeta">
+      <div class="tituloTarjeta">Peso</div>
+      <div class="contenidoTarjeta">
+        <span>${pesoHTML}</span>
+      </div>
+    </div>
+  `;
+} else {
+      medidasHTML += `
+        <div class="tarjeta">
+          <div class="tituloTarjeta">Peso</div>
+          <div class="contenidoTarjeta">
+            <span>??? kg</span>
+          </div>
+        </div>
+      `;
+    }
+    
+    medidasHTML += '</div>';
+    contenedorInfo.innerHTML += medidasHTML;
+  }
+
+  // ========== HABILIDADES ==========
+  if (pokemonData.habilidad && pokemonData.habilidad.length > 0) {
+    const habilidadesNormales = pokemonData.habilidad.filter(hab => !hab.oculta);
+    const habilidadesOcultas = pokemonData.habilidad.filter(hab => hab.oculta);
+    let habilidadesHTML = '<div class="contenedorMedidas">';
+    
+    if (habilidadesNormales.length > 0) {
+      const habilidadesNormalesHTML = habilidadesNormales.map(hab => {
+        const nombreCompleto = this.gestorReferencias.extraerValorConReferencia(hab.nombre);
+        return `<span>${nombreCompleto}</span><br>`;
+      }).join('');
+      
+      const tituloNormal = habilidadesNormales.length === 1 ? 'Habilidad' : 'Habilidades';
+      habilidadesHTML += `
+        <div class="tarjeta">
+          <div class="tituloTarjeta">${tituloNormal}</div>
+          <div class="contenidoTarjeta">
+            <div>${habilidadesNormalesHTML}</div>
+          </div>
+        </div>
+      `;
+    }
+    
+    if (habilidadesOcultas.length > 0) {
+      const habilidadesOcultasHTML = habilidadesOcultas.map(hab => {
+        const nombreCompleto = this.gestorReferencias.extraerValorConReferencia(hab.nombre);
+        return `<span>${nombreCompleto}</span><br>`;
+      }).join('');
+      
+      const tituloOculta = habilidadesOcultas.length === 1 ? 'Habilidad oculta' : 'Habilidades ocultas';
+      habilidadesHTML += `
+        <div class="tarjeta">
+          <div class="tituloTarjeta">${tituloOculta}</div>
+          <div class="contenidoTarjeta">
+            <div>${habilidadesOcultasHTML}</div>
+          </div>
+        </div>
+      `;
+    }
+    
+    habilidadesHTML += '</div>';
+    contenedorInfo.innerHTML += habilidadesHTML;
+  }
+
+  // ========== FIGURA Y COLOR ==========
+  if (pokemonData.figura !== undefined || pokemonData.color) {
+    const imgFigura = datosWikidex.figura[pokemonData.figura] || datosWikidex.default;
+    // En la sección de FIGURA Y COLOR, reemplaza la parte de figura por:
+let figuraHTML = '';
+if (pokemonData.figura !== undefined) {
+  if (Array.isArray(pokemonData.figura)) {
+    const figurasHTML = pokemonData.figura.map(fig => {
+      let figuraValor = '';
+      let notaHTML = '';
+      
+      if (typeof fig === 'object' && fig.valor) {
+        figuraValor = fig.valor;
+        if (fig.nota) {
+          notaHTML = this.gestorReferencias.procesarReferencia(fig.nota, fig);
+        }
+      } else {
+        figuraValor = fig;
+      }
+      
+      const imgFigura = datosWikidex.figura[figuraValor] || datosWikidex.default;
+      return `<img src="${imgFigura}" height="30" alt="Figura ${figuraValor}">${notaHTML}`;
+    }).join(' ');
+    
+    figuraHTML = `
+      <div class="tarjeta">
+        <div class="tituloTarjeta">Figura</div>
+        <div class="contenidoTarjeta">
+          ${figurasHTML}
+        </div>
+      </div>
+    `;
+  } else {
+    const imgFigura = datosWikidex.figura[pokemonData.figura] || datosWikidex.default;
+    figuraHTML = `
+      <div class="tarjeta">
+        <div class="tituloTarjeta">Figura</div>
+        <div class="contenidoTarjeta">
+          <img src="${imgFigura}" height="30" alt="Figura ${pokemonData.figura}">
+        </div>
+      </div>
+    `;
+  }
+} else {
+  figuraHTML = `<div class="tarjeta"><div class="tituloTarjeta">Figura</div><div class="contenidoTarjeta">—</div></div>`;
+}
+
+    const coloresMap = {
+      Azul: "#3D8BFF", Amarillo: "#FFD700", Blanco: "#EEEEEE",
+      Gris: "#696969", Marrón: "#B8860B", Morado: "#6A5ACD",
+      Negro: "#000000", Rojo: "#FF6347", Rosa: "#DB7093", Verde: "#228B22"
+    };
+
+    let colorCard = '';
+    // En la sección de COLOR, reemplaza por:
+if (pokemonData.color) {
+  const coloresArray = Array.isArray(pokemonData.color) ? pokemonData.color : [pokemonData.color];
+  const coloresHTML = coloresArray.map(colorItem => {
+    let colorNombre = '';
+    let notaHTML = '';
+    
+    if (typeof colorItem === 'object' && colorItem.valor) {
+      colorNombre = colorItem.valor;
+      if (colorItem.nota) {
+        notaHTML = this.gestorReferencias.procesarReferencia(colorItem.nota, colorItem);
+      }
+    } else {
+      colorNombre = colorItem;
+    }
+    
+    const colorHex = coloresMap[colorNombre] || "#FFFFFF";
+    return `<span class="colorMuestra" style="background-color:${colorHex};"></span><span>${colorNombre}${notaHTML}</span>`;
+  }).join('');
+  
+  const tituloColor = coloresArray.length === 1 ? 'Color' : 'Colores';
+  colorCard = `
+    <div class="tarjeta">
+      <div class="tituloTarjeta">${tituloColor}</div>
+      <div class="contenidoTarjeta">
+        <div class="colorContenedor">${coloresHTML}</div>
+      </div>
+    </div>
+  `;
+}
+
+    contenedorInfo.innerHTML += `
+      <div class="contenedorMedidas">
+        ${figuraHTML}
+        ${colorCard}
+      </div>
+    `;
+  }
+
+  // ========== CATEGORÍA Y HUEVO ==========
+  if (pokemonData.categoria || (pokemonData.huevo && pokemonData.huevo.length > 0)) {
+    let categoriaCard = '';
+    if (pokemonData.categoria) {
+      const categorias = Array.isArray(pokemonData.categoria) ? pokemonData.categoria : [pokemonData.categoria];
+      const categoriasHTML = categorias.map(cat => {
+        const nombreCompleto = this.gestorReferencias.extraerValorConReferencia(cat);
+        return `<span>Pokémon ${nombreCompleto}</span>`;
+      }).join('<br>');
+      
+      categoriaCard = `
+        <div class="tarjeta">
+          <div class="tituloTarjeta">Categoría</div>
+          <div class="contenidoTarjeta">
+            <div>${categoriasHTML}</div>
+          </div>
+        </div>
+      `;
+    } else {
+      categoriaCard = `<div class="tarjeta"><div class="tituloTarjeta">Categoría</div><div class="contenidoTarjeta">—</div></div>`;
+    }
+
+    let huevoHTML = '';
+    if (pokemonData.huevo && pokemonData.huevo.length > 0) {
+      huevoHTML = pokemonData.huevo.map(grupo => {
+        return this.gestorReferencias.extraerValorConReferencia(grupo);
+      }).join('<br>');
+    } else {
+      huevoHTML = '—';
+    }
+
+    const huevoCard = `
+      <div class="tarjeta">
+        <div class="tituloTarjeta">Grupo huevo</div>
+        <div class="contenidoTarjeta">
+          <div>${huevoHTML}</div>
+        </div>
+      </div>
+    `;
+
+    contenedorInfo.innerHTML += `
+      <div class="contenedorMedidas">
+        ${categoriaCard}
+        ${huevoCard}
+      </div>
+    `;
+  }
+
+  // ========== PRONUNCIACIÓN ==========
+  if (pokemonData.pronunciacion && pokemonData.pronunciacion.length > 0) {
+    const pronunciaciones = pokemonData.pronunciacion.map(p => {
+      let foneticaCompleta = this.gestorReferencias.extraerValorConReferencia(p.fonetica);
+      
+      let zonaHTML = '';
+      if (p.zona) {
+        if (Array.isArray(p.zona)) {
+          const zonasHTML = p.zona.map(z => {
+            const zonaTexto = this.gestorReferencias.extraerValorConReferencia(z);
+            if (zonaTexto.includes('España')) return '<abbr title="España">(ES)</abbr>';
+            if (zonaTexto.includes('Hispanoamérica')) return '<abbr title="Hispanoamérica">(HA)</abbr>';
+            return zonaTexto;
+          }).join(' ');
+          zonaHTML = ' ' + zonasHTML;
+        } else {
+          if (p.zona === 'España') zonaHTML = ' <abbr title="España">(ES)</abbr>';
+          else if (p.zona === 'Hispanoamérica') zonaHTML = ' <abbr title="Hispanoamérica">(HA)</abbr>';
+        }
+      }
+      
+      return `/ ${foneticaCompleta} /${zonaHTML}`;
+    }).join('<br>');
+    
+    contenedorInfo.innerHTML += `
+      <div class="contenedorMedidas">
+        <div class="tarjeta">
+          <div class="tituloTarjeta">${pokemonData.pronunciacion.length === 1 ? 'Pronunciación' : 'Pronunciaciones'}</div>
+          <div class="contenidoTarjeta">
+            <div>${pronunciaciones}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ========== RENDERIZAR REFERENCIAS AL FINAL ==========
+  this.gestorReferencias.renderizarReferencias();
+  setTimeout(() => {
+    this.gestorReferencias.actualizarNumerosCitas();
+  }, 0);
+}
+
+  updateImage() {
+    const pokemonData = this.estado.getPokemonData();
+    const imageSrc = this.estado.buildImageSrc();
+    const urls = this.estado.getCurrentImageUrls();
     const isShinyAvailable = !!urls.variocolor;
     const isTraseraAvailable = !!urls.trasera || !!urls.variocolorTrasera;
-
-    if (!isShinyAvailable && this.state.isShiny) this.state.isShiny = false;
-    if (!isTraseraAvailable && this.state.isTrasera) this.state.isTrasera = false;
-
-    this.updateButtonState('toggle', 'shiny', this.state.isShiny, isShinyAvailable);
-    this.updateButtonState('toggle', 'trasera', this.state.isTrasera, isTraseraAvailable);
-
+    if (!isShinyAvailable && this.estado.esShiny) this.estado.esShiny = false;
+    if (!isTraseraAvailable && this.estado.esTrasera) this.estado.esTrasera = false;
+    this.updateButtonState('toggle', 'shiny', this.estado.esShiny, isShinyAvailable);
+    this.updateButtonState('toggle', 'trasera', this.estado.esTrasera, isTraseraAvailable);
     this.updateVolumeButton();
     this.updateArtworkButton();
-
-
     const testImg = new Image();
     let hasError = false;
     let loadingTimeout;
-
-    loadingTimeout = setTimeout(() => {
-      this.showLoadingIndicator();
-    }, loadingImageDelay);
-
+    loadingTimeout = setTimeout(() => this.showLoadingIndicator(), loadingImageDelay);
     testImg.onload = () => {
       if (!hasError) {
         clearTimeout(loadingTimeout);
-        this.elements.imagenPokemonCuadro.src = imageSrc;
+        this.elements.imagenPokemonCuadro.src = imageSrc || datosWikidex.default;
         this.hideLoadingIndicator(false);
       }
     };
-
     testImg.onerror = () => {
       hasError = true;
       clearTimeout(loadingTimeout);
-
       const defaultTestImg = new Image();
-
       defaultTestImg.onload = () => {
         this.elements.imagenPokemonCuadro.src = datosWikidex.default;
         this.hideLoadingIndicator(false);
       };
-
-      defaultTestImg.onerror = () => {
-        this.hideLoadingIndicator(true);
-      };
-
+      defaultTestImg.onerror = () => this.hideLoadingIndicator(true);
       defaultTestImg.src = datosWikidex.default;
     };
-
     testImg.src = imageSrc || datosWikidex.default;
   }
 
@@ -1532,7 +1580,6 @@ updateBackgroundColor() {
   hideLoadingIndicator(isError = false) {
     const indicator = this.elements.loadingIndicator;
     if (!indicator) return;
-
     if (isError) {
       indicator.classList.add('error');
       setTimeout(() => {
@@ -1545,47 +1592,20 @@ updateBackgroundColor() {
       this.imageLoading = false;
     }
   }
-
-  showLoadingIndicator() {
-    const indicator = this.elements.loadingIndicator;
-    indicator.style.display = 'flex';
-    indicator.classList.remove('error');
-    this.imageLoading = true;
-  }
-
-  hideLoadingIndicator(isError = false) {
-    const indicator = this.elements.loadingIndicator;
-
-    if (isError) {
-      indicator.classList.add('error');
-      setTimeout(() => {
-        indicator.style.display = 'none';
-        indicator.classList.remove('error');
-        this.imageLoading = false;
-      }, 2000);
-    } else {
-      indicator.style.display = 'none';
-      this.imageLoading = false;
-    }
-  }
-
 
   updateAll() {
-    const availableGenders = this.state.getAvailableGenders();
-    const availableSpecialForms = this.state.getAvailableSpecialForms();
-
-    buttonConfig.gender.forEach(btn => {
+    const availableGenders = this.estado.getAvailableGenders();
+    const availableSpecialForms = this.estado.getAvailableSpecialForms();
+    configBotones.gender.forEach(btn => {
       const isAvailable = availableGenders.includes(btn.key);
-      const isActive = this.state.activeGender === btn.key;
+      const isActive = this.estado.generoActivo === btn.key;
       this.updateButtonState('gender', btn.key, isActive, isAvailable);
     });
-
-    buttonConfig.special.forEach(btn => {
+    configBotones.special.forEach(btn => {
       const isAvailable = availableSpecialForms.includes(btn.key);
-      const isActive = this.state.activeSpecialForm === btn.key;
+      const isActive = this.estado.formaEspecialActiva === btn.key;
       this.updateButtonState('special', btn.key, isActive, isAvailable);
     });
-
     this.updateSections();
     this.updateImage();
     this.updateTipos();
@@ -1593,5 +1613,7 @@ updateBackgroundColor() {
   }
 }
 
-const pokemonState = new PokemonState();
-const pokemonUI = new PokemonUI(pokemonState);
+const estadoPokemon = new EstadoPokemon();
+const interfazPokemon = new InterfazPokemon(estadoPokemon);
+
+export { GestorReferencias };
