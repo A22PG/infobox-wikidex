@@ -18,44 +18,44 @@ const pokemonJSON = {
       "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/8/88/latest/20210524164951/Charizard_HOME_variocolor.png"
     },
     "megaX": {
-      "datos":"charizard_megaX",
-      "imagen":"https://images.wikidexcdn.net/mwuploads/wikidex/6/63/latest/20210524164940/Mega-Charizard_X_HOME.png",
-      "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20210524164741/Mega-Charizard_X_HOME_variocolor.png"
+      "datos": "charizard_megaX",
+      "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/6/63/latest/20210524164940/Mega-Charizard_X_HOME.png",
+      "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20210524164741/Mega-Charizard_X_HOME_variocolor.png"
     },
     "megaY": {
-      "datos":"charizard_megaY",
-      "imagen":"https://images.wikidexcdn.net/mwuploads/wikidex/b/b1/latest/20210524164716/Mega-Charizard_Y_HOME.png",
-      "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/b/bb/latest/20210524164852/Mega-Charizard_Y_HOME_variocolor.png"
+      "datos": "charizard_megaY",
+      "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/b/b1/latest/20210524164716/Mega-Charizard_Y_HOME.png",
+      "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/b/bb/latest/20210524164852/Mega-Charizard_Y_HOME_variocolor.png"
     },
     "giga": {
-      "datos":"charizard_giga",
-      "imagen":"https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20200214184340/Charizard_Gigamax_HOME.png",
-      "variocolor":"https://images.wikidexcdn.net/mwuploads/wikidex/7/77/latest/20200214193200/Charizard_Gigamax_HOME_variocolor.png"
+      "datos": "charizard_giga",
+      "imagen": "https://images.wikidexcdn.net/mwuploads/wikidex/1/11/latest/20200214184340/Charizard_Gigamax_HOME.png",
+      "variocolor": "https://images.wikidexcdn.net/mwuploads/wikidex/7/77/latest/20200214193200/Charizard_Gigamax_HOME_variocolor.png"
     }
   },
   "info": {
     "charizard_normal": {
-      "tipo": ["Fuego", {"valor":"Volador", "nota": "A",}],
-      "altura": ["1'7", {"valor":"4'8", "nota": "B"}],
-      "peso": ["90'5", {"valor":"87'2", "nota": "A"}],
+      "tipo": ["Fuego", { "valor": "Volador", "nota": "A", }],
+      "altura": ["1'7", { "valor": "4'8", "nota": "B" }],
+      "peso": ["90'5", { "valor": "87'2", "nota": "A" }],
       "habilidad": [
         { "nombre": "Mar llamas" },
         { "nombre": "Poder solar", "oculta": true },
-        { "nombre": {"valor":"Llamas ocultas", "nota": "B"}, "oculta": true}
+        { "nombre": { "valor": "Llamas ocultas", "nota": "B" }, "oculta": true }
       ],
-      "genero": {
-        "macho": {"valor":"87'5", "nota": "B"},
-        "hembra": {"valor":"87'2", "nota": "A"}
+      "sexo": {
+        "macho": { "valor": "87.5", "nota": "B" },
+        "hembra": { "valor": "87.2", "nota": "A" }
       },
-      "generacion": {"valor":"1", "nota": "D"},
-      "categoria": ["Llama", {"valor":"Fogonazo", "nota": "A"}],
-      "figura": ["3", {"valor":"1", "nota": "D"}],
-      "huevo": [{"valor":"Monstruo", "nota": "C"}, "Dragón"],
+      "generacion": { "valor": "1", "nota": "D" },
+      "categoria": ["Llama", { "valor": "Fogonazo", "nota": "A" }],
+      "figura": ["3", { "valor": "1", "nota": "D" }],
+      "huevo": [{ "valor": "Monstruo", "nota": "C" }, "Dragón"],
       "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/5/5e/latest/20240213073305/Grito_de_Charizard.ogg",
-      "color": ["Rojo", {"valor":"Negro", "nota": "B"}],
+      "color": ["Rojo", { "valor": "Negro", "nota": "B" }],
       "pronunciacion": [
-        { "fonetica": {"valor":"'cha.ri.zard", "nota": "E"}, "zona": ["España", {"valor":"Hispanoamérica", "nota": ["A", "B", "C"]}]},
-        { "fonetica": "'char.i.zard", "zona": "Hispanoamérica" }
+        { "fonetica": { "valor": "/ 'cha.ri.zard /", "nota": "E" }, "zona": ["España", { "valor": "Hispanoamérica", "nota": ["A", "B"] }] },
+        { "fonetica": "/ 'char.i.zard /", "zona": "Hispanoamérica" }
       ]
     },
     "charizard_megaX": {
@@ -63,10 +63,10 @@ const pokemonJSON = {
       "altura": "1'7",
       "peso": "110'5",
       "habilidad": [
-        { "nombre": {"valor":"Garra dura", "nota": "F"}, "zona":"España" },
-        { "nombre": "Garras durs", "zona":"Hispanoamérica" }
+        { "nombre": { "valor": "Garra dura", "nota": "F" }, "zona": "España" },
+        { "nombre": "Garras durs", "zona": "Hispanoamérica" }
       ],
-      "genero": {
+      "sexo": {
         "macho": "87.5",
         "hembra": "12.5"
       },
@@ -77,7 +77,7 @@ const pokemonJSON = {
       "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/2/2e/latest/20140217185652/Grito_de_Mega-Charizard_X.ogg",
       "color": ["Rojo", "Negro"],
       "pronunciacion": [
-        { "fonetica": "'cha.ri.zard" }
+        { "fonetica": "/ 'cha.ri.zard /" }
       ]
     },
     "charizard_megaY": {
@@ -87,7 +87,7 @@ const pokemonJSON = {
       "habilidad": [
         { "nombre": "Sequía" }
       ],
-      "genero": {
+      "sexo": {
         "macho": "87.5",
         "hembra": "12.5"
       },
@@ -98,7 +98,7 @@ const pokemonJSON = {
       "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/0/03/latest/20140217185728/Grito_de_Mega-Charizard_Y.ogg",
       "color": ["Rojo", "Negro"],
       "pronunciacion": [
-        { "fonetica": "'cha.ri.zard" }
+        { "fonetica": "/ 'cha.ri.zard /" }
       ]
     },
     "charizard_giga": {
@@ -107,7 +107,7 @@ const pokemonJSON = {
       "habilidad": [
         { "nombre": "Sequía" }
       ],
-      "genero": {
+      "sexo": {
         "macho": "87.5",
         "hembra": "12.5"
       },
@@ -118,11 +118,11 @@ const pokemonJSON = {
       "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/0/03/latest/20140217185728/Grito_de_Mega-Charizard_Y.ogg",
       "color": ["Rojo", "Negro"],
       "pronunciacion": [
-        { "fonetica": "'cha.ri.zard" }
+        { "fonetica": "/'cha.ri.zard/" }
       ]
     }
   },
-  "nota":{
+  "nota": {
     "A": "A partir de X generación",
     "B": "Solo en X versión",
     "C": "Antes era <a href='https://www.google.com/es'>Monstruoso</a>",
@@ -212,7 +212,7 @@ const datosWikidex = {
     "megaY": "https://images.wikidexcdn.net/mwuploads/wikidex/4/45/latest/20250913220424/Megaevolución_Y_(Wikidex).svg",
     "giga": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20250913220520/Gigamax_(Wikidex).svg",
     "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/2/2f/latest/20251112155152/Grito_Pok%C3%A9mon_%28Wikidex%29.svg",
-    "artwork": "./palette.svg",
+    "artwork": "https://images.wikidexcdn.net/mwuploads/wikidex/4/43/latest/20251117205424/Artwork_%28Wikidex%29.svg",
     "galeria": "./photo.svg"
   },
   "default": "https://images.wikidexcdn.net/mwuploads/wikidex/d/da/latest/20081011120239/Imagen_no_disponible.svg"
@@ -242,115 +242,114 @@ class GestorReferencias {
   }
 
   limpiarReferenciasPokemon() {
-  console.log('=== LIMPIANDO REFERENCIAS ===');
-  
-  // Buscar el h2 con múltiples estrategias
-  const h2Anotaciones = document.querySelector('h2.destroyable.cuadroPokemon');
-  console.log('h2 encontrado con clases:', h2Anotaciones);
-  
-  if (h2Anotaciones) {
-    console.log('Eliminando h2:', h2Anotaciones.outerHTML);
-    h2Anotaciones.remove();
-  } else {
-    // Intentar buscar por el id del span
-    const spanAnotaciones = document.querySelector('span#Anotaciones');
-    console.log('span#Anotaciones encontrado:', spanAnotaciones);
-    if (spanAnotaciones) {
-      const h2Padre = spanAnotaciones.closest('h2');
-      console.log('h2 padre del span:', h2Padre);
-      if (h2Padre && h2Padre.classList.contains('destroyable') && h2Padre.classList.contains('cuadroPokemon')) {
-        console.log('Eliminando h2 padre:', h2Padre.outerHTML);
-        h2Padre.remove();
+    console.log('=== LIMPIANDO REFERENCIAS ===');
+
+    // Buscar el h2 con múltiples estrategias
+    const h2Anotaciones = document.querySelector('h2.destroyable.cuadroPokemon');
+    console.log('h2 encontrado con clases:', h2Anotaciones);
+
+    if (h2Anotaciones) {
+      console.log('Eliminando h2:', h2Anotaciones.outerHTML);
+      h2Anotaciones.remove();
+    } else {
+      // Intentar buscar por el id del span
+      const spanAnotaciones = document.querySelector('span#Anotaciones');
+      console.log('span#Anotaciones encontrado:', spanAnotaciones);
+      if (spanAnotaciones) {
+        const h2Padre = spanAnotaciones.closest('h2');
+        console.log('h2 padre del span:', h2Padre);
+        if (h2Padre && h2Padre.classList.contains('destroyable') && h2Padre.classList.contains('cuadroPokemon')) {
+          console.log('Eliminando h2 padre:', h2Padre.outerHTML);
+          h2Padre.remove();
+        }
       }
     }
+
+    // Eliminar li con las clases
+    const existentes = document.querySelectorAll('li.destroyable.cuadroPokemon');
+    console.log('li encontrados:', existentes.length);
+    existentes.forEach(e => e.remove());
+
+    const lista = document.querySelector('ol.references');
+    if (lista && lista.children.length === 0) {
+      console.log('Lista vacía, eliminando sección');
+      this.eliminarSeccionAnotaciones();
+    }
+
+    this.referenciasActivas.clear();
+    this.contadorReferencias.clear();
+
+    console.log('=== FIN LIMPIEZA ===');
   }
-  
-  // Eliminar li con las clases
-  const existentes = document.querySelectorAll('li.destroyable.cuadroPokemon');
-  console.log('li encontrados:', existentes.length);
-  existentes.forEach(e => e.remove());
-  
-  const lista = document.querySelector('ol.references');
-  if (lista && lista.children.length === 0) {
-    console.log('Lista vacía, eliminando sección');
-    this.eliminarSeccionAnotaciones();
-  }
-  
-  this.referenciasActivas.clear();
-  this.contadorReferencias.clear();
-  
-  console.log('=== FIN LIMPIEZA ===');
-}
 
   eliminarSeccionAnotaciones() {
-  // Eliminar el wrapper
-  const wrapper = document.querySelector('.mw-references-wrap') || 
-                  document.querySelector('#mw-references-wrap');
-  if (wrapper) {
-    wrapper.remove();
+    // Eliminar el wrapper
+    const wrapper = document.querySelector('.mw-references-wrap') ||
+      document.querySelector('#mw-references-wrap');
+    if (wrapper) {
+      wrapper.remove();
+    }
+
+    // Eliminar el h2 de Anotaciones si tiene las clases
+    const h2Anotaciones = document.querySelector('h2.destroyable.cuadroPokemon');
+    if (h2Anotaciones) {
+      h2Anotaciones.remove();
+    }
   }
-  
-  // Eliminar el h2 de Anotaciones si tiene las clases
-  const h2Anotaciones = document.querySelector('h2.destroyable.cuadroPokemon');
-  if (h2Anotaciones) {
-    h2Anotaciones.remove();
-  }
-}
 
   asegurarSeccionAnotaciones() {
-  let wrapper = document.querySelector('.mw-references-wrap');
-  if (!wrapper) {
-    let h2Anotaciones = null;
-    const todosH2 = document.querySelectorAll('h2');
-    for (const h2 of todosH2) {
-      const span = h2.querySelector('span.mw-headline');
-      if (span && span.textContent.includes('Anotaciones')) {
-        h2Anotaciones = h2;
-        break;
-      }
-    }
-    if (!h2Anotaciones) {
-      const cuerpo = document.querySelector('.mw-content-text');
-      if (!cuerpo) {
-        console.error('ERROR: No se encontró .mw-content-text.');
-        return null;
-      }
-      let veaseH2 = null;
-      const h2EnCuerpo = cuerpo.querySelectorAll('h2');
-      for (const h2 of h2EnCuerpo) {
-        const span = h2.querySelector('span.mw-headline, span#Véase_también');
-        if (span && (span.textContent.includes('Véase también') || span.id === 'Véase_también')) {
-          veaseH2 = h2;
+    let wrapper = document.querySelector('.mw-references-wrap');
+    if (!wrapper) {
+      let h2Anotaciones = null;
+      const todosH2 = document.querySelectorAll('h2');
+      for (const h2 of todosH2) {
+        const span = h2.querySelector('span.mw-headline');
+        if (span && span.textContent.includes('Anotaciones')) {
+          h2Anotaciones = h2;
           break;
         }
       }
-      h2Anotaciones = document.createElement('h2');
-      h2Anotaciones.className = 'destroyable cuadroPokemon'; // Añadir clases
-      const titular = document.createElement('span');
-      titular.className = 'mw-headline';
-      titular.id = 'Anotaciones';
-      titular.textContent = 'Anotaciones';
-      h2Anotaciones.appendChild(titular);
-      if (veaseH2) cuerpo.insertBefore(h2Anotaciones, veaseH2);
-      else cuerpo.appendChild(h2Anotaciones);
+      if (!h2Anotaciones) {
+        const cuerpo = document.querySelector('.mw-content-text');
+        if (!cuerpo) {
+          console.error('ERROR: No se encontró .mw-content-text.');
+          return null;
+        }
+        let veaseH2 = null;
+        const h2EnCuerpo = cuerpo.querySelectorAll('h2');
+        for (const h2 of h2EnCuerpo) {
+          const span = h2.querySelector('span.mw-headline, span#Véase_también');
+          if (span && (span.textContent.includes('Véase también') || span.id === 'Véase_también')) {
+            veaseH2 = h2;
+            break;
+          }
+        }
+        h2Anotaciones = document.createElement('h2');
+        h2Anotaciones.className = 'destroyable cuadroPokemon'; // Añadir clases
+        const titular = document.createElement('span');
+        titular.className = 'mw-headline';
+        titular.id = 'Anotaciones';
+        titular.textContent = 'Anotaciones';
+        h2Anotaciones.appendChild(titular);
+        if (veaseH2) cuerpo.insertBefore(h2Anotaciones, veaseH2);
+        else cuerpo.appendChild(h2Anotaciones);
+      }
+      wrapper = document.createElement('div');
+      wrapper.className = 'mw-references-wrap';  // clase, no ID
+      wrapper.id = 'mw-references-wrap';  // también ID para compatibilidad
+      wrapper.style.color = 'white';
+      const ol = document.createElement('ol');
+      ol.className = 'references';
+      wrapper.appendChild(ol);
+      h2Anotaciones.insertAdjacentElement('afterend', wrapper);
     }
-    wrapper = document.createElement('div');
-    wrapper.className = 'mw-references-wrap';  // clase, no ID
-    wrapper.id = 'mw-references-wrap';  // también ID para compatibilidad
-    wrapper.style.color = 'white';
-    const ol = document.createElement('ol');
-    ol.className = 'references';
-    wrapper.appendChild(ol);
-    h2Anotaciones.insertAdjacentElement('afterend', wrapper);
+    return wrapper.querySelector('ol.references');
   }
-  return wrapper.querySelector('ol.references');
-}
 
   // MÉTODO CORREGIDO: Procesar referencia
   procesarReferencia(letra, contexto) {
   let claves = [];
   
-  // Determinar las claves (puede ser una o varias)
   if (typeof letra === 'string' && letra.trim() !== '') {
     claves = [letra];
   } else if (Array.isArray(letra)) {
@@ -367,7 +366,6 @@ class GestorReferencias {
     return '';
   }
 
-  // Procesar cada clave y generar sus referencias
   const referencias = claves.map(clave => {
     let textoNota = null;
     if (pokemonJSON && pokemonJSON.nota && pokemonJSON.nota[clave]) {
@@ -389,128 +387,131 @@ class GestorReferencias {
     const refId = `cite_ref-${clave}_${indiceUso}`;
     const noteId = `cite_note-${clave}`;
 
-    return `<sup id="${refId}" class="reference"><a href="#${noteId}" data-ref-key="${clave}">?</a></sup>`;
+    return `<a href="#${noteId}" data-ref-key="${clave}" id="${refId}">?</a>`;
   }).filter(Boolean);
 
-  return referencias.join('');
+  if (referencias.length === 0) return '';
+  
+  // Espacio antes del sup
+  return ` <sup class="reference">${referencias.join(' ')}</sup>`;
 }
 
-actualizarNumerosCitas() {
-  // Buscar el ol con CUALQUIER variante
-  const ol = document.querySelector('.mw-references-wrap ol.references') || 
-             document.querySelector('#mw-references-wrap ol.references') ||
-             document.querySelector('ol.references');
-  
-  if (!ol) {
-    return;
+  actualizarNumerosCitas() {
+    // Buscar el ol con CUALQUIER variante
+    const ol = document.querySelector('.mw-references-wrap ol.references') ||
+      document.querySelector('#mw-references-wrap ol.references') ||
+      document.querySelector('ol.references');
+
+    if (!ol) {
+      return;
+    }
+
+    const mapaNumeros = new Map();
+    const todosLi = Array.from(ol.querySelectorAll('li'));
+
+    todosLi.forEach((li, idx) => {
+      const match = li.id.match(/^cite_note-(.+)$/);
+      if (match) {
+        mapaNumeros.set(match[1], idx + 1);
+      }
+    });
+
+    const enlaces = document.querySelectorAll('a[data-ref-key]');
+
+    enlaces.forEach(link => {
+      const key = link.getAttribute('data-ref-key');
+      const numero = mapaNumeros.get(key);
+      if (numero) {
+        link.textContent = numero;
+      }
+    });
   }
-  
-  const mapaNumeros = new Map();
-  const todosLi = Array.from(ol.querySelectorAll('li'));
-  
-  todosLi.forEach((li, idx) => {
-    const match = li.id.match(/^cite_note-(.+)$/);
-    if (match) {
-      mapaNumeros.set(match[1], idx + 1);
-    }
-  });
-  
-  const enlaces = document.querySelectorAll('a[data-ref-key]');
-  
-  enlaces.forEach(link => {
-    const key = link.getAttribute('data-ref-key');
-    const numero = mapaNumeros.get(key);
-    if (numero) {
-      link.textContent = numero;
-    }
-  });
-}
 
   calcularNumeroReferencia(clave) {
-  // Contar TODOS los <li> en ol.references, no solo los de referenciasActivas
-  const ol = document.querySelector('#mw-references-wrap ol.references');
-  if (!ol) return 1;
-  
-  // Obtener todos los li existentes
-  const todosLi = ol.querySelectorAll('li');
-  const existingIds = Array.from(todosLi).map(li => {
-    const match = li.id.match(/^cite_note-(.+)$/);
-    return match ? match[1] : null;
-  }).filter(Boolean);
-  
-  // Combinar con las nuevas referencias
-  const todasLasClaves = new Set([...existingIds, ...Array.from(this.referenciasActivas.keys())]);
-  const ordenadas = Array.from(todasLasClaves).sort();
-  
-  return ordenadas.indexOf(clave) + 1;
-}
+    // Contar TODOS los <li> en ol.references, no solo los de referenciasActivas
+    const ol = document.querySelector('#mw-references-wrap ol.references');
+    if (!ol) return 1;
 
-renderizarReferencias() {
-  // Si no hay referencias activas, no hacer nada
-  if (this.referenciasActivas.size === 0) {
-    console.log('No hay referencias para renderizar');
-    return;
+    // Obtener todos los li existentes
+    const todosLi = ol.querySelectorAll('li');
+    const existingIds = Array.from(todosLi).map(li => {
+      const match = li.id.match(/^cite_note-(.+)$/);
+      return match ? match[1] : null;
+    }).filter(Boolean);
+
+    // Combinar con las nuevas referencias
+    const todasLasClaves = new Set([...existingIds, ...Array.from(this.referenciasActivas.keys())]);
+    const ordenadas = Array.from(todasLasClaves).sort();
+
+    return ordenadas.indexOf(clave) + 1;
   }
-  
-  const ol = this.asegurarSeccionAnotaciones();
-  if (!ol) return;
-  
-  const existentes = ol.querySelectorAll('li.destroyable.cuadroPokemon');
-  existentes.forEach(e => e.remove());
-  
-  const ordenadas = Array.from(this.referenciasActivas.entries()).sort((a,b) => a[0].localeCompare(b[0]));
-  
-  ordenadas.forEach(([letra, datosRef]) => {
-    const li = document.createElement('li');
-    li.id = `cite_note-${letra}`;
-    li.className = 'destroyable cuadroPokemon';
-    
-    ol.appendChild(li);
-    
-    const todosLi = Array.from(ol.querySelectorAll('li'));
-    const posicionReal = todosLi.indexOf(li) + 1;
-    
-    let backlinksHTML = '';
-    
-    if (datosRef.cuenta === 1) {
-      const refId = `cite_ref-${letra}_0`;
-      backlinksHTML = `<span class="mw-cite-backlink"><a href="#${refId}" aria-label="Volver arriba" title="Volver arriba">↑</a></span>`;
-    } else {
-      const backlinks = [];
-      
-      for (let i = 0; i < datosRef.cuenta; i++) {
-        const refId = `cite_ref-${letra}_${i}`;
-        backlinks.push(`<sup><a href="#${refId}">${posicionReal},${i}</a></sup>`);
-      }
-      backlinksHTML = `<span class="mw-cite-backlink">↑ ${backlinks.join(' ')}</span>`;
+
+  renderizarReferencias() {
+    // Si no hay referencias activas, no hacer nada
+    if (this.referenciasActivas.size === 0) {
+      console.log('No hay referencias para renderizar');
+      return;
     }
-    
-    li.innerHTML = `${backlinksHTML} <span class="reference-text">${datosRef.texto}</span>`;
-  });
-  
-  this.actualizarNumerosCitas();
-}
+
+    const ol = this.asegurarSeccionAnotaciones();
+    if (!ol) return;
+
+    const existentes = ol.querySelectorAll('li.destroyable.cuadroPokemon');
+    existentes.forEach(e => e.remove());
+
+    const ordenadas = Array.from(this.referenciasActivas.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+
+    ordenadas.forEach(([letra, datosRef]) => {
+      const li = document.createElement('li');
+      li.id = `cite_note-${letra}`;
+      li.className = 'destroyable cuadroPokemon';
+
+      ol.appendChild(li);
+
+      const todosLi = Array.from(ol.querySelectorAll('li'));
+      const posicionReal = todosLi.indexOf(li) + 1;
+
+      let backlinksHTML = '';
+
+      if (datosRef.cuenta === 1) {
+        const refId = `cite_ref-${letra}_0`;
+        backlinksHTML = `<span class="mw-cite-backlink"><a href="#${refId}" aria-label="Volver arriba" title="Volver arriba">↑</a></span>`;
+      } else {
+        const backlinks = [];
+
+        for (let i = 0; i < datosRef.cuenta; i++) {
+          const refId = `cite_ref-${letra}_${i}`;
+          backlinks.push(`<sup><a href="#${refId}">${posicionReal},${i}</a></sup>`);
+        }
+        backlinksHTML = `<span class="mw-cite-backlink">↑ ${backlinks.join(' ')}</span>`;
+      }
+
+      li.innerHTML = `${backlinksHTML} <span class="reference-text">${datosRef.texto}</span>`;
+    });
+
+    this.actualizarNumerosCitas();
+  }
 
   // MÉTODO CORREGIDO: Extraer valor y procesar referencia
   extraerValorConReferencia(dato) {
-  if (typeof dato === 'string') return dato;
-  if (typeof dato === 'object' && dato !== null) {
-    let valor = dato.valor || '';
-    let referencia = '';
-    
-    if (dato.nota) {
-      // Puede ser string o array
-      referencia = this.procesarReferencia(dato.nota, dato);
+    if (typeof dato === 'string') return dato;
+    if (typeof dato === 'object' && dato !== null) {
+      let valor = dato.valor || '';
+      let referencia = '';
+
+      if (dato.nota) {
+        // Puede ser string o array
+        referencia = this.procesarReferencia(dato.nota, dato);
+      }
+
+      return valor + referencia;
     }
-    
-    return valor + referencia;
+    return '';
   }
-  return '';
-}
 
   procesarArray(arr) {
     if (!Array.isArray(arr)) return arr;
-    
+
     return arr.map(item => this.extraerValorConReferencia(item));
   }
 }
@@ -520,7 +521,7 @@ class EstadoPokemon {
     this.forma = pokemonJSON.forma;
     this.info = pokemonJSON.info;
     this.pokemon = "Pikachu";
-    this.generoActivo = "";
+    this.sexoActivo = "";
     this.formaEspecialActiva = "";
     this.esShiny = false;
     this.esTrasera = false;
@@ -534,8 +535,8 @@ class EstadoPokemon {
     this.ultimaSeccion2Nombre = "";
     this.audioActual = null;
     this.cargandoAudio = false;
-    const generosDisponibles = this.getAvailableGenders();
-    if (generosDisponibles.length > 0) this.generoActivo = generosDisponibles[0];
+    const sexosDisponibles = this.getAvailableGenders();
+    if (sexosDisponibles.length > 0) this.sexoActivo = sexosDisponibles[0];
     this.initializeSections();
   }
 
@@ -585,10 +586,10 @@ class EstadoPokemon {
   getCurrentFormaNode() {
     if (this.formaEspecialActiva && this.forma[this.formaEspecialActiva]) return this.forma[this.formaEspecialActiva];
     const availableGenders = this.getAvailableGenders();
-    if (availableGenders.length > 0 && this.generoActivo) return this.forma[this.generoActivo];
+    if (availableGenders.length > 0 && this.sexoActivo) return this.forma[this.sexoActivo];
     else if (availableGenders.length > 0) {
-      this.generoActivo = availableGenders[0];
-      return this.forma[this.generoActivo];
+      this.sexoActivo = availableGenders[0];
+      return this.forma[this.sexoActivo];
     } else {
       return this.forma;
     }
@@ -682,9 +683,9 @@ class EstadoPokemon {
   playAudio(audioFile) {
     try {
       const audio = new Audio(`public/audio/${audioFile}`);
-      audio.play().catch(error => {});
+      audio.play().catch(error => { });
       this.audioActual = audio;
-    } catch (error) {}
+    } catch (error) { }
   }
 }
 
@@ -800,7 +801,17 @@ class InterfazPokemon {
       
 
 <div class="mw-content-text" style="color:white;">
-    `;
+    `
+    
+    
+      +
+
+      `<h2><span class="mw-headline" id="Anotaciones">Anotaciones</span></h2>
+      <div class="mw-references-wrap"><ol class="references">
+          <li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1" aria-label="Volver arriba" title="Volver arriba">↑</a></span> <span class="reference-text">Esta anotación no debería eliminarse nunca, aunque se cambie la forma del Pokémon tantas veces como el usuario quiera. Tampoco debería verse reflejado el número 1 en el cuadro Pokémon.</span>
+          </li>
+        </ol>
+      </div>` ;
   }
 
   generateButtons(buttons) {
@@ -921,11 +932,26 @@ class InterfazPokemon {
   getBackgroundColor() {
     const pokemonData = this.estado.getPokemonData();
     if (!pokemonData.tipo || pokemonData.tipo.length === 0) return "#f4f4f4ff";
+
     if (pokemonData.tipo.length === 1) {
-      const tipoColor = datosWikidex.color[pokemonData.tipo[0]];
+      let tipoNombre = pokemonData.tipo[0];
+      // Extraer el valor si es un objeto
+      if (typeof tipoNombre === 'object' && tipoNombre.valor) {
+        tipoNombre = tipoNombre.valor;
+      }
+      const tipoColor = datosWikidex.color[tipoNombre];
       return tipoColor || "#FFFFFF";
     }
-    const colores = pokemonData.tipo.map(tipo => datosWikidex.color[tipo] || "#FFFFFF");
+
+    const colores = pokemonData.tipo.map(tipo => {
+      let tipoNombre = tipo;
+      // Extraer el valor si es un objeto
+      if (typeof tipo === 'object' && tipo.valor) {
+        tipoNombre = tipo.valor;
+      }
+      return datosWikidex.color[tipoNombre] || "#FFFFFF";
+    });
+
     return `linear-gradient(to right, ${colores.join(", ")})`;
   }
 
@@ -937,7 +963,7 @@ class InterfazPokemon {
   handleGenderClick(gender) {
     const availableGenders = this.estado.getAvailableGenders();
     if (availableGenders.includes(gender)) {
-      this.estado.generoActivo = gender;
+      this.estado.sexoActivo = gender;
       this.estado.selector1 = 0;
       this.estado.selector2 = 0;
       this.estado.initializeSections();
@@ -1104,18 +1130,18 @@ class InterfazPokemon {
   }
 
   updateTipos() {
-  // Limpiar referencias anteriores
-  this.gestorReferencias.limpiarReferenciasPokemon();
-  
-  const pokemonData = this.estado.getPokemonData();
-  const contenedorInfo = this.elements.contenedorInfo;
-  contenedorInfo.innerHTML = '';
-  
-  if (!pokemonData || Object.keys(pokemonData).length === 0) return;
+    // Limpiar referencias anteriores
+    this.gestorReferencias.limpiarReferenciasPokemon();
 
-  // ========== TIPOS Y GENERACIÓN ==========
-  // En la sección de TIPOS Y GENERACIÓN, reemplaza por:
-if ((pokemonData.tipo && pokemonData.tipo.length > 0) || pokemonData.generacion !== undefined) {
+    const pokemonData = this.estado.getPokemonData();
+    const contenedorInfo = this.elements.contenedorInfo;
+    contenedorInfo.innerHTML = '';
+
+    if (!pokemonData || Object.keys(pokemonData).length === 0) return;
+
+    // ========== TIPOS Y GENERACIÓN ==========
+    // En la sección de TIPOS Y GENERACIÓN, reemplaza por:
+    if ((pokemonData.tipo && pokemonData.tipo.length > 0) || pokemonData.generacion !== undefined) {
   const tiposHTML = (pokemonData.tipo && pokemonData.tipo.length > 0)
     ? pokemonData.tipo.map(tipo => {
         let tipoNombre = tipo;
@@ -1133,108 +1159,144 @@ if ((pokemonData.tipo && pokemonData.tipo.length > 0) || pokemonData.generacion 
       }).join(' ')
     : '';
 
-    const tipoCard = tiposHTML ? `
-      <div class="tarjeta">
-        <div class="tituloTarjeta">Tipo</div>
-        <div class="contenidoTarjeta">
-          <div class="tiposContainer">${tiposHTML}</div>
-        </div>
+  const tituloTipo = (pokemonData.tipo && pokemonData.tipo.length > 1) ? 'Tipos' : 'Tipo';
+  const tipoCard = tiposHTML ? `
+    <div class="tarjeta">
+      <div class="tituloTarjeta">${tituloTipo}</div>
+      <div class="contenidoTarjeta">
+        <div class="tiposContainer">${tiposHTML}</div>
       </div>
-    ` : `<div class="tarjeta"><div class="tituloTarjeta">Tipo</div><div class="contenidoTarjeta">—</div></div>`;
+    </div>
+  ` : `<div class="tarjeta"><div class="tituloTarjeta">Tipo</div><div class="contenidoTarjeta">—</div></div>`;
 
-    let generacionHTML = '';
-    if (pokemonData.generacion !== undefined) {
-      let genValue = pokemonData.generacion;
+      let generacionHTML = '';
+if (pokemonData.generacion !== undefined) {
+  const generaciones = ['Primera', 'Segunda', 'Tercera', 'Cuarta', 'Quinta', 'Sexta', 'Séptima', 'Octava', 'Novena'];
+  
+  if (Array.isArray(pokemonData.generacion)) {
+    const generacionesHTML = pokemonData.generacion.map(gen => {
+      let genValue = '';
       let genNotaHTML = '';
       
-      if (typeof pokemonData.generacion === 'object' && pokemonData.generacion.valor) {
-        genValue = pokemonData.generacion.valor;
-        if (pokemonData.generacion.nota) {
-          genNotaHTML = this.gestorReferencias.procesarReferencia(pokemonData.generacion.nota, pokemonData.generacion);
+      if (typeof gen === 'object' && gen.valor) {
+        genValue = gen.valor;
+        if (gen.nota) {
+          genNotaHTML = this.gestorReferencias.procesarReferencia(gen.nota, gen);
         }
+      } else {
+        genValue = gen;
       }
       
       const imgGeneracion = datosWikidex.generación[genValue] || datosWikidex.default;
-      const generaciones = ['Primera', 'Segunda', 'Tercera', 'Cuarta', 'Quinta', 'Sexta', 'Séptima', 'Octava', 'Novena'];
       const generacionTexto = generaciones[genValue - 1] || genValue;
       
-      generacionHTML = `
-        <div class="tarjeta">
-          <div class="tituloTarjeta">Generación</div>
-          <div class="contenidoTarjeta">
-            <div class="tipoGeneracionContainer">
-              <img src="${imgGeneracion}" height="20" alt="${generacionTexto} generación">
-              <div class="generacionSpacing"></div>${generacionTexto}${genNotaHTML}
-            </div>
+      return `<div class="tipoGeneracionContainer">
+        <img src="${imgGeneracion}" height="20" alt="${generacionTexto} generación">
+        &nbsp;${generacionTexto}&nbsp;${genNotaHTML}
+      </div>`;
+    }).join('<br>');
+    
+    const tituloGeneracion = pokemonData.generacion.length === 1 ? 'Generación' : 'Generaciones';
+    generacionHTML = `
+      <div class="tarjeta">
+        <div class="tituloTarjeta">${tituloGeneracion}</div>
+        <div class="contenidoTarjeta">
+          ${generacionesHTML}
+        </div>
+      </div>
+    `;
+  } else {
+    let genValue = pokemonData.generacion;
+    let genNotaHTML = '';
+    
+    if (typeof pokemonData.generacion === 'object' && pokemonData.generacion.valor) {
+      genValue = pokemonData.generacion.valor;
+      if (pokemonData.generacion.nota) {
+        genNotaHTML = this.gestorReferencias.procesarReferencia(pokemonData.generacion.nota, pokemonData.generacion);
+      }
+    }
+    
+    const imgGeneracion = datosWikidex.generación[genValue] || datosWikidex.default;
+    const generacionTexto = generaciones[genValue - 1] || genValue;
+    
+    generacionHTML = `
+      <div class="tarjeta">
+        <div class="tituloTarjeta">Generación</div>
+        <div class="contenidoTarjeta">
+          <div class="tipoGeneracionContainer">
+            <img src="${imgGeneracion}" height="20" alt="${generacionTexto} generación">
+            &nbsp;${generacionTexto}&nbsp;${genNotaHTML}
           </div>
         </div>
-      `;
-    } else {
-      generacionHTML = `<div class="tarjeta"><div class="tituloTarjeta">Generación</div><div class="contenidoTarjeta">—</div></div>`;
-    }
+      </div>
+    `;
+  }
+} else {
+  generacionHTML = `<div class="tarjeta"><div class="tituloTarjeta">Generación</div><div class="contenidoTarjeta">—</div></div>`;
+}
 
-    contenedorInfo.innerHTML += `
+      contenedorInfo.innerHTML += `
       <div class="contenedorMedidas">
         ${tipoCard}
         ${generacionHTML}
       </div>
     `;
-  }
-
-  // ========== GÉNERO ==========
-  if (pokemonData.genero) {
-    let barras = '';
-    
-    // En la sección de GÉNERO, reemplaza las barras por:
-if (pokemonData.genero.macho) {
-  let valorMacho = pokemonData.genero.macho;
-  let notaMacho = '';
-  if (typeof valorMacho === 'object' && valorMacho.valor) {
-    if (valorMacho.nota) {
-      notaMacho = this.gestorReferencias.procesarReferencia(valorMacho.nota, valorMacho);
     }
-    valorMacho = valorMacho.valor;
-  }
-  const porcentajeMacho = parseFloat(valorMacho);
-  
-  const bordeMacho = porcentajeMacho === 100 ? 'border-radius: 5px;' : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
-  barras += `
-    <div class="generoContainer">
+
+    // ========== GÉNERO ==========
+    if (pokemonData.sexo) {
+      let barras = '';
+
+      // En la sección de GÉNERO, reemplaza las barras por:
+      if (pokemonData.sexo.macho) {
+        let valorMacho = pokemonData.sexo.macho;
+        let notaMacho = '';
+        if (typeof valorMacho === 'object' && valorMacho.valor) {
+          if (valorMacho.nota) {
+            notaMacho = this.gestorReferencias.procesarReferencia(valorMacho.nota, valorMacho);
+          }
+          valorMacho = valorMacho.valor;
+        }
+        const porcentajeMacho = parseFloat(valorMacho);
+
+        const bordeMacho = porcentajeMacho === 100 ? 'border-radius: 5px;' : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
+        barras += `
+    <div class="sexoContainer">
       <img src="${datosWikidex.icono.macho}" alt="Macho">
-      <div class="generoBarra">
-        <div class="generoBarraMacho" style="flex-basis: ${porcentajeMacho}%; ${bordeMacho}"></div>
-        ${porcentajeMacho < 100 ? `<div class="generoBarraVacia" style="flex-basis: ${100 - porcentajeMacho}%;"></div>` : ''}
-        <div class="generoPorcentaje"><span>${porcentajeMacho.toString().replace('.', "'")}%${notaMacho}</span></div>
+      <div class="sexoBarra">
+        <div class="sexoBarraMacho" style="flex-basis: ${porcentajeMacho}%; ${bordeMacho}"></div>
+        ${porcentajeMacho < 100 ? `<div class="sexoBarraVacia" style="flex-basis: ${100 - porcentajeMacho}%;"></div>` : ''}
+        <div class="sexoPorcentaje"><span>${porcentajeMacho.toString().replace('.', "'")}%${notaMacho}</span></div>
       </div>
     </div>
   `;
-}
+      }
 
-if (pokemonData.genero.hembra) {
-  let valorHembra = pokemonData.genero.hembra;
-  let notaHembra = '';
-  if (typeof valorHembra === 'object' && valorHembra.valor) {
-    if (valorHembra.nota) {
-      notaHembra = this.gestorReferencias.procesarReferencia(valorHembra.nota, valorHembra);
-    }
-    valorHembra = valorHembra.valor;
-  }
-  const porcentajeHembra = parseFloat(valorHembra);
-  
-  const bordeHembra = porcentajeHembra === 100 ? 'border-radius: 5px;' : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
-  barras += `
-    <div class="generoContainer">
+      if (pokemonData.sexo.hembra) {
+        let valorHembra = pokemonData.sexo.hembra;
+        let notaHembra = '';
+        if (typeof valorHembra === 'object' && valorHembra.valor) {
+          if (valorHembra.nota) {
+            notaHembra = this.gestorReferencias.procesarReferencia(valorHembra.nota, valorHembra);
+          }
+          valorHembra = valorHembra.valor;
+        }
+        const porcentajeHembra = parseFloat(valorHembra);
+
+        const bordeHembra = porcentajeHembra === 100 ? 'border-radius: 5px;' : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
+        barras += `
+    <div class="sexoContainer">
       <img src="${datosWikidex.icono.hembra}" alt="Hembra">
-      <div class="generoBarra">
-        <div class="generoBarraHembra" style="flex-basis: ${porcentajeHembra}%; ${bordeHembra}"></div>
-        ${porcentajeHembra < 100 ? `<div class="generoBarraVacia" style="flex-basis: ${100 - porcentajeHembra}%;"></div>` : ''}
-        <div class="generoPorcentaje"><span>${porcentajeHembra.toString().replace('.', "'")}%${notaHembra}</span></div>
+      <div class="sexoBarra">
+        <div class="sexoBarraHembra" style="flex-basis: ${porcentajeHembra}%; ${bordeHembra}"></div>
+        ${porcentajeHembra < 100 ? `<div class="sexoBarraVacia" style="flex-basis: ${100 - porcentajeHembra}%;"></div>` : ''}
+        <div class="sexoPorcentaje"><span>${porcentajeHembra.toString().replace('.', "'")}%${notaHembra}</span></div>
       </div>
     </div>
   `;
-}
-    
-    contenedorInfo.innerHTML += `
+      }
+
+      contenedorInfo.innerHTML += `
       <div class="tarjetaIndividual">
         <div class="tituloTarjeta">Sexo</div>
         <div class="contenidoTarjeta">
@@ -1242,30 +1304,42 @@ if (pokemonData.genero.hembra) {
         </div>
       </div>
     `;
-  } else {
-    contenedorInfo.innerHTML += `
+    } else {
+      contenedorInfo.innerHTML += `
       <div class="tarjetaIndividual">
         <div class="tituloTarjeta">Sexo</div>
         <div class="contenidoTarjeta">Sin sexo</div>
       </div>
     `;
-  }
+    }
 
-  // ========== ALTURA Y PESO ==========
-  if (pokemonData.altura !== undefined || pokemonData.peso !== undefined) {
-    let medidasHTML = '<div class="contenedorMedidas">';
-    
-    if (pokemonData.altura !== undefined) {
+    // ========== ALTURA Y PESO ==========
+    if (pokemonData.altura !== undefined || pokemonData.peso !== undefined) {
+      let medidasHTML = '<div class="contenedorMedidas">';
+
+      if (pokemonData.altura !== undefined) {
   let alturasArray = Array.isArray(pokemonData.altura) ? pokemonData.altura : [pokemonData.altura];
   
   const alturaHTML = alturasArray.map(alt => {
-    const valorConReferencia = this.gestorReferencias.extraerValorConReferencia(alt);
-    return `${valorConReferencia} m`;
+    let valor = '';
+    let notaHTML = '';
+    
+    if (typeof alt === 'object' && alt.valor) {
+      valor = alt.valor;
+      if (alt.nota) {
+        notaHTML = this.gestorReferencias.procesarReferencia(alt.nota, alt);
+      }
+    } else {
+      valor = alt;
+    }
+    
+    return `${valor} m${notaHTML}`;
   }).join('<br>');
   
+  const tituloAltura = alturasArray.length === 1 ? 'Altura' : 'Alturas';
   medidasHTML += `
     <div class="tarjeta">
-      <div class="tituloTarjeta">Altura</div>
+      <div class="tituloTarjeta">${tituloAltura}</div>
       <div class="contenidoTarjeta">
         <span>${alturaHTML}</span>
       </div>
@@ -1273,51 +1347,63 @@ if (pokemonData.genero.hembra) {
   `;
 }
 
-    if (pokemonData.peso !== undefined) {
+      if (pokemonData.peso !== undefined) {
   let pesosArray = Array.isArray(pokemonData.peso) ? pokemonData.peso : [pokemonData.peso];
   
   const pesoHTML = pesosArray.map(p => {
-    const valorConReferencia = this.gestorReferencias.extraerValorConReferencia(p);
-    return `${valorConReferencia} kg`;
+    let valor = '';
+    let notaHTML = '';
+    
+    if (typeof p === 'object' && p.valor) {
+      valor = p.valor;
+      if (p.nota) {
+        notaHTML = this.gestorReferencias.procesarReferencia(p.nota, p);
+      }
+    } else {
+      valor = p;
+    }
+    
+    return `${valor} kg${notaHTML}`;
   }).join('<br>');
   
+  const tituloPeso = pesosArray.length === 1 ? 'Peso' : 'Pesos';
   medidasHTML += `
     <div class="tarjeta">
-      <div class="tituloTarjeta">Peso</div>
+      <div class="tituloTarjeta">${tituloPeso}</div>
       <div class="contenidoTarjeta">
         <span>${pesoHTML}</span>
       </div>
     </div>
   `;
 } else {
-      medidasHTML += `
-        <div class="tarjeta">
-          <div class="tituloTarjeta">Peso</div>
-          <div class="contenidoTarjeta">
-            <span>??? kg</span>
-          </div>
-        </div>
-      `;
-    }
-    
-    medidasHTML += '</div>';
-    contenedorInfo.innerHTML += medidasHTML;
-  }
+  medidasHTML += `
+    <div class="tarjeta">
+      <div class="tituloTarjeta">Peso</div>
+      <div class="contenidoTarjeta">
+        <span>??? kg</span>
+      </div>
+    </div>
+  `;
+}
 
-  // ========== HABILIDADES ==========
-  if (pokemonData.habilidad && pokemonData.habilidad.length > 0) {
-    const habilidadesNormales = pokemonData.habilidad.filter(hab => !hab.oculta);
-    const habilidadesOcultas = pokemonData.habilidad.filter(hab => hab.oculta);
-    let habilidadesHTML = '<div class="contenedorMedidas">';
-    
-    if (habilidadesNormales.length > 0) {
-      const habilidadesNormalesHTML = habilidadesNormales.map(hab => {
-        const nombreCompleto = this.gestorReferencias.extraerValorConReferencia(hab.nombre);
-        return `<span>${nombreCompleto}</span><br>`;
-      }).join('');
-      
-      const tituloNormal = habilidadesNormales.length === 1 ? 'Habilidad' : 'Habilidades';
-      habilidadesHTML += `
+      medidasHTML += '</div>';
+      contenedorInfo.innerHTML += medidasHTML;
+    }
+
+    // ========== HABILIDADES ==========
+    if (pokemonData.habilidad && pokemonData.habilidad.length > 0) {
+      const habilidadesNormales = pokemonData.habilidad.filter(hab => !hab.oculta);
+      const habilidadesOcultas = pokemonData.habilidad.filter(hab => hab.oculta);
+      let habilidadesHTML = '<div class="contenedorMedidas">';
+
+      if (habilidadesNormales.length > 0) {
+        const habilidadesNormalesHTML = habilidadesNormales.map(hab => {
+          const nombreCompleto = this.gestorReferencias.extraerValorConReferencia(hab.nombre);
+          return `<span>${nombreCompleto}</span><br>`;
+        }).join('');
+
+        const tituloNormal = habilidadesNormales.length === 1 ? 'Habilidad' : 'Habilidades';
+        habilidadesHTML += `
         <div class="tarjeta">
           <div class="tituloTarjeta">${tituloNormal}</div>
           <div class="contenidoTarjeta">
@@ -1325,16 +1411,16 @@ if (pokemonData.genero.hembra) {
           </div>
         </div>
       `;
-    }
-    
-    if (habilidadesOcultas.length > 0) {
-      const habilidadesOcultasHTML = habilidadesOcultas.map(hab => {
-        const nombreCompleto = this.gestorReferencias.extraerValorConReferencia(hab.nombre);
-        return `<span>${nombreCompleto}</span><br>`;
-      }).join('');
-      
-      const tituloOculta = habilidadesOcultas.length === 1 ? 'Habilidad oculta' : 'Habilidades ocultas';
-      habilidadesHTML += `
+      }
+
+      if (habilidadesOcultas.length > 0) {
+        const habilidadesOcultasHTML = habilidadesOcultas.map(hab => {
+          const nombreCompleto = this.gestorReferencias.extraerValorConReferencia(hab.nombre);
+          return `<span>${nombreCompleto}</span><br>`;
+        }).join('');
+
+        const tituloOculta = habilidadesOcultas.length === 1 ? 'Habilidad oculta' : 'Habilidades ocultas';
+        habilidadesHTML += `
         <div class="tarjeta">
           <div class="tituloTarjeta">${tituloOculta}</div>
           <div class="contenidoTarjeta">
@@ -1342,17 +1428,17 @@ if (pokemonData.genero.hembra) {
           </div>
         </div>
       `;
-    }
-    
-    habilidadesHTML += '</div>';
-    contenedorInfo.innerHTML += habilidadesHTML;
-  }
+      }
 
-  // ========== FIGURA Y COLOR ==========
-  if (pokemonData.figura !== undefined || pokemonData.color) {
-    const imgFigura = datosWikidex.figura[pokemonData.figura] || datosWikidex.default;
-    // En la sección de FIGURA Y COLOR, reemplaza la parte de figura por:
-let figuraHTML = '';
+      habilidadesHTML += '</div>';
+      contenedorInfo.innerHTML += habilidadesHTML;
+    }
+
+    // ========== FIGURA Y COLOR ==========
+    if (pokemonData.figura !== undefined || pokemonData.color) {
+      const imgFigura = datosWikidex.figura[pokemonData.figura] || datosWikidex.default;
+      // En la sección de FIGURA Y COLOR, reemplaza la parte de figura por:
+      let figuraHTML = '';
 if (pokemonData.figura !== undefined) {
   if (Array.isArray(pokemonData.figura)) {
     const figurasHTML = pokemonData.figura.map(fig => {
@@ -1369,12 +1455,13 @@ if (pokemonData.figura !== undefined) {
       }
       
       const imgFigura = datosWikidex.figura[figuraValor] || datosWikidex.default;
-      return `<img src="${imgFigura}" height="30" alt="Figura ${figuraValor}">${notaHTML}`;
-    }).join(' ');
+      return `<span style="white-space: nowrap; margin-right: 8px;"><img src="${imgFigura}" height="30" alt="Figura ${figuraValor}">${notaHTML}</span>`;
+    }).join('');
     
+    const tituloFigura = pokemonData.figura.length === 1 ? 'Figura' : 'Figuras';
     figuraHTML = `
       <div class="tarjeta">
-        <div class="tituloTarjeta">Figura</div>
+        <div class="tituloTarjeta">${tituloFigura}</div>
         <div class="contenidoTarjeta">
           ${figurasHTML}
         </div>
@@ -1395,35 +1482,35 @@ if (pokemonData.figura !== undefined) {
   figuraHTML = `<div class="tarjeta"><div class="tituloTarjeta">Figura</div><div class="contenidoTarjeta">—</div></div>`;
 }
 
-    const coloresMap = {
-      Azul: "#3D8BFF", Amarillo: "#FFD700", Blanco: "#EEEEEE",
-      Gris: "#696969", Marrón: "#B8860B", Morado: "#6A5ACD",
-      Negro: "#000000", Rojo: "#FF6347", Rosa: "#DB7093", Verde: "#228B22"
-    };
+      const coloresMap = {
+        Azul: "#3D8BFF", Amarillo: "#FFD700", Blanco: "#EEEEEE",
+        Gris: "#696969", Marrón: "#B8860B", Morado: "#6A5ACD",
+        Negro: "#000000", Rojo: "#FF6347", Rosa: "#DB7093", Verde: "#228B22"
+      };
 
-    let colorCard = '';
-    // En la sección de COLOR, reemplaza por:
-if (pokemonData.color) {
-  const coloresArray = Array.isArray(pokemonData.color) ? pokemonData.color : [pokemonData.color];
-  const coloresHTML = coloresArray.map(colorItem => {
-    let colorNombre = '';
-    let notaHTML = '';
-    
-    if (typeof colorItem === 'object' && colorItem.valor) {
-      colorNombre = colorItem.valor;
-      if (colorItem.nota) {
-        notaHTML = this.gestorReferencias.procesarReferencia(colorItem.nota, colorItem);
-      }
-    } else {
-      colorNombre = colorItem;
-    }
-    
-    const colorHex = coloresMap[colorNombre] || "#FFFFFF";
-    return `<span class="colorMuestra" style="background-color:${colorHex};"></span><span>${colorNombre}${notaHTML}</span>`;
-  }).join('');
-  
-  const tituloColor = coloresArray.length === 1 ? 'Color' : 'Colores';
-  colorCard = `
+      let colorCard = '';
+      // En la sección de COLOR, reemplaza por:
+      if (pokemonData.color) {
+        const coloresArray = Array.isArray(pokemonData.color) ? pokemonData.color : [pokemonData.color];
+        const coloresHTML = coloresArray.map(colorItem => {
+          let colorNombre = '';
+          let notaHTML = '';
+
+          if (typeof colorItem === 'object' && colorItem.valor) {
+            colorNombre = colorItem.valor;
+            if (colorItem.nota) {
+              notaHTML = this.gestorReferencias.procesarReferencia(colorItem.nota, colorItem);
+            }
+          } else {
+            colorNombre = colorItem;
+          }
+
+          const colorHex = coloresMap[colorNombre] || "#FFFFFF";
+          return `<span class="colorMuestra" style="background-color:${colorHex};"></span><span>${colorNombre}${notaHTML}</span>`;
+        }).join('');
+
+        const tituloColor = coloresArray.length === 1 ? 'Color' : 'Colores';
+        colorCard = `
     <div class="tarjeta">
       <div class="tituloTarjeta">${tituloColor}</div>
       <div class="contenidoTarjeta">
@@ -1431,106 +1518,131 @@ if (pokemonData.color) {
       </div>
     </div>
   `;
-}
+      }
 
-    contenedorInfo.innerHTML += `
+      contenedorInfo.innerHTML += `
       <div class="contenedorMedidas">
         ${figuraHTML}
         ${colorCard}
       </div>
     `;
-  }
-
-  // ========== CATEGORÍA Y HUEVO ==========
-  if (pokemonData.categoria || (pokemonData.huevo && pokemonData.huevo.length > 0)) {
-    let categoriaCard = '';
-    if (pokemonData.categoria) {
-      const categorias = Array.isArray(pokemonData.categoria) ? pokemonData.categoria : [pokemonData.categoria];
-      const categoriasHTML = categorias.map(cat => {
-        const nombreCompleto = this.gestorReferencias.extraerValorConReferencia(cat);
-        return `<span>Pokémon ${nombreCompleto}</span>`;
-      }).join('<br>');
-      
-      categoriaCard = `
-        <div class="tarjeta">
-          <div class="tituloTarjeta">Categoría</div>
-          <div class="contenidoTarjeta">
-            <div>${categoriasHTML}</div>
-          </div>
-        </div>
-      `;
-    } else {
-      categoriaCard = `<div class="tarjeta"><div class="tituloTarjeta">Categoría</div><div class="contenidoTarjeta">—</div></div>`;
     }
 
-    let huevoHTML = '';
-    if (pokemonData.huevo && pokemonData.huevo.length > 0) {
-      huevoHTML = pokemonData.huevo.map(grupo => {
-        return this.gestorReferencias.extraerValorConReferencia(grupo);
-      }).join('<br>');
-    } else {
-      huevoHTML = '—';
-    }
+    // ========== CATEGORÍA Y HUEVO ==========
+    if (pokemonData.categoria || (pokemonData.huevo && pokemonData.huevo.length > 0)) {
+      let categoriaCard = '';
+      if (pokemonData.categoria) {
+        const categorias = Array.isArray(pokemonData.categoria) ? pokemonData.categoria : [pokemonData.categoria];
+        const categoriasHTML = categorias.map(cat => {
+          const nombreCompleto = this.gestorReferencias.extraerValorConReferencia(cat);
+          return `<span>Pokémon ${nombreCompleto}</span>`;
+        }).join('<br>');
 
-    const huevoCard = `
-      <div class="tarjeta">
-        <div class="tituloTarjeta">Grupo huevo</div>
-        <div class="contenidoTarjeta">
-          <div>${huevoHTML}</div>
-        </div>
+        const tituloCategoria = categorias.length === 1 ? 'Categoría' : 'Categorías';
+        categoriaCard = `
+    <div class="tarjeta">
+      <div class="tituloTarjeta">${tituloCategoria}</div>
+      <div class="contenidoTarjeta">
+        <div>${categoriasHTML}</div>
       </div>
-    `;
-
-    contenedorInfo.innerHTML += `
-      <div class="contenedorMedidas">
-        ${categoriaCard}
-        ${huevoCard}
-      </div>
-    `;
-  }
-
-  // ========== PRONUNCIACIÓN ==========
-  if (pokemonData.pronunciacion && pokemonData.pronunciacion.length > 0) {
-    const pronunciaciones = pokemonData.pronunciacion.map(p => {
-      let foneticaCompleta = this.gestorReferencias.extraerValorConReferencia(p.fonetica);
-      
-      let zonaHTML = '';
-      if (p.zona) {
-        if (Array.isArray(p.zona)) {
-          const zonasHTML = p.zona.map(z => {
-            const zonaTexto = this.gestorReferencias.extraerValorConReferencia(z);
-            if (zonaTexto.includes('España')) return '<abbr title="España">(ES)</abbr>';
-            if (zonaTexto.includes('Hispanoamérica')) return '<abbr title="Hispanoamérica">(HA)</abbr>';
-            return zonaTexto;
-          }).join(' ');
-          zonaHTML = ' ' + zonasHTML;
-        } else {
-          if (p.zona === 'España') zonaHTML = ' <abbr title="España">(ES)</abbr>';
-          else if (p.zona === 'Hispanoamérica') zonaHTML = ' <abbr title="Hispanoamérica">(HA)</abbr>';
-        }
+    </div>
+  `;
+      } else {
+        categoriaCard = `<div class="tarjeta"><div class="tituloTarjeta">Categoría</div><div class="contenidoTarjeta">—</div></div>`;
       }
-      
-      return `/ ${foneticaCompleta} /${zonaHTML}`;
-    }).join('<br>');
-    
-    contenedorInfo.innerHTML += `
-      <div class="contenedorMedidas">
-        <div class="tarjeta">
-          <div class="tituloTarjeta">${pokemonData.pronunciacion.length === 1 ? 'Pronunciación' : 'Pronunciaciones'}</div>
-          <div class="contenidoTarjeta">
-            <div>${pronunciaciones}</div>
-          </div>
+
+      let huevoHTML = '';
+      let tituloHuevo = 'Grupo huevo';
+
+      if (pokemonData.huevo && pokemonData.huevo.length > 0) {
+        if (pokemonData.huevo.length > 1) {
+          tituloHuevo = 'Grupos huevo';
+        }
+
+        huevoHTML = pokemonData.huevo.map(grupo => {
+          return this.gestorReferencias.extraerValorConReferencia(grupo);
+        }).join('<br>');
+      } else {
+        huevoHTML = '—';
+      }
+
+      const huevoCard = `
+  <div class="tarjeta">
+    <div class="tituloTarjeta">${tituloHuevo}</div>
+    <div class="contenidoTarjeta">
+      <div>${huevoHTML}</div>
+    </div>
+  </div>
+`;
+    }
+
+    // ========== PRONUNCIACIÓN ==========
+    if (pokemonData.pronunciacion && pokemonData.pronunciacion.length > 0) {
+      const pronunciaciones = pokemonData.pronunciacion.map(p => {
+        let foneticaCompleta = this.gestorReferencias.extraerValorConReferencia(p.fonetica);
+
+        let zonaHTML = '';
+        if (p.zona) {
+          if (Array.isArray(p.zona)) {
+            const zonasHTML = p.zona.map(z => {
+              let zonaTexto = '';
+              let notaZona = '';
+
+              if (typeof z === 'object' && z.valor) {
+                zonaTexto = z.valor;
+                if (z.nota) {
+                  notaZona = this.gestorReferencias.procesarReferencia(z.nota, z);
+                }
+              } else {
+                zonaTexto = z;
+              }
+
+              let abreviatura = '';
+              if (zonaTexto.includes('España')) abreviatura = `<abbr title="España">(ES)</abbr>`;
+              else if (zonaTexto.includes('Hispanoamérica')) abreviatura = `<abbr title="Hispanoamérica">(HA)</abbr>`;
+              else abreviatura = zonaTexto;
+
+              return abreviatura + notaZona;
+            }).join(' ');
+            zonaHTML = ' ' + zonasHTML;
+          } else {
+            let zonaTexto = p.zona;
+            let notaZona = '';
+
+            if (typeof p.zona === 'object' && p.zona.valor) {
+              zonaTexto = p.zona.valor;
+              if (p.zona.nota) {
+                notaZona = this.gestorReferencias.procesarReferencia(p.zona.nota, p.zona);
+              }
+            }
+
+            if (zonaTexto === 'España') zonaHTML = ' <abbr title="España">(ES)</abbr>' + notaZona;
+            else if (zonaTexto === 'Hispanoamérica') zonaHTML = ' <abbr title="Hispanoamérica">(HA)</abbr>' + notaZona;
+            else zonaHTML = ' ' + zonaTexto + notaZona;
+          }
+        }
+
+        return `${foneticaCompleta}${zonaHTML ? `&nbsp;${zonaHTML}` : ``}`;
+      }).join('<br>');
+
+      contenedorInfo.innerHTML += `
+    <div class="contenedorMedidas">
+      <div class="tarjeta">
+        <div class="tituloTarjeta">${pokemonData.pronunciacion.length === 1 ? 'Pronunciación' : 'Pronunciaciones'}</div>
+        <div class="contenidoTarjeta">
+          <div>${pronunciaciones}</div>
         </div>
       </div>
-    `;
-  }
+    </div>
+  `;
+    }
 
-  // ========== RENDERIZAR REFERENCIAS AL FINAL ==========
-  this.gestorReferencias.renderizarReferencias();
-  setTimeout(() => {
-    this.gestorReferencias.actualizarNumerosCitas();
-  }, 0);
-}
+    // ========== RENDERIZAR REFERENCIAS AL FINAL ==========
+    this.gestorReferencias.renderizarReferencias();
+    setTimeout(() => {
+      this.gestorReferencias.actualizarNumerosCitas();
+    }, 0);
+  }
 
   updateImage() {
     const pokemonData = this.estado.getPokemonData();
@@ -1598,7 +1710,7 @@ if (pokemonData.color) {
     const availableSpecialForms = this.estado.getAvailableSpecialForms();
     configBotones.gender.forEach(btn => {
       const isAvailable = availableGenders.includes(btn.key);
-      const isActive = this.estado.generoActivo === btn.key;
+      const isActive = this.estado.sexoActivo === btn.key;
       this.updateButtonState('gender', btn.key, isActive, isAvailable);
     });
     configBotones.special.forEach(btn => {
