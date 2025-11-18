@@ -45,7 +45,7 @@ const pokemonJSON = {
       ],
       "sexo": {
         "macho": { "valor": "87.5", "nota": "B" },
-        "hembra": { "valor": "87.2", "nota": "A" }
+        "hembra": { "valor": "12.5", "nota": "A" }
       },
       "generacion": { "valor": "1", "nota": "D" },
       "categoria": ["Llama", { "valor": "Fogonazo", "nota": "A" }],
@@ -211,7 +211,7 @@ const datosWikidex = {
     "megaX": "https://images.wikidexcdn.net/mwuploads/wikidex/5/52/latest/20250913220359/Megaevolución_X_(Wikidex).svg",
     "megaY": "https://images.wikidexcdn.net/mwuploads/wikidex/4/45/latest/20250913220424/Megaevolución_Y_(Wikidex).svg",
     "giga": "https://images.wikidexcdn.net/mwuploads/wikidex/c/c0/latest/20250913220520/Gigamax_(Wikidex).svg",
-    "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/2/2f/latest/20251112155152/Grito_Pok%C3%A9mon_%28Wikidex%29.svg",
+    "grito": "https://images.wikidexcdn.net/mwuploads/wikidex/2/2f/latest/20251112155152/Grito_Pokémon_%28Wikidex%29.svg",
     "artwork": "https://images.wikidexcdn.net/mwuploads/wikidex/4/43/latest/20251117205424/Artwork_%28Wikidex%29.svg",
     "galeria": "./photo.svg"
   },
@@ -238,106 +238,59 @@ const configBotones = {
 class GestorReferencias {
   constructor() {
     this.referenciasActivas = new Map();
-    this.contadorReferencias = new Map();
   }
 
   limpiarReferenciasPokemon() {
-    console.log('=== LIMPIANDO REFERENCIAS ===');
-
-    // Buscar el h2 con múltiples estrategias
-    const h2Anotaciones = document.querySelector('h2.destroyable.cuadroPokemon');
-    console.log('h2 encontrado con clases:', h2Anotaciones);
-
-    if (h2Anotaciones) {
-      console.log('Eliminando h2:', h2Anotaciones.outerHTML);
-      h2Anotaciones.remove();
-    } else {
-      // Intentar buscar por el id del span
-      const spanAnotaciones = document.querySelector('span#Anotaciones');
-      console.log('span#Anotaciones encontrado:', spanAnotaciones);
-      if (spanAnotaciones) {
-        const h2Padre = spanAnotaciones.closest('h2');
-        console.log('h2 padre del span:', h2Padre);
-        if (h2Padre && h2Padre.classList.contains('destroyable') && h2Padre.classList.contains('cuadroPokemon')) {
-          console.log('Eliminando h2 padre:', h2Padre.outerHTML);
-          h2Padre.remove();
-        }
-      }
-    }
-
-    // Eliminar li con las clases
-    const existentes = document.querySelectorAll('li.destroyable.cuadroPokemon');
-    console.log('li encontrados:', existentes.length);
-    existentes.forEach(e => e.remove());
-
+    const h2 = document.querySelector('h2.destroyable.cuadroPokemon') || 
+                document.querySelector('span#Anotaciones')?.closest('h2.destroyable.cuadroPokemon');
+    h2?.remove();
+    
+    document.querySelectorAll('li.destroyable.cuadroPokemon').forEach(e => e.remove());
+    
     const lista = document.querySelector('ol.references');
-    if (lista && lista.children.length === 0) {
-      console.log('Lista vacía, eliminando sección');
-      this.eliminarSeccionAnotaciones();
-    }
-
+    if (lista?.children.length === 0) this.eliminarSeccionAnotaciones();
+    
     this.referenciasActivas.clear();
-    this.contadorReferencias.clear();
-
-    console.log('=== FIN LIMPIEZA ===');
   }
 
   eliminarSeccionAnotaciones() {
-    // Eliminar el wrapper
-    const wrapper = document.querySelector('.mw-references-wrap') ||
-      document.querySelector('#mw-references-wrap');
-    if (wrapper) {
-      wrapper.remove();
-    }
-
-    // Eliminar el h2 de Anotaciones si tiene las clases
-    const h2Anotaciones = document.querySelector('h2.destroyable.cuadroPokemon');
-    if (h2Anotaciones) {
-      h2Anotaciones.remove();
-    }
+    document.querySelector('.mw-references-wrap, #mw-references-wrap')?.remove();
+    document.querySelector('h2.destroyable.cuadroPokemon')?.remove();
   }
 
   asegurarSeccionAnotaciones() {
     let wrapper = document.querySelector('.mw-references-wrap');
     if (!wrapper) {
-      let h2Anotaciones = null;
-      const todosH2 = document.querySelectorAll('h2');
-      for (const h2 of todosH2) {
-        const span = h2.querySelector('span.mw-headline');
-        if (span && span.textContent.includes('Anotaciones')) {
-          h2Anotaciones = h2;
-          break;
-        }
-      }
+      let h2Anotaciones = Array.from(document.querySelectorAll('h2')).find(h2 => 
+        h2.querySelector('span.mw-headline')?.textContent.includes('Anotaciones')
+      );
+      
       if (!h2Anotaciones) {
         const cuerpo = document.querySelector('.mw-content-text');
-        if (!cuerpo) {
-          console.error('ERROR: No se encontró .mw-content-text.');
-          return null;
-        }
-        let veaseH2 = null;
-        const h2EnCuerpo = cuerpo.querySelectorAll('h2');
-        for (const h2 of h2EnCuerpo) {
+        if (!cuerpo) return null;
+        
+        const veaseH2 = Array.from(cuerpo.querySelectorAll('h2')).find(h2 => {
           const span = h2.querySelector('span.mw-headline, span#Véase_también');
-          if (span && (span.textContent.includes('Véase también') || span.id === 'Véase_también')) {
-            veaseH2 = h2;
-            break;
-          }
-        }
+          return span && (span.textContent.includes('Véase también') || span.id === 'Véase_también');
+        });
+        
         h2Anotaciones = document.createElement('h2');
-        h2Anotaciones.className = 'destroyable cuadroPokemon'; // Añadir clases
+        h2Anotaciones.className = 'destroyable cuadroPokemon';
         const titular = document.createElement('span');
         titular.className = 'mw-headline';
         titular.id = 'Anotaciones';
         titular.textContent = 'Anotaciones';
         h2Anotaciones.appendChild(titular);
+        
         if (veaseH2) cuerpo.insertBefore(h2Anotaciones, veaseH2);
         else cuerpo.appendChild(h2Anotaciones);
       }
+      
       wrapper = document.createElement('div');
-      wrapper.className = 'mw-references-wrap';  // clase, no ID
-      wrapper.id = 'mw-references-wrap';  // también ID para compatibilidad
+      wrapper.className = 'mw-references-wrap';
+      wrapper.id = 'mw-references-wrap';
       wrapper.style.color = 'white';
+      
       const ol = document.createElement('ol');
       ol.className = 'references';
       wrapper.appendChild(ol);
@@ -346,173 +299,94 @@ class GestorReferencias {
     return wrapper.querySelector('ol.references');
   }
 
-  // MÉTODO CORREGIDO: Procesar referencia
   procesarReferencia(letra, contexto) {
-  let claves = [];
-  
-  if (typeof letra === 'string' && letra.trim() !== '') {
-    claves = [letra];
-  } else if (Array.isArray(letra)) {
-    claves = letra.filter(l => typeof l === 'string' && l.trim() !== '');
-  } else if (contexto && typeof contexto === 'object') {
-    if (typeof contexto.nota === 'string') {
-      claves = [contexto.nota];
-    } else if (Array.isArray(contexto.nota)) {
-      claves = contexto.nota.filter(n => typeof n === 'string' && n.trim() !== '');
-    }
-  }
-  
-  if (claves.length === 0) {
-    return '';
-  }
-
-  const referencias = claves.map(clave => {
-    let textoNota = null;
-    if (pokemonJSON && pokemonJSON.nota && pokemonJSON.nota[clave]) {
-      textoNota = pokemonJSON.nota[clave];
+    let claves = [];
+    
+    if (typeof letra === 'string' && letra.trim()) {
+      claves = [letra];
+    } else if (Array.isArray(letra)) {
+      claves = letra.filter(l => typeof l === 'string' && l.trim());
+    } else if (contexto?.nota) {
+      claves = Array.isArray(contexto.nota) 
+        ? contexto.nota.filter(n => typeof n === 'string' && n.trim())
+        : [contexto.nota];
     }
     
-    if (!textoNota) {
-      return '';
-    }
+    if (!claves.length) return '';
 
-    if (!this.referenciasActivas.has(clave)) {
-      this.referenciasActivas.set(clave, { cuenta: 0, texto: textoNota });
-    }
-    
-    const refData = this.referenciasActivas.get(clave);
-    const indiceUso = refData.cuenta;
-    refData.cuenta++;
+    const referencias = claves.map(clave => {
+      const textoNota = pokemonJSON?.nota?.[clave];
+      if (!textoNota) return '';
 
-    const refId = `cite_ref-${clave}_${indiceUso}`;
-    const noteId = `cite_note-${clave}`;
-
-    return `<a href="#${noteId}" data-ref-key="${clave}" id="${refId}">?</a>`;
-  }).filter(Boolean);
-
-  if (referencias.length === 0) return '';
-  
-  // Espacio antes del sup
-  return ` <sup class="reference">${referencias.join(' ')}</sup>`;
-}
-
-  actualizarNumerosCitas() {
-    // Buscar el ol con CUALQUIER variante
-    const ol = document.querySelector('.mw-references-wrap ol.references') ||
-      document.querySelector('#mw-references-wrap ol.references') ||
-      document.querySelector('ol.references');
-
-    if (!ol) {
-      return;
-    }
-
-    const mapaNumeros = new Map();
-    const todosLi = Array.from(ol.querySelectorAll('li'));
-
-    todosLi.forEach((li, idx) => {
-      const match = li.id.match(/^cite_note-(.+)$/);
-      if (match) {
-        mapaNumeros.set(match[1], idx + 1);
+      if (!this.referenciasActivas.has(clave)) {
+        this.referenciasActivas.set(clave, { cuenta: 0, texto: textoNota });
       }
-    });
+      
+      const refData = this.referenciasActivas.get(clave);
+      const refId = `cite_ref-${clave}_${refData.cuenta}`;
+      const noteId = `cite_note-${clave}`;
+      refData.cuenta++;
 
-    const enlaces = document.querySelectorAll('a[data-ref-key]');
-
-    enlaces.forEach(link => {
-      const key = link.getAttribute('data-ref-key');
-      const numero = mapaNumeros.get(key);
-      if (numero) {
-        link.textContent = numero;
-      }
-    });
-  }
-
-  calcularNumeroReferencia(clave) {
-    // Contar TODOS los <li> en ol.references, no solo los de referenciasActivas
-    const ol = document.querySelector('#mw-references-wrap ol.references');
-    if (!ol) return 1;
-
-    // Obtener todos los li existentes
-    const todosLi = ol.querySelectorAll('li');
-    const existingIds = Array.from(todosLi).map(li => {
-      const match = li.id.match(/^cite_note-(.+)$/);
-      return match ? match[1] : null;
+      return `<a href="#${noteId}" data-ref-key="${clave}" id="${refId}">?</a>`;
     }).filter(Boolean);
 
-    // Combinar con las nuevas referencias
-    const todasLasClaves = new Set([...existingIds, ...Array.from(this.referenciasActivas.keys())]);
-    const ordenadas = Array.from(todasLasClaves).sort();
+    return referencias.length ? ` <sup class="reference">${referencias.join(' ')}</sup>` : '';
+  }
 
-    return ordenadas.indexOf(clave) + 1;
+  actualizarNumerosCitas() {
+    const ol = document.querySelector('.mw-references-wrap ol.references, #mw-references-wrap ol.references, ol.references');
+    if (!ol) return;
+
+    const mapaNumeros = new Map();
+    Array.from(ol.querySelectorAll('li')).forEach((li, idx) => {
+      const match = li.id.match(/^cite_note-(.+)$/);
+      if (match) mapaNumeros.set(match[1], idx + 1);
+    });
+
+    document.querySelectorAll('a[data-ref-key]').forEach(link => {
+      const numero = mapaNumeros.get(link.getAttribute('data-ref-key'));
+      if (numero) link.textContent = numero;
+    });
   }
 
   renderizarReferencias() {
-    // Si no hay referencias activas, no hacer nada
-    if (this.referenciasActivas.size === 0) {
-      console.log('No hay referencias para renderizar');
-      return;
-    }
+    if (!this.referenciasActivas.size) return;
 
     const ol = this.asegurarSeccionAnotaciones();
     if (!ol) return;
 
-    const existentes = ol.querySelectorAll('li.destroyable.cuadroPokemon');
-    existentes.forEach(e => e.remove());
+    ol.querySelectorAll('li.destroyable.cuadroPokemon').forEach(e => e.remove());
 
-    const ordenadas = Array.from(this.referenciasActivas.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+    Array.from(this.referenciasActivas.entries())
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .forEach(([letra, datosRef]) => {
+        const li = document.createElement('li');
+        li.id = `cite_note-${letra}`;
+        li.className = 'destroyable cuadroPokemon';
+        ol.appendChild(li);
 
-    ordenadas.forEach(([letra, datosRef]) => {
-      const li = document.createElement('li');
-      li.id = `cite_note-${letra}`;
-      li.className = 'destroyable cuadroPokemon';
+        const posicionReal = Array.from(ol.querySelectorAll('li')).indexOf(li) + 1;
+        
+        const backlinksHTML = datosRef.cuenta === 1
+          ? `<span class="mw-cite-backlink"><a href="#cite_ref-${letra}_0" aria-label="Volver arriba" title="Volver arriba">↑</a></span>`
+          : `<span class="mw-cite-backlink">↑ ${Array.from({length: datosRef.cuenta}, (_, i) => 
+              `<sup><a href="#cite_ref-${letra}_${i}">${posicionReal},${i}</a></sup>`
+            ).join(' ')}</span>`;
 
-      ol.appendChild(li);
-
-      const todosLi = Array.from(ol.querySelectorAll('li'));
-      const posicionReal = todosLi.indexOf(li) + 1;
-
-      let backlinksHTML = '';
-
-      if (datosRef.cuenta === 1) {
-        const refId = `cite_ref-${letra}_0`;
-        backlinksHTML = `<span class="mw-cite-backlink"><a href="#${refId}" aria-label="Volver arriba" title="Volver arriba">↑</a></span>`;
-      } else {
-        const backlinks = [];
-
-        for (let i = 0; i < datosRef.cuenta; i++) {
-          const refId = `cite_ref-${letra}_${i}`;
-          backlinks.push(`<sup><a href="#${refId}">${posicionReal},${i}</a></sup>`);
-        }
-        backlinksHTML = `<span class="mw-cite-backlink">↑ ${backlinks.join(' ')}</span>`;
-      }
-
-      li.innerHTML = `${backlinksHTML} <span class="reference-text">${datosRef.texto}</span>`;
-    });
+        li.innerHTML = `${backlinksHTML} <span class="reference-text">${datosRef.texto}</span>`;
+      });
 
     this.actualizarNumerosCitas();
   }
 
-  // MÉTODO CORREGIDO: Extraer valor y procesar referencia
   extraerValorConReferencia(dato) {
     if (typeof dato === 'string') return dato;
-    if (typeof dato === 'object' && dato !== null) {
-      let valor = dato.valor || '';
-      let referencia = '';
-
-      if (dato.nota) {
-        // Puede ser string o array
-        referencia = this.procesarReferencia(dato.nota, dato);
-      }
-
+    if (typeof dato === 'object' && dato) {
+      const valor = dato.valor || '';
+      const referencia = dato.nota ? this.procesarReferencia(dato.nota, dato) : '';
       return valor + referencia;
     }
     return '';
-  }
-
-  procesarArray(arr) {
-    if (!Array.isArray(arr)) return arr;
-
-    return arr.map(item => this.extraerValorConReferencia(item));
   }
 }
 
@@ -520,7 +394,6 @@ class EstadoPokemon {
   constructor() {
     this.forma = pokemonJSON.forma;
     this.info = pokemonJSON.info;
-    this.pokemon = "Pikachu";
     this.sexoActivo = "";
     this.formaEspecialActiva = "";
     this.esShiny = false;
@@ -528,24 +401,21 @@ class EstadoPokemon {
     this.esArtwork = localStorage.getItem('preferArtwork') === 'true';
     this.selector1 = 0;
     this.selector2 = 0;
-    this.secciones1 = [];
-    this.secciones2 = [];
-    this.isSeccion1 = "";
-    this.isSeccion2 = "";
     this.ultimaSeccion2Nombre = "";
     this.audioActual = null;
     this.cargandoAudio = false;
+    
     const sexosDisponibles = this.getAvailableGenders();
-    if (sexosDisponibles.length > 0) this.sexoActivo = sexosDisponibles[0];
+    if (sexosDisponibles.length) this.sexoActivo = sexosDisponibles[0];
     this.initializeSections();
   }
 
   initializeSections() {
     this.secciones1 = this.getAvailableSections();
-    if (this.secciones1.length > 0) {
+    if (this.secciones1.length) {
       this.isSeccion1 = this.secciones1[0];
       this.secciones2 = this.getAvailableSubsections(this.isSeccion1);
-      if (this.secciones2.length > 0) {
+      if (this.secciones2.length) {
         this.isSeccion2 = this.secciones2[0];
         this.ultimaSeccion2Nombre = this.isSeccion2;
       }
@@ -557,9 +427,7 @@ class EstadoPokemon {
       const keys = Object.keys(this.forma);
       if (keys.includes("nogen")) {
         this._cachedGenders = [];
-        return this._cachedGenders;
-      }
-      if (keys.includes("normal")) {
+      } else if (keys.includes("normal")) {
         this._cachedGenders = ["macho", "hembra"];
         if (!this.forma._duplicatedNormal) {
           const normalData = this.forma.normal;
@@ -567,16 +435,15 @@ class EstadoPokemon {
           if (!this.forma.hembra) this.forma.hembra = normalData;
           this.forma._duplicatedNormal = true;
         }
-        return this._cachedGenders;
+      } else {
+        this._cachedGenders = keys.filter(k => (k === "macho" || k === "hembra") && this.forma[k]);
       }
-      this._cachedGenders = keys.filter(k => k === "macho" || k === "hembra").filter(g => this.forma[g] && this.forma[g] !== "");
     }
     return this._cachedGenders;
   }
 
   getAvailableSpecialForms() {
-    const posibles = ["mega", "megaX", "megaY", "giga"];
-    return posibles.filter(f => this.forma.hasOwnProperty(f) && this.forma[f] !== "");
+    return ["mega", "megaX", "megaY", "giga"].filter(f => this.forma[f]);
   }
 
   shouldHideSections() {
@@ -584,51 +451,51 @@ class EstadoPokemon {
   }
 
   getCurrentFormaNode() {
-    if (this.formaEspecialActiva && this.forma[this.formaEspecialActiva]) return this.forma[this.formaEspecialActiva];
+    if (this.formaEspecialActiva && this.forma[this.formaEspecialActiva]) 
+      return this.forma[this.formaEspecialActiva];
+    
     const availableGenders = this.getAvailableGenders();
-    if (availableGenders.length > 0 && this.sexoActivo) return this.forma[this.sexoActivo];
-    else if (availableGenders.length > 0) {
-      this.sexoActivo = availableGenders[0];
+    if (availableGenders.length) {
+      if (!this.sexoActivo) this.sexoActivo = availableGenders[0];
       return this.forma[this.sexoActivo];
-    } else {
-      return this.forma;
     }
+    return this.forma;
   }
 
   getAvailableSections() {
     const node = this.getCurrentFormaNode();
-    if (!node || typeof node === "string") return [];
-    const excludeKeys = ["mega", "megaX", "megaY", "giga", "primigenio", "origen"];
-    if (node.datos !== undefined) return [];
-    return Object.keys(node).filter(key => !excludeKeys.includes(key));
+    if (!node || typeof node === "string" || node.datos !== undefined) return [];
+    return Object.keys(node).filter(key => !["mega", "megaX", "megaY", "giga", "primigenio", "origen"].includes(key));
   }
 
   getAvailableSubsections(mainSection) {
     const node = this.getCurrentFormaNode();
     if (!node || typeof node === "string") return [];
     const sectionData = node[mainSection];
-    if (!sectionData || typeof sectionData === "string") return [];
-    if (sectionData.datos !== undefined) return [];
+    if (!sectionData || typeof sectionData === "string" || sectionData.datos !== undefined) return [];
     return Object.keys(sectionData);
   }
 
   getPokemonData() {
     if (this.formaEspecialActiva && this.forma[this.formaEspecialActiva]) {
       const specialNode = this.forma[this.formaEspecialActiva];
-      const datosKey = (typeof specialNode === "string") ? specialNode : specialNode.datos;
+      const datosKey = typeof specialNode === "string" ? specialNode : specialNode.datos;
       return this.info[datosKey] || {};
     }
+    
     const node = this.getCurrentFormaNode();
     if (!node) return {};
-    if (node.datos !== undefined && typeof node.datos === "string") return this.info[node.datos] || {};
+    if (node.datos) return this.info[node.datos] || {};
+    
     const sectionData = node[this.isSeccion1];
     if (!sectionData) return {};
     if (typeof sectionData === "string") return this.info[sectionData] || {};
-    if (sectionData.datos !== undefined) return this.info[sectionData.datos] || {};
+    if (sectionData.datos) return this.info[sectionData.datos] || {};
+    
     const sub = sectionData[this.isSeccion2];
     if (sub) {
       if (typeof sub === "string") return this.info[sub] || {};
-      if (sub.datos !== undefined) return this.info[sub.datos] || {};
+      if (sub.datos) return this.info[sub.datos] || {};
     }
     return {};
   }
@@ -636,19 +503,18 @@ class EstadoPokemon {
   getCurrentImageUrls() {
     if (this.formaEspecialActiva && this.forma[this.formaEspecialActiva]) {
       const node = this.forma[this.formaEspecialActiva];
-      return (typeof node === "string") ? {} : node;
+      return typeof node === "string" ? {} : node;
     }
+    
     const node = this.getCurrentFormaNode();
-    if (!node) return {};
-    if (node.datos !== undefined) return node;
+    if (!node || node.datos !== undefined) return node || {};
+    
     const sectionData = node[this.isSeccion1];
-    if (!sectionData) return {};
-    if (typeof sectionData === "string") return {};
+    if (!sectionData || typeof sectionData === "string") return {};
     if (sectionData.datos !== undefined) return sectionData;
+    
     const sub = sectionData[this.isSeccion2];
-    if (!sub) return {};
-    if (typeof sub === "string") return {};
-    return sub;
+    return sub && typeof sub !== "string" ? sub : {};
   }
 
   buildImageSrc() {
@@ -657,12 +523,13 @@ class EstadoPokemon {
       if (!field) return null;
       if (typeof field === 'string') return field;
       if (Array.isArray(field)) {
-        if (field.length === 0) return null;
+        if (!field.length) return null;
         if (field.length === 1) return field[0];
         return this.esArtwork ? field[1] : field[0];
       }
       return null;
     };
+    
     if (this.esTrasera && this.esShiny) {
       const img = getImageFromField(urls.variocolorTrasera);
       if (img) return img;
@@ -675,17 +542,7 @@ class EstadoPokemon {
       const img = getImageFromField(urls.variocolor);
       if (img) return img;
     }
-    const img = getImageFromField(urls.imagen);
-    if (img) return img;
-    return "";
-  }
-
-  playAudio(audioFile) {
-    try {
-      const audio = new Audio(`public/audio/${audioFile}`);
-      audio.play().catch(error => { });
-      this.audioActual = audio;
-    } catch (error) { }
+    return getImageFromField(urls.imagen) || "";
   }
 }
 
@@ -702,31 +559,29 @@ class InterfazPokemon {
   }
 
   getElements() {
+    const $ = (sel) => document.querySelector(sel);
     const elements = {
-      imagenPokemonCuadro: document.querySelector("#imagenPokemonCuadro"),
-      contenedorPokemon: document.querySelector(".contenedorPokemon"),
-      seccion1: document.querySelector("#seccion1"),
-      seccion2: document.querySelector("#seccion2"),
-      seccion1Texto: document.querySelector("#seccion1Texto"),
-      seccion2Texto: document.querySelector("#seccion2Texto"),
-      contenedorInfo: document.querySelector("#contenedorInfo"),
-      botonVolumen: document.querySelector("#botonVolumen"),
-      botonArtwork: document.querySelector("#botonArtwork"),
-      botonEnlace: document.querySelector("#botonEnlace"),
-      loadingIndicator: document.querySelector("#loadingIndicator")
+      imagenPokemonCuadro: $("#imagenPokemonCuadro"),
+      contenedorPokemon: $(".contenedorPokemon"),
+      seccion1: $("#seccion1"),
+      seccion2: $("#seccion2"),
+      seccion1Texto: $("#seccion1Texto"),
+      seccion2Texto: $("#seccion2Texto"),
+      contenedorInfo: $("#contenedorInfo"),
+      botonVolumen: $("#botonVolumen"),
+      botonArtwork: $("#botonArtwork"),
+      botonEnlace: $("#botonEnlace"),
+      loadingIndicator: $("#loadingIndicator")
     };
+    
     [...configBotones.gender, ...configBotones.special, ...configBotones.toggle].forEach(btn => {
-      elements[btn.key] = document.querySelector(`#${btn.id}`);
+      elements[btn.key] = $(`#${btn.id}`);
     });
-    const navButtons = {
-      'btnSec1Mas': 'sec1mas',
-      'btnSec1Menos': 'sec1menos',
-      'btnSec2Mas': 'sec2mas',
-      'btnSec2Menos': 'sec2menos'
-    };
-    Object.entries(navButtons).forEach(([id, key]) => {
-      elements[key] = document.querySelector(`#${id}`);
+    
+    ['sec1mas', 'sec1menos', 'sec2mas', 'sec2menos'].forEach((key, i) => {
+      elements[key] = $(`#btn${key.charAt(0).toUpperCase() + key.slice(1).replace('mas', 'Mas').replace('menos', 'Menos')}`);
     });
+    
     return elements;
   }
 
@@ -742,39 +597,18 @@ class InterfazPokemon {
         <div>
         <div class="contenidoPokemon">
         <div class="contenedorImagen">
-  <div class="imagenWrapper">
-    <img id="imagenPokemonCuadro" class="imagenPokemon" src="${datosWikidex.default}" height="200;">
-    
-    <div id="loadingIndicator" class="loadingIndicator" style="display:none;">
-      <div class="spinner"></div>
-    </div>
-  </div>
+          <div class="imagenWrapper">
+            <img id="imagenPokemonCuadro" class="imagenPokemon" src="${datosWikidex.default}" height="200;">
+            <div id="loadingIndicator" class="loadingIndicator" style="display:none;">
+              <div class="spinner"></div>
+            </div>
+          </div>
 
-  <div id="botonArtwork" class="circuloExterno botonEsquinaSupIzq">
-    <div class="circuloMedio artworkColor transparenteBoton">
-      <div class="circuloInterno">
-        <img class="iconoSVG" src="${datosWikidex.icono.artwork}" alt="Artwork" style="height:28px">
-      </div>
-    </div>
-  </div>
+          ${this.createCornerButton('botonArtwork', 'botonEsquinaSupIzq', 'artworkColor', datosWikidex.icono.artwork, '28px')}
+          ${this.createCornerButton('botonEnlace', 'botonEsquinaInfIzq', 'enlaceColor', datosWikidex.icono.galeria, '28px')}
+          ${this.createCornerButton('botonVolumen', 'botonEsquinaSupDer', 'gritoColor', datosWikidex.icono.grito, '28px', 'none')}
 
-  <div id="botonEnlace" class="circuloExterno botonEsquinaInfIzq">
-    <div class="circuloMedio enlaceColor transparenteBoton">
-      <div class="circuloInterno">
-        <img class="iconoSVG" src="${datosWikidex.icono.galeria}" alt="Enlace" style="height:28px">
-      </div>
-    </div>
-  </div>
-  
-  <div id="botonVolumen" class="circuloExterno botonEsquinaSupDer" style="display:none;">
-  <div class="circuloMedio gritoColor transparente">
-    <div class="circuloInterno">
-      <img class="iconoSVG" src="${datosWikidex.icono.grito}" alt="Volumen" style="height:28px">
-    </div>
-  </div>
-</div>
-
-  <hr class="lineaSeparadora">
+          <hr class="lineaSeparadora">
           
           <div class="contenedorBotones">
             <div class="filaBoton">
@@ -798,20 +632,29 @@ class InterfazPokemon {
         </div>
       </div>
       </div>
-      
 
-<div class="mw-content-text" style="color:white;">
-    `
-    
-    
-      +
 
-      `<h2><span class="mw-headline" id="Anotaciones">Anotaciones</span></h2>
-      <div class="mw-references-wrap"><ol class="references">
-          <li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1" aria-label="Volver arriba" title="Volver arriba">↑</a></span> <span class="reference-text">Esta anotación no debería eliminarse nunca, aunque se cambie la forma del Pokémon tantas veces como el usuario quiera. Tampoco debería verse reflejado el número 1 en el cuadro Pokémon.</span>
-          </li>
-        </ol>
-      </div>` ;
+      <br>
+      <hr>
+      <div class="mw-content-text" style="color:white;">
+        <h2><span class="mw-headline" id="Anotaciones">Anotaciones</span></h2>
+        <div class="mw-references-wrap"><ol class="references">
+          <li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1" aria-label="Volver arriba" title="Volver arriba">↑</a></span> <span class="reference-text">Esta anotación no debería eliminarse nunca, aunque se cambie la forma del Pokémon tantas veces como el usuario quiera. Tampoco debería verse reflejado el número 1 en el cuadro Pokémon.</span></li>
+        </ol></div>
+      </div>
+    `;
+  }
+
+  createCornerButton(id, posClass, color, icon, size, display = 'flex') {
+    return `
+      <div id="${id}" class="circuloExterno ${posClass}" style="display:${display};">
+        <div class="circuloMedio ${color} transparente${id === 'botonVolumen' ? '' : 'Boton'}">
+          <div class="circuloInterno">
+            <img class="iconoSVG" src="${icon}" alt="${id}" style="height:${size}">
+          </div>
+        </div>
+      </div>
+    `;
   }
 
   generateButtons(buttons) {
@@ -827,45 +670,27 @@ class InterfazPokemon {
   }
 
   generateSectionControls() {
-    return `
-      <div id="seccion1" class="seccionControles">
-        <div id="btnSec1Menos" class="seccionSelector">
-          <span>←</span>
-        </div>
-        <div id="seccion1Texto" class="textoSeccion">Común</div>
-        <div id="btnSec1Mas" class="seccionSelector">
-          <span>→</span>
-        </div>
-      </div>
-      <div id="seccion2" class="seccionControles" style="display: none;">
-        <div id="btnSec2Menos" class="seccionSelector">
-          <span>←</span>
-        </div>
-        <div id="seccion2Texto" class="textoSeccion">Común</div>
-        <div id="btnSec2Mas" class="seccionSelector">
-          <span>→</span>
-        </div>
+    const createSection = (id, num) => `
+      <div id="seccion${num}" class="seccionControles" style="display: none;">
+        <div id="btnSec${num}Menos" class="seccionSelector"><span>←</span></div>
+        <div id="seccion${num}Texto" class="textoSeccion">Común</div>
+        <div id="btnSec${num}Mas" class="seccionSelector"><span>→</span></div>
       </div>
     `;
+    return createSection('seccion1', 1) + createSection('seccion2', 2);
   }
 
   setupEventListeners() {
     configBotones.gender.forEach(btn => {
-      this.elements[btn.key]?.addEventListener("click", () => {
-        this.handleGenderClick(btn.key);
-      });
+      this.elements[btn.key]?.addEventListener("click", () => this.handleGenderClick(btn.key));
     });
 
     configBotones.special.forEach(btn => {
-      this.elements[btn.key]?.addEventListener("click", () => {
-        this.handleSpecialFormClick(btn.key);
-      });
+      this.elements[btn.key]?.addEventListener("click", () => this.handleSpecialFormClick(btn.key));
     });
 
     configBotones.toggle.forEach(btn => {
-      this.elements[btn.key]?.addEventListener("click", () => {
-        this.handleToggleClick(btn.key);
-      });
+      this.elements[btn.key]?.addEventListener("click", () => this.handleToggleClick(btn.key));
     });
 
     this.elements.sec1mas?.addEventListener("click", () => this.navigateSection(1, 1));
@@ -873,56 +698,56 @@ class InterfazPokemon {
     this.elements.sec2mas?.addEventListener("click", () => this.navigateSection(2, 1));
     this.elements.sec2menos?.addEventListener("click", () => this.navigateSection(2, -1));
 
-    this.elements.botonVolumen?.addEventListener("click", () => {
-      const pokemonData = this.estado.getPokemonData();
-      if (this.estado.audioActual && !this.estado.audioActual.paused) {
-        this.estado.audioActual.pause();
-        this.estado.audioActual.currentTime = 0;
-        this.estado.audioActual = null;
-        this.estado.cargandoAudio = false;
-        this.updateVolumeButton();
-        return;
-      }
-      if (this.estado.cargandoAudio) return;
-      if (pokemonData.grito && pokemonData.grito.startsWith("https://")) {
-        this.estado.cargandoAudio = true;
-        this.updateVolumeButton();
-        const audio = new Audio();
-        audio.addEventListener('canplaythrough', () => {
-          this.estado.cargandoAudio = false;
-          audio.play().then(() => {
-            this.updateVolumeButton();
-          }).catch(() => {
-            this.estado.cargandoAudio = false;
-            this.estado.audioActual = null;
-            this.updateVolumeButton();
-          });
-        }, { once: true });
-        audio.addEventListener('error', () => {
-          this.estado.cargandoAudio = false;
-          this.estado.audioActual = null;
-          this.updateVolumeButton();
-        });
-        audio.addEventListener('play', () => this.updateVolumeButton());
-        audio.addEventListener('pause', () => this.updateVolumeButton());
-        audio.addEventListener('ended', () => {
-          this.estado.audioActual = null;
-          this.updateVolumeButton();
-        });
-        audio.src = pokemonData.grito;
-        this.estado.audioActual = audio;
-      }
-    });
-
+    this.elements.botonVolumen?.addEventListener("click", () => this.handleVolumeClick());
     this.elements.botonArtwork?.addEventListener("click", () => {
       this.estado.esArtwork = !this.estado.esArtwork;
       localStorage.setItem('preferArtwork', this.estado.esArtwork);
       this.updateAll();
     });
+    this.elements.botonEnlace?.addEventListener("click", () => window.open(enlaceWikidex, '_blank'));
+  }
 
-    this.elements.botonEnlace?.addEventListener("click", () => {
-      window.open(enlaceWikidex, '_blank');
+  handleVolumeClick() {
+    const pokemonData = this.estado.getPokemonData();
+    
+    if (this.estado.audioActual && !this.estado.audioActual.paused) {
+      this.estado.audioActual.pause();
+      this.estado.audioActual.currentTime = 0;
+      this.estado.audioActual = null;
+      this.estado.cargandoAudio = false;
+      this.updateVolumeButton();
+      return;
+    }
+    
+    if (this.estado.cargandoAudio || !pokemonData.grito?.startsWith("https://")) return;
+    
+    this.estado.cargandoAudio = true;
+    this.updateVolumeButton();
+    
+    const audio = new Audio();
+    audio.addEventListener('canplaythrough', () => {
+      this.estado.cargandoAudio = false;
+      audio.play().then(() => this.updateVolumeButton()).catch(() => {
+        this.estado.cargandoAudio = false;
+        this.estado.audioActual = null;
+        this.updateVolumeButton();
+      });
+    }, { once: true });
+    
+    audio.addEventListener('error', () => {
+      this.estado.cargandoAudio = false;
+      this.estado.audioActual = null;
+      this.updateVolumeButton();
     });
+    
+    ['play', 'pause'].forEach(evt => audio.addEventListener(evt, () => this.updateVolumeButton()));
+    audio.addEventListener('ended', () => {
+      this.estado.audioActual = null;
+      this.updateVolumeButton();
+    });
+    
+    audio.src = pokemonData.grito;
+    this.estado.audioActual = audio;
   }
 
   handleResize() {
@@ -931,38 +756,26 @@ class InterfazPokemon {
 
   getBackgroundColor() {
     const pokemonData = this.estado.getPokemonData();
-    if (!pokemonData.tipo || pokemonData.tipo.length === 0) return "#f4f4f4ff";
+    if (!pokemonData.tipo?.length) return "#f4f4f4ff";
 
+    const extractValue = (tipo) => typeof tipo === 'object' && tipo.valor ? tipo.valor : tipo;
+    
     if (pokemonData.tipo.length === 1) {
-      let tipoNombre = pokemonData.tipo[0];
-      // Extraer el valor si es un objeto
-      if (typeof tipoNombre === 'object' && tipoNombre.valor) {
-        tipoNombre = tipoNombre.valor;
-      }
-      const tipoColor = datosWikidex.color[tipoNombre];
-      return tipoColor || "#FFFFFF";
+      return datosWikidex.color[extractValue(pokemonData.tipo[0])] || "#FFFFFF";
     }
 
-    const colores = pokemonData.tipo.map(tipo => {
-      let tipoNombre = tipo;
-      // Extraer el valor si es un objeto
-      if (typeof tipo === 'object' && tipo.valor) {
-        tipoNombre = tipo.valor;
-      }
-      return datosWikidex.color[tipoNombre] || "#FFFFFF";
-    });
-
+    const colores = pokemonData.tipo.map(tipo => datosWikidex.color[extractValue(tipo)] || "#FFFFFF");
     return `linear-gradient(to right, ${colores.join(", ")})`;
   }
 
   updateBackgroundColor() {
-    const colorBg = this.getBackgroundColor();
-    if (this.elements.contenedorPokemon) this.elements.contenedorPokemon.style.background = colorBg;
+    if (this.elements.contenedorPokemon) {
+      this.elements.contenedorPokemon.style.background = this.getBackgroundColor();
+    }
   }
 
   handleGenderClick(gender) {
-    const availableGenders = this.estado.getAvailableGenders();
-    if (availableGenders.includes(gender)) {
+    if (this.estado.getAvailableGenders().includes(gender)) {
       this.estado.sexoActivo = gender;
       this.estado.selector1 = 0;
       this.estado.selector2 = 0;
@@ -981,12 +794,11 @@ class InterfazPokemon {
 
   handleToggleClick(toggle) {
     const urls = this.estado.getCurrentImageUrls();
-    const shinyAvailable = !!urls.variocolor;
-    const traseraAvailable = !!urls.trasera || !!urls.variocolorTrasera;
-    if (toggle === 'shiny' && !shinyAvailable) return;
-    if (toggle === 'trasera' && !traseraAvailable) return;
-    this.estado[`es${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`] =
-      !this.estado[`es${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`];
+    const available = toggle === 'shiny' ? !!urls.variocolor : !!(urls.trasera || urls.variocolorTrasera);
+    if (!available) return;
+    
+    const key = `es${toggle.charAt(0).toUpperCase() + toggle.slice(1)}`;
+    this.estado[key] = !this.estado[key];
     this.updateAll();
   }
 
@@ -994,16 +806,17 @@ class InterfazPokemon {
     const selectorKey = `selector${section}`;
     const sectionsKey = `secciones${section}`;
     this.estado[selectorKey] = (this.estado[selectorKey] + direction + this.estado[sectionsKey].length) % this.estado[sectionsKey].length;
+    
     if (section === 1) {
       const previousSeccion2Name = this.estado.ultimaSeccion2Nombre;
       this.estado.secciones2 = this.estado.getAvailableSubsections(this.estado.secciones1[this.estado.selector1]);
       const matchingIndex = this.estado.secciones2.findIndex(sec => sec === previousSeccion2Name);
-      if (matchingIndex !== -1) this.estado.selector2 = matchingIndex;
-      else this.estado.selector2 = 0;
-      if (this.estado.secciones2.length > 0) this.estado.ultimaSeccion2Nombre = this.estado.secciones2[this.estado.selector2];
-    } else {
-      if (this.estado.secciones2.length > 0) this.estado.ultimaSeccion2Nombre = this.estado.secciones2[this.estado.selector2];
+      this.estado.selector2 = matchingIndex !== -1 ? matchingIndex : 0;
+      if (this.estado.secciones2.length) this.estado.ultimaSeccion2Nombre = this.estado.secciones2[this.estado.selector2];
+    } else if (this.estado.secciones2.length) {
+      this.estado.ultimaSeccion2Nombre = this.estado.secciones2[this.estado.selector2];
     }
+    
     this.updateSections();
     this.updateImage();
     this.updateTipos();
@@ -1013,26 +826,32 @@ class InterfazPokemon {
   updateButtonState(buttonType, key, isActive, isAvailable) {
     const element = this.elements[key];
     if (!element) return;
+    
     const config = configBotones[buttonType]?.find(btn => btn.key === key);
     if (!config) return;
+    
+    const circuloMedio = element.querySelector(".circuloMedio");
+    const circuloInterno = element.querySelector(".circuloInterno");
+    const iconoSVG = element.querySelector(".iconoSVG");
+    
     if (!isAvailable) {
       element.className = "circuloExterno botonDeshabilitado";
-      element.querySelector(".circuloMedio").className = "circuloMedio grisColor";
-      element.querySelector(".circuloInterno").className = "circuloInterno";
-      element.querySelector(".iconoSVG").className = "iconoSVG deshabilitado";
+      circuloMedio.className = "circuloMedio grisColor";
+      circuloInterno.className = "circuloInterno";
+      iconoSVG.className = "iconoSVG deshabilitado";
       element.style.pointerEvents = "none";
     } else {
       element.style.pointerEvents = "auto";
       if (isActive) {
         element.className = `circuloExterno ${config.color}`;
-        element.querySelector(".circuloMedio").className = "circuloMedio";
-        element.querySelector(".circuloInterno").className = `circuloInterno ${config.color}`;
-        element.querySelector(".iconoSVG").className = "iconoSVG blanco";
+        circuloMedio.className = "circuloMedio";
+        circuloInterno.className = `circuloInterno ${config.color}`;
+        iconoSVG.className = "iconoSVG blanco";
       } else {
         element.className = "circuloExterno";
-        element.querySelector(".circuloMedio").className = `circuloMedio ${config.color} transparenteBoton`;
-        element.querySelector(".circuloInterno").className = "circuloInterno";
-        element.querySelector(".iconoSVG").className = "iconoSVG";
+        circuloMedio.className = `circuloMedio ${config.color} transparenteBoton`;
+        circuloInterno.className = "circuloInterno";
+        iconoSVG.className = "iconoSVG";
       }
     }
   }
@@ -1045,8 +864,10 @@ class InterfazPokemon {
       this.estado.isSeccion2 = "";
       return;
     }
+    
     this.estado.secciones1 = this.estado.getAvailableSections();
     if (this.estado.selector1 >= this.estado.secciones1.length) this.estado.selector1 = 0;
+    
     if (this.estado.secciones1.length <= 1) {
       this.elements.seccion1.style.display = "none";
       this.estado.isSeccion1 = this.estado.secciones1[0] || "normal";
@@ -1055,8 +876,10 @@ class InterfazPokemon {
       this.estado.isSeccion1 = this.estado.secciones1[this.estado.selector1];
       this.elements.seccion1Texto.textContent = this.estado.isSeccion1 === "normal" ? "Común" : this.estado.isSeccion1;
     }
+    
     this.estado.secciones2 = this.estado.getAvailableSubsections(this.estado.isSeccion1);
     if (this.estado.selector2 >= this.estado.secciones2.length) this.estado.selector2 = 0;
+    
     if (this.estado.secciones2.length <= 1) {
       this.elements.seccion2.style.display = "none";
       this.estado.isSeccion2 = this.estado.secciones2[0] || "";
@@ -1070,19 +893,23 @@ class InterfazPokemon {
   updateVolumeButton() {
     const pokemonData = this.estado.getPokemonData();
     const botonVolumen = this.elements.botonVolumen;
+    
     if (!pokemonData.grito) {
       botonVolumen.style.display = "none";
       return;
     }
+    
     botonVolumen.style.display = "flex";
     const circuloMedio = botonVolumen.querySelector('.circuloMedio');
     const circuloInterno = botonVolumen.querySelector('.circuloInterno');
     const img = botonVolumen.querySelector('img');
+    
     if (this.estado.cargandoAudio) {
       botonVolumen.className = 'circuloExterno botonEsquinaSupDer';
       circuloMedio.className = 'circuloMedio gritoColor transparenteBoton';
       circuloInterno.className = 'circuloInterno';
       img.style.display = 'none';
+      
       let spinner = botonVolumen.querySelector('.audio-spinner');
       if (!spinner) {
         spinner = document.createElement('div');
@@ -1092,10 +919,13 @@ class InterfazPokemon {
       spinner.style.display = 'block';
       return;
     }
+    
     const spinner = botonVolumen.querySelector('.audio-spinner');
     if (spinner) spinner.style.display = 'none';
     img.style.display = 'block';
+    
     const isPlaying = this.estado.audioActual && !this.estado.audioActual.paused;
+    
     if (isPlaying) {
       botonVolumen.className = 'circuloExterno botonEsquinaSupDer gritoColor';
       circuloMedio.className = 'circuloMedio';
@@ -1111,376 +941,185 @@ class InterfazPokemon {
   }
 
   updateArtworkButton() {
-    const botonArtwork = this.elements.botonArtwork;
-    botonArtwork.style.display = "flex";
-    const circuloMedio = botonArtwork.querySelector('.circuloMedio');
-    const circuloInterno = botonArtwork.querySelector('.circuloInterno');
-    const img = botonArtwork.querySelector('img');
+    const boton = this.elements.botonArtwork;
+    const circuloMedio = boton.querySelector('.circuloMedio');
+    const circuloInterno = boton.querySelector('.circuloInterno');
+    const img = boton.querySelector('img');
+    
     if (this.estado.esArtwork) {
-      botonArtwork.className = 'circuloExterno botonEsquinaSupIzq artworkColor';
+      boton.className = 'circuloExterno botonEsquinaSupIzq artworkColor';
       circuloMedio.className = 'circuloMedio';
       circuloInterno.className = 'circuloInterno artworkColor';
       img.className = 'iconoSVG blanco';
     } else {
-      botonArtwork.className = 'circuloExterno botonEsquinaSupIzq';
+      boton.className = 'circuloExterno botonEsquinaSupIzq';
       circuloMedio.className = 'circuloMedio artworkColor transparenteBoton';
       circuloInterno.className = 'circuloInterno';
       img.className = 'iconoSVG';
     }
   }
 
+  createCard(titulo, contenido, isEmpty = false) {
+    return `
+      <div class="tarjeta">
+        <div class="tituloTarjeta">${titulo}</div>
+        <div class="contenidoTarjeta">${isEmpty ? '—' : contenido}</div>
+      </div>
+    `;
+  }
+
   updateTipos() {
-    // Limpiar referencias anteriores
     this.gestorReferencias.limpiarReferenciasPokemon();
 
     const pokemonData = this.estado.getPokemonData();
     const contenedorInfo = this.elements.contenedorInfo;
     contenedorInfo.innerHTML = '';
 
-    if (!pokemonData || Object.keys(pokemonData).length === 0) return;
+    if (!pokemonData || !Object.keys(pokemonData).length) return;
 
-    // ========== TIPOS Y GENERACIÓN ==========
-    // En la sección de TIPOS Y GENERACIÓN, reemplaza por:
-    if ((pokemonData.tipo && pokemonData.tipo.length > 0) || pokemonData.generacion !== undefined) {
-  const tiposHTML = (pokemonData.tipo && pokemonData.tipo.length > 0)
-    ? pokemonData.tipo.map(tipo => {
-        let tipoNombre = tipo;
-        let notaHTML = '';
-        
-        if (typeof tipo === 'object' && tipo.valor) {
-          tipoNombre = tipo.valor;
-          if (tipo.nota) {
-            notaHTML = this.gestorReferencias.procesarReferencia(tipo.nota, tipo);
-          }
-        }
-        
-        const imagenTipo = datosWikidex.tipo[tipoNombre] || 'ruta/por_defecto.png';
-        return `<span style="white-space: nowrap;"><img src="${imagenTipo}" height="22" alt="${tipoNombre}">${notaHTML}</span>`;
-      }).join(' ')
-    : '';
+    const generaciones = ['Primera', 'Segunda', 'Tercera', 'Cuarta', 'Quinta', 'Sexta', 'Séptima', 'Octava', 'Novena'];
 
-  const tituloTipo = (pokemonData.tipo && pokemonData.tipo.length > 1) ? 'Tipos' : 'Tipo';
-  const tipoCard = tiposHTML ? `
-    <div class="tarjeta">
-      <div class="tituloTarjeta">${tituloTipo}</div>
-      <div class="contenidoTarjeta">
-        <div class="tiposContainer">${tiposHTML}</div>
-      </div>
-    </div>
-  ` : `<div class="tarjeta"><div class="tituloTarjeta">Tipo</div><div class="contenidoTarjeta">—</div></div>`;
+    // TIPOS Y GENERACIÓN
+    if (pokemonData.tipo?.length || pokemonData.generacion !== undefined) {
+      const tiposHTML = pokemonData.tipo?.length 
+        ? pokemonData.tipo.map(tipo => {
+            const tipoNombre = typeof tipo === 'object' && tipo.valor ? tipo.valor : tipo;
+            const notaHTML = tipo.nota ? this.gestorReferencias.procesarReferencia(tipo.nota, tipo) : '';
+            const imagenTipo = datosWikidex.tipo[tipoNombre] || 'ruta/por_defecto.png';
+            return `<span style="white-space: nowrap;"><img src="${imagenTipo}" height="22" alt="${tipoNombre}">${notaHTML}</span>`;
+          }).join(' ')
+        : '';
+
+      const tipoCard = tiposHTML 
+        ? this.createCard(pokemonData.tipo.length > 1 ? 'Tipos' : 'Tipo', `<div class="tiposContainer">${tiposHTML}</div>`)
+        : this.createCard('Tipo', '', true);
 
       let generacionHTML = '';
-if (pokemonData.generacion !== undefined) {
-  const generaciones = ['Primera', 'Segunda', 'Tercera', 'Cuarta', 'Quinta', 'Sexta', 'Séptima', 'Octava', 'Novena'];
-  
-  if (Array.isArray(pokemonData.generacion)) {
-    const generacionesHTML = pokemonData.generacion.map(gen => {
-      let genValue = '';
-      let genNotaHTML = '';
-      
-      if (typeof gen === 'object' && gen.valor) {
-        genValue = gen.valor;
-        if (gen.nota) {
-          genNotaHTML = this.gestorReferencias.procesarReferencia(gen.nota, gen);
-        }
-      } else {
-        genValue = gen;
-      }
-      
-      const imgGeneracion = datosWikidex.generación[genValue] || datosWikidex.default;
-      const generacionTexto = generaciones[genValue - 1] || genValue;
-      
-      return `<div class="tipoGeneracionContainer">
-        <img src="${imgGeneracion}" height="20" alt="${generacionTexto} generación">
-        &nbsp;${generacionTexto}&nbsp;${genNotaHTML}
-      </div>`;
-    }).join('<br>');
-    
-    const tituloGeneracion = pokemonData.generacion.length === 1 ? 'Generación' : 'Generaciones';
-    generacionHTML = `
-      <div class="tarjeta">
-        <div class="tituloTarjeta">${tituloGeneracion}</div>
-        <div class="contenidoTarjeta">
-          ${generacionesHTML}
-        </div>
-      </div>
-    `;
-  } else {
-    let genValue = pokemonData.generacion;
-    let genNotaHTML = '';
-    
-    if (typeof pokemonData.generacion === 'object' && pokemonData.generacion.valor) {
-      genValue = pokemonData.generacion.valor;
-      if (pokemonData.generacion.nota) {
-        genNotaHTML = this.gestorReferencias.procesarReferencia(pokemonData.generacion.nota, pokemonData.generacion);
-      }
-    }
-    
-    const imgGeneracion = datosWikidex.generación[genValue] || datosWikidex.default;
-    const generacionTexto = generaciones[genValue - 1] || genValue;
-    
-    generacionHTML = `
-      <div class="tarjeta">
-        <div class="tituloTarjeta">Generación</div>
-        <div class="contenidoTarjeta">
-          <div class="tipoGeneracionContainer">
+      if (pokemonData.generacion !== undefined) {
+        const genArray = Array.isArray(pokemonData.generacion) ? pokemonData.generacion : [pokemonData.generacion];
+        
+        const generacionesHTML = genArray.map(gen => {
+          const genValue = typeof gen === 'object' && gen.valor ? gen.valor : gen;
+          const genNotaHTML = gen.nota ? this.gestorReferencias.procesarReferencia(gen.nota, gen) : '';
+          const imgGeneracion = datosWikidex.generación[genValue] || datosWikidex.default;
+          const generacionTexto = generaciones[genValue - 1] || genValue;
+          
+          return `<div class="tipoGeneracionContainer">
             <img src="${imgGeneracion}" height="20" alt="${generacionTexto} generación">
             &nbsp;${generacionTexto}&nbsp;${genNotaHTML}
-          </div>
-        </div>
-      </div>
-    `;
-  }
-} else {
-  generacionHTML = `<div class="tarjeta"><div class="tituloTarjeta">Generación</div><div class="contenidoTarjeta">—</div></div>`;
-}
+          </div>`;
+        }).join('<br>');
+        
+        generacionHTML = this.createCard(genArray.length === 1 ? 'Generación' : 'Generaciones', generacionesHTML);
+      } else {
+        generacionHTML = this.createCard('Generación', '', true);
+      }
 
-      contenedorInfo.innerHTML += `
-      <div class="contenedorMedidas">
-        ${tipoCard}
-        ${generacionHTML}
-      </div>
-    `;
+      contenedorInfo.innerHTML += `<div class="contenedorMedidas">${tipoCard}${generacionHTML}</div>`;
     }
 
-    // ========== GÉNERO ==========
+    // GÉNERO
     if (pokemonData.sexo) {
-      let barras = '';
+      const createBarraGenero = (tipo, icono, valor, borde) => {
+        const valorFinal = typeof valor === 'object' && valor.valor ? valor.valor : valor;
+        const notaHTML = valor.nota ? this.gestorReferencias.procesarReferencia(valor.nota, valor) : '';
+        const porcentaje = parseFloat(valorFinal);
+        const estiloBorde = porcentaje === 100 ? 'border-radius: 5px;' : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
+        
+        return `
+          <div class="sexoContainer">
+            <img src="${icono}" alt="${tipo}">
+            <div class="sexoBarra">
+              <div class="sexoBarra${tipo}" style="flex-basis: ${porcentaje}%; ${estiloBorde}"></div>
+              ${porcentaje < 100 ? `<div class="sexoBarraVacia" style="flex-basis: ${100 - porcentaje}%;"></div>` : ''}
+              <div class="sexoPorcentaje"><span>${porcentaje.toString().replace('.', "'")}%${notaHTML}</span></div>
+            </div>
+          </div>
+        `;
+      };
 
-      // En la sección de GÉNERO, reemplaza las barras por:
-      if (pokemonData.sexo.macho) {
-        let valorMacho = pokemonData.sexo.macho;
-        let notaMacho = '';
-        if (typeof valorMacho === 'object' && valorMacho.valor) {
-          if (valorMacho.nota) {
-            notaMacho = this.gestorReferencias.procesarReferencia(valorMacho.nota, valorMacho);
-          }
-          valorMacho = valorMacho.valor;
-        }
-        const porcentajeMacho = parseFloat(valorMacho);
-
-        const bordeMacho = porcentajeMacho === 100 ? 'border-radius: 5px;' : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
-        barras += `
-    <div class="sexoContainer">
-      <img src="${datosWikidex.icono.macho}" alt="Macho">
-      <div class="sexoBarra">
-        <div class="sexoBarraMacho" style="flex-basis: ${porcentajeMacho}%; ${bordeMacho}"></div>
-        ${porcentajeMacho < 100 ? `<div class="sexoBarraVacia" style="flex-basis: ${100 - porcentajeMacho}%;"></div>` : ''}
-        <div class="sexoPorcentaje"><span>${porcentajeMacho.toString().replace('.', "'")}%${notaMacho}</span></div>
-      </div>
-    </div>
-  `;
-      }
-
-      if (pokemonData.sexo.hembra) {
-        let valorHembra = pokemonData.sexo.hembra;
-        let notaHembra = '';
-        if (typeof valorHembra === 'object' && valorHembra.valor) {
-          if (valorHembra.nota) {
-            notaHembra = this.gestorReferencias.procesarReferencia(valorHembra.nota, valorHembra);
-          }
-          valorHembra = valorHembra.valor;
-        }
-        const porcentajeHembra = parseFloat(valorHembra);
-
-        const bordeHembra = porcentajeHembra === 100 ? 'border-radius: 5px;' : 'border-top-left-radius: 5px; border-bottom-left-radius: 5px;';
-        barras += `
-    <div class="sexoContainer">
-      <img src="${datosWikidex.icono.hembra}" alt="Hembra">
-      <div class="sexoBarra">
-        <div class="sexoBarraHembra" style="flex-basis: ${porcentajeHembra}%; ${bordeHembra}"></div>
-        ${porcentajeHembra < 100 ? `<div class="sexoBarraVacia" style="flex-basis: ${100 - porcentajeHembra}%;"></div>` : ''}
-        <div class="sexoPorcentaje"><span>${porcentajeHembra.toString().replace('.', "'")}%${notaHembra}</span></div>
-      </div>
-    </div>
-  `;
-      }
+      const barras = [
+        pokemonData.sexo.macho ? createBarraGenero('Macho', datosWikidex.icono.macho, pokemonData.sexo.macho) : '',
+        pokemonData.sexo.hembra ? createBarraGenero('Hembra', datosWikidex.icono.hembra, pokemonData.sexo.hembra) : ''
+      ].filter(Boolean).join('');
 
       contenedorInfo.innerHTML += `
-      <div class="tarjetaIndividual">
-        <div class="tituloTarjeta">Sexo</div>
-        <div class="contenidoTarjeta">
-          <div style="width: 100%;">${barras}</div>
+        <div class="tarjetaIndividual">
+          <div class="tituloTarjeta">Sexo</div>
+          <div class="contenidoTarjeta"><div style="width: 100%;">${barras}</div></div>
         </div>
-      </div>
-    `;
+      `;
     } else {
       contenedorInfo.innerHTML += `
-      <div class="tarjetaIndividual">
-        <div class="tituloTarjeta">Sexo</div>
-        <div class="contenidoTarjeta">Sin sexo</div>
-      </div>
-    `;
+        <div class="tarjetaIndividual">
+          <div class="tituloTarjeta">Sexo</div>
+          <div class="contenidoTarjeta"><i>Desconocido</i></div>
+        </div>
+      `;
     }
 
-    // ========== ALTURA Y PESO ==========
+    // ALTURA Y PESO
     if (pokemonData.altura !== undefined || pokemonData.peso !== undefined) {
-      let medidasHTML = '<div class="contenedorMedidas">';
+      const createMedidaCard = (titulo, valores, unidad, defaultValue = '???') => {
+        if (valores === undefined) return this.createCard(titulo, `<span>${defaultValue} ${unidad}</span>`);
+        
+        const valoresArray = Array.isArray(valores) ? valores : [valores];
+        const html = valoresArray.map(v => {
+          const valor = typeof v === 'object' && v.valor ? v.valor : v;
+          const notaHTML = v.nota ? this.gestorReferencias.procesarReferencia(v.nota, v) : '';
+          return `${valor} ${unidad}${notaHTML}`;
+        }).join('<br>');
+        
+        const tituloFinal = valoresArray.length === 1 ? titulo : titulo + 's';
+        return this.createCard(tituloFinal, `<span>${html}</span>`);
+      };
 
-      if (pokemonData.altura !== undefined) {
-  let alturasArray = Array.isArray(pokemonData.altura) ? pokemonData.altura : [pokemonData.altura];
-  
-  const alturaHTML = alturasArray.map(alt => {
-    let valor = '';
-    let notaHTML = '';
-    
-    if (typeof alt === 'object' && alt.valor) {
-      valor = alt.valor;
-      if (alt.nota) {
-        notaHTML = this.gestorReferencias.procesarReferencia(alt.nota, alt);
-      }
-    } else {
-      valor = alt;
-    }
-    
-    return `${valor} m${notaHTML}`;
-  }).join('<br>');
-  
-  const tituloAltura = alturasArray.length === 1 ? 'Altura' : 'Alturas';
-  medidasHTML += `
-    <div class="tarjeta">
-      <div class="tituloTarjeta">${tituloAltura}</div>
-      <div class="contenidoTarjeta">
-        <span>${alturaHTML}</span>
-      </div>
-    </div>
-  `;
-}
-
-      if (pokemonData.peso !== undefined) {
-  let pesosArray = Array.isArray(pokemonData.peso) ? pokemonData.peso : [pokemonData.peso];
-  
-  const pesoHTML = pesosArray.map(p => {
-    let valor = '';
-    let notaHTML = '';
-    
-    if (typeof p === 'object' && p.valor) {
-      valor = p.valor;
-      if (p.nota) {
-        notaHTML = this.gestorReferencias.procesarReferencia(p.nota, p);
-      }
-    } else {
-      valor = p;
-    }
-    
-    return `${valor} kg${notaHTML}`;
-  }).join('<br>');
-  
-  const tituloPeso = pesosArray.length === 1 ? 'Peso' : 'Pesos';
-  medidasHTML += `
-    <div class="tarjeta">
-      <div class="tituloTarjeta">${tituloPeso}</div>
-      <div class="contenidoTarjeta">
-        <span>${pesoHTML}</span>
-      </div>
-    </div>
-  `;
-} else {
-  medidasHTML += `
-    <div class="tarjeta">
-      <div class="tituloTarjeta">Peso</div>
-      <div class="contenidoTarjeta">
-        <span>??? kg</span>
-      </div>
-    </div>
-  `;
-}
-
-      medidasHTML += '</div>';
-      contenedorInfo.innerHTML += medidasHTML;
+      contenedorInfo.innerHTML += `
+        <div class="contenedorMedidas">
+          ${createMedidaCard('Altura', pokemonData.altura, 'm')}
+          ${createMedidaCard('Peso', pokemonData.peso, 'kg')}
+        </div>
+      `;
     }
 
-    // ========== HABILIDADES ==========
-    if (pokemonData.habilidad && pokemonData.habilidad.length > 0) {
+    // HABILIDADES
+    if (pokemonData.habilidad?.length) {
       const habilidadesNormales = pokemonData.habilidad.filter(hab => !hab.oculta);
       const habilidadesOcultas = pokemonData.habilidad.filter(hab => hab.oculta);
-      let habilidadesHTML = '<div class="contenedorMedidas">';
-
-      if (habilidadesNormales.length > 0) {
-        const habilidadesNormalesHTML = habilidadesNormales.map(hab => {
+      
+      const createHabilidadCard = (habilidades, titulo) => {
+        if (!habilidades.length) return '';
+        const html = habilidades.map(hab => {
           const nombreCompleto = this.gestorReferencias.extraerValorConReferencia(hab.nombre);
           return `<span>${nombreCompleto}</span><br>`;
         }).join('');
+        return this.createCard(titulo, `<div>${html}</div>`);
+      };
 
-        const tituloNormal = habilidadesNormales.length === 1 ? 'Habilidad' : 'Habilidades';
-        habilidadesHTML += `
-        <div class="tarjeta">
-          <div class="tituloTarjeta">${tituloNormal}</div>
-          <div class="contenidoTarjeta">
-            <div>${habilidadesNormalesHTML}</div>
-          </div>
+      contenedorInfo.innerHTML += `
+        <div class="contenedorMedidas">
+          ${createHabilidadCard(habilidadesNormales, habilidadesNormales.length === 1 ? 'Habilidad' : 'Habilidades')}
+          ${createHabilidadCard(habilidadesOcultas, habilidadesOcultas.length === 1 ? 'Habilidad oculta' : 'Habilidades ocultas')}
         </div>
       `;
-      }
-
-      if (habilidadesOcultas.length > 0) {
-        const habilidadesOcultasHTML = habilidadesOcultas.map(hab => {
-          const nombreCompleto = this.gestorReferencias.extraerValorConReferencia(hab.nombre);
-          return `<span>${nombreCompleto}</span><br>`;
-        }).join('');
-
-        const tituloOculta = habilidadesOcultas.length === 1 ? 'Habilidad oculta' : 'Habilidades ocultas';
-        habilidadesHTML += `
-        <div class="tarjeta">
-          <div class="tituloTarjeta">${tituloOculta}</div>
-          <div class="contenidoTarjeta">
-            <div>${habilidadesOcultasHTML}</div>
-          </div>
-        </div>
-      `;
-      }
-
-      habilidadesHTML += '</div>';
-      contenedorInfo.innerHTML += habilidadesHTML;
     }
 
-    // ========== FIGURA Y COLOR ==========
+    // FIGURA Y COLOR
     if (pokemonData.figura !== undefined || pokemonData.color) {
-      const imgFigura = datosWikidex.figura[pokemonData.figura] || datosWikidex.default;
-      // En la sección de FIGURA Y COLOR, reemplaza la parte de figura por:
       let figuraHTML = '';
-if (pokemonData.figura !== undefined) {
-  if (Array.isArray(pokemonData.figura)) {
-    const figurasHTML = pokemonData.figura.map(fig => {
-      let figuraValor = '';
-      let notaHTML = '';
-      
-      if (typeof fig === 'object' && fig.valor) {
-        figuraValor = fig.valor;
-        if (fig.nota) {
-          notaHTML = this.gestorReferencias.procesarReferencia(fig.nota, fig);
-        }
+      if (pokemonData.figura !== undefined) {
+        const figurasArray = Array.isArray(pokemonData.figura) ? pokemonData.figura : [pokemonData.figura];
+        const figurasHTMLContent = figurasArray.map(fig => {
+          const figuraValor = typeof fig === 'object' && fig.valor ? fig.valor : fig;
+          const notaHTML = fig.nota ? this.gestorReferencias.procesarReferencia(fig.nota, fig) : '';
+          const imgFigura = datosWikidex.figura[figuraValor] || datosWikidex.default;
+          return `<span style="white-space: nowrap; margin-right: 8px;"><img src="${imgFigura}" height="30" alt="Figura ${figuraValor}">${notaHTML}</span>`;
+        }).join('');
+        
+        figuraHTML = this.createCard(figurasArray.length === 1 ? 'Figura' : 'Figuras', figurasHTMLContent);
       } else {
-        figuraValor = fig;
+        figuraHTML = this.createCard('Figura', '', true);
       }
-      
-      const imgFigura = datosWikidex.figura[figuraValor] || datosWikidex.default;
-      return `<span style="white-space: nowrap; margin-right: 8px;"><img src="${imgFigura}" height="30" alt="Figura ${figuraValor}">${notaHTML}</span>`;
-    }).join('');
-    
-    const tituloFigura = pokemonData.figura.length === 1 ? 'Figura' : 'Figuras';
-    figuraHTML = `
-      <div class="tarjeta">
-        <div class="tituloTarjeta">${tituloFigura}</div>
-        <div class="contenidoTarjeta">
-          ${figurasHTML}
-        </div>
-      </div>
-    `;
-  } else {
-    const imgFigura = datosWikidex.figura[pokemonData.figura] || datosWikidex.default;
-    figuraHTML = `
-      <div class="tarjeta">
-        <div class="tituloTarjeta">Figura</div>
-        <div class="contenidoTarjeta">
-          <img src="${imgFigura}" height="30" alt="Figura ${pokemonData.figura}">
-        </div>
-      </div>
-    `;
-  }
-} else {
-  figuraHTML = `<div class="tarjeta"><div class="tituloTarjeta">Figura</div><div class="contenidoTarjeta">—</div></div>`;
-}
 
       const coloresMap = {
         Azul: "#3D8BFF", Amarillo: "#FFD700", Blanco: "#EEEEEE",
@@ -1489,47 +1128,23 @@ if (pokemonData.figura !== undefined) {
       };
 
       let colorCard = '';
-      // En la sección de COLOR, reemplaza por:
       if (pokemonData.color) {
         const coloresArray = Array.isArray(pokemonData.color) ? pokemonData.color : [pokemonData.color];
         const coloresHTML = coloresArray.map(colorItem => {
-          let colorNombre = '';
-          let notaHTML = '';
-
-          if (typeof colorItem === 'object' && colorItem.valor) {
-            colorNombre = colorItem.valor;
-            if (colorItem.nota) {
-              notaHTML = this.gestorReferencias.procesarReferencia(colorItem.nota, colorItem);
-            }
-          } else {
-            colorNombre = colorItem;
-          }
-
+          const colorNombre = typeof colorItem === 'object' && colorItem.valor ? colorItem.valor : colorItem;
+          const notaHTML = colorItem.nota ? this.gestorReferencias.procesarReferencia(colorItem.nota, colorItem) : '';
           const colorHex = coloresMap[colorNombre] || "#FFFFFF";
           return `<span class="colorMuestra" style="background-color:${colorHex};"></span><span>${colorNombre}${notaHTML}</span>`;
         }).join('');
-
-        const tituloColor = coloresArray.length === 1 ? 'Color' : 'Colores';
-        colorCard = `
-    <div class="tarjeta">
-      <div class="tituloTarjeta">${tituloColor}</div>
-      <div class="contenidoTarjeta">
-        <div class="colorContenedor">${coloresHTML}</div>
-      </div>
-    </div>
-  `;
+        
+        colorCard = this.createCard(coloresArray.length === 1 ? 'Color' : 'Colores', `<div class="colorContenedor">${coloresHTML}</div>`);
       }
 
-      contenedorInfo.innerHTML += `
-      <div class="contenedorMedidas">
-        ${figuraHTML}
-        ${colorCard}
-      </div>
-    `;
+      contenedorInfo.innerHTML += `<div class="contenedorMedidas">${figuraHTML}${colorCard}</div>`;
     }
 
-    // ========== CATEGORÍA Y HUEVO ==========
-    if (pokemonData.categoria || (pokemonData.huevo && pokemonData.huevo.length > 0)) {
+    // CATEGORÍA Y HUEVO
+    if (pokemonData.categoria || pokemonData.huevo?.length) {
       let categoriaCard = '';
       if (pokemonData.categoria) {
         const categorias = Array.isArray(pokemonData.categoria) ? pokemonData.categoria : [pokemonData.categoria];
@@ -1537,129 +1152,80 @@ if (pokemonData.figura !== undefined) {
           const nombreCompleto = this.gestorReferencias.extraerValorConReferencia(cat);
           return `<span>Pokémon ${nombreCompleto}</span>`;
         }).join('<br>');
-
-        const tituloCategoria = categorias.length === 1 ? 'Categoría' : 'Categorías';
-        categoriaCard = `
-    <div class="tarjeta">
-      <div class="tituloTarjeta">${tituloCategoria}</div>
-      <div class="contenidoTarjeta">
-        <div>${categoriasHTML}</div>
-      </div>
-    </div>
-  `;
+        categoriaCard = this.createCard(categorias.length === 1 ? 'Categoría' : 'Categorías', `<div>${categoriasHTML}</div>`);
       } else {
-        categoriaCard = `<div class="tarjeta"><div class="tituloTarjeta">Categoría</div><div class="contenidoTarjeta">—</div></div>`;
+        categoriaCard = this.createCard('Categoría', '', true);
       }
 
-      let huevoHTML = '';
-      let tituloHuevo = 'Grupo huevo';
+      const huevoHTML = pokemonData.huevo?.length 
+        ? pokemonData.huevo.map(grupo => this.gestorReferencias.extraerValorConReferencia(grupo)).join('<br>')
+        : '—';
+      
+      const huevoCard = this.createCard(
+        pokemonData.huevo?.length > 1 ? 'Grupos huevo' : 'Grupo huevo',
+        `<div>${huevoHTML}</div>`
+      );
 
-      if (pokemonData.huevo && pokemonData.huevo.length > 0) {
-        if (pokemonData.huevo.length > 1) {
-          tituloHuevo = 'Grupos huevo';
-        }
-
-        huevoHTML = pokemonData.huevo.map(grupo => {
-          return this.gestorReferencias.extraerValorConReferencia(grupo);
-        }).join('<br>');
-      } else {
-        huevoHTML = '—';
-      }
-
-      const huevoCard = `
-  <div class="tarjeta">
-    <div class="tituloTarjeta">${tituloHuevo}</div>
-    <div class="contenidoTarjeta">
-      <div>${huevoHTML}</div>
-    </div>
-  </div>
-`;
+      contenedorInfo.innerHTML += `<div class="contenedorMedidas">${categoriaCard}${huevoCard}</div>`;
     }
 
-    // ========== PRONUNCIACIÓN ==========
-    if (pokemonData.pronunciacion && pokemonData.pronunciacion.length > 0) {
+    // PRONUNCIACIÓN
+    if (pokemonData.pronunciacion?.length) {
       const pronunciaciones = pokemonData.pronunciacion.map(p => {
-        let foneticaCompleta = this.gestorReferencias.extraerValorConReferencia(p.fonetica);
+        const foneticaCompleta = this.gestorReferencias.extraerValorConReferencia(p.fonetica);
 
         let zonaHTML = '';
         if (p.zona) {
-          if (Array.isArray(p.zona)) {
-            const zonasHTML = p.zona.map(z => {
-              let zonaTexto = '';
-              let notaZona = '';
-
-              if (typeof z === 'object' && z.valor) {
-                zonaTexto = z.valor;
-                if (z.nota) {
-                  notaZona = this.gestorReferencias.procesarReferencia(z.nota, z);
-                }
-              } else {
-                zonaTexto = z;
-              }
-
-              let abreviatura = '';
-              if (zonaTexto.includes('España')) abreviatura = `<abbr title="España">(ES)</abbr>`;
-              else if (zonaTexto.includes('Hispanoamérica')) abreviatura = `<abbr title="Hispanoamérica">(HA)</abbr>`;
-              else abreviatura = zonaTexto;
-
-              return abreviatura + notaZona;
-            }).join(' ');
-            zonaHTML = ' ' + zonasHTML;
-          } else {
-            let zonaTexto = p.zona;
-            let notaZona = '';
-
-            if (typeof p.zona === 'object' && p.zona.valor) {
-              zonaTexto = p.zona.valor;
-              if (p.zona.nota) {
-                notaZona = this.gestorReferencias.procesarReferencia(p.zona.nota, p.zona);
-              }
-            }
-
-            if (zonaTexto === 'España') zonaHTML = ' <abbr title="España">(ES)</abbr>' + notaZona;
-            else if (zonaTexto === 'Hispanoamérica') zonaHTML = ' <abbr title="Hispanoamérica">(HA)</abbr>' + notaZona;
-            else zonaHTML = ' ' + zonaTexto + notaZona;
-          }
+          const zonasArray = Array.isArray(p.zona) ? p.zona : [p.zona];
+          const zonasHTMLParts = zonasArray.map(z => {
+            const zonaTexto = typeof z === 'object' && z.valor ? z.valor : z;
+            const notaZona = z.nota ? this.gestorReferencias.procesarReferencia(z.nota, z) : '';
+            
+            let abreviatura = '';
+            if (zonaTexto.includes('España')) abreviatura = `<abbr title="España">(ES)</abbr>`;
+            else if (zonaTexto.includes('Hispanoamérica')) abreviatura = `<abbr title="Hispanoamérica">(HA)</abbr>`;
+            else abreviatura = zonaTexto;
+            
+            return abreviatura + notaZona;
+          }).join(' ');
+          
+          zonaHTML = ' ' + zonasHTMLParts;
         }
 
-        return `${foneticaCompleta}${zonaHTML ? `&nbsp;${zonaHTML}` : ``}`;
+        return `${foneticaCompleta}${zonaHTML ? `&nbsp;${zonaHTML}` : ''}`;
       }).join('<br>');
 
       contenedorInfo.innerHTML += `
-    <div class="contenedorMedidas">
-      <div class="tarjeta">
-        <div class="tituloTarjeta">${pokemonData.pronunciacion.length === 1 ? 'Pronunciación' : 'Pronunciaciones'}</div>
-        <div class="contenidoTarjeta">
-          <div>${pronunciaciones}</div>
+        <div class="contenedorMedidas">
+          ${this.createCard(pokemonData.pronunciacion.length === 1 ? 'Pronunciación' : 'Pronunciaciones', `<div>${pronunciaciones}</div>`)}
         </div>
-      </div>
-    </div>
-  `;
+      `;
     }
 
-    // ========== RENDERIZAR REFERENCIAS AL FINAL ==========
     this.gestorReferencias.renderizarReferencias();
-    setTimeout(() => {
-      this.gestorReferencias.actualizarNumerosCitas();
-    }, 0);
+    setTimeout(() => this.gestorReferencias.actualizarNumerosCitas(), 0);
   }
 
   updateImage() {
-    const pokemonData = this.estado.getPokemonData();
     const imageSrc = this.estado.buildImageSrc();
     const urls = this.estado.getCurrentImageUrls();
     const isShinyAvailable = !!urls.variocolor;
-    const isTraseraAvailable = !!urls.trasera || !!urls.variocolorTrasera;
+    const isTraseraAvailable = !!(urls.trasera || urls.variocolorTrasera);
+    
     if (!isShinyAvailable && this.estado.esShiny) this.estado.esShiny = false;
     if (!isTraseraAvailable && this.estado.esTrasera) this.estado.esTrasera = false;
+    
     this.updateButtonState('toggle', 'shiny', this.estado.esShiny, isShinyAvailable);
     this.updateButtonState('toggle', 'trasera', this.estado.esTrasera, isTraseraAvailable);
     this.updateVolumeButton();
     this.updateArtworkButton();
+    
     const testImg = new Image();
     let hasError = false;
     let loadingTimeout;
+    
     loadingTimeout = setTimeout(() => this.showLoadingIndicator(), loadingImageDelay);
+    
     testImg.onload = () => {
       if (!hasError) {
         clearTimeout(loadingTimeout);
@@ -1667,6 +1233,7 @@ if (pokemonData.figura !== undefined) {
         this.hideLoadingIndicator(false);
       }
     };
+    
     testImg.onerror = () => {
       hasError = true;
       clearTimeout(loadingTimeout);
@@ -1678,6 +1245,7 @@ if (pokemonData.figura !== undefined) {
       defaultTestImg.onerror = () => this.hideLoadingIndicator(true);
       defaultTestImg.src = datosWikidex.default;
     };
+    
     testImg.src = imageSrc || datosWikidex.default;
   }
 
@@ -1692,6 +1260,7 @@ if (pokemonData.figura !== undefined) {
   hideLoadingIndicator(isError = false) {
     const indicator = this.elements.loadingIndicator;
     if (!indicator) return;
+    
     if (isError) {
       indicator.classList.add('error');
       setTimeout(() => {
@@ -1708,16 +1277,19 @@ if (pokemonData.figura !== undefined) {
   updateAll() {
     const availableGenders = this.estado.getAvailableGenders();
     const availableSpecialForms = this.estado.getAvailableSpecialForms();
+    
     configBotones.gender.forEach(btn => {
       const isAvailable = availableGenders.includes(btn.key);
       const isActive = this.estado.sexoActivo === btn.key;
       this.updateButtonState('gender', btn.key, isActive, isAvailable);
     });
+    
     configBotones.special.forEach(btn => {
       const isAvailable = availableSpecialForms.includes(btn.key);
       const isActive = this.estado.formaEspecialActiva === btn.key;
       this.updateButtonState('special', btn.key, isActive, isAvailable);
     });
+    
     this.updateSections();
     this.updateImage();
     this.updateTipos();
